@@ -14,10 +14,10 @@ class FileChooser(RenderObject.RenderObject):
     headerHeight = 31
     initialPath =""
     
-    titleFont = pygame.font.Font('FreeSans.ttf', 25)
-    entryFont = pygame.font.Font('FreeSans.ttf', 16)
-    folderIcon = pygame.image.load( "folder.png")
-    fileIcon =  pygame.image.load( "file.png")
+    titleFont = pygame.font.Font('theme/FreeSans.ttf', 25)
+    entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
+    folderIcon = pygame.image.load( "theme/folder.png")
+    fileIcon =  pygame.image.load( "theme/file.png")
 
     listHeight = config["screenHeight"] - headerHeight - footerHeight
     maxListEntries = 12

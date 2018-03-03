@@ -6,6 +6,7 @@ from pprint import pprint
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
+    footerFont = pygame.font.Font('theme/FreeSans.ttf', 14)
     systems = []
     systemNames = []
     systembackgrounds = []
@@ -17,7 +18,7 @@ class MainMenu(RenderObject.RenderObject):
     optionsMenu = None
     subComponent = None
 
-    footerHeight = 23  
+    footerHeight = 24
         
     def loadSystemImages(self, screen):   
         
@@ -81,6 +82,20 @@ class MainMenu(RenderObject.RenderObject):
     def initFooter(self):
         self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight),pygame.SRCALPHA)
         self.footer.fill(Configuration.toColor(self.theme["footer"]["color"]))
+        aButton = pygame.image.load("theme/a_button.png")
+        self.footer.blit(aButton, (370,3))
+        open = self.footerFont.render("open", True, (255,255,255))
+        self.footer.blit(open, (394,3))
+        selectButton = pygame.image.load("theme/select_button.png")
+        self.footer.blit(selectButton, (280,5))
+        options = self.footerFont.render("options", True, (255,255,255))
+        self.footer.blit(options, (315,3))
+
+        direction = pygame.image.load("theme/direction.png")
+        self.footer.blit(direction, (4,2))
+        options = self.footerFont.render("select", True, (255,255,255))
+        self.footer.blit(options, (26,3))
+
 
     def transition(self):
         if(self.inTransition):

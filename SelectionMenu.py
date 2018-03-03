@@ -42,7 +42,7 @@ class SelectionMenu(RenderObject.RenderObject):
 
 
     def initOptionText(self):
-        font = pygame.font.Font('FreeSans.ttf', 20)
+        font = pygame.font.Font('theme/FreeSans.ttf', 20)
         for opt in self.options:        
             text = font.render(opt, True, (105,105,105))
             self.optionsText.append(text)
