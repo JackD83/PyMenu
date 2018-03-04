@@ -10,17 +10,17 @@ class FileChooser(RenderObject.RenderObject):
     entryList = []
     background = None
     selection = None
-    footerHeight = 23
-    headerHeight = 31
+    footerHeight = 24
+    headerHeight = 20
     initialPath =""
     
-    titleFont = pygame.font.Font('theme/FreeSans.ttf', 25)
+    titleFont = pygame.font.Font('theme/FreeSans.ttf', 20)
     entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
     folderIcon = pygame.image.load( "theme/folder.png")
     fileIcon =  pygame.image.load( "theme/file.png")
 
     listHeight = config["screenHeight"] - headerHeight - footerHeight
-    maxListEntries = 12
+    maxListEntries = 11
     listEntryHeight = int(listHeight / maxListEntries)
 
     currentIndex = 0
@@ -32,12 +32,18 @@ class FileChooser(RenderObject.RenderObject):
         self.renderFooter(screen)
         self.renderEntries(screen)
         self.renderSelection(screen)
+        self.renderPreview(screen)
 
     def renderHeader(self, screen):
         screen.blit(self.header, (0,0))
 
     def renderFooter(self, screen):
         screen.blit(self.footer, (0,self.config["screenHeight"] - self.footerHeight))
+    
+    def renderPreview(self, screen):
+        previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
+        previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
+        screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
 
     def renderEntries(self, screen):
 
@@ -47,15 +53,21 @@ class FileChooser(RenderObject.RenderObject):
         else:
             max = len(self.entryList)
 
+        yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
+        xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2
+
+        yFileOffset =  (self.listEntryHeight - self.fileIcon.get_height()) / 2
+        xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
+
         for i in range(0, max):
             text = self.entryList[i + self.currentWrap]["text"]
             yOffset = (self.listEntryHeight -  text.get_height()) / 2
 
-            screen.blit(text, (self.listEntryHeight, i * self.listEntryHeight + yOffset + self.headerHeight + 1))
+            screen.blit(text, (self.listEntryHeight + 4, i * self.listEntryHeight + yOffset + self.headerHeight + 1))
             if(self.entryList[i + self.currentWrap]["isFolder"]):
-                screen.blit(self.folderIcon, (1, i * self.listEntryHeight + self.headerHeight + 1) )
+                screen.blit(self.folderIcon, (xFolderOffset, i * self.listEntryHeight + self.headerHeight + yFolderOffset) )
             else:
-                screen.blit(self.fileIcon, (1, i * self.listEntryHeight + self.headerHeight + 2) )
+                screen.blit(self.fileIcon, (xFileOffset, i * self.listEntryHeight + self.headerHeight + yFileOffset) )
 
     def renderSelection(self, screen):
         offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
@@ -149,7 +161,7 @@ class FileChooser(RenderObject.RenderObject):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight), pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
         self.titleText = self.titleFont.render(self.title, True, (0,0,0))
-        self.header.blit(self.titleText, (4, 0))
+        self.header.blit(self.titleText, (4, (self.headerHeight - self.titleText.get_height()) / 2))
 
     def initFooter(self):
         self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight), pygame.SRCALPHA)

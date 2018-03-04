@@ -159,4 +159,4 @@ class MainMenu(RenderObject.RenderObject):
         self.banderole = pygame.Surface((480,80),pygame.SRCALPHA)
         self.banderole.fill((255,255,255, 160))
         self.initFooter()  
-        self.header = Header.Header()  
+        self.header = Header.Header(24)  
