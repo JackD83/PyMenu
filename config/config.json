@@ -1,0 +1,49 @@
+{
+    "screenHeight" : 272,
+    "screenWidth" : 480,
+    "mainMenu" : [
+        {
+            "name": "snes",
+            "type" : "emulator",
+            "description" : "nice 16bit system",
+            "background" : "backgrounds/snes_art_blur.jpg",
+            "icon": "systems/snes.png",
+            "selectionPath" :"C:/tmp",
+            "workingDir" : "C:/tmp/",
+            "cmd" : "C:/tmp/snes9x/snes9x.exe"
+        },
+        {
+            "name": "nes",
+            "type" : "emulator",    
+            "description" : "nice 8bit system",
+            "background" : "backgrounds/nes_art_blur.jpg",
+            "icon": "systems/nes1.png",
+            "selectionPath" :"C:"
+        },
+        {
+            "name": "GB",
+            "type" : "emulator",
+            "description" : "Gameboy DMG",
+            "background" : "backgrounds/gb_art_blur.jpg",
+            "icon": "systems/gb.png",
+            "selectionPath" :"C:"
+        },
+        {
+            "name": "GBC",
+            "type" : "emulator",
+            "description" : "Gameboy Color",
+            "background" : "backgrounds/gbc_art_blur.jpg",
+            "icon": "systems/gbc.png",
+            "selectionPath" :"C:"
+        },
+        {
+            "name": "GBA",
+            "type" : "emulator",
+            "description" : "Gameboy Advance",
+            "background" : "backgrounds/gba_art_blur.jpg",
+            "icon": "systems/gba.png",
+            "selectionPath" :"C:"
+        }
+    ]
+
+}

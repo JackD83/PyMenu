@@ -1,4 +1,4 @@
-import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header
+import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput
 import os
 import pygame, sys
 from pprint import pprint
@@ -56,6 +56,8 @@ class MainMenu(RenderObject.RenderObject):
                     self.openOptions()
                 if event.key == pygame.K_RETURN:
                     self.openSelection()
+                if event.key == pygame.K_RALT:
+                    self.subComponent = TextInput.TextInput(self.screen, "Initial", self.textCallback)
     
     def openOptions(self):
         print("opening options menu")
@@ -74,6 +76,10 @@ class MainMenu(RenderObject.RenderObject):
     def optionsCallback(self, optionID):
         print("Options came back with: ", optionID)
         self.optionsMenu = None
+    
+    def textCallback(self, text):
+        print("Text callback, got text: " + text)
+        self.subComponent = None
 
     def emulatorCallback(self, selectedFile):     
         self.subComponent = None
