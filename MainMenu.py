@@ -57,7 +57,7 @@ class MainMenu(RenderObject.RenderObject):
                 if event.key == pygame.K_RETURN:
                     self.openSelection()
                 if event.key == pygame.K_RALT:
-                    self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{}, \
+                    self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                     {"StringTest":"testString","BooleanTest":"True","FolderTest":"d:\\tmp","FileTest":"d:\\tmp\\test","ImageTest":"d:\\tmp\\image.jpg" }, \
                                                                                                     [{"name":"StringTest","type":"string" }, \
                                                                                                     {"name":"BooleanTest", "type":"boolean"},\

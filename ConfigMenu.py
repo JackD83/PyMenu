@@ -41,7 +41,9 @@ class ConfigMenu(AbstractList.AbstractList):
             options = {}   
             options["preview"] = True
             options["directPreview"] = True 
-            options["fileFilter"] = [".png", ".jpg"]    
+            options["fileFilter"] = [".png", ".jpg"] 
+            options["textColor"] = self.textColor
+            options["backgroundColor"] = self.backgroundColor
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
 
 
@@ -91,7 +93,7 @@ class ConfigMenu(AbstractList.AbstractList):
             entry["name"] = o["name"]
             entry["value"] = self.optionTarget[o["name"]]
             entry["type"] = o["type"]
-            entry["text"] = self.entryFont.render( entry["name"] + ": " + entry["value"] , True, (0,0,0))
+            entry["text"] = self.entryFont.render( entry["name"] + ": " + entry["value"] , True, self.textColor)
             self.entryList.append(entry)
 
     def __init__(self, screen, titel,  options, optionTarget, optionConfig, callback):
@@ -99,5 +101,6 @@ class ConfigMenu(AbstractList.AbstractList):
         self.callback = callback
         self.optionConfig = optionConfig
         self.optionTarget = optionTarget
+           
+        
         self.initList()
-      

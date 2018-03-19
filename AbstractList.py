@@ -105,11 +105,11 @@ class AbstractList(RenderObject.RenderObject):
         if("background" in self.options):
             self.background = pygame.image.load(self.options["background"])
             surface =  pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]), pygame.SRCALPHA)
-            surface.fill((255,255,255, 160))
+            surface.fill(self.backgroundColor)
             self.background.blit(surface, (0,0))          
         else:
             self.background = pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]))
-            self.background.fill((255,255,255))
+            self.background.fill(self.backgroundColor)
 
         for i in range(0, self.maxListEntries):
             y = i * self.listEntryHeight + self.headerHeight
@@ -134,6 +134,16 @@ class AbstractList(RenderObject.RenderObject):
        
         self.title = titel
         self.options = options
+
+        if("textColor" in self.options):
+            self.textColor = options["textColor"]
+        else:
+            self.textColor = (0,0,0)
+        
+        if("backgroundColor" in self.options):
+            self.backgroundColor = options["backgroundColor"]
+        else:
+            self.backgroundColor = (255,255,255, 160)
                
         self.initBackground()
         self.initHeader()

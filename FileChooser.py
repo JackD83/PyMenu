@@ -90,7 +90,7 @@ class FileChooser(AbstractList.AbstractList):
             entry = {}
             entry["name"] = ".."
             entry["isFolder"] = True
-            entry["text"] = self.entryFont.render("..", True, (0,0,0))
+            entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
             for f in sorted(os.listdir(self.currentPath)):
@@ -98,14 +98,14 @@ class FileChooser(AbstractList.AbstractList):
                     entry = {}
                     entry["name"] = f
                     entry["isFolder"] = True
-                    entry["text"] = self.entryFont.render(f, True, (0,0,0))
+                    entry["text"] = self.entryFont.render(f, True, self.textColor)
                     self.entryList.append(entry)
             for f in sorted(os.listdir(self.currentPath)):
                 if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
                     entry = {}
                     entry["name"] = f
                     entry["isFolder"] = False
-                    entry["text"] = self.entryFont.render(f, True, (0,0,0))
+                    entry["text"] = self.entryFont.render(f, True, self.textColor)
                     self.entryList.append(entry)
 
 
