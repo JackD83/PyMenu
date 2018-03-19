@@ -1,94 +1,50 @@
-import RenderObject, Configuration
+import RenderObject, Configuration, AbstractList
 import os
 import pygame, sys
 from operator import itemgetter
 
-class FileChooser(RenderObject.RenderObject):
-    config = Configuration.getConfiguration()
-    theme = Configuration.getTheme()
-    pygame.font.init()
-    entryList = []
-    background = None
-    selection = None
-    footerHeight = 24
-    headerHeight = 20
-    initialPath =""
-    
-    titleFont = pygame.font.Font('theme/FreeSans.ttf', 20)
-    entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
+class FileChooser(AbstractList.AbstractList):
+   
     folderIcon = pygame.image.load( "theme/folder.png")
     fileIcon =  pygame.image.load( "theme/file.png")
 
-    listHeight = config["screenHeight"] - headerHeight - footerHeight
-    maxListEntries = 11
-    listEntryHeight = int(listHeight / maxListEntries)
+    previewCache = {}
 
-    currentIndex = 0
-    currentWrap = 0
+    previewEnabled = False
+    currentSelection =""
 
     def render(self, screen):
-        screen.blit(self.background, (0,0))
-        self.renderHeader(screen)
-        self.renderFooter(screen)
-        self.renderEntries(screen)
-        self.renderSelection(screen)
-        self.renderPreview(screen)
-
-    def renderHeader(self, screen):
-        screen.blit(self.header, (0,0))
-
-    def renderFooter(self, screen):
-        screen.blit(self.footer, (0,self.config["screenHeight"] - self.footerHeight))
+        super().render(screen)
+        if("preview" in self.options and self.options["preview"]):
+            self.renderPreview(screen)
     
     def renderPreview(self, screen):
-        previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
-        previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
-        screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
+         if("directPreview" in self.options and self.options["directPreview"] and self.isImage() and self.previewEnabled):          
+            previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
+            previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
 
-    def renderEntries(self, screen):
-
-        max = 0
-        if(len(self.entryList) >  self.maxListEntries ):
-            max = self.maxListEntries
-        else:
-            max = len(self.entryList)
-
-        yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
-        xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2
-
-        yFileOffset =  (self.listEntryHeight - self.fileIcon.get_height()) / 2
-        xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
-
-        for i in range(0, max):
-            text = self.entryList[i + self.currentWrap]["text"]
-            yOffset = (self.listEntryHeight -  text.get_height()) / 2
-
-            screen.blit(text, (self.listEntryHeight + 4, i * self.listEntryHeight + yOffset + self.headerHeight + 1))
-            if(self.entryList[i + self.currentWrap]["isFolder"]):
-                screen.blit(self.folderIcon, (xFolderOffset, i * self.listEntryHeight + self.headerHeight + yFolderOffset) )
+            image = None
+            if(not self.currentSelection in self.previewCache):
+                image = pygame.image.load(self.currentSelection)
+                image = self.aspect_scale(image, 180, 180)
+                self.previewCache[self.currentSelection] = image
             else:
-                screen.blit(self.fileIcon, (xFileOffset, i * self.listEntryHeight + self.headerHeight + yFileOffset) )
+                image = self.previewCache[self.currentSelection]
 
-    def renderSelection(self, screen):
-        offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
-        screen.blit(self.selection, (0,offset))
+            previewBox.blit(image,(10,10))
+            screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
+       
+ 
+    def renderEntry(self, screen, index, yOffset):
+        text = self.entryList[index]["text"]
+        yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
 
-    def handleEvents(self, events):
-        for event in events:    
-            if event.type == pygame.KEYDOWN:         
-                if event.key == pygame.K_UP:
-                    self.up()
-                if event.key == pygame.K_DOWN:
-                    self.down()
-                if event.key == pygame.K_RETURN:
-                    if(self.entryList[self.currentIndex]["isFolder"]):
-                        self.loadFolder(self.entryList[self.currentIndex])
-                    else:
-                        self.callback(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
-                if event.key == pygame.K_ESCAPE:
-                    self.callback(None)
-            if event.type == pygame.KEYUP:
-                print("key up!")
+        screen.blit(text, (self.listEntryHeight + 4, yOffset + yTextOffset + 1))
+        if(self.entryList[index]["isFolder"]):
+            screen.blit(self.folderIcon, (self.xFolderOffset, yOffset +  self.yFolderOffset) )
+        else:
+            screen.blit(self.fileIcon, (self.xFileOffset, yOffset + self.yFileOffset) )
+
 
     def loadFolder(self, folder):
         if(folder["name"] == ".."):
@@ -101,22 +57,32 @@ class FileChooser(RenderObject.RenderObject):
         self.currentIndex = 0
         self.initList()
 
-    def up(self):
-        self.currentIndex -= 1
-        if(self.currentIndex  < 0):
-            self.currentIndex = 0
-        
-        if(self.currentIndex  < self.currentWrap):
-            self.currentWrap -= 1
+    def onSelect(self):
+        if(self.entryList[self.currentIndex]["isFolder"]):
+            self.loadFolder(self.entryList[self.currentIndex])
+        else:
+            self.callback(os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"]))
     
-    def down(self):
-        self.currentIndex += 1
-        if(self.currentIndex > len(self.entryList) - 1 ):
-            self.currentIndex = len(self.entryList) -1
+    def onExit(self):
+        self.callback(os.path.normpath(self.initialPath))
+    
+    def onChange(self):
+        self.currentSelection = self.currentPath + "/" + self.entryList[self.currentIndex]["name"]
+        self.currentSelection =  os.path.normpath(self.currentSelection)
 
-        if(self.currentIndex > self.maxListEntries + self.currentWrap + -1):
-            self.currentWrap += 1
+    def handleEvents(self, events):     
+        for event in events:    
+            if event.type == pygame.KEYDOWN:         
+                if event.key == pygame.K_RCTRL:
+                    if(self.selectFolder):
+                          self.callback(self.currentPath)
+                          return
+                if event.key == pygame.K_TAB:
+                    self.previewEnabled = not self.previewEnabled
 
+        super().handleEvents(events)
+
+   
     def initList(self):
         print(self.currentPath)
         if(os.path.isdir(self.currentPath)):
@@ -135,54 +101,85 @@ class FileChooser(RenderObject.RenderObject):
                     entry["text"] = self.entryFont.render(f, True, (0,0,0))
                     self.entryList.append(entry)
             for f in sorted(os.listdir(self.currentPath)):
-                if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder):
+                if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
                     entry = {}
                     entry["name"] = f
                     entry["isFolder"] = False
                     entry["text"] = self.entryFont.render(f, True, (0,0,0))
                     self.entryList.append(entry)
 
-    def initBackground(self):
-       
-        if("background" in self.options):
-            self.background = pygame.image.load(self.options["background"])
-            surface =  pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]), pygame.SRCALPHA)
-            surface.fill((255,255,255, 160))
-            self.background.blit(surface, (0,0))          
+
+    def getExistingParent(self, path):
+        parent = os.path.abspath(os.path.join(path, os.pardir))
+        if(os.path.exists(parent)):
+            return parent
         else:
-            self.background = pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]))
-            self.background.fill((255,255,255))
+            return self.getExistingParent(parent)
 
-        for i in range(0, self.maxListEntries):
-            y = i * self.listEntryHeight + self.headerHeight
-            pygame.draw.line(self.background, (105,105,105), (0, y), (self.config["screenWidth"], y), 1)
+    def isImage(self):
+        if(self.currentSelection.lower().endswith("png") or 
+            self.currentSelection.lower().endswith("jpg") ):
+            return True
 
-    def initHeader(self):
-        self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight), pygame.SRCALPHA)
-        self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
-        self.titleText = self.titleFont.render(self.title, True, (0,0,0))
-        self.header.blit(self.titleText, (4, (self.headerHeight - self.titleText.get_height()) / 2))
+    def filterFile(self, file):
+        if(not "fileFilter" in self.options):
+            return True #allow all files
 
-    def initFooter(self):
-        self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight), pygame.SRCALPHA)
-        self.footer.fill(Configuration.toColor(self.theme["footer"]["color"]))
+        filename, file_extension = os.path.splitext(file)
+        if(file_extension == ""):
+            return False
 
-    def initSelection(self):
-        self.selection = pygame.Surface((self.config["screenWidth"],self.listEntryHeight),pygame.SRCALPHA)
-        self.selection.fill((255,255,255, 160))
+        if any(file_extension in s for s in self.options["fileFilter"]):
+            return True
 
-    def __init__(self, screen, titel, initialPath, selectFolder, options, callback):
-        self.screen = screen
-        self.currentPath = initialPath
-        self.selectFolder = selectFolder
-        self.callback = callback
-        self.initialPath = initialPath
-        self.title = titel
-        self.options = options
+        return False
+    
+    def aspect_scale(self, img, bx,by ):      
+        ix,iy = img.get_size()
+        if ix > iy:
+            # fit to width
+            scale_factor = bx/float(ix)
+            sy = scale_factor * iy
+            if sy > by:
+                scale_factor = by/float(iy)
+                sx = scale_factor * ix
+                sy = by
+            else:
+                sx = bx
+        else:
+            # fit to height
+            scale_factor = by/float(iy)
+            sx = scale_factor * ix
+            if sx > bx:
+                scale_factor = bx/float(ix)
+                sx = bx
+                sy = scale_factor * iy
+            else:
+                sy = by
+
+        return pygame.transform.scale(img, (int(sx),int(sy)) )
+
+    def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
+        super().__init__(screen, titel, options)
+
+        self.getExistingParent(initialPath)
+
+        if(os.path.exists(initialPath) and not os.path.isfile(initialPath)):          
+            self.currentPath = initialPath
+        else:
+            self.currentPath = self.getExistingParent(initialPath)       
         
+           
+        self.currentSelection = initialPath
+        self.initialPath = initialPath       
+        self.selectFolder = selectFolder  
+        self.callback = callback
+
+        self.yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
+        self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2
+
+        self.yFileOffset =  (self.listEntryHeight - self.fileIcon.get_height()) / 2
+        self.xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
 
         self.initList()
-        self.initBackground()
-        self.initHeader()
-        self.initFooter()
-        self.initSelection()
+      

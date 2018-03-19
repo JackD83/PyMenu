@@ -164,7 +164,10 @@ class TextInput(RenderObject.RenderObject):
                 if event.key == pygame.K_RETURN:
                     self.selectChar()
                 if event.key == pygame.K_BACKSPACE:
-                   self.currentText = self.currentText[:-1]                   
+                   self.currentText = self.currentText[:-1] 
+                if event.key == pygame.K_ESCAPE:
+                    if(self.callback != None):
+                        self.callback(self.currentText)               
 
 
     def __init__(self, screen, initialText, callback):

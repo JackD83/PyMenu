@@ -1,4 +1,4 @@
-import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput
+import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
 import os
 import pygame, sys
 from pprint import pprint
@@ -39,7 +39,6 @@ class MainMenu(RenderObject.RenderObject):
             self.subComponent.handleEvents(events)
             return
 
-
         if(self.optionsMenu != None):
             self.optionsMenu.handleEvents(events)
             return
@@ -53,11 +52,19 @@ class MainMenu(RenderObject.RenderObject):
                     self.inTransition = True
                     self.transitionDirection = 30
                 if event.key == pygame.K_LCTRL:
-                    self.openOptions()
+                    pass
+                    #self.openOptions()
                 if event.key == pygame.K_RETURN:
                     self.openSelection()
                 if event.key == pygame.K_RALT:
-                    self.subComponent = TextInput.TextInput(self.screen, "Initial", self.textCallback)
+                    self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{}, \
+                    {"StringTest":"testString","BooleanTest":"True","FolderTest":"d:\\tmp","FileTest":"d:\\tmp\\test","ImageTest":"d:\\tmp\\image.jpg" }, \
+                                                                                                    [{"name":"StringTest","type":"string" }, \
+                                                                                                    {"name":"BooleanTest", "type":"boolean"},\
+                                                                                                    {"name":"FolderTest", "type":"folder"},\
+                                                                                                    {"name":"FileTest", "type":"file"},\
+                                                                                                    {"name":"ImageTest", "type":"image"}],\
+                                                                                                     self.emulatorCallback)
     
     def openOptions(self):
         print("opening options menu")
