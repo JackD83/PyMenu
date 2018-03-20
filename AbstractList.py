@@ -1,5 +1,5 @@
 import RenderObject, Configuration, Footer
-import os, Keys
+import os, Keys, RenderControl
 import pygame, sys
 from operator import itemgetter
 
@@ -48,13 +48,17 @@ class AbstractList(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_UP:
                     self.up()
                     self.onChange()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_DOWN:
                     self.down()
                     self.onChange()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.onSelect()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
                     self.onExit()
+                    RenderControl.setDirty()
             if event.type == pygame.KEYUP:
                 pass
                 #print("key up!")

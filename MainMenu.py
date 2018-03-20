@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
-import Footer, Keys
+import Footer, Keys, RenderControl
 import os
 import pygame, sys
 from pprint import pprint
@@ -49,14 +49,17 @@ class MainMenu(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
                     self.inTransition = True
                     self.transitionDirection = -30
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_RIGHT:
                     self.inTransition = True
                     self.transitionDirection = 30
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
                     pass
                     #self.openOptions()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.openSelection()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
                     self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                     {"StringTest":"testString","BooleanTest":"True","FolderTest":"d:\\tmp","FileTest":"d:\\tmp\\test","ImageTest":"d:\\tmp\\image.jpg" }, \
@@ -67,7 +70,8 @@ class MainMenu(RenderObject.RenderObject):
                                                                                                     {"name":"ImageTest", "type":"image"}],\
                                                                                                      self.emulatorCallback)
                     footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-                    self.subComponent.setFooter(footer)                                                                                 
+                    self.subComponent.setFooter(footer)             
+                    RenderControl.setDirty()                                                                    
     
     def openOptions(self):
         print("opening options menu")
@@ -107,8 +111,8 @@ class MainMenu(RenderObject.RenderObject):
                 if(self.transitionDirection < 0):
                     self.currentIndex = self.getNext()
                 else:
-                    self.currentIndex = self.getPrev()
-        
+                    self.currentIndex = self.getPrev()          
+           
     
     def getNext(self):     
         if(self.currentIndex + 1 >= len(self.systems)):
@@ -148,6 +152,11 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.optionsMenu != None):
             self.optionsMenu.render(screen)    
+        
+        if(self.inTransition):
+             RenderControl.setInTransition()
+        else:
+            RenderControl.setInTransition(False)
    
  
     

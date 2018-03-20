@@ -1,5 +1,5 @@
 import RenderObject, Configuration, Footer
-import os, Keys
+import os, Keys, RenderControl
 import pygame, sys
 
 
@@ -157,22 +157,29 @@ class TextInput(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_UP:
                     self.currentRow = self.currentRow - 1
                     self.setSelctedChar()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_DOWN:
                     self.currentRow = self.currentRow + 1
                     self.setSelctedChar()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
                     self.currentCol = self.currentCol - 1
                     self.setSelctedChar()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_RIGHT:
                     self.currentCol = self.currentCol + 1
                     self.setSelctedChar()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.selectChar()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_Y:
-                   self.currentText = self.currentText[:-1] 
+                    self.currentText = self.currentText[:-1] 
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
                     if(self.callback != None):
-                        self.callback(self.currentText)               
+                        self.callback(self.currentText)
+                        RenderControl.setDirty()               
 
 
     def __init__(self, screen, initialText, callback):

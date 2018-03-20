@@ -1,5 +1,5 @@
 import RenderObject, Configuration, AbstractList
-import os, Keys
+import os, Keys, RenderControl
 import pygame, sys
 from operator import itemgetter
 
@@ -76,9 +76,11 @@ class FileChooser(AbstractList.AbstractList):
                 if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.selectFolder):
                           self.callback(self.currentPath)
+                          RenderControl.setDirty()
                           return
                 if event.key == Keys.DINGOO_BUTTON_Y:
                     self.previewEnabled = not self.previewEnabled
+                    RenderControl.setDirty()
 
         super().handleEvents(events)
 

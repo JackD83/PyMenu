@@ -1,5 +1,5 @@
 import RenderObject, Configuration
-import os, Keys
+import os, Keys, RenderControl
 import pygame, sys
 
 class SelectionMenu(RenderObject.RenderObject):
@@ -74,12 +74,16 @@ class SelectionMenu(RenderObject.RenderObject):
             if event.type == pygame.KEYDOWN:           
                 if event.key == Keys.DINGOO_BUTTON_UP:
                     self.up()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_DOWN:
                     self.down()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.callback(self.currentIndex)
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
                     self.callback(-1)
+                    RenderControl.setDirty()
 
     def down(self):
         self.currentIndex += 1

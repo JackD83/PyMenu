@@ -1,4 +1,4 @@
-import pygame, sys, common, MainMenu, Configuration
+import pygame, sys, common, MainMenu, Configuration, RenderControl
 from pygame.locals import *
 
 
@@ -23,14 +23,17 @@ def init():
                 pygame.quit()
                 sys.exit()       
 
-        update(renderObject, screen,events)
+        renderObject.handleEvents(events)
+        if(RenderControl.isDirty() or RenderControl.isInTransition()):
+            update(renderObject, screen,events)
+            pygame.display.update()
+            RenderControl.setDirty(False)
 
-        pygame.display.update()        
+
         fpsClock.tick(FPS)
 
 
-def update(renderObject, screen, events):
-    renderObject.handleEvents(events)
+def update(renderObject, screen, events):  
     renderObject.render(screen)
 
 

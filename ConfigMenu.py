@@ -1,5 +1,5 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
-import os
+import os, RenderControl
 import pygame, sys
 from operator import itemgetter
 
@@ -84,15 +84,16 @@ class ConfigMenu(AbstractList.AbstractList):
 
     def handleEvents(self, events):
         if(self.subComponent != None):
-            self.subComponent.handleEvents(events)
+            self.subComponent.handleEvents(events)          
             return
 
         if(self.optionsMenu != None):
-            self.optionsMenu.handleEvents(events)
+            self.optionsMenu.handleEvents(events)           
             return
 
         if(self.optionsMenu == None and self.subComponent == None):
             super().handleEvents(events)
+           
    
     def initList(self):
         self.entryList = []
