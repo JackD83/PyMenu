@@ -1,4 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
+import Footer, Keys
 import os
 import pygame, sys
 from pprint import pprint
@@ -6,7 +7,7 @@ from pprint import pprint
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
-    footerFont = pygame.font.Font('theme/FreeSans.ttf', 14)
+   
     systems = []
     systemNames = []
     systembackgrounds = []
@@ -18,7 +19,7 @@ class MainMenu(RenderObject.RenderObject):
     optionsMenu = None
     subComponent = None
 
-    footerHeight = 24
+  
         
     def loadSystemImages(self, screen):   
         
@@ -45,18 +46,18 @@ class MainMenu(RenderObject.RenderObject):
 
         for event in events:    
             if event.type == pygame.KEYDOWN:           
-                if event.key == pygame.K_LEFT:
+                if event.key == Keys.DINGOO_BUTTON_LEFT:
                     self.inTransition = True
                     self.transitionDirection = -30
-                if event.key == pygame.K_RIGHT:
+                if event.key == Keys.DINGOO_BUTTON_RIGHT:
                     self.inTransition = True
                     self.transitionDirection = 30
-                if event.key == pygame.K_LCTRL:
+                if event.key == Keys.DINGOO_BUTTON_SELECT:
                     pass
                     #self.openOptions()
-                if event.key == pygame.K_RETURN:
+                if event.key == Keys.DINGOO_BUTTON_A:
                     self.openSelection()
-                if event.key == pygame.K_RALT:
+                if event.key == Keys.DINGOO_BUTTON_START:
                     self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                     {"StringTest":"testString","BooleanTest":"True","FolderTest":"d:\\tmp","FileTest":"d:\\tmp\\test","ImageTest":"d:\\tmp\\image.jpg" }, \
                                                                                                     [{"name":"StringTest","type":"string" }, \
@@ -65,6 +66,8 @@ class MainMenu(RenderObject.RenderObject):
                                                                                                     {"name":"FileTest", "type":"file"},\
                                                                                                     {"name":"ImageTest", "type":"image"}],\
                                                                                                      self.emulatorCallback)
+                    footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+                    self.subComponent.setFooter(footer)                                                                                 
     
     def openOptions(self):
         print("opening options menu")
@@ -92,22 +95,7 @@ class MainMenu(RenderObject.RenderObject):
         self.subComponent = None
         EmuRunner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
 
-    def initFooter(self):
-        self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight),pygame.SRCALPHA)
-        self.footer.fill(Configuration.toColor(self.theme["footer"]["color"]))
-        aButton = pygame.image.load("theme/a_button.png")
-        self.footer.blit(aButton, (370,3))
-        open = self.footerFont.render("open", True, (255,255,255))
-        self.footer.blit(open, (394,3))
-        selectButton = pygame.image.load("theme/select_button.png")
-        self.footer.blit(selectButton, (280,5))
-        options = self.footerFont.render("options", True, (255,255,255))
-        self.footer.blit(options, (315,3))
-
-        direction = pygame.image.load("theme/direction.png")
-        self.footer.blit(direction, (4,2))
-        options = self.footerFont.render("select", True, (255,255,255))
-        self.footer.blit(options, (26,3))
+    
 
 
     def transition(self):
@@ -154,15 +142,13 @@ class MainMenu(RenderObject.RenderObject):
         #next
         screen.blit(self.systems[self.getNext()], ( (480 - self.systems[self.currentIndex].get_width())  + self.transitionOffset, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
         
-        self.renderFooter(screen)
+        self.footer.render(screen)
+
         self.header.render(screen)
 
         if(self.optionsMenu != None):
-            self.optionsMenu.render(screen)
-    
-    def renderFooter(self, screen):
-        screen.blit(self.footer, (0,self.config["screenHeight"] - self.footerHeight))
-    
+            self.optionsMenu.render(screen)    
+   
  
     
     def __init__(self, screen):
@@ -171,5 +157,6 @@ class MainMenu(RenderObject.RenderObject):
         self.screen = screen
         self.banderole = pygame.Surface((480,80),pygame.SRCALPHA)
         self.banderole.fill((255,255,255, 160))
-        self.initFooter()  
-        self.header = Header.Header(24)  
+      
+        self.header = Header.Header(24)
+        self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))

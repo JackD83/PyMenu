@@ -1,5 +1,5 @@
-import RenderObject, Configuration
-import os
+import RenderObject, Configuration, Footer
+import os, Keys
 import pygame, sys
 from operator import itemgetter
 
@@ -10,16 +10,16 @@ class AbstractList(RenderObject.RenderObject):
     entryList = []
     background = None
     selection = None
-    footerHeight = 24
+    footer = None
+
     headerHeight = 20
     initialPath =""
       
     titleFont = pygame.font.Font('theme/FreeSans.ttf', 20)
     entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
- 
-    listHeight = config["screenHeight"] - headerHeight - footerHeight
-    maxListEntries = 11
-    listEntryHeight = int(listHeight / maxListEntries)
+     
+    maxListEntries = 12
+  
 
     currentIndex = 0
     currentWrap = 0
@@ -27,17 +27,16 @@ class AbstractList(RenderObject.RenderObject):
     def render(self, screen):
         screen.blit(self.background, (0,0))
         self.renderHeader(screen)
-        self.renderFooter(screen)
+    
+        self.footer.render(screen)
+  
         self.renderEntries(screen)
         self.renderSelection(screen)
         
 
     def renderHeader(self, screen):
         screen.blit(self.header, (0,0))
-
-    def renderFooter(self, screen):
-        screen.blit(self.footer, (0,self.config["screenHeight"] - self.footerHeight))
-       
+        
 
     def renderSelection(self, screen):
         offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
@@ -46,15 +45,15 @@ class AbstractList(RenderObject.RenderObject):
     def handleEvents(self, events):
         for event in events:    
             if event.type == pygame.KEYDOWN:         
-                if event.key == pygame.K_UP:
+                if event.key == Keys.DINGOO_BUTTON_UP:
                     self.up()
                     self.onChange()
-                if event.key == pygame.K_DOWN:
+                if event.key == Keys.DINGOO_BUTTON_DOWN:
                     self.down()
                     self.onChange()
-                if event.key == pygame.K_RETURN:
+                if event.key == Keys.DINGOO_BUTTON_A:
                     self.onSelect()
-                if event.key == pygame.K_ESCAPE:
+                if event.key == Keys.DINGOO_BUTTON_B:
                     self.onExit()
             if event.type == pygame.KEYUP:
                 pass
@@ -120,20 +119,24 @@ class AbstractList(RenderObject.RenderObject):
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
         self.titleText = self.titleFont.render(self.title, True, (0,0,0))
         self.header.blit(self.titleText, (4, (self.headerHeight - self.titleText.get_height()) / 2))
-
-    def initFooter(self):
-        self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight), pygame.SRCALPHA)
-        self.footer.fill(Configuration.toColor(self.theme["footer"]["color"]))
-
+   
     def initSelection(self):
         self.selection = pygame.Surface((self.config["screenWidth"],self.listEntryHeight),pygame.SRCALPHA)
         self.selection.fill((255,255,255, 160))
+
+    def setFooter(self, footer):
+        self.footer = footer
+        self.listHeight = self.config["screenHeight"] - self.headerHeight - self.footer.getHeight()
+        self.listEntryHeight = int(self.listHeight / self.maxListEntries)
 
     def __init__(self, screen, titel, options):
         self.screen = screen           
        
         self.title = titel
         self.options = options
+        self.setFooter(Footer.Footer([],[],(255,255,255)))
+
+       
 
         if("textColor" in self.options):
             self.textColor = options["textColor"]
@@ -146,6 +149,5 @@ class AbstractList(RenderObject.RenderObject):
             self.backgroundColor = (255,255,255, 160)
                
         self.initBackground()
-        self.initHeader()
-        self.initFooter()
+        self.initHeader()   
         self.initSelection()

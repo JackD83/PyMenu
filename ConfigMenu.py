@@ -1,4 +1,4 @@
-import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser
+import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
 import os
 import pygame, sys
 from operator import itemgetter
@@ -6,6 +6,7 @@ from operator import itemgetter
 class ConfigMenu(AbstractList.AbstractList):
     subComponent = None
     optionsMenu = None
+    footer = None
      
     def render(self, screen):
         if(self.subComponent != None):
@@ -27,16 +28,22 @@ class ConfigMenu(AbstractList.AbstractList):
         print("on select")
         if(self.entryList[self.currentIndex]["type"] == "string"):
             self.subComponent = TextInput.TextInput(self.screen, self.entryList[self.currentIndex]["value"], self.textCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)          
         if(self.entryList[self.currentIndex]["type"] == "boolean"):
            self.optionsMenu = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
         if(self.entryList[self.currentIndex]["type"] == "folder"):
             options = {}   
             options["preview"] = False        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], True, options, self.fileFolderCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "enter"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
             options = {}   
             options["preview"] = False        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            self.subComponent.setFooter(footer) 
         if(self.entryList[self.currentIndex]["type"] == "image"):
             options = {}   
             options["preview"] = True
@@ -45,7 +52,8 @@ class ConfigMenu(AbstractList.AbstractList):
             options["textColor"] = self.textColor
             options["backgroundColor"] = self.backgroundColor
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
-
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            self.subComponent.setFooter(footer)       
 
     def textCallback(self, text):      
         print("Got new text for: " + self.entryList[self.currentIndex]["name"]  + ": " + text)

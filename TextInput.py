@@ -1,5 +1,5 @@
-import RenderObject, Configuration
-import os
+import RenderObject, Configuration, Footer
+import os, Keys
 import pygame, sys
 
 
@@ -7,6 +7,7 @@ class TextInput(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
     pygame.font.init()
+    footer = None
     background = None
     textFont = pygame.font.Font('theme/FreeSans.ttf', 20)
     buttonFont = pygame.font.Font('theme/FreeSans.ttf', 16)
@@ -75,6 +76,9 @@ class TextInput(RenderObject.RenderObject):
         self.renderButtonLine(screen, self.chars[1],1, leftOffset, 120)
         self.renderButtonLine(screen, self.chars[2],2, leftOffset, 160)
         self.renderButtonLine(screen, self.chars[3],3, leftOffset, 200)
+
+    def setFooter(self, footer):
+        self.footer = footer     
 
     def renderButtonLine(self, screen, line,row, xOffset, yOffset):
         offset = xOffset
@@ -145,27 +149,28 @@ class TextInput(RenderObject.RenderObject):
         screen.blit(self.background, (0,0))
         self.renderTextField(screen)
         self.renderButtons(screen)
+        self.footer.render(screen)
 
     def handleEvents(self, events):
         for event in events:    
             if event.type == pygame.KEYDOWN:         
-                if event.key == pygame.K_UP:
+                if event.key == Keys.DINGOO_BUTTON_UP:
                     self.currentRow = self.currentRow - 1
                     self.setSelctedChar()
-                if event.key == pygame.K_DOWN:
+                if event.key == Keys.DINGOO_BUTTON_DOWN:
                     self.currentRow = self.currentRow + 1
                     self.setSelctedChar()
-                if event.key == pygame.K_LEFT:
+                if event.key == Keys.DINGOO_BUTTON_LEFT:
                     self.currentCol = self.currentCol - 1
                     self.setSelctedChar()
-                if event.key == pygame.K_RIGHT:
+                if event.key == Keys.DINGOO_BUTTON_RIGHT:
                     self.currentCol = self.currentCol + 1
                     self.setSelctedChar()
-                if event.key == pygame.K_RETURN:
+                if event.key == Keys.DINGOO_BUTTON_A:
                     self.selectChar()
-                if event.key == pygame.K_BACKSPACE:
+                if event.key == Keys.DINGOO_BUTTON_Y:
                    self.currentText = self.currentText[:-1] 
-                if event.key == pygame.K_ESCAPE:
+                if event.key == Keys.DINGOO_BUTTON_B:
                     if(self.callback != None):
                         self.callback(self.currentText)               
 
@@ -175,4 +180,5 @@ class TextInput(RenderObject.RenderObject):
         self.currentText = initialText
         self.callback = callback
         self.initBackground()
+        self.setFooter(Footer.Footer([],[],(255,255,255)))
      

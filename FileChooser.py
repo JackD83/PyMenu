@@ -1,5 +1,5 @@
 import RenderObject, Configuration, AbstractList
-import os
+import os, Keys
 import pygame, sys
 from operator import itemgetter
 
@@ -73,11 +73,11 @@ class FileChooser(AbstractList.AbstractList):
     def handleEvents(self, events):     
         for event in events:    
             if event.type == pygame.KEYDOWN:         
-                if event.key == pygame.K_RCTRL:
+                if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.selectFolder):
                           self.callback(self.currentPath)
                           return
-                if event.key == pygame.K_TAB:
+                if event.key == Keys.DINGOO_BUTTON_Y:
                     self.previewEnabled = not self.previewEnabled
 
         super().handleEvents(events)
