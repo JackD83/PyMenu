@@ -8,6 +8,10 @@ theme = json.load(open('theme/theme.json'))
 def getConfiguration():
     return configuration
 
+def saveConfiguration():
+    with open('config/config.json', 'w') as fp:
+        json.dump(configuration, fp)
+
 def getTheme():
     return theme
 

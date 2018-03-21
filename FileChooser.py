@@ -64,7 +64,10 @@ class FileChooser(AbstractList.AbstractList):
             self.callback(os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"]))
     
     def onExit(self):
-        self.callback(os.path.normpath(self.initialPath))
+        if(self.selectFolder):
+            self.callback(os.path.normpath(self.initialPath))
+        else:
+            self.callback(None)
     
     def onChange(self):
         self.currentSelection = self.currentPath + "/" + self.entryList[self.currentIndex]["name"]

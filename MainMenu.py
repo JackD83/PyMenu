@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
-import Footer, Keys, RenderControl
+import Footer, Keys, RenderControl, InfoOverlay
 import os
 import pygame, sys
 from pprint import pprint
@@ -7,7 +7,10 @@ from pprint import pprint
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
+
    
+    header = None
+    footer = None
     systems = []
     systemNames = []
     systembackgrounds = []
@@ -16,7 +19,7 @@ class MainMenu(RenderObject.RenderObject):
     transitionOffset = 0
     systemOffset = 160
     transitionDirection = 1
-    optionsMenu = None
+    overlay = None
     subComponent = None
 
   
@@ -40,8 +43,8 @@ class MainMenu(RenderObject.RenderObject):
             self.subComponent.handleEvents(events)
             return
 
-        if(self.optionsMenu != None):
-            self.optionsMenu.handleEvents(events)
+        if(self.overlay != None):
+            self.overlay.handleEvents(events)
             return
 
         for event in events:    
@@ -75,7 +78,7 @@ class MainMenu(RenderObject.RenderObject):
     
     def openOptions(self):
         print("opening options menu")
-        self.optionsMenu = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
+        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSelection(self):
         print("Opening selection")
@@ -89,7 +92,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def optionsCallback(self, optionID):
         print("Options came back with: ", optionID)
-        self.optionsMenu = None
+        self.overlay = None
     
     def textCallback(self, text):
         print("Text callback, got text: " + text)
@@ -97,10 +100,14 @@ class MainMenu(RenderObject.RenderObject):
 
     def emulatorCallback(self, selectedFile):     
         self.subComponent = None
-        EmuRunner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
+        if(selectedFile != None):
+            EmuRunner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
 
-    
-
+    def infoCallback(self, res):
+        self.overlay = None
+        
+        self.config["firstStart"] = False
+        Configuration.saveConfiguration()
 
     def transition(self):
         if(self.inTransition):
@@ -146,12 +153,13 @@ class MainMenu(RenderObject.RenderObject):
         #next
         screen.blit(self.systems[self.getNext()], ( (480 - self.systems[self.currentIndex].get_width())  + self.transitionOffset, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
         
-        self.footer.render(screen)
+        if(self.footer != None):
+            self.footer.render(screen)
 
         self.header.render(screen)
 
-        if(self.optionsMenu != None):
-            self.optionsMenu.render(screen)    
+        if(self.overlay != None):
+            self.overlay.render(screen)    
         
         if(self.inTransition):
              RenderControl.setInTransition()
@@ -168,4 +176,8 @@ class MainMenu(RenderObject.RenderObject):
         self.banderole.fill((255,255,255, 160))
       
         self.header = Header.Header(24)
-        self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))
+
+        if("firstStart" in self.config and self.config["firstStart"]):
+             self.overlay = InfoOverlay.InfoOverlay("theme/info.png", self.infoCallback)
+
+        #self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))
