@@ -1,0 +1,8 @@
+[
+    {
+        "name": "Display Timeout",
+        "id": "displayTimeout",
+        "type": "list",
+        "values": ["10", "20", "30", "60", "off"]
+    }
+]

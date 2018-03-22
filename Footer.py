@@ -1,4 +1,4 @@
-import RenderObject, Configuration
+import RenderObject, Configuration, Common
 import os
 import pygame, sys
 
@@ -24,7 +24,7 @@ class Footer(RenderObject.RenderObject):
         leftOffset = 10
         for entry in self.left:
             if(entry[0] != None):
-                icon = pygame.image.load(entry[0])
+                icon = Common.loadImage(entry[0])
                 self.footer.blit(icon, (leftOffset , (self.footerHeight - icon.get_height()) / 2))
                 leftOffset = leftOffset + icon.get_width() + self.spacing
             if(entry[1] != None):
@@ -40,7 +40,7 @@ class Footer(RenderObject.RenderObject):
                 self.footer.blit(text, (rightOffset - text.get_width(),(self.footerHeight - text.get_height()) / 2))
                 rightOffset = rightOffset - text.get_width() - self.spacing
             if(entry[0] != None):
-                icon = pygame.image.load(entry[0])
+                icon = Common.loadImage(entry[0])
                 self.footer.blit(icon, (rightOffset - icon.get_width() , (self.footerHeight - icon.get_height()) / 2))
                 rightOffset = rightOffset - icon.get_width() - self.spacing
            

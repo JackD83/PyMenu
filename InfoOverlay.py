@@ -1,4 +1,4 @@
-import RenderObject, Configuration
+import RenderObject, Configuration, Common
 import os, Keys, RenderControl
 import pygame, sys
 
@@ -22,6 +22,6 @@ class InfoOverlay(RenderObject.RenderObject):
     def __init__(self, image, callback):
         print("Opened Overlay menu ")
         self.callback = callback
-        self.background = pygame.image.load(image)
+        self.background = Common.loadImage(image)
         self.xOffset = (self.config["screenWidth"] - self.background.get_width()) / 2
         self.yOffset = (self.config["screenHeight"] - self.background.get_height()) / 2

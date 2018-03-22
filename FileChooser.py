@@ -1,12 +1,12 @@
 import RenderObject, Configuration, AbstractList
-import os, Keys, RenderControl
+import os, Keys, RenderControl, Common
 import pygame, sys
 from operator import itemgetter
 
 class FileChooser(AbstractList.AbstractList):
    
-    folderIcon = pygame.image.load( "theme/folder.png")
-    fileIcon =  pygame.image.load( "theme/file.png")
+    folderIcon = Common.loadImage( "theme/folder.png")
+    fileIcon =  Common.loadImage( "theme/file.png")
 
     previewCache = {}
 
@@ -25,7 +25,7 @@ class FileChooser(AbstractList.AbstractList):
 
             image = None
             if(not self.currentSelection in self.previewCache):
-                image = pygame.image.load(self.currentSelection)
+                image = Common.loadImage(self.currentSelection)
                 image = self.aspect_scale(image, 180, 180)
                 self.previewCache[self.currentSelection] = image
             else:

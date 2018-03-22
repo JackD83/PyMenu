@@ -1,4 +1,4 @@
-import pygame, sys, common, MainMenu, Configuration, RenderControl
+import pygame, sys, Common, MainMenu, Configuration, RenderControl
 from pygame.locals import *
 
 

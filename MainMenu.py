@@ -1,6 +1,7 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
-import Footer, Keys, RenderControl, InfoOverlay
+import Footer, Keys, RenderControl, InfoOverlay, Common
 import os
+import json
 import pygame, sys
 from pprint import pprint
 
@@ -21,17 +22,13 @@ class MainMenu(RenderObject.RenderObject):
     transitionDirection = 1
     overlay = None
     subComponent = None
-
-  
         
-    def loadSystemImages(self, screen):   
-        
+    def loadSystemImages(self, screen):           
         pprint(self.config)
-
         for entry in self.config["mainMenu"]:
             try:
-                self.systems.append(pygame.image.load( entry["icon"]))
-                self.systembackgrounds.append(pygame.image.load( entry["background"]))
+                self.systems.append(Common.loadImage( entry["icon"]))
+                self.systembackgrounds.append(Common.loadImage( entry["background"]))
             except ValueError:
                 pass
 
@@ -57,24 +54,14 @@ class MainMenu(RenderObject.RenderObject):
                     self.inTransition = True
                     self.transitionDirection = 30
                     RenderControl.setDirty()
-                if event.key == Keys.DINGOO_BUTTON_SELECT:
-                    pass
-                    #self.openOptions()
+                if event.key == Keys.DINGOO_BUTTON_SELECT:                    
+                    self.openOptions()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.openSelection()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
-                    self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                    {"StringTest":"testString","BooleanTest":"True","FolderTest":"d:\\tmp","FileTest":"d:\\tmp\\test","ImageTest":"d:\\tmp\\image.jpg" }, \
-                                                                                                    [{"name":"StringTest","type":"string" }, \
-                                                                                                    {"name":"BooleanTest", "type":"boolean"},\
-                                                                                                    {"name":"FolderTest", "type":"folder"},\
-                                                                                                    {"name":"FileTest", "type":"file"},\
-                                                                                                    {"name":"ImageTest", "type":"image"}],\
-                                                                                                     self.emulatorCallback)
-                    footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-                    self.subComponent.setFooter(footer)             
-                    RenderControl.setDirty()                                                                    
+                    pass
     
     def openOptions(self):
         print("opening options menu")
@@ -89,6 +76,13 @@ class MainMenu(RenderObject.RenderObject):
             options = {}
             options["background"] = current["background"]
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
+        
+        if(current["type"] == "config"):
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                        Configuration.getPathData(current["data"]), json.load(open(current["config"])) ,self.emulatorCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)             
+                                                                         
 
     def optionsCallback(self, optionID):
         print("Options came back with: ", optionID)
@@ -162,7 +156,7 @@ class MainMenu(RenderObject.RenderObject):
             self.overlay.render(screen)    
         
         if(self.inTransition):
-             RenderControl.setInTransition()
+            RenderControl.setInTransition()
         else:
             RenderControl.setInTransition(False)
    

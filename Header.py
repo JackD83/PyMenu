@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner
-import os
+import os, Common
 import pygame, sys
 
 class Header():
@@ -14,15 +14,15 @@ class Header():
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
 
-        battery = pygame.image.load(self.getCurrentBatteryImage())
+        battery = Common.loadImage(self.getCurrentBatteryImage())
         self.header.blit(battery, (436, (self.headerHeight - battery.get_height()) / 2))
 
-        vol = pygame.image.load(self.getCurrentVolumeImage())
+        vol = Common.loadImage(self.getCurrentVolumeImage())
         self.header.blit(vol, (380, (self.headerHeight - vol.get_height()) / 2))
 
         sdImage = self.getSDCardImage()
         if(sdImage != None):
-            sd = pygame.image.load(sdImage)
+            sd = Common.loadImage(sdImage)
             self.header.blit(sd, (350, (self.headerHeight - sd.get_height()) / 2))
 
     def getCurrentVolumeImage(self):

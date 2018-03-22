@@ -1,5 +1,5 @@
 import RenderObject, Configuration, Footer
-import os, Keys, RenderControl
+import os, Keys, RenderControl, Common
 import pygame, sys
 from operator import itemgetter
 
@@ -106,7 +106,7 @@ class AbstractList(RenderObject.RenderObject):
 
     def initBackground(self):       
         if("background" in self.options):
-            self.background = pygame.image.load(self.options["background"])
+            self.background = Common.loadImage(self.options["background"])
             surface =  pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]), pygame.SRCALPHA)
             surface.fill(self.backgroundColor)
             self.background.blit(surface, (0,0))          
@@ -121,7 +121,7 @@ class AbstractList(RenderObject.RenderObject):
     def initHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight), pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
-        self.titleText = self.titleFont.render(self.title, True, (0,0,0))
+        self.titleText = self.titleFont.render(self.title, True,self.textColor)
         self.header.blit(self.titleText, (4, (self.headerHeight - self.titleText.get_height()) / 2))
    
     def initSelection(self):

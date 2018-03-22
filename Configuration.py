@@ -18,3 +18,16 @@ def getTheme():
 def toColor(input):
     return make_tuple(input)
 
+
+def getPathData(path, data = None):
+    if(data == None):
+        data = configuration
+
+    if path and data:
+        args = path.split("/")
+        element  = args[0]
+        if element:
+            newPath = '/'.join(args[1:])
+            value = data.get(element)
+            return value if len(args) == 1 else getPathData(value, newPath)
+
