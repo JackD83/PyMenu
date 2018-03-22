@@ -1,11 +1,11 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
-import os, RenderControl
+import os, RenderControl, Keys
 import pygame, sys
 from operator import itemgetter
 
 class ConfigMenu(AbstractList.AbstractList):
     subComponent = None
-    optionsMenu = None
+    overlay = None
     footer = None
      
     def render(self, screen):
@@ -15,8 +15,8 @@ class ConfigMenu(AbstractList.AbstractList):
         else:            
             super().render(screen)
 
-        if(self.optionsMenu != None):
-            self.optionsMenu.render(screen)
+        if(self.overlay != None):
+            self.overlay.render(screen)
      
     def renderEntry(self, screen, index, yOffset):
         text = self.entryList[index]["text"]
@@ -31,7 +31,7 @@ class ConfigMenu(AbstractList.AbstractList):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)          
         if(self.entryList[self.currentIndex]["type"] == "boolean"):
-           self.optionsMenu = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
+           self.overlay = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
         if(self.entryList[self.currentIndex]["type"] == "folder"):
             options = {}   
             options["preview"] = False        
@@ -55,7 +55,7 @@ class ConfigMenu(AbstractList.AbstractList):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)
         if(self.entryList[self.currentIndex]["type"] == "list"):        
-            self.optionsMenu = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
 
     def textCallback(self, text):      
         print("Got new text for: " + self.entryList[self.currentIndex]["id"]  + ": " + text)
@@ -65,7 +65,7 @@ class ConfigMenu(AbstractList.AbstractList):
         Configuration.saveConfiguration()
 
     def booleanCallback(self, selection):
-        self.optionsMenu = None     
+        self.overlay = None     
 
         text = "True"
         if(selection == 1):
@@ -77,13 +77,13 @@ class ConfigMenu(AbstractList.AbstractList):
 
     def fileFolderCallback(self, folder):
         self.subComponent = None
-        print("File/Folder selected: " + folder)
-        self.optionTarget[self.entryList[self.currentIndex]["id"]] = folder
+        print("File/Folder selected: " + str(folder))
+        self.optionTarget[self.entryList[self.currentIndex]["id"]] = str(folder)
         self.initList()
         Configuration.saveConfiguration()
 
     def listCallback(self, selection):
-        self.optionsMenu = None
+        self.overlay = None
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = self.entryList[self.currentIndex]["options"]["values"][selection]
         self.initList()
         Configuration.saveConfiguration()
@@ -98,11 +98,18 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.handleEvents(events)          
             return
 
-        if(self.optionsMenu != None):
-            self.optionsMenu.handleEvents(events)           
+        if(self.overlay != None):
+            self.overlay.handleEvents(events)           
             return
 
-        if(self.optionsMenu == None and self.subComponent == None):
+        for event in events:    
+            if event.type == pygame.KEYDOWN:         
+                if event.key == Keys.DINGOO_BUTTON_START:
+                    self.callback(self.optionTarget)
+                    RenderControl.setDirty()
+                  
+
+        if(self.overlay == None and self.subComponent == None):
             super().handleEvents(events)
            
    
@@ -117,6 +124,7 @@ class ConfigMenu(AbstractList.AbstractList):
             entry["type"] = o["type"]
             entry["text"] = self.entryFont.render( entry["name"] + ": " + str(entry["value"]) , True, self.textColor)
             self.entryList.append(entry)
+        self.onChange()
 
     def __init__(self, screen, titel,  options, optionTarget, optionConfig, callback):
         super().__init__(screen, titel, options)
@@ -125,3 +133,4 @@ class ConfigMenu(AbstractList.AbstractList):
         self.optionTarget = optionTarget           
         
         self.initList()
+      

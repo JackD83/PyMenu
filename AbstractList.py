@@ -39,6 +39,9 @@ class AbstractList(RenderObject.RenderObject):
         
 
     def renderSelection(self, screen):
+        if(len(self.entryList) == 0):
+            return
+
         offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
         screen.blit(self.selection, (0,offset))
 
@@ -70,6 +73,9 @@ class AbstractList(RenderObject.RenderObject):
         pass
 
     def onChange(self):
+        if(len(self.entryList) == 0):
+            return
+
         pass
 
     def renderEntry(self, index, yOffset):

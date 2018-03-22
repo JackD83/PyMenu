@@ -26,7 +26,7 @@ class FileChooser(AbstractList.AbstractList):
             image = None
             if(not self.currentSelection in self.previewCache):
                 image = Common.loadImage(self.currentSelection)
-                image = self.aspect_scale(image, 180, 180)
+                image = Common.aspect_scale(image, 180, 180)
                 self.previewCache[self.currentSelection] = image
             else:
                 image = self.previewCache[self.currentSelection]
@@ -112,6 +112,7 @@ class FileChooser(AbstractList.AbstractList):
                     entry["isFolder"] = False
                     entry["text"] = self.entryFont.render(f, True, self.textColor)
                     self.entryList.append(entry)
+        self.onChange()
 
 
     def getExistingParent(self, path):
@@ -139,30 +140,7 @@ class FileChooser(AbstractList.AbstractList):
 
         return False
     
-    def aspect_scale(self, img, bx,by ):      
-        ix,iy = img.get_size()
-        if ix > iy:
-            # fit to width
-            scale_factor = bx/float(ix)
-            sy = scale_factor * iy
-            if sy > by:
-                scale_factor = by/float(iy)
-                sx = scale_factor * ix
-                sy = by
-            else:
-                sx = bx
-        else:
-            # fit to height
-            scale_factor = by/float(iy)
-            sx = scale_factor * ix
-            if sx > bx:
-                scale_factor = bx/float(ix)
-                sx = bx
-                sy = scale_factor * iy
-            else:
-                sy = by
-
-        return pygame.transform.scale(img, (int(sx),int(sy)) )
+  
 
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
         super().__init__(screen, titel, options)
@@ -187,4 +165,5 @@ class FileChooser(AbstractList.AbstractList):
         self.xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
 
         self.initList()
+  
       

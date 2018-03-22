@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
-import Footer, Keys, RenderControl, InfoOverlay, Common
+import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList
 import os
 import json
 import pygame, sys
@@ -81,8 +81,21 @@ class MainMenu(RenderObject.RenderObject):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         Configuration.getPathData(current["data"]), json.load(open(current["config"])) ,self.emulatorCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-            self.subComponent.setFooter(footer)             
-                                                                         
+            self.subComponent.setFooter(footer)    
+                     
+        if(current["type"] == "native"):
+            print("Opening native selection")
+            options = {}
+            options["background"] = current["background"]
+            self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
+            self.subComponent.setFooter(footer)    
+
+    def nativeCallback(self, selection):
+        print("native callback")
+        self.subComponent = None
+
+
 
     def optionsCallback(self, optionID):
         print("Options came back with: ", optionID)
