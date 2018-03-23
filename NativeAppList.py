@@ -14,7 +14,7 @@ class NativeAppList(AbstractList.AbstractList):
     configOptions = [{
         "id":"name",
         "name" :"Name",
-        "type":"string"
+        "type":"string",        
     },
     {   "id":"exe",
         "name" :"Executable",
@@ -24,6 +24,15 @@ class NativeAppList(AbstractList.AbstractList):
     {   "id":"preview",
         "name" :"Preview Image",
         "type":"image"      
+    },     
+    {   "id":"legacy",
+        "name" :"Legacy app",
+        "type":"boolean"      
+    },     
+    {   "id":"screen",
+        "name" :"Screen option",
+        "type":"list",
+        "values": ["default", "fullscreen", "center"]      
     }
     ]
 
@@ -36,36 +45,11 @@ class NativeAppList(AbstractList.AbstractList):
             self.subComponent.render(screen)
             return
         else:            
-            super().render(screen)
-    
-        if(self.previewEnabled):
-            self.renderPreview(screen)
+            super().render(screen)      
 
         if(self.overlay != None):
             self.overlay.render(screen)
-    
-    def renderPreview(self, screen):     
-
-        if(self.currentSelection == None):
-            return
-
-        if(not os.path.exists(self.currentSelection["preview"])):
-            return
-
-        previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
-        previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
-
-        image = None
-        if(not self.currentSelection["preview"] in self.previewCache):
-            image = Common.loadImage(self.currentSelection["preview"])
-            image = Common.aspect_scale(image, 180, 180)
-            self.previewCache[self.currentSelection["preview"]] = image
-        else:
-            image = self.previewCache[self.currentSelection["preview"]]
-
-        previewBox.blit(image,(10,10))
-        screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
-       
+          
  
     def renderEntry(self, screen, index, yOffset):
         text = self.entryList[index]["text"]
@@ -83,12 +67,14 @@ class NativeAppList(AbstractList.AbstractList):
     
     def onChange(self):
         if(len(self.entryList) == 0):
+            self.previewPath = None
             return
 
         if(len(self.entryList) - 1 < self.currentIndex):
             self.currentIndex = len(self.entryList) - 1
 
         self.currentSelection = self.entryList[self.currentIndex]["options"]
+        self.previewPath = self.currentSelection["preview"]
        
 
     def handleEvents(self, events):
@@ -102,10 +88,7 @@ class NativeAppList(AbstractList.AbstractList):
             return
 
         for event in events:    
-            if event.type == pygame.KEYDOWN:                    
-                if event.key == Keys.DINGOO_BUTTON_Y:
-                    self.previewEnabled = not self.previewEnabled
-                    RenderControl.setDirty()
+            if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
                     if(len(self.options) == 0):
                         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
@@ -144,6 +127,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.data.remove(self.currentSelection)
             Configuration.saveConfiguration()
             self.initList()
+         
 
 
     def addEditCallback(self, configCallback):
@@ -162,7 +146,9 @@ class NativeAppList(AbstractList.AbstractList):
             "name": "NewName",
             "exe":"",
             "icon":"",
-            "preview":""
+            "preview":"",
+            "legacy":False,
+            "screen":"default"
         }
         return emptyEntry
 

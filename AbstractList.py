@@ -12,6 +12,10 @@ class AbstractList(RenderObject.RenderObject):
     selection = None
     footer = None
 
+    previewCache = {}
+    previewEnabled = False
+    previewPath = None
+
     headerHeight = 20
     initialPath =""
       
@@ -32,6 +36,28 @@ class AbstractList(RenderObject.RenderObject):
   
         self.renderEntries(screen)
         self.renderSelection(screen)
+
+        self.renderPreview(screen)
+
+    def renderPreview(self, screen):
+        if(self.previewPath == None or not self.previewEnabled or not os.path.exists(self.previewPath)):
+            return
+                 
+        previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
+        previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
+
+        image = None
+        if(not self.previewPath in self.previewCache):
+            image = Common.loadImage(self.previewPath)
+            image = Common.aspect_scale(image, 180, 180)
+            self.previewCache[self.previewPath] = image
+        else:
+            image = self.previewCache[self.previewPath]
+
+        xOffset = (previewBox.get_width() - image.get_width()) / 2
+        yOffset = (previewBox.get_height() - image.get_height()) / 2
+        previewBox.blit(image,(xOffset,yOffset))
+        screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
         
 
     def renderHeader(self, screen):
@@ -56,11 +82,22 @@ class AbstractList(RenderObject.RenderObject):
                     self.down()
                     self.onChange()
                     RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_L:
+                    self.up(self.maxListEntries)
+                    self.onChange()
+                    RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_R:
+                    self.down(self.maxListEntries)
+                    self.onChange()
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
                     self.onSelect()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
                     self.onExit()
+                    RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_Y:
+                    self.previewEnabled = not self.previewEnabled
                     RenderControl.setDirty()
             if event.type == pygame.KEYUP:
                 pass
@@ -93,21 +130,21 @@ class AbstractList(RenderObject.RenderObject):
             self.renderEntry(screen, i + self.currentWrap, i * self.listEntryHeight + self.headerHeight)
 
         
-    def up(self):
-        self.currentIndex -= 1
+    def up(self, count=1):
+        self.currentIndex -= count
         if(self.currentIndex  < 0):
             self.currentIndex = 0
         
         if(self.currentIndex  < self.currentWrap):
             self.currentWrap -= 1
     
-    def down(self):
-        self.currentIndex += 1
+    def down(self, count=1):
+        self.currentIndex += count
         if(self.currentIndex > len(self.entryList) - 1 ):
             self.currentIndex = len(self.entryList) -1
 
         if(self.currentIndex > self.maxListEntries + self.currentWrap + -1):
-            self.currentWrap += 1
+            self.currentWrap += 1   
    
 
     def initBackground(self):       

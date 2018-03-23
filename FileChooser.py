@@ -7,33 +7,8 @@ class FileChooser(AbstractList.AbstractList):
    
     folderIcon = Common.loadImage( "theme/folder.png")
     fileIcon =  Common.loadImage( "theme/file.png")
-
-    previewCache = {}
-
-    previewEnabled = False
-    currentSelection =""
-
-    def render(self, screen):
-        super().render(screen)
-        if("preview" in self.options and self.options["preview"]):
-            self.renderPreview(screen)
-    
-    def renderPreview(self, screen):
-         if("directPreview" in self.options and self.options["directPreview"] and self.isImage() and self.previewEnabled):          
-            previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
-            previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
-
-            image = None
-            if(not self.currentSelection in self.previewCache):
-                image = Common.loadImage(self.currentSelection)
-                image = Common.aspect_scale(image, 180, 180)
-                self.previewCache[self.currentSelection] = image
-            else:
-                image = self.previewCache[self.currentSelection]
-
-            previewBox.blit(image,(10,10))
-            screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
-       
+   
+    currentSelection =""      
  
     def renderEntry(self, screen, index, yOffset):
         text = self.entryList[index]["text"]
@@ -72,6 +47,11 @@ class FileChooser(AbstractList.AbstractList):
     def onChange(self):
         self.currentSelection = self.currentPath + "/" + self.entryList[self.currentIndex]["name"]
         self.currentSelection =  os.path.normpath(self.currentSelection)
+        if("directPreview" in self.options and self.options["directPreview"] and self.isImage()):
+             self.previewPath = self.currentSelection          
+        else:           
+            self.previewPath = None
+
 
     def handleEvents(self, events):     
         for event in events:    
@@ -81,9 +61,7 @@ class FileChooser(AbstractList.AbstractList):
                           self.callback(self.currentPath)
                           RenderControl.setDirty()
                           return
-                if event.key == Keys.DINGOO_BUTTON_Y:
-                    self.previewEnabled = not self.previewEnabled
-                    RenderControl.setDirty()
+               
 
         super().handleEvents(events)
 
@@ -150,7 +128,10 @@ class FileChooser(AbstractList.AbstractList):
         if(os.path.exists(initialPath) and not os.path.isfile(initialPath)):          
             self.currentPath = initialPath
         else:
-            self.currentPath = self.getExistingParent(initialPath)       
+            self.currentPath = self.getExistingParent(initialPath)
+
+        if("directPreview" in self.options and self.options["directPreview"]):
+            self.previewEnabled = True
         
            
         self.currentSelection = initialPath

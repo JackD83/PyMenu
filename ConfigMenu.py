@@ -1,6 +1,7 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
 import os, RenderControl, Keys
-import pygame, sys
+import pygame, sys, ntpath
+
 from operator import itemgetter
 
 class ConfigMenu(AbstractList.AbstractList):
@@ -40,7 +41,11 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
             options = {}   
-            options["preview"] = False        
+            options["preview"] = False      
+
+            if("filter" in self.entryList[self.currentIndex]["options"]):
+                options["fileFilter"] = self.entryList[self.currentIndex]["options"]["filter"]
+
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer) 
@@ -87,6 +92,13 @@ class ConfigMenu(AbstractList.AbstractList):
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = self.entryList[self.currentIndex]["options"]["values"][selection]
         self.initList()
         Configuration.saveConfiguration()
+
+    def onChange(self):
+        if(self.entryList[self.currentIndex]["type"] == "image"):        
+            self.previewPath = self.entryList[self.currentIndex]["value"]
+        else:           
+            self.previewPath = None
+
     
 
     
@@ -122,7 +134,7 @@ class ConfigMenu(AbstractList.AbstractList):
             entry["id"] = o["id"]
             entry["value"] = self.optionTarget[o["id"]]
             entry["type"] = o["type"]
-            entry["text"] = self.entryFont.render( entry["name"] + ": " + str(entry["value"]) , True, self.textColor)
+            entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)
             self.entryList.append(entry)
         self.onChange()
 
@@ -130,7 +142,8 @@ class ConfigMenu(AbstractList.AbstractList):
         super().__init__(screen, titel, options)
         self.callback = callback
         self.optionConfig = optionConfig
-        self.optionTarget = optionTarget           
+        self.optionTarget = optionTarget
+        self.previewEnabled = True  
         
         self.initList()
       

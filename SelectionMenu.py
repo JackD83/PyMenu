@@ -42,13 +42,14 @@ class SelectionMenu(RenderObject.RenderObject):
 
 
     def initOptionText(self):
+        self.optionsText = []
         font = pygame.font.Font('theme/FreeSans.ttf', 20)
-        for opt in self.options:        
+        for opt in self.options: 
             text = font.render(opt, True, (105,105,105))
             self.optionsText.append(text)
 
     def renderOptionText(self):
-        for i in range(0, self.maxRenderItems):
+        for i in range(0, self.maxRenderItems):          
             text = self.optionsText[i + self.wrapIndex]
             yOffset = (self.optionHeight -  text.get_height()) / 2
 
