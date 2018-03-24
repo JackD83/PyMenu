@@ -8,10 +8,19 @@ class FileChooser(AbstractList.AbstractList):
     folderIcon = Common.loadImage( "theme/folder.png")
     fileIcon =  Common.loadImage( "theme/file.png")
    
-    currentSelection =""      
+    currentSelection =""
+    previewTmp = None
+
+    def renderText(self, entry):
+        text = self.entryFont.render(entry["name"], True, self.textColor)
+        entry["text"] = text
+        return text
  
     def renderEntry(self, screen, index, yOffset):
         text = self.entryList[index]["text"]
+        if(text== None):
+            text = self.renderText(self.entryList[index])
+
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
 
         screen.blit(text, (self.listEntryHeight + 4, yOffset + yTextOffset + 1))
@@ -47,10 +56,18 @@ class FileChooser(AbstractList.AbstractList):
     def onChange(self):
         self.currentSelection = self.currentPath + "/" + self.entryList[self.currentIndex]["name"]
         self.currentSelection =  os.path.normpath(self.currentSelection)
+        self.previewPath = None
+
         if("directPreview" in self.options and self.options["directPreview"] and self.isImage()):
-             self.previewPath = self.currentSelection          
-        else:           
-            self.previewPath = None
+             self.previewPath = self.currentSelection
+             print("onChange" + self.previewPath)
+             return
+        if("previews" in self.options and os.path.exists(self.options["previews"]) and self.currentSelection != None):
+            self.previewPath = self.options["previews"] + "/" + os.path.splitext(os.path.basename(self.currentSelection))[0] + ".png"
+        
+            if(not self.previewPath != None and not os.path.exists(self.previewPath)):
+                self.previewPath = None
+       
 
 
     def handleEvents(self, events):     
@@ -61,6 +78,8 @@ class FileChooser(AbstractList.AbstractList):
                           self.callback(self.currentPath)
                           RenderControl.setDirty()
                           return
+           
+                    
                
 
         super().handleEvents(events)
@@ -81,14 +100,14 @@ class FileChooser(AbstractList.AbstractList):
                     entry = {}
                     entry["name"] = f
                     entry["isFolder"] = True
-                    entry["text"] = self.entryFont.render(f, True, self.textColor)
+                    entry["text"] = None
                     self.entryList.append(entry)
             for f in sorted(os.listdir(self.currentPath)):
                 if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
                     entry = {}
                     entry["name"] = f
                     entry["isFolder"] = False
-                    entry["text"] = self.entryFont.render(f, True, self.textColor)
+                    entry["text"] = None
                     self.entryList.append(entry)
         self.onChange()
 
@@ -131,6 +150,9 @@ class FileChooser(AbstractList.AbstractList):
             self.currentPath = self.getExistingParent(initialPath)
 
         if("directPreview" in self.options and self.options["directPreview"]):
+            self.previewEnabled = True
+
+        if("previews" in self.options and os.path.exists(self.options["previews"])):
             self.previewEnabled = True
         
            

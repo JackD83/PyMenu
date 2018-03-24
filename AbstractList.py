@@ -15,6 +15,8 @@ class AbstractList(RenderObject.RenderObject):
     previewCache = {}
     previewEnabled = False
     previewPath = None
+    preview_final = None
+
 
     headerHeight = 20
     initialPath =""
@@ -40,23 +42,28 @@ class AbstractList(RenderObject.RenderObject):
         self.renderPreview(screen)
 
     def renderPreview(self, screen):
-        if(self.previewPath == None or not self.previewEnabled or not os.path.exists(self.previewPath)):
+        if(not self.previewEnabled):
             return
-                 
+
         previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
         previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
 
-        image = None
-        if(not self.previewPath in self.previewCache):
-            image = Common.loadImage(self.previewPath)
-            image = Common.aspect_scale(image, 180, 180)
-            self.previewCache[self.previewPath] = image
-        else:
-            image = self.previewCache[self.previewPath]
+        if(self.preview_final != None and os.path.exists(self.preview_final)):
+            print("render " + self.preview_final)
+                 
+            image = None
+            if(not self.preview_final in self.previewCache):
+                image = Common.loadImage(self.preview_final)
+                image = Common.aspect_scale(image, 180, 180)
+                self.previewCache[self.preview_final] = image
+            else:
+                image = self.previewCache[self.preview_final]
 
-        xOffset = (previewBox.get_width() - image.get_width()) / 2
-        yOffset = (previewBox.get_height() - image.get_height()) / 2
-        previewBox.blit(image,(xOffset,yOffset))
+            xOffset = (previewBox.get_width() - image.get_width()) / 2
+            yOffset = (previewBox.get_height() - image.get_height()) / 2
+            previewBox.blit(image,(xOffset,yOffset))
+
+
         screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
         
 
@@ -73,7 +80,9 @@ class AbstractList(RenderObject.RenderObject):
 
     def handleEvents(self, events):
         for event in events:    
-            if event.type == pygame.KEYDOWN:         
+            if event.type == pygame.KEYDOWN:    
+                self.preview_final = None
+
                 if event.key == Keys.DINGOO_BUTTON_UP:
                     self.up()
                     self.onChange()
@@ -100,8 +109,8 @@ class AbstractList(RenderObject.RenderObject):
                     self.previewEnabled = not self.previewEnabled
                     RenderControl.setDirty()
             if event.type == pygame.KEYUP:
-                pass
-                #print("key up!")
+               self.preview_final = self.previewPath
+               RenderControl.setDirty()
 
     def onSelect(self):
         pass

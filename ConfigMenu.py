@@ -94,9 +94,11 @@ class ConfigMenu(AbstractList.AbstractList):
         Configuration.saveConfiguration()
 
     def onChange(self):
-        if(self.entryList[self.currentIndex]["type"] == "image"):        
+        if(self.entryList[self.currentIndex]["type"] == "image"): 
+            self.previewEnabled = True      
             self.previewPath = self.entryList[self.currentIndex]["value"]
-        else:           
+        else:
+            self.previewEnabled = False   
             self.previewPath = None
 
     

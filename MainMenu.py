@@ -75,6 +75,13 @@ class MainMenu(RenderObject.RenderObject):
             print("Opening emulator file selection")
             options = {}
             options["background"] = current["background"]
+            
+            if("previews" in current):
+                options["previews"] = current["previews"]
+            
+            if("fileFilter" in current):
+                options["fileFilter"] = current["fileFilter"]
+
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
         
         if(current["type"] == "config"):

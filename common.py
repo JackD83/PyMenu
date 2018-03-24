@@ -8,7 +8,7 @@ def loadImage(path):
         try:
             return pygame.image.load(path)
         except Exception:
-            print("Could not load image " + str(path) + " " + str(Error))
+            print("Could not load image " + str(path) + " " + str(Exception))
             return  pygame.Surface((1,1),pygame.SRCALPHA)
       
     else:
