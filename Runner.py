@@ -1,6 +1,6 @@
 import subprocess
 import platform
-import sys, os
+import sys, os, stat
 
 def runEmu(config, rom):
     name =  config["name"]
@@ -17,7 +17,7 @@ def runEmu(config, rom):
 
  
     
-    if( "MIPS" in platform.processor()):
+    if(platform.processor() == ""):
         runEmuMIPS(name, cmd, workdir, config, rom)
     else:
         runEmuHost(name, cmd, workdir, config, rom)
@@ -41,11 +41,16 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
                 file.write("echo 1 > /proc/jz/lcd_a320\n")
 
         file.write("cd " + workdir + "\n")
-        file.write(cmd + " " + rom + "\n")
+        file.write(cmd + " \"" + rom + "\"\n")
 
         if(screen != None and screen != "default"):
-            file.write("echo 0 > /proc/jz/lcd_a320\n")
+            file.write("echo 0 > /proc/jz/lcd_a320\n")      
+    
         file.close() 
+        
+        st = os.stat('/tmp/run')
+        os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
+        sys.exit()
     else:
         print("Legacy mode not supported yet")
 
@@ -63,7 +68,7 @@ def runNative(config):
     
     print("Platform is: " + platform.processor())
         
-    if( "MIPS" in platform.processor()):
+    if(platform.processor() == ""):
         runNativeMIPS(cmd, config)
     else:
         runNativeHost(cmd, config)
@@ -87,7 +92,11 @@ def runNativeMIPS(cmd, config):
 
         if(screen != None and screen != "default"):
             file.write("echo 0 > /proc/jz/lcd_a320\n")
+
         file.close() 
+        st = os.stat('/tmp/run')
+        os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
+        sys.exit()
     else:
         print("Legacy mode not supported yet")
 
