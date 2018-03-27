@@ -1,6 +1,7 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer
 import os, Keys, RenderControl, Common, SelectionMenu
 import pygame, sys
+import platform
 from operator import itemgetter
 
 class NativeAppList(AbstractList.AbstractList):
@@ -16,10 +17,10 @@ class NativeAppList(AbstractList.AbstractList):
         "name" :"Name",
         "type":"string",        
     },
-    {   "id":"exe",
+    {   "id":"cmd",
         "name" :"Executable",
         "type":"file",
-        "filter": [".dge", ".sh"]
+        "filter": [".dge", ".sh", ".exe"]
     },   
     {   "id":"preview",
         "name" :"Preview Image",
@@ -57,9 +58,8 @@ class NativeAppList(AbstractList.AbstractList):
         screen.blit(text, (4, yOffset + yTextOffset + 1))
   
 
-    def onSelect(self):     
-        #TODO   
-        self.callback("blaa")
+    def onSelect(self):         
+        self.callback(self.entryList[self.currentIndex]["options"])
     
     def onExit(self):
         print("exit") 
@@ -112,7 +112,6 @@ class NativeAppList(AbstractList.AbstractList):
     def optionsCallback(self, selection):           
         self.overlay = None
      
-
         if(selection == 0):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
@@ -144,7 +143,7 @@ class NativeAppList(AbstractList.AbstractList):
     def getEmptyData(self):
         emptyEntry = {
             "name": "NewName",
-            "exe":"",
+            "cmd":"",
             "icon":"",
             "preview":"",
             "legacy":False,

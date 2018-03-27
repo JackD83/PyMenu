@@ -1,4 +1,4 @@
-import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner
+import RenderObject, Configuration, SelectionMenu, FileChooser, Runner
 import os, Common
 import pygame, sys
 

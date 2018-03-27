@@ -1,4 +1,4 @@
-import RenderObject, Configuration, SelectionMenu, FileChooser, EmuRunner, Header, TextInput, ConfigMenu
+import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList
 import os
 import json
@@ -99,9 +99,9 @@ class MainMenu(RenderObject.RenderObject):
             self.subComponent.setFooter(footer)    
 
     def nativeCallback(self, selection):
-        print("native callback")
         self.subComponent = None
-
+        if(selection != None):
+            Runner.runNative(selection)
 
 
     def optionsCallback(self, optionID):
@@ -115,7 +115,7 @@ class MainMenu(RenderObject.RenderObject):
     def emulatorCallback(self, selectedFile):     
         self.subComponent = None
         if(selectedFile != None):
-            EmuRunner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
+            Runner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
 
     def infoCallback(self, res):
         self.overlay = None
