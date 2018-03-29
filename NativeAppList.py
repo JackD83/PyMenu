@@ -1,4 +1,4 @@
-import RenderObject, Configuration, AbstractList, ConfigMenu, Footer
+import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
 import os, Keys, RenderControl, Common, SelectionMenu
 import pygame, sys
 import platform
@@ -123,11 +123,16 @@ class NativeAppList(AbstractList.AbstractList):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
         if(selection == 2):
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
+            RenderControl.setDirty()  
+         
+
+    def deleteCallback(self, res):
+        self.overlay = None
+        if(res == 1):
             self.data.remove(self.currentSelection)
             Configuration.saveConfiguration()
             self.initList()
-         
-
 
     def addEditCallback(self, configCallback):
         print("config came back" + str(configCallback))

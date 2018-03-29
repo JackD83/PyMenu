@@ -15,7 +15,6 @@ def runEmu(config, rom):
     if(workdir == None and not cmd == None):    
         workdir = os.path.abspath(os.path.join(cmd, os.pardir))   
 
- 
     
     if(platform.processor() == ""):
         runEmuMIPS(name, cmd, workdir, config, rom)

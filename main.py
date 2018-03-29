@@ -1,4 +1,4 @@
-import pygame, sys, Common, MainMenu, Configuration, RenderControl
+import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler
 from pygame.locals import *
 
 
@@ -7,7 +7,7 @@ Configuration = ""
 
 pygame.init()
 pygame.font.init()
-FPS = 30 # frames per second setting
+
 fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
 
@@ -29,8 +29,8 @@ def init():
             pygame.display.update()
             RenderControl.setDirty(False)
 
-
-        fpsClock.tick(FPS)
+        TaskHandler.updateTasks()
+        fpsClock.tick(Common.FPS)
 
 
 def update(renderObject, screen, events):  

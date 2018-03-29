@@ -1,4 +1,4 @@
-import RenderObject, Configuration, SelectionMenu, FileChooser, Runner
+import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, TaskHandler
 import os, Common
 import pygame, sys
 
@@ -14,20 +14,19 @@ class Header():
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
 
-        battery = Common.loadImage(self.getCurrentBatteryImage())
-        self.header.blit(battery, (436, (self.headerHeight - battery.get_height()) / 2))
+        speaker = Common.loadImage("theme/speaker.png")
+        self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
 
         vol = Common.loadImage(self.getCurrentVolumeImage())
-        self.header.blit(vol, (380, (self.headerHeight - vol.get_height()) / 2))
+        self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
 
-        sdImage = self.getSDCardImage()
-        if(sdImage != None):
-            sd = Common.loadImage(sdImage)
-            self.header.blit(sd, (350, (self.headerHeight - sd.get_height()) / 2))
+        battery = Common.loadImage(self.getCurrentBatteryImage())
+        self.header.blit(battery, (440, (self.headerHeight - battery.get_height()) / 2))
+             
 
     def getCurrentVolumeImage(self):
         #TODO implement volume reading from device
-        return "theme/vol_5.png"
+        return "theme/vol5.png"
 
     def getCurrentBatteryImage(self):
         #TODO implement battery reading from device
@@ -37,10 +36,16 @@ class Header():
         #TODO implement battery reading from device
         return "theme/sdcard.png"
 
+    def updateVolume(self):
+        pass
+    
+    def updateBattery(self):
+        pass
     
     def __init__(self, height):
         self.headerHeight = height
         self.updateHeader()
 
-        
+        TaskHandler.addPeriodicTask(200, self.updateVolume)
+        TaskHandler.addPeriodicTask(1000, self.updateBattery)      
    

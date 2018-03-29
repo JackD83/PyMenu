@@ -2,6 +2,8 @@
 import pygame, sys
 import os.path
 
+FPS = 30 # frames per second setting
+
 def loadImage(path): 
 
     if(os.path.exists(path)):
