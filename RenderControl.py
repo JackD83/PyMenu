@@ -8,11 +8,3 @@ def setDirty(d=True):
 def isDirty():
     global dirty    
     return dirty
-
-def setInTransition(d=True):   
-    global transition
-    transition = d
-
-def isInTransition():
-    global transition    
-    return transition

@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
-import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList
+import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler
 import os
 import json
 import pygame, sys
@@ -19,7 +19,7 @@ class MainMenu(RenderObject.RenderObject):
     inTransition = False
     transitionOffset = 0
     systemOffset = 160
-    transitionDirection = 1
+   
     overlay = None
     subComponent = None
         
@@ -47,13 +47,15 @@ class MainMenu(RenderObject.RenderObject):
         for event in events:    
             if event.type == pygame.KEYDOWN:           
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
-                    self.inTransition = True
-                    self.transitionDirection = -30
-                    RenderControl.setDirty()
+                    if(not self.inTransition):
+                        TaskHandler.addAnimation(0, -160, 200, self.transitionCallback)
+                        self.inTransition = True             
+                        RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_RIGHT:
-                    self.inTransition = True
-                    self.transitionDirection = 30
-                    RenderControl.setDirty()
+                    if(not self.inTransition):
+                        TaskHandler.addAnimation(0, 160,200, self.transitionCallback)
+                        self.inTransition = True             
+                        RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_SELECT:                    
                     self.openOptions()
                     RenderControl.setDirty()
@@ -62,6 +64,20 @@ class MainMenu(RenderObject.RenderObject):
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
                     pass
+
+    def transitionCallback(self, start, target, current, finished):
+        if(finished):
+            self.inTransition = False
+            self.transitionOffset = 0
+            if(target < 0):
+                self.currentIndex = self.getNext()
+            else:
+                self.currentIndex = self.getPrev()
+        else:
+            self.transitionOffset = current
+            
+        RenderControl.setDirty()
+
     
     def openOptions(self):
         print("opening options menu")
@@ -122,18 +138,7 @@ class MainMenu(RenderObject.RenderObject):
         
         self.config["firstStart"] = False
         Configuration.saveConfiguration()
-
-    def transition(self):
-        if(self.inTransition):
-            self.transitionOffset += self.transitionDirection
-            if(abs(self.transitionOffset) >= 160):
-                self.inTransition = False
-                self.transitionOffset = 0
-                if(self.transitionDirection < 0):
-                    self.currentIndex = self.getNext()
-                else:
-                    self.currentIndex = self.getPrev()          
-           
+    
     
     def getNext(self):     
         if(self.currentIndex + 1 >= len(self.systems)):
@@ -151,9 +156,7 @@ class MainMenu(RenderObject.RenderObject):
     def render(self, screen):
         if(self.subComponent != None):
             self.subComponent.render(screen)
-            return
-
-        self.transition()
+            return     
 
         screen.blit(self.systembackgrounds[self.currentIndex], (0, 0))
         screen.blit(self.banderole, (0,80))
@@ -174,11 +177,7 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.overlay != None):
             self.overlay.render(screen)    
-        
-        if(self.inTransition):
-            RenderControl.setInTransition()
-        else:
-            RenderControl.setInTransition(False)
+            
    
  
     

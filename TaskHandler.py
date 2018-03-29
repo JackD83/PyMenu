@@ -1,4 +1,4 @@
-import uuid, Common
+import uuid, Common, math
 
 animations = {}
 preiodic = {}
@@ -28,6 +28,7 @@ def addAnimation(start, target, duration, callback):
     anim["speed"] =  (target- start) / (Common.FPS / 1000 * duration)
     anim["current"] = start
     anim["callback"] = callback
+    
     animations[id] = anim 
 
     return id
@@ -40,11 +41,11 @@ def updateTasks():
     for anim in animations:
         animations[anim]["current"] = animations[anim]["current"] + animations[anim]["speed"]
 
-        if(animations[anim]["current"] >= animations[anim]["target"]):
-            animations[anim]["callback"](animations[anim]["target"], True)
+        if(math.fabs(animations[anim]["current"]) >= math.fabs(animations[anim]["target"])):
+            animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], True)
             toDelete.append(anim)
         else:
-            animations[anim]["callback"](animations[anim]["current"], False)    
+            animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)    
 
     for anim in toDelete:
         del animations[anim]

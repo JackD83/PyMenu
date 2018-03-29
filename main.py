@@ -24,7 +24,7 @@ def init():
                 sys.exit()       
 
         renderObject.handleEvents(events)
-        if(RenderControl.isDirty() or RenderControl.isInTransition()):
+        if(RenderControl.isDirty()):
             update(renderObject, screen,events)
             pygame.display.update()
             RenderControl.setDirty(False)
