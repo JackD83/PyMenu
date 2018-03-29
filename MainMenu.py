@@ -23,8 +23,7 @@ class MainMenu(RenderObject.RenderObject):
     overlay = None
     subComponent = None
         
-    def loadSystemImages(self, screen):           
-        pprint(self.config)
+    def loadSystemImages(self, screen):
         for entry in self.config["mainMenu"]:
             try:
                 self.systems.append(Common.loadImage( entry["icon"]))
@@ -63,7 +62,8 @@ class MainMenu(RenderObject.RenderObject):
                     self.openSelection()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
-                    pass
+                    self.openContextMenu()
+                    RenderControl.setDirty()
 
     def transitionCallback(self, start, target, current, finished):
         if(finished):
@@ -75,13 +75,38 @@ class MainMenu(RenderObject.RenderObject):
                 self.currentIndex = self.getPrev()
         else:
             self.transitionOffset = current
-            
+
         RenderControl.setDirty()
 
     
-    def openOptions(self):
-        print("opening options menu")
+    def openOptions(self):    
         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
+
+    def openContextMenu(self):
+        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Mount USB", "Poweroff", "Reboot", "Options"], self.contextMenuCallback)
+
+    def contextMenuCallback(self, selection):
+        self.overlay = None
+      
+        if(selection == 0):          
+            print("Mounting USB")
+            #TODO
+        if(selection == 1):
+            print("Poweroff")
+             #TODO
+        if(selection == 2):
+            print("reboot")
+             #TODO
+        if(selection == 3):          
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                        Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+            RenderControl.setDirty()
+
+    def configCallback(self, select):
+        self.subComponent = None
+        RenderControl.setDirty()
 
     def openSelection(self):
         print("Opening selection")
@@ -99,12 +124,8 @@ class MainMenu(RenderObject.RenderObject):
                 options["fileFilter"] = current["fileFilter"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
-        
-        if(current["type"] == "config"):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                                        Configuration.getPathData(current["data"]), json.load(open(current["config"])) ,self.emulatorCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-            self.subComponent.setFooter(footer)    
+           
+               
                      
         if(current["type"] == "native"):
             print("Opening native selection")

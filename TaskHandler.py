@@ -1,7 +1,7 @@
 import uuid, Common, math
 
 animations = {}
-preiodic = {}
+periodic = {}
 counter = 0
 
 
@@ -13,12 +13,12 @@ def addPeriodicTask(time, callback):
     task["val"] = Common.FPS / 1000 * time
     task["callback"] = callback
 
-    preiodic[id] = task
+    periodic[id] = task
 
     return id
 
 def removePeriodicTask(id):
-     del preiodic[id]
+     del periodic[id]
 
 def addAnimation(start, target, duration, callback):
     id = uuid.uuid4()
@@ -50,8 +50,8 @@ def updateTasks():
     for anim in toDelete:
         del animations[anim]
 
-    for task in preiodic:
-        time = counter - preiodic[task]["start"]
-        if( time != 0 and preiodic[task]["val"] != 0 and time % preiodic[task]["val"] == 0):          
-            preiodic[task]["callback"]()
+    for task in periodic:
+        time = counter - periodic[task]["start"]
+        if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):          
+            periodic[task]["callback"]()
 

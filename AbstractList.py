@@ -44,6 +44,10 @@ class AbstractList(RenderObject.RenderObject):
     def renderPreview(self, screen):
         if(not self.previewEnabled):
             return
+        
+        if(self.currentIndex == -1):
+            print("index - 1")
+            return
 
         previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
         previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
@@ -73,24 +77,29 @@ class AbstractList(RenderObject.RenderObject):
 
     def renderSelection(self, screen):
         if(len(self.entryList) == 0):
+            self.currentIndex = -1
             return
+        
 
         offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
         screen.blit(self.selection, (0,offset))
 
     def handleEvents(self, events):
         for event in events:    
-            if event.type == pygame.KEYDOWN:    
-                self.preview_final = None
+            if event.type == pygame.KEYDOWN:
+                if(not len(self.entryList) <= 1):              
+                    self.preview_final = None
 
                 if event.key == Keys.DINGOO_BUTTON_UP:
-                    self.up()
-                    self.onChange()
-                    RenderControl.setDirty()
+                    if(not len(self.entryList) <= 1):
+                        self.up()
+                        self.onChange()
+                        RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_DOWN:
-                    self.down()
-                    self.onChange()
-                    RenderControl.setDirty()
+                    if(not len(self.entryList) <= 1):   
+                        self.down()
+                        self.onChange()
+                        RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_L:
                     self.up(self.maxListEntries)
                     self.onChange()
@@ -119,7 +128,7 @@ class AbstractList(RenderObject.RenderObject):
         pass
 
     def onChange(self):
-        if(len(self.entryList) == 0):
+        if(len(self.entryList) <= 1):
             return
 
         pass

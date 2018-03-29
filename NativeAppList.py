@@ -58,8 +58,9 @@ class NativeAppList(AbstractList.AbstractList):
         screen.blit(text, (4, yOffset + yTextOffset + 1))
   
 
-    def onSelect(self):         
-        self.callback(self.entryList[self.currentIndex]["options"])
+    def onSelect(self):
+        if(len(self.entryList) > 0):
+            self.callback(self.entryList[self.currentIndex]["options"])
     
     def onExit(self):
         print("exit") 
@@ -68,6 +69,7 @@ class NativeAppList(AbstractList.AbstractList):
     def onChange(self):
         if(len(self.entryList) == 0):
             self.previewPath = None
+            self.previewEnabled = False
             return
 
         if(len(self.entryList) - 1 < self.currentIndex):
@@ -75,6 +77,7 @@ class NativeAppList(AbstractList.AbstractList):
 
         self.currentSelection = self.entryList[self.currentIndex]["options"]
         self.previewPath = self.currentSelection["preview"]
+        
        
 
     def handleEvents(self, events):
