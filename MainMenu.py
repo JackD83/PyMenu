@@ -2,7 +2,7 @@ import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, 
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler
 import os
 import json
-import pygame, sys
+import pygame, sys, subprocess,platform
 from pprint import pprint
 
 class MainMenu(RenderObject.RenderObject):
@@ -90,13 +90,21 @@ class MainMenu(RenderObject.RenderObject):
       
         if(selection == 0):          
             print("Mounting USB")
-            #TODO
+            options = {}
+            options["cmd"] = "/opt/usb/usb.sh"
+            Runner.runNative(options)
+           
         if(selection == 1):
-            print("Poweroff")
-             #TODO
+            if(platform.processor() == ""):
+                subprocess.Popen(["sh", "poweroff" ])
+            else:
+                print("Poweroff")
+             
         if(selection == 2):
-            print("reboot")
-             #TODO
+            if(platform.processor() == ""):
+                subprocess.Popen(["sh", "reboot" ])
+            else:
+                print("reboot")
         if(selection == 3):          
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)

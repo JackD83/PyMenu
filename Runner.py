@@ -9,7 +9,7 @@ def runEmu(config, rom):
 
     if(cmd == None or not os.path.isfile(cmd)):
         print("cmd needs to be set to an existing executable")
-        #return
+        return
     
     print("Platform is: " + platform.processor())
     if(workdir == None and not cmd == None):    
@@ -63,7 +63,7 @@ def runNative(config):
 
     if(cmd == None or not os.path.isfile(cmd)):
         print("cmd needs to be set to an existing executable")
-        #return
+        return
     
     print("Platform is: " + platform.processor())
         
