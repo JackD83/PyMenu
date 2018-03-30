@@ -12,7 +12,6 @@ pygame.mouse.set_visible(False)
 fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
 
-
 #reset to default clockspeed
 try:
    subprocess.Popen(["/opt/overclock/overclock.dge", str(Common.CLOCKSPEED)])
