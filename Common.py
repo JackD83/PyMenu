@@ -3,7 +3,7 @@ import pygame, sys
 import os.path
 
 FPS = 30 # frames per second setting
-CLOCKSPEED = 524 #default clockspeed
+CLOCKSPEED = 528 #default clockspeed
 
 def loadImage(path): 
 
