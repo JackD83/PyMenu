@@ -96,13 +96,13 @@ class MainMenu(RenderObject.RenderObject):
            
         if(selection == 1):
             if(platform.processor() == ""):
-                subprocess.Popen(["sh", "poweroff" ])
+                subprocess.Popen(["poweroff"])
             else:
                 print("Poweroff")
              
         if(selection == 2):
             if(platform.processor() == ""):
-                subprocess.Popen(["sh", "reboot" ])
+                subprocess.Popen(["reboot"])
             else:
                 print("reboot")
         if(selection == 3):          

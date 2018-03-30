@@ -34,6 +34,11 @@ class NativeAppList(AbstractList.AbstractList):
         "name" :"Screen option",
         "type":"list",
         "values": ["default", "fullscreen", "center"]      
+    },     
+    {   "id":"overclock",
+        "name" :"Overclock",
+        "type":"list",
+        "values": ["528", "552", "576","600", "624"]
     }
     ]
 
@@ -155,7 +160,8 @@ class NativeAppList(AbstractList.AbstractList):
             "icon":"",
             "preview":"",
             "legacy":False,
-            "screen":"default"
+            "screen":"default",
+            "overclock":"528"
         }
         return emptyEntry
 

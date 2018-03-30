@@ -27,7 +27,13 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     cmd =  config["cmd"] if "cmd" in config else None
     screen = config["screen"] if "screen" in config else None
     legacy = config["legacy"] if "legacy" in config else None
+    overclock = config["overclock"] if "overclock" in config else None
 
+    if(overclock != None):
+        try:
+            subprocess.Popen(["/opt/overclock/overclock.dge", overclock])
+        except Exception as ex:
+            pass
 
     if(legacy != "True"):
         file = open("/tmp/run","w")
@@ -76,6 +82,13 @@ def runNativeMIPS(cmd, config):
     cmd =  config["cmd"] if "cmd" in config else None
     screen = config["screen"] if "screen" in config else None
     legacy = config["legacy"] if "legacy" in config else None
+    overclock = config["overclock"] if "overclock" in config else None
+
+    if(overclock != None):
+        try:
+            subprocess.Popen(["/opt/overclock/overclock.dge", overclock])
+        except Exception as ex:
+            pass
 
     if(legacy != "True"):
         file = open("/tmp/run","w")

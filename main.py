@@ -1,4 +1,5 @@
-import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler
+import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
+
 from pygame.locals import *
 
 
@@ -7,9 +8,17 @@ Configuration = ""
 
 pygame.init()
 pygame.font.init()
-
+pygame.mouse.set_visible(False)
 fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
+
+
+#reset to default clockspeed
+try:
+   subprocess.Popen(["/opt/overclock/overclock.dge", str(Common.CLOCKSPEED)])
+except Exception as ex:
+    pass
+
 
 
 def init():
