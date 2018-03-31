@@ -5,10 +5,11 @@ periodic = {}
 counter = 0
 
 
-def addPeriodicTask(time, callback):
+def addPeriodicTask(time, callback, delay=0):
     id = uuid.uuid4()
 
     task = {}
+    task["delay"] = counter + (Common.FPS / 1000 * delay)
     task["start"] = counter
     task["val"] = Common.FPS / 1000 * time
     task["callback"] = callback
@@ -18,11 +19,18 @@ def addPeriodicTask(time, callback):
     return id
 
 def removePeriodicTask(id):
-     del periodic[id]
+     if(id in periodic):
+        del periodic[id]
+    
+def stopAnimation(id):
+    if(id in animations):
+        print("Animation stopped")
+        del animations[id]
 
-def addAnimation(start, target, duration, callback):
+def addAnimation(start, target, duration, callback, delay = 0):
     id = uuid.uuid4()
     anim = {}
+    anim["delay"] = counter + (Common.FPS / 1000 * delay)
     anim["start"] = start
     anim["target"] = target
     anim["speed"] =  (target- start) / (Common.FPS / 1000 * duration)
@@ -39,19 +47,28 @@ def updateTasks():
 
     toDelete = []
     for anim in animations:
-        animations[anim]["current"] = animations[anim]["current"] + animations[anim]["speed"]
+        if(counter >= animations[anim]["delay"]):
+            animations[anim]["current"] = animations[anim]["current"] + animations[anim]["speed"]
 
-        if(math.fabs(animations[anim]["current"]) >= math.fabs(animations[anim]["target"])):
-            animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], True)
-            toDelete.append(anim)
-        else:
-            animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)    
+            finished = False
+            if(animations[anim]["target"] > animations[anim]["start"]):
+                finished = animations[anim]["current"] >= animations[anim]["target"]
+            else:
+                finished = animations[anim]["current"] <= animations[anim]["target"]
+            
+        
+            if(finished):
+                animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], True)
+                toDelete.append(anim)
+            else:
+                animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)    
 
     for anim in toDelete:
         del animations[anim]
 
     for task in periodic:
-        time = counter - periodic[task]["start"]
-        if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):          
-            periodic[task]["callback"]()
+        if(counter >= periodic[task]["delay"]):
+            time = counter - periodic[task]["start"]
+            if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):          
+                periodic[task]["callback"]()
 

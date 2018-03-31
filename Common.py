@@ -4,6 +4,7 @@ import os.path
 
 FPS = 30 # frames per second setting
 CLOCKSPEED = 528 #default clockspeed
+imageCache = {}
 
 def loadImage(path): 
 
@@ -18,6 +19,16 @@ def loadImage(path):
         print("File not found " + str(path))
 
     return  pygame.Surface((1,1),pygame.SRCALPHA)
+
+
+
+def loadCachedImage(path):
+    if(path in imageCache):
+        return imageCache[path]
+    else:
+        image = loadImage(path)
+        imageCache[path] = image
+        return image
 
 def aspect_scale(img, bx,by ):      
     ix,iy = img.get_size()

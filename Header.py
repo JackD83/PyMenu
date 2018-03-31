@@ -8,6 +8,10 @@ class Header():
     headerHeight = 24
     lastVolChange = 0
     vol = 0
+    volAlpha = 255
+    speaker = Common.loadCachedImage("theme/speaker.png")
+
+    volAnim = None
   
 
     def render(self, screen):
@@ -17,20 +21,24 @@ class Header():
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
 
-        speaker = Common.loadImage("theme/speaker.png")      
-        self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
-       
+        if(self.volAlpha > 0):
+            speaker = self.speaker.convert_alpha().copy()
+            speaker.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
+            self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
 
-        vol = Common.loadImage(self.getCurrentVolumeImage())      
-        self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
+            vol = Common.loadCachedImage(self.getCurrentVolumeImage())
+            vol = vol.convert_alpha().copy()
+            vol.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
+            self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
 
 
-        battery = Common.loadImage(self.getCurrentBatteryImage())
+        battery = Common.loadCachedImage(self.getCurrentBatteryImage())
         self.header.blit(battery, (440, (self.headerHeight - battery.get_height()) / 2))
 
              
 
-    def getCurrentVolumeImage(self):       
+    def getCurrentVolumeImage(self):
+        self.readVolume()     
         if(self.vol == 0):
             return "theme/vol0.png"
         if(self.vol >= 0 and self.vol < 20):
@@ -55,28 +63,47 @@ class Header():
         return "theme/sdcard.png"
 
     def updateVolume(self):
-        change = os.stat("/opt/volume/volume.cfg").st_mtime
-        if(change != self.lastVolChange):
-            self.lastVolChange = change
-            print("volume changed")
-            self.readVolume()
-            self.updateHeader()
-            RenderControl.setDirty()
+        try:
+            change = os.stat("/opt/volume/volume.cfg").st_mtime
+            if(change != self.lastVolChange):
+                self.lastVolChange = change
+                if(self.volAnim != None):
+                    TaskHandler.stopAnimation(self.volAnim)
+                    self.volAlpha = 255
+                    self.updateHeader()
+                    RenderControl.setDirty()
+               
+                self.volAnim = TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 5000) 
+        except Exception as ex:
+            pass
 
     def readVolume(self):
-        with open("/opt/volume/volume.cfg") as f:
-            first_line = f.readline()
-            self.vol = int(first_line)
-            print("read volume = " + str(self.vol))
-        
+        try:
+            with open("/opt/volume/volume.cfg") as f:
+                first_line = f.readline()
+                self.vol = int(first_line)
+                print("read volume = " + str(self.vol))
+        except Exception as ex:
+            pass
     
     def updateBattery(self):
         pass
+    
+    def volumeAnimation(self, start, target, current, finished):
+        self.volAlpha = int(current)
+
+        if(finished):
+            self.volAlpha = 0
+            self.volumeAnim = None
+        
+        self.updateHeader()
+        RenderControl.setDirty()
     
     def __init__(self, height):
         self.headerHeight = height
         self.updateHeader()      
 
-        TaskHandler.addPeriodicTask(50, self.updateVolume)
-        TaskHandler.addPeriodicTask(1000, self.updateBattery)      
+        TaskHandler.addPeriodicTask(5000, self.updateVolume)
+        TaskHandler.addPeriodicTask(1000, self.updateBattery)
+        TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 4000) 
    

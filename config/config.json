@@ -1,105 +1,99 @@
-<<<<<<< Updated upstream
-{"screenHeight": 272, "screenWidth": 480, "mainMenu": [{"name": "snes", "type": "emulator", "description": "nice 16bit system", "background": "backgrounds/snes_art_blur.jpg", "icon": "systems/snes.png", "selectionPath": "C:/snes/Roms", "workingDir": "C:/tmp/snes9x/", "cmd": "C:/tmp/snes9x/snes9x.exe", "previews": "C:/snes/Artwork/Box Front"}, {"name": "nes", "type": "emulator", "description": "nice 8bit system", "background": "backgrounds/nes_art_blur.jpg", "icon": "systems/nes1.png", "selectionPath": "X:/nes/Roms", "previews": "X:/nes/Artwork/Box Front"}, {"name": "GB", "type": "emulator", "description": "Gameboy DMG", "background": "backgrounds/gb_art_blur.jpg", "icon": "systems/gb.png", "selectionPath": "X:/gb/Roms", "previews": "X:/gb/Artwork/Box Front"}, {"name": "GBC", "type": "emulator", "description": "Gameboy Color", "background": "backgrounds/gbc_art_blur.jpg", "icon": "systems/gbc.png", "selectionPath": "X:/gbc/Roms", "previews": "X:/gbc/Artwork/Box Front"}, {"name": "GBA", "type": "emulator", "description": "Gameboy Advance", "background": "backgrounds/gba_art_blur.jpg", "icon": "systems/gba.png", "selectionPath": "X:/gba/Roms", "previews": "X:/gba/Artwork/Box Front"}, {"name": "Ports", "type": "native", "description": "Native ports to this device", "background": "backgrounds/ports2_art_blur.jpg", "icon": "systems/ports.png", "data": [{"name": "NewName", "cmd": "W:\\tmp\\build\\DinguxCommander_RS-97\\DinguxCommander.dge", "icon": "", "preview": "W:\\tmp\\build\\PyMenu\\systems\\a7800.png", "legacy": false, "screen": "default"}, {"name": "NewName1111", "cmd": "W:\\tmp\\build\\GPmark_for_Ritmix_RZX-50_src\\GPmark004_source\\GPmark\\GPmark.dge", "icon": "", "preview": "W:\\Retro\\EmuXtra\\atari800\\Artwork\\3D Boxart\\Adventure Creator.png", "legacy": false, "screen": "default"}]}, {"name": "Apps", "type": "native", "description": "Applications", "background": "backgrounds/izm_art_blur.jpg", "icon": "systems/apps.png", "data": [{"name": "DinguxExplorer", "cmd": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\InfoOverlay.py", "icon": "", "preview": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\backgrounds\\a2600_art_blur.jpg"}, {"name": "NewName", "cmd": "", "icon": "", "preview": "", "legacy": false, "screen": "default", "overclock": "624"}]}], "firstStart": false, "options": {"displayTimeout": "off"}}
-=======
 {
-    "options": {
-        "displayTimeout": "60"
-    },
-    "firstStart": false,
-    "screenWidth": 480,
     "screenHeight": 272,
+    "screenWidth": 480,
     "mainMenu": [
         {
-            "background": "backgrounds/snes_art_blur.jpg",
-            "selectionPath": "/mnt/int_sd/game/sfc",
-            "workingDir": "/mnt/ext_sd/emulators/snes9x4d/",
             "name": "snes",
             "type": "emulator",
-            "cmd": "/mnt/ext_sd/emulators/snes9x4d/snes9x4d.dge",
-            "icon": "systems/snes.png",
-            "previews": "/mnt/ext_sd/previews/snes",
             "description": "nice 16bit system",
-            "overclock" : "624"
+            "background": "backgrounds/snes_art_blur.jpg",
+            "icon": "systems/snes.png",
+            "selectionPath": "C:/snes/Roms",
+            "workingDir": "C:/tmp/snes9x/",
+            "cmd": "C:/tmp/snes9x/snes9x.exe",
+            "previews": "C:/snes/Artwork/Box Front"
         },
         {
-            "background": "backgrounds/nes_art_blur.jpg",
             "name": "nes",
             "type": "emulator",
-            "selectionPath": "X:/nes/Roms",
+            "description": "nice 8bit system",
+            "background": "backgrounds/nes_art_blur.jpg",
             "icon": "systems/nes1.png",
-            "previews": "X:/nes/Artwork/Box Front",
-            "description": "nice 8bit system"
+            "selectionPath": "X:/nes/Roms",
+            "previews": "X:/nes/Artwork/Box Front"
         },
         {
-            "background": "backgrounds/gb_art_blur.jpg",
             "name": "GB",
             "type": "emulator",
-            "selectionPath": "X:/gb/Roms",
+            "description": "Gameboy DMG",
+            "background": "backgrounds/gb_art_blur.jpg",
             "icon": "systems/gb.png",
-            "previews": "X:/gb/Artwork/Box Front",
-            "description": "Gameboy DMG"
+            "selectionPath": "X:/gb/Roms",
+            "previews": "X:/gb/Artwork/Box Front"
         },
         {
-            "background": "backgrounds/gbc_art_blur.jpg",
             "name": "GBC",
             "type": "emulator",
-            "selectionPath": "X:/gbc/Roms",
+            "description": "Gameboy Color",
+            "background": "backgrounds/gbc_art_blur.jpg",
             "icon": "systems/gbc.png",
-            "previews": "X:/gbc/Artwork/Box Front",
-            "description": "Gameboy Color"
+            "selectionPath": "X:/gbc/Roms",
+            "previews": "X:/gbc/Artwork/Box Front"
         },
         {
-            "background": "backgrounds/gba_art_blur.jpg",
             "name": "GBA",
             "type": "emulator",
-            "selectionPath": "X:/gba/Roms",
+            "description": "Gameboy Advance",
+            "background": "backgrounds/gba_art_blur.jpg",
             "icon": "systems/gba.png",
-            "previews": "X:/gba/Artwork/Box Front",
-            "description": "Gameboy Advance"
+            "selectionPath": "X:/gba/Roms",
+            "previews": "X:/gba/Artwork/Box Front"
         },
         {
-            "background": "backgrounds/ports2_art_blur.jpg",
             "name": "Ports",
             "type": "native",
-            "icon": "systems/ports.png",
             "description": "Native ports to this device",
+            "background": "backgrounds/ports2_art_blur.jpg",
+            "icon": "systems/ports.png",
             "data": [
                 {
                     "name": "NewName",
-                    "preview": "W:\\tmp\\build\\PyMenu\\systems\\a7800.png",
-                    "cmd": "W:\\tmp\\build\\DinguxCommander_RS-97\\DinguxCommander.dge",
+                    "cmd": "",
                     "icon": "",
+                    "preview": "",
                     "legacy": false,
-                    "screen": "default"
-                },
-                {
-                    "name": "NewName1111",
-                    "preview": "W:\\Retro\\EmuXtra\\atari800\\Artwork\\3D Boxart\\Adventure Creator.png",
-                    "cmd": "W:\\tmp\\build\\GPmark_for_Ritmix_RZX-50_src\\GPmark004_source\\GPmark\\GPmark.dge",
-                    "icon": "",
-                    "legacy": false,
-                    "screen": "default"
+                    "screen": "default",
+                    "overclock": "624"
                 }
             ]
         },
         {
-            "background": "backgrounds/izm_art_blur.jpg",
             "name": "Apps",
             "type": "native",
-            "icon": "systems/apps.png",
             "description": "Applications",
+            "background": "backgrounds/izm_art_blur.jpg",
+            "icon": "systems/apps.png",
             "data": [
                 {
-                    "name": "NewName",
-                    "preview": "",
-                    "cmd": "/mnt/ext_sd/apps/overclock/overclock.dge",
+                    "name": "DinguxExplorer",
+                    "cmd": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\InfoOverlay.py",
                     "icon": "",
-                    "screen": "default",
+                    "preview": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\backgrounds\\a2600_art_blur.jpg"
+                },
+                {
+                    "name": "NewName",
+                    "cmd": "",
+                    "icon": "",
+                    "preview": "",
                     "legacy": false,
-                    "overclock": "528"
+                    "screen": "default",
+                    "overclock": "624"
                 }
             ]
         }
-    ]
+    ],
+    "firstStart": false,
+    "options": {
+        "displayTimeout": "off"
+    }
 }
->>>>>>> Stashed changes
