@@ -1,6 +1,8 @@
 {
     "screenHeight": 272,
     "screenWidth": 480,
+    "batteryLow": 3600,
+    "batteryHight": 4500,
     "mainMenu": [
         {
             "name": "snes",

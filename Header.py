@@ -11,7 +11,12 @@ class Header():
     volAlpha = 255
     speaker = Common.loadCachedImage("theme/speaker.png")
 
+
+    battery = None
+    volumeDevice = None
     volAnim = None
+
+    batteryLevel = 0
   
 
     def render(self, screen):
@@ -73,21 +78,47 @@ class Header():
                     self.updateHeader()
                     RenderControl.setDirty()
                
-                self.volAnim = TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 5000) 
+                self.volAnim = TaskHandler.addAnimation(255, 0, 400, self.volumeAnimation, 2500) 
         except Exception as ex:
             pass
 
     def readVolume(self):
+        if(self.volumeDevice == None):
+            return
+
         try:
-            with open("/opt/volume/volume.cfg") as f:
-                first_line = f.readline()
-                self.vol = int(first_line)
-                print("read volume = " + str(self.vol))
+            self.volumeDevice.seek(0)
+            first_line = self.volumeDevice.readline()
+            self.vol = int(first_line)          
         except Exception as ex:
             pass
     
     def updateBattery(self):
-        pass
+        self.readBatteryLevel()
+
+    def readBatteryLevel(self):
+        if(self.battery == None):
+            return
+
+        try:
+            self.battery.seek(0)
+            first_line = self.battery.readline()
+            batteryLevelMVolt = int(first_line)
+          
+            if (not "batteryLow" in self.config):
+                self.config["batteryLow"] = 3600
+                self.config["batteryHight"] = 4500
+
+            if(batteryLevelMVolt < self.config["batteryLow"]):
+                self.config["batteryLow"] = batteryLevelMVolt
+            
+            if(batteryLevelMVolt > self.config["batteryHight"]):
+                self.config["batteryHigh"] = batteryLevelMVolt
+
+            self.batteryLevel = (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) / ( int(self.config["batteryHight"]) -  int(self.config["batteryLow"]) )  * 100
+
+        except Exception as ex:
+            pass
     
     def volumeAnimation(self, start, target, current, finished):
         self.volAlpha = int(current)
@@ -103,7 +134,15 @@ class Header():
         self.headerHeight = height
         self.updateHeader()      
 
-        TaskHandler.addPeriodicTask(5000, self.updateVolume)
+        try:
+            self.battery = open("/proc/jz/battery", "r")
+            self.volumeDevice = open("/opt/volume/volume.cfg", "r")
+        except Exception as ex:
+            print("Could not open devices" + str(ex))
+
+        
+
+        TaskHandler.addPeriodicTask(100, self.updateVolume)
         TaskHandler.addPeriodicTask(1000, self.updateBattery)
-        TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 4000) 
+        TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
    

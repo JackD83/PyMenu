@@ -21,7 +21,9 @@ except Exception as ex:
 
 
 def init():
-    screen = pygame.display.set_mode((480, 272), 0, 16)
+    realScreen = pygame.display.set_mode((480, 272), HWSURFACE, 16)
+    screen = pygame.Surface((480,272))
+
     renderObject = MainMenu.MainMenu(screen)
     
     while True: # main game loop
@@ -34,6 +36,7 @@ def init():
         renderObject.handleEvents(events)
         if(RenderControl.isDirty()):
             update(renderObject, screen,events)
+            realScreen.blit(screen, (0,0))
             pygame.display.update()
             RenderControl.setDirty(False)
 
