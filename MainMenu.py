@@ -64,6 +64,9 @@ class MainMenu(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_START:
                     self.openContextMenu()
                     RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_VOL_DOWN or event.key == Keys.DINGOO_BUTTON_VOL_UP:
+                    self.header.updateVolume()
+                    RenderControl.setDirty()
 
     def transitionCallback(self, start, target, current, finished):
         if(finished):

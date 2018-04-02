@@ -35,29 +35,41 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
         except Exception as ex:
             pass
 
-    if(legacy != "True"):
+    fileName = "run"
+    if(legacy == "True"):
+        fileName ="legacyRun"
+
+    file = open("/tmp/" + fileName,"w")
+    file.write("#!/bin/sh\n")
+
+    if(screen != None):
+        if(screen == "fullscreen"):
+            file.write("echo 2 > /proc/jz/lcd_a320\n")
+        if(screen == "center"):
+            file.write("echo 1 > /proc/jz/lcd_a320\n")
+
+    file.write("cd \"" + workdir + "\"\n")
+    file.write(cmd + " \"" + rom + "\"\n")
+
+    if(screen != None and screen != "default"):
+        file.write("echo 0 > /proc/jz/lcd_a320\n")      
+
+    file.close() 
+    
+    st = os.stat('/tmp/' + fileName)
+    os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
+
+
+    if(legacy == "True"):
         file = open("/tmp/run","w")
         file.write("#!/bin/sh\n")
-
-        if(screen != None):
-            if(screen == "fullscreen"):
-                file.write("echo 2 > /proc/jz/lcd_a320\n")
-            if(screen == "center"):
-                file.write("echo 1 > /proc/jz/lcd_a320\n")
-
-        file.write("cd " + workdir + "\n")
-        file.write(cmd + " \"" + rom + "\"\n")
-
-        if(screen != None and screen != "default"):
-            file.write("echo 0 > /proc/jz/lcd_a320\n")      
-    
-        file.close() 
-        
+        file.write("chroot /opt/legacy /tmp/legacyRun\n")
+        file.close()
         st = os.stat('/tmp/run')
         os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
-        sys.exit()
-    else:
-        print("Legacy mode not supported yet")
+
+    sys.exit()
+   
 
 def runEmuHost(name, cmd, workdir, config, rom):  
     print("run emu " + cmd + " " + name + " with file " + rom + " cwd " +workdir)
@@ -90,27 +102,41 @@ def runNativeMIPS(cmd, config):
         except Exception as ex:
             pass
 
-    if(legacy != "True"):
+
+    fileName = "run"
+    if(legacy == "True"):
+        fileName ="legacyRun"
+
+    file = open("/tmp/" + fileName,"w")
+    file.write("#!/bin/sh\n")
+
+    if(screen != None):
+        if(screen == "fullscreen"):
+            file.write("echo 2 > /proc/jz/lcd_a320\n")
+        if(screen == "center"):
+            file.write("echo 1 > /proc/jz/lcd_a320\n")
+
+    parent = os.path.abspath(os.path.join(cmd, os.pardir))
+    file.write("cd \"" + parent + "\"\n")
+    file.write("\"" + cmd + "\"\n")
+
+    if(screen != None and screen != "default"):
+        file.write("echo 0 > /proc/jz/lcd_a320\n")
+
+    file.close() 
+    st = os.stat('/tmp/' + fileName)
+    os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
+
+    if(legacy == "True"):
         file = open("/tmp/run","w")
         file.write("#!/bin/sh\n")
-
-        if(screen != None):
-            if(screen == "fullscreen"):
-                file.write("echo 2 > /proc/jz/lcd_a320\n")
-            if(screen == "center"):
-                file.write("echo 1 > /proc/jz/lcd_a320\n")
-   
-        file.write(cmd + "\n")
-
-        if(screen != None and screen != "default"):
-            file.write("echo 0 > /proc/jz/lcd_a320\n")
-
-        file.close() 
+        file.write("chroot /opt/legacy /tmp/legacyRun\n")
+        file.close()
         st = os.stat('/tmp/run')
         os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
-        sys.exit()
-    else:
-        print("Legacy mode not supported yet")
+    sys.exit()
+
+    
 
 def runNativeHost(cmd, config):
     subprocess.Popen([cmd])
