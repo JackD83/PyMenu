@@ -51,7 +51,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.subComponent.render(screen)
             return
         else:            
-            super().render(screen)      
+            AbstractList.AbstractList.render(self, screen)      
 
         if(self.overlay != None):
             self.overlay.render(screen)
@@ -104,7 +104,7 @@ class NativeAppList(AbstractList.AbstractList):
                          self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
                     RenderControl.setDirty()
 
-        super().handleEvents(events)
+        AbstractList.AbstractList.handleEvents(self, events)
 
    
     def initList(self):
@@ -167,7 +167,7 @@ class NativeAppList(AbstractList.AbstractList):
 
 
     def __init__(self, screen, titel, data, options, callback):        
-        super().__init__(screen, titel, options)
+        AbstractList.AbstractList.__init__(self, screen, titel, options)
                  
    
         self.callback = callback

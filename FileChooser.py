@@ -82,7 +82,7 @@ class FileChooser(AbstractList.AbstractList):
                     
                
 
-        super().handleEvents(events)
+        AbstractList.AbstractList.handleEvents(self, events)
 
    
     def initList(self):
@@ -140,7 +140,7 @@ class FileChooser(AbstractList.AbstractList):
   
 
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
-        super().__init__(screen, titel, options)
+        AbstractList.AbstractList.__init__(self,screen, titel, options)
 
         self.getExistingParent(initialPath)
 

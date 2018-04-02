@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
 
 from pygame.locals import *
-
 
 Configuration = ""
 

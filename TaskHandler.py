@@ -9,7 +9,7 @@ def addPeriodicTask(time, callback, delay=0):
     id = uuid.uuid4()
 
     task = {}
-    task["delay"] = counter + (Common.FPS / 1000 * delay)
+    task["delay"] = counter + (float(Common.FPS) / 1000 * delay)
     task["start"] = counter
     task["val"] = Common.FPS / 1000 * time
     task["callback"] = callback
@@ -28,12 +28,16 @@ def stopAnimation(id):
         del animations[id]
 
 def addAnimation(start, target, duration, callback, delay = 0):
+    if(duration == 0):
+        return
+
+
     id = uuid.uuid4()
     anim = {}
-    anim["delay"] = counter + (Common.FPS / 1000 * delay)
+    anim["delay"] = counter + (float(Common.FPS) / 1000 * delay)
     anim["start"] = start
     anim["target"] = target
-    anim["speed"] =  (target- start) / (Common.FPS / 1000 * duration)
+    anim["speed"] =  (target- start) / ((float(Common.FPS) / 1000) * duration)
     anim["current"] = start
     anim["callback"] = callback
     

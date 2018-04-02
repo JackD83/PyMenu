@@ -1,4 +1,4 @@
-class RenderObject:
+class RenderObject():
     def __init__(self):
         pass
 

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import RenderObject, Configuration, Footer
 import os, Keys, RenderControl
 import pygame, sys

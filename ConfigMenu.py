@@ -14,7 +14,7 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.render(screen)
             return
         else:            
-            super().render(screen)
+            AbstractList.AbstractList.render(self,screen)
 
         if(self.overlay != None):
             self.overlay.render(screen)
@@ -124,7 +124,7 @@ class ConfigMenu(AbstractList.AbstractList):
                   
 
         if(self.overlay == None and self.subComponent == None):
-            super().handleEvents(events)
+            AbstractList.AbstractList.handleEvents(self,events)
            
    
     def initList(self):
@@ -141,7 +141,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.onChange()
 
     def __init__(self, screen, titel,  options, optionTarget, optionConfig, callback):
-        super().__init__(screen, titel, options)
+        AbstractList.AbstractList.__init__(self, screen, titel, options)
         self.callback = callback
         self.optionConfig = optionConfig
         self.optionTarget = optionTarget
