@@ -60,8 +60,14 @@ class Header():
        
 
     def getCurrentBatteryImage(self):
-        #TODO implement battery reading from device
-        return "theme/battery_3.png"
+        if(self.batteryLevel == 0):
+            return "theme/battery_0.png"
+        if(self.batteryLevel >= 0 and self.batteryLevel < 20):
+            return "theme/battery_1.png"
+        if(self.batteryLevel >= 20 and self.batteryLevel < 60):
+            return "theme/battery_2.png"
+        if(self.batteryLevel >= 60):
+            return "theme/battery_3.png"               
     
     def getSDCardImage(self):
         #TODO implement battery reading from device
