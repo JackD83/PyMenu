@@ -12,16 +12,18 @@ class NativeAppList(AbstractList.AbstractList):
     subComponent = None
   
 
-    configOptions = [{
-        "id":"name",
-        "name" :"Name",
-        "type":"string",        
-    },
+    configOptions = [
     {   "id":"cmd",
         "name" :"Executable",
         "type":"file",
         "filter": [".dge", ".sh", ".exe"]
-    },   
+    }, 
+    {
+        "id":"name",
+        "name" :"Name",
+        "type":"string",        
+    },
+      
     {   "id":"preview",
         "name" :"Preview Image",
         "type":"image"      
@@ -125,11 +127,13 @@ class NativeAppList(AbstractList.AbstractList):
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
+            self.subComponent.setConfigCallback(self.configCallback)
         if(selection == 1):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         self.currentSelection ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
+            self.subComponent.setConfigCallback(self.configCallback)
         if(selection == 2):
             self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
             RenderControl.setDirty()  
@@ -142,23 +146,29 @@ class NativeAppList(AbstractList.AbstractList):
             Configuration.saveConfiguration()
             self.initList()
 
-    def addEditCallback(self, configCallback):
-        print("config came back" + str(configCallback))
+    def addEditCallback(self, configCallback):        
         if(configCallback != None and not configCallback in self.data):
             self.data.append(configCallback)
+            self.currentIndex = len(self.entryList) - 1
+   
 
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
 
+    def configCallback(self, config):
+        if(config["name"] == None and ( config["cmd"] != None or config["cmd"] == "None" )   ):
+            name = os.path.basename(config["cmd"])
+            name = os.path.splitext(name)[0]
+            config["name"] = name
     
 
     def getEmptyData(self):
         emptyEntry = {
-            "name": "NewName",
-            "cmd":"",
-            "icon":"",
-            "preview":"",
+            "name": None,
+            "cmd":".",
+            "icon":".",
+            "preview":".",
             "legacy":False,
             "screen":"default",
             "overclock":"528"

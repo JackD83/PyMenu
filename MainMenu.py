@@ -30,8 +30,8 @@ class MainMenu(RenderObject.RenderObject):
 
         for entry in self.config["mainMenu"]:
             try:
-                self.systems.append(Common.aspect_scale(Common.loadImage( entry["icon"]), 140, 140))
-                self.systembackgrounds.append( pygame.transform.scale(Common.loadImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) ))
+                self.systems.append(Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 140))
+                self.systembackgrounds.append( pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) ))
             except ValueError:
                 pass
 
@@ -139,7 +139,8 @@ class MainMenu(RenderObject.RenderObject):
                 options["fileFilter"] = current["fileFilter"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
-           
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
                
                      
         if(current["type"] == "native"):
@@ -160,18 +161,40 @@ class MainMenu(RenderObject.RenderObject):
         print("Options came back with: ", optionID)
         self.overlay = None
         if(optionID == 0):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                                        self.getEmptyData() ,json.load(open('config/entry.json')) ,self.addEditCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-            self.subComponent.setFooter(footer)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Emulator", "Native"], self.typeAddCallback)
         if(optionID == 1):
+            conf = None
+            if(self.config["mainMenu"][self.currentIndex]["type"] == "emulator"):              
+                conf = json.load(open('config/entry.json'))
+            else:               
+                conf = json.load(open('config/native.json'))
+
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                                        self.config["mainMenu"][self.currentIndex] ,json.load(open('config/entry.json')) ,self.addEditCallback)
+                                        self.config["mainMenu"][self.currentIndex] ,conf ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
         if(optionID == 2):
             self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
             RenderControl.setDirty()
+
+
+    def typeAddCallback(self, t):
+        self.overlay = None
+
+        data = None
+        conf = None
+        if(t==0):
+            data = self.getEmptyEmulatorData()
+            conf = json.load(open('config/entry.json'))
+        else:
+            data = self.getEmptyNativeData()
+            conf = json.load(open('config/native.json'))
+
+        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                   data ,conf ,self.addEditCallback)
+        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+        self.subComponent.setFooter(footer)
+       
 
     def deleteCallback(self, res):
         self.overlay = None
@@ -181,7 +204,7 @@ class MainMenu(RenderObject.RenderObject):
             self.currentIndex = 0
             self.loadSystemImages()
     
-    def getEmptyData(self):
+    def getEmptyEmulatorData(self):
         emptyEntry = {
             "name": "Emulator",
             "type": "emulator",            
@@ -194,6 +217,16 @@ class MainMenu(RenderObject.RenderObject):
             "legacy":False,
             "screen":"default",
             "overclock":"524"
+        }
+        return emptyEntry
+
+    def getEmptyNativeData(self):
+        emptyEntry = {
+            "name": "Native",
+            "type": "native",            
+            "background": "backgrounds",
+            "icon": "systems",
+            "data": []               
         }
         return emptyEntry
 

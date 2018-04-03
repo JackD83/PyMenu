@@ -185,7 +185,7 @@ class TextInput(RenderObject.RenderObject):
 
     def __init__(self, screen, initialText, callback):
         self.screen = screen
-        self.currentText = initialText
+        self.currentText = str(initialText)
         self.callback = callback
         self.initBackground()
         self.setFooter(Footer.Footer([],[],(255,255,255)))

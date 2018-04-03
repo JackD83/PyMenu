@@ -8,6 +8,7 @@ class ConfigMenu(AbstractList.AbstractList):
     subComponent = None
     overlay = None
     footer = None
+    configCallback = None
      
     def render(self, screen):
         if(self.subComponent != None):
@@ -23,6 +24,9 @@ class ConfigMenu(AbstractList.AbstractList):
         text = self.entryList[index]["text"]
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
         screen.blit(text, (4, yOffset + yTextOffset + 1))
+    
+    def setConfigCallback(self, callback):
+        self.configCallback = callback
       
 
     def onSelect(self):
@@ -63,11 +67,15 @@ class ConfigMenu(AbstractList.AbstractList):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
 
     def textCallback(self, text):      
+        if(text == None):
+            text = self.optionTarget[self.entryList[self.currentIndex]["id"]]
+
         print("Got new text for: " + self.entryList[self.currentIndex]["id"]  + ": " + text)
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = text
+        self.fireConfigChanged()
         self.initList()
         self.subComponent = None
-        Configuration.saveConfiguration()
+       
 
     def booleanCallback(self, selection):
         self.overlay = None     
@@ -77,21 +85,31 @@ class ConfigMenu(AbstractList.AbstractList):
             text = "False"
        
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = text
+        self.fireConfigChanged()
         self.initList()
-        Configuration.saveConfiguration()
+      
 
     def fileFolderCallback(self, folder):
+        if(folder == None):
+            folder =  self.optionTarget[self.entryList[self.currentIndex]["id"]]
+
         self.subComponent = None
         print("File/Folder selected: " + str(folder))
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = str(folder)
+        self.fireConfigChanged()
         self.initList()
-        Configuration.saveConfiguration()
+       
 
     def listCallback(self, selection):
         self.overlay = None
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = self.entryList[self.currentIndex]["options"]["values"][selection]
+        self.fireConfigChanged()
         self.initList()
-        Configuration.saveConfiguration()
+    
+    def fireConfigChanged(self):
+        if(self.configCallback != None):
+            self.configCallback(self.optionTarget)
+       
 
     def onChange(self):
         if(self.entryList[self.currentIndex]["type"] == "image"): 
@@ -101,9 +119,7 @@ class ConfigMenu(AbstractList.AbstractList):
             self.previewEnabled = False   
             self.previewPath = None
 
-    
-
-    
+        
     def onExit(self):
         self.callback(None)
 

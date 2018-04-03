@@ -2,12 +2,7 @@
     "id":"name",
     "name" :"Name",
     "type":"string"        
-},
-{   "id":"type",
-    "name" :"Type",
-    "type":"list",
-    "values": ["emulator", "native"]
-},   
+}, 
 {   "id":"background",
     "name" :"Background Image",
     "type":"image"      

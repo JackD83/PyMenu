@@ -54,6 +54,11 @@ class FileChooser(AbstractList.AbstractList):
             self.callback(None)
     
     def onChange(self):
+        if(len(self.entryList) == 0):
+            self.currentSelection = None
+            self.previewPath = None
+            return
+
         self.currentSelection = self.currentPath + "/" + self.entryList[self.currentIndex]["name"]
         self.currentSelection =  os.path.normpath(self.currentSelection)
         self.previewPath = None
@@ -120,6 +125,9 @@ class FileChooser(AbstractList.AbstractList):
             return "/"
 
         parent = os.path.abspath(os.path.join(path, os.pardir))
+        if(parent == path):
+            return path
+
         if(os.path.exists(parent)):
             return parent
         else:
