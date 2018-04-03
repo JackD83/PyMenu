@@ -130,6 +130,10 @@ class ConfigMenu(AbstractList.AbstractList):
     def initList(self):
         self.entryList = []
         for o in self.optionConfig:
+            if(not o["id"] in self.optionTarget):
+                self.optionTarget[o["id"]] = None
+
+
             entry = {}
             entry["options"] = o
             entry["name"] = o["name"]

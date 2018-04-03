@@ -62,7 +62,7 @@ class FileChooser(AbstractList.AbstractList):
              self.previewPath = self.currentSelection
              print("onChange" + self.previewPath)
              return
-        if("previews" in self.options and os.path.exists(self.options["previews"]) and self.currentSelection != None):
+        if("previews" in self.options and self.options["previews"] != None and os.path.exists(self.options["previews"]) and self.currentSelection != None):
             self.previewPath = self.options["previews"] + "/" + os.path.splitext(os.path.basename(self.currentSelection))[0] + ".png"
         
             if(not self.previewPath != None and not os.path.exists(self.previewPath)):
@@ -95,24 +95,30 @@ class FileChooser(AbstractList.AbstractList):
             entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
-            for f in sorted(os.listdir(self.currentPath)):
-                if(os.path.isdir(self.currentPath + "/" + f)):
-                    entry = {}
-                    entry["name"] = f
-                    entry["isFolder"] = True
-                    entry["text"] = None
-                    self.entryList.append(entry)
-            for f in sorted(os.listdir(self.currentPath)):
-                if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
-                    entry = {}
-                    entry["name"] = f
-                    entry["isFolder"] = False
-                    entry["text"] = None
-                    self.entryList.append(entry)
+            try:
+                for f in sorted(os.listdir(self.currentPath)):
+                    if(os.path.isdir(self.currentPath + "/" + f)):
+                        entry = {}
+                        entry["name"] = f
+                        entry["isFolder"] = True
+                        entry["text"] = None
+                        self.entryList.append(entry)
+                for f in sorted(os.listdir(self.currentPath)):
+                    if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
+                        entry = {}
+                        entry["name"] = f
+                        entry["isFolder"] = False
+                        entry["text"] = None
+                        self.entryList.append(entry)
+            except Exception as ex:
+                pass            
         self.onChange()
 
 
     def getExistingParent(self, path):
+        if(path == "/" or path == ""):
+            return "/"
+
         parent = os.path.abspath(os.path.join(path, os.pardir))
         if(os.path.exists(parent)):
             return parent
@@ -142,6 +148,9 @@ class FileChooser(AbstractList.AbstractList):
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
         AbstractList.AbstractList.__init__(self,screen, titel, options)
 
+        if(initialPath == None):
+            initialPath = "/"
+
         self.getExistingParent(initialPath)
 
         if(os.path.exists(initialPath) and not os.path.isfile(initialPath)):          
@@ -152,7 +161,7 @@ class FileChooser(AbstractList.AbstractList):
         if("directPreview" in self.options and self.options["directPreview"]):
             self.previewEnabled = True
 
-        if("previews" in self.options and os.path.exists(self.options["previews"])):
+        if("previews" in self.options and self.options["previews"] != None and os.path.exists(self.options["previews"]) ):
             self.previewEnabled = True
         
            

@@ -1,5 +1,5 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
-import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler
+import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
 import os
 import json
 import pygame, sys, subprocess,platform
@@ -23,11 +23,15 @@ class MainMenu(RenderObject.RenderObject):
     overlay = None
     subComponent = None
         
-    def loadSystemImages(self, screen):
+    def loadSystemImages(self):
+        self.systems = []
+        self.systemNames = []
+        self.systembackgrounds = []
+
         for entry in self.config["mainMenu"]:
             try:
-                self.systems.append(Common.loadImage( entry["icon"]))
-                self.systembackgrounds.append(Common.loadImage( entry["background"]))
+                self.systems.append(Common.aspect_scale(Common.loadImage( entry["icon"]), 140, 140))
+                self.systembackgrounds.append( pygame.transform.scale(Common.loadImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) ))
             except ValueError:
                 pass
 
@@ -155,6 +159,76 @@ class MainMenu(RenderObject.RenderObject):
     def optionsCallback(self, optionID):
         print("Options came back with: ", optionID)
         self.overlay = None
+        if(optionID == 0):
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                        self.getEmptyData() ,json.load(open('config/entry.json')) ,self.addEditCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+        if(optionID == 1):
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                        self.config["mainMenu"][self.currentIndex] ,json.load(open('config/entry.json')) ,self.addEditCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+        if(optionID == 2):
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
+            RenderControl.setDirty()
+
+    def deleteCallback(self, res):
+        self.overlay = None
+        if(res == 1 and len(self.config["mainMenu"])  > 1):
+            del self.config["mainMenu"][self.currentIndex]
+            Configuration.saveConfiguration()
+            self.currentIndex = 0
+            self.loadSystemImages()
+    
+    def getEmptyData(self):
+        emptyEntry = {
+            "name": "Emulator",
+            "type": "emulator",            
+            "background": "backgrounds",
+            "icon": "systems",
+            "cmd": ".",
+            "workingDir": None,           
+            "selectionPath": ".",
+            "previews": None,
+            "legacy":False,
+            "screen":"default",
+            "overclock":"524"
+        }
+        return emptyEntry
+
+    def addEditCallback(self, entry):
+        self.subComponent = None
+
+        print(entry)
+
+        if(entry == None):
+            self.reload()
+            return
+
+        if(entry["background"] == None or not os.path.isfile(entry["background"])):
+            print("Background does not exist! ")
+            self.reload()
+            return
+
+        if(entry["icon"] == None or not os.path.isfile(entry["icon"])):
+            print("Icon does not exist! ")
+            self.reload()
+            return
+      
+      
+        if(entry != None and not entry in self.config["mainMenu"]):
+           self.config["mainMenu"].insert(self.currentIndex, entry)
+
+        Configuration.saveConfiguration()
+        self.loadSystemImages()
+        RenderControl.setDirty()       
+    
+    def reload(self):
+        Configuration.reloadConfiguration()
+        self.config = Configuration.getConfiguration()
+        self.loadSystemImages()
+    
     
     def textCallback(self, text):
         print("Text callback, got text: " + text)
@@ -215,7 +289,7 @@ class MainMenu(RenderObject.RenderObject):
     
     def __init__(self, screen):
         print("Main Menu Init")
-        self.loadSystemImages(screen)
+        self.loadSystemImages()
         self.screen = screen
         self.banderole = pygame.Surface((480,80),pygame.SRCALPHA)
         self.banderole.fill((255,255,255, 160))

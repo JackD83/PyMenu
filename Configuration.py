@@ -8,6 +8,9 @@ theme = json.load(open('theme/theme.json'))
 def getConfiguration():
     return configuration
 
+def reloadConfiguration():
+    configuration = json.load(open('config/config.json'))
+
 def saveConfiguration():
     with open('config/config.json', 'w') as fp:
         json.dump(configuration, fp)
