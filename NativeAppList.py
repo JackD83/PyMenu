@@ -148,13 +148,13 @@ class NativeAppList(AbstractList.AbstractList):
 
     def addEditCallback(self, configCallback):        
         if(configCallback != None and not configCallback in self.data):
-            self.data.append(configCallback)
-            self.currentIndex = len(self.entryList) - 1
+            self.data.append(configCallback)            
    
 
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
+        self.currentIndex = len(self.entryList) - 1
 
     def configCallback(self, config):
         if(config["name"] == None and ( config["cmd"] != None or config["cmd"] == "None" )   ):

@@ -42,6 +42,10 @@ class FileChooser(AbstractList.AbstractList):
         self.initList()
 
     def onSelect(self):
+        if(len(self.entryList) == 0):
+            self.callback(None)
+            return
+
         if(self.entryList[self.currentIndex]["isFolder"]):
             self.loadFolder(self.entryList[self.currentIndex])
         else:
