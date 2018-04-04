@@ -153,17 +153,22 @@ class AbstractList(RenderObject.RenderObject):
         if(self.currentIndex  < 0):
             self.currentIndex = 0
         
-        if(self.currentIndex  < self.currentWrap):
-            self.currentWrap -= 1
+        if(self.currentIndex  <= self.currentWrap):
+            self.currentWrap -= count
+        
+        if(self.currentWrap < 0):
+            self.currentWrap = 0
     
     def down(self, count=1):
         self.currentIndex += count
         if(self.currentIndex > len(self.entryList) - 1 ):
-            self.currentIndex = len(self.entryList) -1
+            self.currentIndex = len(self.entryList) - 1
 
-        if(self.currentIndex > self.maxListEntries + self.currentWrap + -1):
-            self.currentWrap += 1   
-   
+        if(self.currentIndex >= self.maxListEntries + self.currentWrap):
+            self.currentWrap += count
+
+        if(self.currentWrap > len(self.entryList) - self.maxListEntries):
+            self.currentWrap = len(self.entryList) - self.maxListEntries   
 
     def initBackground(self):       
         if("background" in self.options):

@@ -73,7 +73,11 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
 def runEmuHost(name, cmd, workdir, config, rom):  
     print("run emu " + cmd + " " + name + " with file " + rom + " cwd " +workdir)
-    subprocess.Popen([cmd, rom ], cwd=workdir)
+    try:
+        subprocess.Popen([cmd, rom ], cwd=workdir)
+    except Exception as ex:
+        print(str(ex))
+    
 
 def runNative(config):
     print(config)
@@ -139,4 +143,8 @@ def runNativeMIPS(cmd, config):
     
 
 def runNativeHost(cmd, config):
-    subprocess.Popen([cmd])
+    try:
+        subprocess.Popen([cmd])
+    except Exception as ex:
+        print(str(ex))
+   
