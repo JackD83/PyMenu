@@ -17,6 +17,8 @@ class Header():
     volAnim = None
 
     batteryLevel = 0
+
+    usbDevice = None
   
 
     def render(self, screen):
@@ -60,6 +62,9 @@ class Header():
        
 
     def getCurrentBatteryImage(self):
+        if(self.isUsbConnected()):
+            return "theme/battery_charging.png"
+
         if(self.batteryLevel == 0):
             return "theme/battery_0.png"
         if(self.batteryLevel >= 0 and self.batteryLevel < 20):
@@ -69,9 +74,6 @@ class Header():
         if(self.batteryLevel >= 60):
             return "theme/battery_3.png"               
     
-    def getSDCardImage(self):
-        #TODO implement battery reading from device
-        return "theme/sdcard.png"
 
     def updateVolume(self):
         try:
@@ -98,6 +100,20 @@ class Header():
             self.vol = int(first_line)          
         except Exception as ex:
             pass
+    
+    def isUsbConnected(self):
+        if(self.usbDevice == None):
+            return
+
+        try:
+            self.usbDevice.seek(0)
+            first_line = self.usbDevice.readline()
+            if(first_line == "USB"):
+                return True      
+        except Exception as ex:
+            pass
+        
+        return False
     
     def updateBattery(self):
         self.readBatteryLevel()
@@ -143,6 +159,7 @@ class Header():
         try:
             self.battery = open("/proc/jz/battery", "r")
             self.volumeDevice = open("/opt/volume/volume.cfg", "r")
+            self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
         except Exception as ex:
             print("Could not open devices" + str(ex))
 
