@@ -6,7 +6,7 @@ class ConfirmOverlay(RenderObject.RenderObject):
     background = None
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
-    entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
+    entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
     footerHeight = 24
     spacing = 6
        

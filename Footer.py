@@ -6,7 +6,7 @@ class Footer(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
     pygame.font.init()
-    footerFont = pygame.font.Font('theme/FreeSans.ttf', 14)
+    footerFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 14)
     footerHeight = 24
     footer = None
     spacing = 6

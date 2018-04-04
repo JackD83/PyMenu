@@ -10,8 +10,8 @@ class TextInput(RenderObject.RenderObject):
     pygame.font.init()
     footer = None
     background = None
-    textFont = pygame.font.Font('theme/FreeSans.ttf', 20)
-    buttonFont = pygame.font.Font('theme/FreeSans.ttf', 16)
+    textFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 20)
+    buttonFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
 
     fontCache = {}
 
@@ -34,17 +34,17 @@ class TextInput(RenderObject.RenderObject):
     lowChars.append(["1","2","3","4","5","6","7","8","9","0"])
     lowChars.append(["a","b","c","d","e","f","g","h","i","j"])
     lowChars.append(["k","l","m","n","o","p","q","r","s","t"])
-    lowChars.append([u"\u21E7",u"\u2026" , "u","v","w","x","y","z",  u"\u2423", u"\u21B2"])
+    lowChars.append([u"\u2191",u"\u2026" , "u","v","w","x","y","z",  u"\u033A", "OK"])
 
     upperChars.append(["!","\"","§","$","%","&","/","(",")","="])
     upperChars.append(["A","B","C","D","E","F","G","H","I","J"])
     upperChars.append(["K","L","M","N","O","P","Q","R","S","T"])
-    upperChars.append([u"\u21E7",u"\u2026", "U","V","W","X","Y","Z",  u"\u2423", u"\u21B2"])
+    upperChars.append([u"\u2191",u"\u2026", "U","V","W","X","Y","Z",  u"\u033A", "OK"])
 
     special.append(["","","","","","","","","","?"])
     special.append(["°","^","","","","","","","+","*"])
     special.append(["<",">","","","","","","\\","'","#"])
-    special.append(["",u"\u2026", ",",";",".",":","-","_", "", u"\u21B2"])
+    special.append(["",u"\u2026", ",",";",".",":","-","_", "", "OK"])
 
     chars = lowChars
    
@@ -116,7 +116,7 @@ class TextInput(RenderObject.RenderObject):
     def selectChar(self):
 
         #shif
-        if(self.selectedChar == u"\u21E7"):
+        if(self.selectedChar == u"\u2191"):
             if(self.chars == self.lowChars):
                 self.chars = self.upperChars
             else:
@@ -132,12 +132,12 @@ class TextInput(RenderObject.RenderObject):
             return
 
         #space
-        if(self.selectedChar == u"\u2423"):
+        if(self.selectedChar == u"\u033A"):
             self.currentText =  self.currentText + " "
             return
 
         #enter
-        if(self.selectedChar == u"\u21B2" ):
+        if(self.selectedChar == "OK" ):
             if(self.callback != None):
                self.callback(self.currentText)
             return
@@ -179,12 +179,17 @@ class TextInput(RenderObject.RenderObject):
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
                     if(self.callback != None):
+                        self.callback(self.initialText)
+                        RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_START:
+                    if(self.callback != None):
                         self.callback(self.currentText)
-                        RenderControl.setDirty()               
+                        RenderControl.setDirty()                   
 
 
     def __init__(self, screen, initialText, callback):
         self.screen = screen
+        self.initialText = initialText
         self.currentText = str(initialText)
         self.callback = callback
         self.initBackground()

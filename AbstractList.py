@@ -21,8 +21,8 @@ class AbstractList(RenderObject.RenderObject):
     headerHeight = 20
     initialPath =""
       
-    titleFont = pygame.font.Font('theme/FreeSans.ttf', 20)
-    entryFont = pygame.font.Font('theme/FreeSans.ttf', 16)
+    titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 20)
+    entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
      
     maxListEntries = 12
   
@@ -156,7 +156,7 @@ class AbstractList(RenderObject.RenderObject):
         if(self.currentIndex  <= self.currentWrap):
             self.currentWrap -= count
         
-        if(self.currentWrap < 0):
+        if(self.currentWrap < 0 or len(self.entryList) < self.maxListEntries):
             self.currentWrap = 0
     
     def down(self, count=1):
@@ -169,6 +169,9 @@ class AbstractList(RenderObject.RenderObject):
 
         if(self.currentWrap > len(self.entryList) - self.maxListEntries):
             self.currentWrap = len(self.entryList) - self.maxListEntries   
+        
+        if(len(self.entryList) < self.maxListEntries):
+            self.currentWrap = 0
 
     def initBackground(self):       
         if("background" in self.options):
