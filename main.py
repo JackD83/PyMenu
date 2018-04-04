@@ -3,14 +3,13 @@ import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,
 
 from pygame.locals import *
 
-Configuration = ""
-
 
 pygame.init()
 pygame.font.init()
 pygame.mouse.set_visible(False)
 fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
+config = Configuration.getConfiguration()
 
 #reset to default clockspeed
 try:
@@ -21,8 +20,8 @@ except Exception as ex:
 
 
 def init():
-    realScreen = pygame.display.set_mode((480, 272), HWSURFACE, 16)
-    screen = pygame.Surface((480,272))
+    realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
+    screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
 
     renderObject = MainMenu.MainMenu(screen)
     

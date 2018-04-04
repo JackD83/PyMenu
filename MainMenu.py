@@ -19,6 +19,7 @@ class MainMenu(RenderObject.RenderObject):
     inTransition = False
     transitionOffset = 0
     systemOffset = 160
+    systemIconOffet = (480 - config["screenWidth"]) / 2
    
     overlay = None
     subComponent = None
@@ -30,7 +31,7 @@ class MainMenu(RenderObject.RenderObject):
 
         for entry in self.config["mainMenu"]:
             try:
-                self.systems.append(Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 140))
+                self.systems.append(Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70))
                 self.systembackgrounds.append( pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) ))
             except ValueError:
                 pass
@@ -301,13 +302,13 @@ class MainMenu(RenderObject.RenderObject):
         screen.blit(self.banderole, (0,80))
 
         #current
-        screen.blit(self.systems[self.currentIndex], ( (240 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
+        screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
 
         #previous
-        screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset , 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
+        screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
 
         #next
-        screen.blit(self.systems[self.getNext()], ( (480 - self.systems[self.currentIndex].get_width())  + self.transitionOffset, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
+        screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
         
         if(self.footer != None):
             self.footer.render(screen)
@@ -315,8 +316,7 @@ class MainMenu(RenderObject.RenderObject):
         self.header.render(screen)
 
         if(self.overlay != None):
-            self.overlay.render(screen)    
-            
+            self.overlay.render(screen)           
    
  
     
@@ -324,7 +324,7 @@ class MainMenu(RenderObject.RenderObject):
         print("Main Menu Init")
         self.loadSystemImages()
         self.screen = screen
-        self.banderole = pygame.Surface((480,80),pygame.SRCALPHA)
+        self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
         self.banderole.fill((255,255,255, 160))
       
         self.header = Header.Header(24)

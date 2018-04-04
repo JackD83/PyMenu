@@ -11,7 +11,9 @@ class TextInput(RenderObject.RenderObject):
     footer = None
     background = None
     textFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 20)
-    buttonFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
+
+
+    buttonFont = pygame.font.Font('theme/NotoSans-Regular.ttf', int(config["screenWidth"] * 0.03))
 
     fontCache = {}
 
@@ -22,9 +24,9 @@ class TextInput(RenderObject.RenderObject):
     currentCol = 0
 
 
-    buttonWidth = 30
-    buttonHeight = 30
-    buttonSpace = 10
+    buttonWidth = config["screenWidth"] * 0.0625 #30px at 480px wide
+    buttonHeight = buttonWidth
+    buttonSpace = config["screenWidth"] * 0.02 #30px at 480px wide
 
     chars = []
 
@@ -73,10 +75,14 @@ class TextInput(RenderObject.RenderObject):
     def renderButtons(self, screen):
         leftOffset = (self.config["screenWidth"] - 10* self.buttonWidth - 9 * self.buttonSpace) / 2
 
-        self.renderButtonLine(screen, self.chars[0],0, leftOffset, 80)
-        self.renderButtonLine(screen, self.chars[1],1, leftOffset, 120)
-        self.renderButtonLine(screen, self.chars[2],2, leftOffset, 160)
-        self.renderButtonLine(screen, self.chars[3],3, leftOffset, 200)
+        yOffset = 80
+        self.renderButtonLine(screen, self.chars[0],0, leftOffset, yOffset)
+        yOffset+=self.buttonHeight+self.buttonSpace
+        self.renderButtonLine(screen, self.chars[1],1, leftOffset, yOffset)
+        yOffset+=self.buttonHeight+self.buttonSpace
+        self.renderButtonLine(screen, self.chars[2],2, leftOffset, yOffset)
+        yOffset+=self.buttonHeight+self.buttonSpace
+        self.renderButtonLine(screen, self.chars[3],3, leftOffset, yOffset)
 
     def setFooter(self, footer):
         self.footer = footer     

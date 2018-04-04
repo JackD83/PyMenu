@@ -40,7 +40,7 @@ class Header():
 
 
         battery = Common.loadCachedImage(self.getCurrentBatteryImage())
-        self.header.blit(battery, (440, (self.headerHeight - battery.get_height()) / 2))
+        self.header.blit(battery, (self.config["screenWidth"] - 40, (self.headerHeight - battery.get_height()) / 2))
 
              
 

@@ -17,6 +17,8 @@ class AbstractList(RenderObject.RenderObject):
     previewPath = None
     preview_final = None
 
+    previewBoxSize = 200
+
 
     headerHeight = 20
     initialPath =""
@@ -24,8 +26,7 @@ class AbstractList(RenderObject.RenderObject):
     titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 20)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
      
-    maxListEntries = 12
-  
+    maxListEntries = 12  
 
     currentIndex = 0
     currentWrap = 0
@@ -49,7 +50,7 @@ class AbstractList(RenderObject.RenderObject):
             print("index - 1")
             return
 
-        previewBox = pygame.Surface((200, 200), pygame.SRCALPHA)
+        previewBox = pygame.Surface((self.previewBoxSize, self.previewBoxSize), pygame.SRCALPHA)
         previewBox.fill(Configuration.toColor(self.theme["footer"]["color"]))
 
         if(self.preview_final != None and os.path.exists(self.preview_final)):
@@ -58,7 +59,7 @@ class AbstractList(RenderObject.RenderObject):
             image = None
             if(not self.preview_final in self.previewCache):
                 image = Common.loadImage(self.preview_final)
-                image = Common.aspect_scale(image, 180, 180)
+                image = Common.aspect_scale(image, self.previewBoxSize - 10, self.previewBoxSize - 10)
                 self.previewCache[self.preview_final] = image
             else:
                 image = self.previewCache[self.preview_final]
@@ -209,6 +210,9 @@ class AbstractList(RenderObject.RenderObject):
         self.options = options
         self.setFooter(Footer.Footer([],[],(255,255,255)))
 
+        self.previewBoxSize = int(self.config["screenWidth"] * 0.5)
+        if(self.previewBoxSize > 200):
+            self.previewBoxSize = 200
        
 
         if("textColor" in self.options):
@@ -224,3 +228,5 @@ class AbstractList(RenderObject.RenderObject):
         self.initBackground()
         self.initHeader()   
         self.initSelection()
+
+       
