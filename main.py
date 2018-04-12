@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
+import platform
 
 from pygame.locals import *
 
@@ -20,7 +21,11 @@ except Exception as ex:
 
 
 def init():
-    realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
+    if("RS97Fix" in config and platform.processor() == ""):
+        realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
+    else:
+         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
+
     screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
 
     renderObject = MainMenu.MainMenu(screen)
@@ -35,7 +40,12 @@ def init():
         renderObject.handleEvents(events)
         if(RenderControl.isDirty()):
             update(renderObject, screen,events)
-            realScreen.blit(screen, (0,0))
+
+            if("RS97Fix" in config and platform.processor() == ""):
+                realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
+            else:
+                 realScreen.blit(screen, (0,0))
+
             pygame.display.update()
             RenderControl.setDirty(False)
 

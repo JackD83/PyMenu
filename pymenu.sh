@@ -2,4 +2,4 @@
 export SDL_NOMOUSE=1
 export SDL_AUDIODRIVER=dsp
 cd "$(dirname "$0")"
-python main.py
+python main.py > /dev/ttyS1 1> /dev/ttyS1
