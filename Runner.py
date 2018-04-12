@@ -52,7 +52,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     file.write(cmd + " \"" + rom + "\"\n")
 
     if(screen != None and screen != "default"):
-        file.write("echo 0 > /proc/jz/lcd_a320\n")      
+        file.write("echo 0 > /proc/jz/lcd_a320\n")
 
     file.close() 
     
