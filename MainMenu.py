@@ -132,6 +132,13 @@ class MainMenu(RenderObject.RenderObject):
             print("Opening emulator file selection")
             options = {}
             options["background"] = current["background"]
+            options["useSidebar"] = True
+
+            if("description" in current):
+                options["description"] = current["description"]
+
+            if("folderIcon" in current):
+                options["folderIcon"] = current["folderIcon"]
             
             if("previews" in current):
                 options["previews"] = current["previews"]
@@ -148,6 +155,7 @@ class MainMenu(RenderObject.RenderObject):
             print("Opening native selection")
             options = {}
             options["background"] = current["background"]
+            options["useSidebar"] = True
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
             self.subComponent.setFooter(footer)    

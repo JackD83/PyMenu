@@ -16,18 +16,18 @@ class FileChooser(AbstractList.AbstractList):
         entry["text"] = text
         return text
  
-    def renderEntry(self, screen, index, yOffset):
+    def renderEntry(self, screen, index, xOffset, yOffset):
         text = self.entryList[index]["text"]
         if(text== None):
             text = self.renderText(self.entryList[index])
 
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
 
-        screen.blit(text, (self.listEntryHeight + 4, yOffset + yTextOffset + 1))
+        screen.blit(text, (self.listEntryHeight + 4 + xOffset, yOffset + yTextOffset + 1))
         if(self.entryList[index]["isFolder"]):
-            screen.blit(self.folderIcon, (self.xFolderOffset, yOffset +  self.yFolderOffset) )
+            screen.blit(self.folderIcon, (self.xFolderOffset+ xOffset, yOffset +  self.yFolderOffset) )
         else:
-            screen.blit(self.fileIcon, (self.xFileOffset, yOffset + self.yFileOffset) )
+            screen.blit(self.fileIcon, (self.xFileOffset+ xOffset, yOffset + self.yFileOffset) )
 
 
     def loadFolder(self, folder):
@@ -40,7 +40,11 @@ class FileChooser(AbstractList.AbstractList):
         self.currentWrap = 0
         self.currentIndex = 0
         self.initList()
-
+    
+    def setFooter(self, footer):
+        AbstractList.AbstractList.setFooter(self, footer)
+        
+        
     def onSelect(self):
         if(len(self.entryList) == 0):
             self.callback(None)
