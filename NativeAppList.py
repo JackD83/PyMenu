@@ -123,13 +123,13 @@ class NativeAppList(AbstractList.AbstractList):
         self.overlay = None
      
         if(selection == 0):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
         if(selection == 1):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.currentSelection ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)

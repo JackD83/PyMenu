@@ -22,10 +22,10 @@ class AbstractList(RenderObject.RenderObject):
     useSidebar = False
     sidebarWidth = 138
 
-    headerHeight = 40
+    headerHeight = 42
     initialPath =""
       
-    titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 19)
+    titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 15)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
     descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
 
@@ -42,9 +42,32 @@ class AbstractList(RenderObject.RenderObject):
         self.renderEntries(screen)
         self.renderSelection(screen)
 
+        self.renderScrollbar(screen)
+
         self.renderPreview(screen)
 
         self.footer.render(screen)
+    
+    def renderScrollbar(self, screen):
+        shouldBe = self.listEntryHeight * (len(self.entryList) - self.maxListEntries)
+        if(shouldBe <= self.listHeight):
+            return
+
+        percent = self.listHeight / shouldBe
+        barHeight = self.listHeight * percent
+
+        scrollRest = self.listHeight - barHeight
+      
+        progress = self.currentWrap * self.listEntryHeight
+        percentProgress = progress / shouldBe
+
+        offset = scrollRest * percentProgress
+
+        pygame.draw.line(screen, (105,105,105), (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
+
+
+
+        #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
         if(not self.previewEnabled):
@@ -229,7 +252,7 @@ class AbstractList(RenderObject.RenderObject):
             if(description.get_height() < 9):
                 yOffset = ((9 - description.get_height()) / 2)
 
-            self.header.blit(description, (x, 25 + yOffset))
+            self.header.blit(description, (x, 20 + yOffset))
     
     def initSidebar(self):
         self.sidebar = pygame.Surface((self.sidebarWidth, self.config["screenHeight"]))
@@ -271,8 +294,8 @@ class AbstractList(RenderObject.RenderObject):
         
    
     def initSelection(self):
-        self.selection = pygame.Surface((self.config["screenWidth"],self.listEntryHeight),pygame.SRCALPHA)
-        self.selection.fill((221,221,221, 160))
+        self.selection = pygame.Surface((self.config["screenWidth"] - self.sidebarWidth,self.listEntryHeight),pygame.SRCALPHA)
+        self.selection.fill((55,55,55, 120))
 
     def setFooter(self, footer):
         self.footer = footer

@@ -6,7 +6,7 @@ from operator import itemgetter
 class FileChooser(AbstractList.AbstractList):
    
     folderIcon = Common.loadImage( "theme/folder.png")
-    fileIcon =  Common.loadImage( "theme/file.png")
+
    
     currentSelection =""
     previewTmp = None
@@ -23,11 +23,13 @@ class FileChooser(AbstractList.AbstractList):
 
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
 
-        screen.blit(text, (self.listEntryHeight + 4 + xOffset, yOffset + yTextOffset + 1))
+       
         if(self.entryList[index]["isFolder"]):
+            screen.blit(text, (self.listEntryHeight + 4 + xOffset, yOffset + yTextOffset))
             screen.blit(self.folderIcon, (self.xFolderOffset+ xOffset, yOffset +  self.yFolderOffset) )
         else:
-            screen.blit(self.fileIcon, (self.xFileOffset+ xOffset, yOffset + self.yFileOffset) )
+            screen.blit(text, (2 + xOffset, yOffset + yTextOffset))
+       
 
 
     def loadFolder(self, folder):
@@ -187,10 +189,10 @@ class FileChooser(AbstractList.AbstractList):
         self.callback = callback
 
         self.yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
-        self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2
+        self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2 + 2
 
-        self.yFileOffset =  (self.listEntryHeight - self.fileIcon.get_height()) / 2
-        self.xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
+        self.yFileOffset =  0
+        
 
         self.initList()
   
