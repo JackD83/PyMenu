@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import RenderObject, Configuration, Footer
-import os, Keys, RenderControl
+import os, Keys, RenderControl, TaskHandler
 import pygame, sys
 
 
@@ -85,7 +85,15 @@ class TextInput(RenderObject.RenderObject):
         self.renderButtonLine(screen, self.chars[3],3, leftOffset, yOffset)
 
     def setFooter(self, footer):
-        self.footer = footer     
+        self.footer = footer
+
+    def updateFooterPos(self, start, target, current, finished):
+        if(not finished):
+            self.footer.setYPosition(current)
+        else:
+            self.footer.setEnabled(False)
+        
+        RenderControl.setDirty()   
 
     def renderButtonLine(self, screen, line,row, xOffset, yOffset):
         offset = xOffset
@@ -200,4 +208,5 @@ class TextInput(RenderObject.RenderObject):
         self.callback = callback
         self.initBackground()
         self.setFooter(Footer.Footer([],[],(255,255,255)))
+        TaskHandler.addAnimation(self.config["screenHeight"] - self.footer.getHeight(), self.config["screenHeight"], 600, self.updateFooterPos, 1000) 
      

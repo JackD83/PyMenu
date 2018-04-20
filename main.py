@@ -21,7 +21,7 @@ except Exception as ex:
 
 
 def init():
-    if("RS97Fix" in config and platform.processor() == ""):
+    if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
     else:
          realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
@@ -41,7 +41,7 @@ def init():
         if(RenderControl.isDirty()):
             update(renderObject, screen,events)
 
-            if("RS97Fix" in config and platform.processor() == ""):
+            if(Configuration.isRS97() and platform.processor() == ""):
                 realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
             else:
                  realScreen.blit(screen, (0,0))
