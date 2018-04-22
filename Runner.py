@@ -23,11 +23,14 @@ def runEmu(config, rom):
 
 def runEmuMIPS(name, cmd, workdir, config, rom):
     name =  config["name"]
-    workdir = config["workingDir"] if "workingDir" in config else None
     cmd =  config["cmd"] if "cmd" in config else None
+    workdir = config["workingDir"] if "workingDir" in config else None  
     screen = config["screen"] if "screen" in config else None
     legacy = config["legacy"] if "legacy" in config else None
     overclock = config["overclock"] if "overclock" in config else None
+
+    if(workdir == None and not cmd == None):    
+        workdir = os.path.abspath(os.path.join(cmd, os.pardir))   
 
     if(overclock != None):
         try:
@@ -41,6 +44,9 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
+
+    if(legacy == "True"):
+        file.write("export HOME=/mnt/ext_sd/home/\n")
 
     if(screen != None):
         if(screen == "fullscreen"):
@@ -63,6 +69,8 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     if(legacy == "True"):
         file = open("/tmp/run","w")
         file.write("#!/bin/sh\n")
+        file.write("mount --bind /mnt/ext_sd/ /opt/legacy/mnt/ext_sd/\n")
+        file.write("mount --bind /mnt/int_sd/ /opt/legacy/mnt/int_sd/\n")       
         file.write("chroot /opt/legacy /tmp/legacyRun\n")
         file.close()
         st = os.stat('/tmp/run')
@@ -114,6 +122,9 @@ def runNativeMIPS(cmd, config):
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
 
+    if(legacy == "True"):
+        file.write("export HOME=/mnt/ext_sd/home/\n")
+
     if(screen != None):
         if(screen == "fullscreen"):
             file.write("echo 2 > /proc/jz/lcd_a320\n")
@@ -134,6 +145,8 @@ def runNativeMIPS(cmd, config):
     if(legacy == "True"):
         file = open("/tmp/run","w")
         file.write("#!/bin/sh\n")
+        file.write("mount --bind /mnt/ext_sd/ /opt/legacy/mnt/ext_sd/\n")
+        file.write("mount --bind /mnt/int_sd/ /opt/legacy/mnt/int_sd/\n")    
         file.write("chroot /opt/legacy /tmp/legacyRun\n")
         file.close()
         st = os.stat('/tmp/run')
