@@ -6,7 +6,7 @@ from operator import itemgetter
 class FileChooser(AbstractList.AbstractList):
    
     folderIcon = Common.loadImage( "theme/folder.png")
-    fileIcon =  Common.loadImage( "theme/file.png")
+
    
     currentSelection =""
     previewTmp = None
@@ -16,18 +16,20 @@ class FileChooser(AbstractList.AbstractList):
         entry["text"] = text
         return text
  
-    def renderEntry(self, screen, index, yOffset):
+    def renderEntry(self, screen, index, xOffset, yOffset):
         text = self.entryList[index]["text"]
         if(text== None):
             text = self.renderText(self.entryList[index])
 
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
 
-        screen.blit(text, (self.listEntryHeight + 4, yOffset + yTextOffset + 1))
+       
         if(self.entryList[index]["isFolder"]):
-            screen.blit(self.folderIcon, (self.xFolderOffset, yOffset +  self.yFolderOffset) )
+            screen.blit(text, (self.listEntryHeight + 4 + xOffset, yOffset + yTextOffset))
+            screen.blit(self.folderIcon, (self.xFolderOffset+ xOffset, yOffset +  self.yFolderOffset) )
         else:
-            screen.blit(self.fileIcon, (self.xFileOffset, yOffset + self.yFileOffset) )
+            screen.blit(text, (2 + xOffset, yOffset + yTextOffset))
+       
 
 
     def loadFolder(self, folder):
@@ -40,7 +42,11 @@ class FileChooser(AbstractList.AbstractList):
         self.currentWrap = 0
         self.currentIndex = 0
         self.initList()
-
+    
+    def setFooter(self, footer):
+        AbstractList.AbstractList.setFooter(self, footer)
+        
+        
     def onSelect(self):
         if(len(self.entryList) == 0):
             self.callback(None)
@@ -183,10 +189,10 @@ class FileChooser(AbstractList.AbstractList):
         self.callback = callback
 
         self.yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
-        self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2
+        self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2 + 2
 
-        self.yFileOffset =  (self.listEntryHeight - self.fileIcon.get_height()) / 2
-        self.xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
+        self.yFileOffset =  0
+        
 
         self.initList()
   

@@ -10,6 +10,10 @@
 {   "id":"icon",
     "name" :"Icon",
     "type":"image"      
+},  
+{   "id":"folderIcon",
+    "name" :"Folder Icon (32px)",
+    "type":"image"      
 },
 {   "id":"cmd",
     "name" :"Executable",

@@ -10,16 +10,25 @@ class Footer(RenderObject.RenderObject):
     footerHeight = 24
     footer = None
     spacing = 6
+    yPos = config["screenHeight"] - footerHeight
+    enabled = True
 
     def getHeight(self):
         return self.footerHeight
 
+    def setEnabled(self, enabled):
+        self.enabled = enabled
+
+    def setYPosition(self, yPos):
+        self.yPos = yPos
+
     def render(self, screen):
-        screen.blit(self.footer, (0,self.config["screenHeight"] - self.footerHeight ))
+        if(self.enabled):
+            screen.blit(self.footer, (0,self.yPos ))
 
     def initFooter(self):
-        self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight),pygame.SRCALPHA)
-        self.footer.fill(Configuration.toColor(self.theme["footer"]["color"]))
+        self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight))
+        self.footer.fill(Configuration.toColor(self.theme["side"]["color"]))
 
         leftOffset = 10
         for entry in self.left:

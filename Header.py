@@ -28,15 +28,16 @@ class Header():
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
 
-        if(self.volAlpha > 0):
-            speaker = self.speaker.convert_alpha().copy()
-            speaker.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
-            self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
-
-            vol = Common.loadCachedImage(self.getCurrentVolumeImage())
-            vol = vol.convert_alpha().copy()
-            vol.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
-            self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
+        if(not Configuration.isRS97()):
+            if(self.volAlpha > 0):
+                speaker = self.speaker.convert_alpha().copy()
+                speaker.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
+                self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
+            
+                vol = Common.loadCachedImage(self.getCurrentVolumeImage())
+                vol = vol.convert_alpha().copy()
+                vol.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
+                self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
 
 
         battery = Common.loadCachedImage(self.getCurrentBatteryImage())
@@ -165,7 +166,11 @@ class Header():
 
         
 
-        TaskHandler.addPeriodicTask(100, self.updateVolume)
+        if(not Configuration.isRS97()):
+            TaskHandler.addPeriodicTask(100, self.updateVolume)
+            TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
+
         TaskHandler.addPeriodicTask(1000, self.updateBattery)
-        TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
+    
+      
    

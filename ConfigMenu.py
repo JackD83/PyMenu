@@ -20,10 +20,10 @@ class ConfigMenu(AbstractList.AbstractList):
         if(self.overlay != None):
             self.overlay.render(screen)
      
-    def renderEntry(self, screen, index, yOffset):
+    def renderEntry(self, screen, index, xOffset, yOffset):
         text = self.entryList[index]["text"]
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
-        screen.blit(text, (4, yOffset + yTextOffset + 1))
+        screen.blit(text, (4 + xOffset , yOffset + yTextOffset + 1))
     
     def setConfigCallback(self, callback):
         self.configCallback = callback

@@ -1,1 +1,131 @@
-{"screenHeight": 272, "screenWidth": 480, "batteryLow": 3600, "batteryHight": 4500, "mainMenu": [{"name": "snes", "type": "emulator", "description": "nice 16bit system", "background": "backgrounds/snes_art_blur.jpg", "icon": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\systems\\snes.png", "selectionPath": "C:\\snes\\Roms", "workingDir": "C:/tmp/snes9x/", "cmd": "C:/tmp/snes9x/snes9x.exe", "previews": "C:\\snes\\Artwork\\Box Front", "legacy": "False", "screen": "default", "overclock": null}, {"name": "nes", "type": "emulator", "description": "nice 8bit system", "background": "backgrounds/nes_art_blur.jpg", "icon": "systems/nes1.png", "selectionPath": "X:/nes/Roms", "previews": "X:/nes/Artwork/Box Front"}, {"name": "GB", "type": "emulator", "description": "Gameboy DMG", "background": "backgrounds/gb_art_blur.jpg", "icon": "systems/gb.png", "selectionPath": "X:/gb/Roms", "previews": "X:/gb/Artwork/Box Front"}, {"name": "GBC", "type": "emulator", "description": "Gameboy Color", "background": "backgrounds/gbc_art_blur.jpg", "icon": "systems/gbc.png", "selectionPath": "X:/gbc/Roms", "previews": "X:/gbc/Artwork/Box Front"}, {"name": "GBA", "type": "emulator", "description": "Gameboy Advance", "background": "backgrounds/gba_art_blur.jpg", "icon": "systems/gba.png", "selectionPath": "X:/gba/Roms", "previews": "X:/gba/Artwork/Box Front"}, {"name": "Ports", "type": "native", "description": "Native ports to this device", "background": "backgrounds/ports2_art_blur.jpg", "icon": "systems/ports.png", "data": []}, {"name": "Apps", "type": "native", "description": "Applications", "background": "backgrounds/izm_art_blur.jpg", "icon": "systems/apps.png", "data": [{"name": "DinguxExplorer", "cmd": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\InfoOverlay.py", "icon": "", "preview": "C:\\Projekte\\Projekte\\Privat\\py\\PyMenu\\backgrounds\\a2600_art_blur.jpg"}, {"name": "NewName", "cmd": "", "icon": "", "preview": "", "legacy": false, "screen": "default", "overclock": "624"}], "cmd": null, "workingDir": null, "selectionPath": null, "previews": null, "legacy": null, "screen": null, "overclock": null}], "firstStart": false, "options": {"displayTimeout": "off"}}
+{
+    "firstStart": false,
+    "mainMenu": [
+        {
+            "description": "nice 16bit system",
+            "screen": "default",
+            "cmd": "Z:/tmp/snes9x/snes9x.exe",
+            "workingDir": "Z:/tmp/snes9x/",
+            "previews": "Z:\\/EmuXtra/snes/Artwork/Box Front",
+            "legacy": "False",
+            "overclock": null,
+            "background": "backgrounds/snes_art_blur.jpg",
+            "selectionPath": "Z:\\/EmuXtra/snes/Roms",
+            "icon": "systems/snes.png",
+            "type": "emulator",
+            "name": "SNES",
+            "folderIcon": "Y:\\PyMenu\\theme\\icons\\red.png"
+        },
+        {
+            "description": "nice 8bit system",
+            "screen": null,
+            "cmd": null,
+            "workingDir": "\\",
+            "previews": "Z:\\/EmuXtra/nes/Artwork/Box Front",
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/nes_art_blur.jpg",
+            "selectionPath": "Z:\\/EmuXtra/nes/Roms",
+            "icon": "systems/nes1.png",
+            "type": "emulator",
+            "name": "nes",
+            "folderIcon": "Y:\\PyMenu\\theme\\icons\\super_famicon.png"
+        },
+        {
+            "description": "Gameboy DMG",
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": "Z:\\/EmuXtra/gb/Artwork/Box Front",
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/gb_art_blur.jpg",
+            "selectionPath": "Z:\\/EmuXtra/gb/Roms",
+            "icon": "systems/gb.png",
+            "type": "emulator",
+            "name": "GB"
+        },
+        {
+            "description": "Gameboy Color",
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": "Z:\\/EmuXtra/gbc/Artwork/Box Front",
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/gbc_art_blur.jpg",
+            "selectionPath": "Z:\\/EmuXtra/gbc/Roms",
+            "icon": "systems/gbc.png",
+            "type": "emulator",
+            "name": "GBC"
+        },
+        {
+            "description": "Gameboy Advance",
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": "Z:\\EmuXtra/gba/Artwork/Box Front",
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/gba_art_blur.jpg",
+            "selectionPath": "Z:\\/EmuXtra/gba/Roms",
+            "icon": "systems/gba.png",
+            "type": "emulator",
+            "name": "GBA"
+        },
+        {
+            "screen": "default",
+            "previews": null,
+            "legacy": false,
+            "overclock": "524",
+            "background": "backgrounds/32x_art_blur.jpg",
+            "selectionPath": ".",
+            "icon": "systems/32x.png",
+            "name": "Emulator",
+            "cmd": ".",
+            "workingDir": null,
+            "type": "emulator"
+        },
+        {
+            "name": "Ports",
+            "type": "native",
+            "description": "Native ports to this device",
+            "background": "backgrounds/ports2_art_blur.jpg",
+            "data": [],
+            "icon": "systems/ports.png"
+        },
+        {
+            "description": "Applications",
+            "data": [
+                {
+                    "name": "pymenu",
+                    "cmd": "pymenu.sh",
+                    "icon": ".",
+                    "preview": "Y:\\PyMenu\\systems\\ami.png",
+                    "legacy": false,
+                    "screen": "default",
+                    "overclock": "528"
+                }
+            ],
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": null,
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/izm_art_blur.jpg",
+            "selectionPath": null,
+            "icon": "systems/apps.png",
+            "type": "native",
+            "name": "Apps"
+        }
+    ],
+    "batteryHight": 4500,
+    "screenHeight": 240,
+    "batteryLow": 3600,
+    "screenWidth": 320,
+    "RS97": true,
+    "options": {
+        "displayTimeout": "off"
+    }
+}

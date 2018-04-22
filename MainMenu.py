@@ -131,7 +131,15 @@ class MainMenu(RenderObject.RenderObject):
         if(current["type"] == "emulator"):
             print("Opening emulator file selection")
             options = {}
+            options["textColor"] = (55,55,55)
             options["background"] = current["background"]
+            options["useSidebar"] = True
+
+            if("description" in current):
+                options["description"] = current["description"]
+
+            if("folderIcon" in current):
+                options["folderIcon"] = current["folderIcon"]
             
             if("previews" in current):
                 options["previews"] = current["previews"]
@@ -148,6 +156,7 @@ class MainMenu(RenderObject.RenderObject):
             print("Opening native selection")
             options = {}
             options["background"] = current["background"]
+            options["useSidebar"] = True
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
             self.subComponent.setFooter(footer)    
@@ -170,7 +179,7 @@ class MainMenu(RenderObject.RenderObject):
             else:               
                 conf = json.load(open('config/native.json'))
 
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.config["mainMenu"][self.currentIndex] ,conf ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)

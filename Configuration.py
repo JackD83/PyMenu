@@ -21,6 +21,9 @@ def getTheme():
 def toColor(input):
     return make_tuple(input)
 
+def isRS97():
+    return "RS97" in configuration and configuration["RS97"]
+
 
 def getPathData(path, data = None):
     if(data == None):
