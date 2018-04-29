@@ -1,4 +1,4 @@
-import json
+import json, subprocess
 from ast import literal_eval as make_tuple
 from pprint import pprint
 
@@ -12,8 +12,10 @@ def reloadConfiguration():
     configuration = json.load(open('config/config.json'))
 
 def saveConfiguration():
+    subprocess.Popen(["sync"])
     with open('config/config.json', 'w') as fp:
         json.dump(configuration, fp)
+        subprocess.Popen(["sync"])
 
 def getTheme():
     return theme
