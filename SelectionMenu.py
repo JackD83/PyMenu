@@ -80,10 +80,10 @@ class SelectionMenu(RenderObject.RenderObject):
                     self.down()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
-                    self.callback(self.currentIndex)
+                    self.callback(self.currentIndex, self.options[self.currentIndex])
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
-                    self.callback(-1)
+                    self.callback(-1, None)
                     RenderControl.setDirty()
 
     def down(self):

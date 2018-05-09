@@ -30,15 +30,6 @@
 {   "id":"previews",
     "name" :"Preview folder",
     "type":"folder" 
-},
-{   "id":"legacy",
-    "name" :"Legacy Mode",
-    "type":"boolean"   
-},
-{   "id":"screen",
-    "name" :"Screen option",
-    "type":"list",
-    "values": ["default", "fullscreen", "center"]      
 },     
 {   "id":"overclock",
     "name" :"Overclock",

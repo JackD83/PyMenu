@@ -1,5 +1,9 @@
 {
-    "python.pythonPath": "C:\\Python27\\python.exe",
-    "python.linting.pylintPath": "C:\\Python36\\Scripts\\pylint.exe"
+  "python.pythonPath": "C:\\Python27\\python.exe",
+  "python.linting.pylintPath": "C:\\Python36\\Scripts\\pylint.exe",
+  "files.exclude": {
+    "__error": "Not found",
+    "AbstractList.pyc": true,
+    "**/*.pyc": true
+  }
 }
-

@@ -1,1 +1,173 @@
-{"firstStart": false, "RS97": true, "mainMenu": [{"description": "nice 16bit system", "name": "SNES", "screen": "default", "cmd": "/mnt/ext_sd/int_sd/emus/snes9x4d/snes9x4d.dge", "workingDir": "/mnt/ext_sd/int_sd/emus/snes9x4d", "previews": "/mnt/int_sd/previews/snes", "legacy": "False", "overclock": "624", "background": "backgrounds/snes_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/snes", "type": "emulator", "folderIcon": "theme/icons/Sfc_03.png", "icon": "systems/snes.png"}, {"description": "nice 8bit system", "name": "NES", "screen": null, "cmd": "//mnt/int_sd/emus/fceux/fceux", "workingDir": "/mnt/ext_sd/int_sd/emus/fceux", "previews": "/mnt/int_sd/previews/nes", "legacy": null, "overclock": null, "background": "backgrounds/nes_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/nes", "type": "emulator", "folderIcon": "theme/icons/Nes.png", "icon": "systems/nes1.png"}, {"description": "Gameboy DMG", "name": "GB", "screen": "default", "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl", "workingDir": "//mnt/int_sd/emus/gamebatte", "previews": "/mnt/int_sd/previews/gb", "legacy": "False", "overclock": "528", "background": "backgrounds/gb_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/gb", "type": "emulator", "folderIcon": "theme/icons/Gameboy03.png", "icon": "systems/gb.png"}, {"description": "Gameboy Color", "name": "GBC", "screen": "default", "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl", "workingDir": "//mnt/int_sd/emus/gamebatte", "previews": "/mnt/int_sd/previews/gbc", "legacy": "False", "overclock": "528", "background": "backgrounds/gbc_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/gbc", "type": "emulator", "folderIcon": "theme/icons/GBC_Purple.png", "icon": "systems/gbc.png"}, {"name": "Genesis", "screen": "default", "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", "workingDir": "//mnt/int_sd/emus/picodrive", "previews": "//mnt/int_sd/previews/md", "legacy": "False", "overclock": "600", "background": "backgrounds/gen_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/md", "type": "emulator", "folderIcon": "theme/icons/MegaDrive2.png", "icon": "systems/gen.png"}, {"description": "Gameboy Advance", "name": "GBA", "screen": "default", "cmd": "//mnt/int_sd/emus/regba/regba", "workingDir": "//mnt/ext_sd/int_sd/emus/regba", "previews": "/mnt/ext_sd/int_sd/previews", "legacy": "False", "overclock": "624", "background": "backgrounds/gba_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/gba", "type": "emulator", "folderIcon": "theme/icons/Gba02.png", "icon": "systems/gba.png"}, {"name": "SMS", "screen": "default", "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl", "previews": "//mnt/int_sd/previews/sms", "legacy": "False", "overclock": "524", "background": "backgrounds/sms_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/sms", "type": "emulator", "folderIcon": "theme/icons/Sms.png", "icon": "systems/sms.png"}, {"name": "Game Gear", "screen": "default", "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl", "previews": "//mnt/int_sd/previews/gg", "legacy": "False", "overclock": "524", "background": "backgrounds/gg_art_blur.jpg", "selectionPath": "/mnt/int_sd/roms/gg", "type": "emulator", "folderIcon": "theme/icons/GameGear01.png", "icon": "systems/gg.png"}, {"name": "Ports", "type": "native", "description": "Native ports to this device", "background": "backgrounds/ports2_art_blur.jpg", "data": [{"name": "Wolfenstein 3D", "screen": "default", "cmd": "/mnt/vfat/int_sd/games/wolf3d/run.dge", "legacy": false, "overclock": "528", "preview": ".", "icon": "."}], "icon": "systems/ports.png"}, {"description": "Applications", "name": "Apps", "type": "native", "screen": null, "cmd": null, "workingDir": null, "previews": null, "legacy": null, "overclock": null, "background": "backgrounds/izm_art_blur.jpg", "selectionPath": null, "data": [{"name": "DinguCommander", "screen": "default", "cmd": "/mnt/int_sd/apps/commander/run.dge", "legacy": false, "overclock": "528", "preview": ".", "icon": "."}], "icon": "systems/apps.png"}], "options": {"displayTimeout": "60"}, "screenHeight": 240, "batteryLow": 3600, "screenWidth": 320, "batteryHight": 4500}
+{
+    "firstStart": false,
+    "RS97": true,
+    "mainMenu": [
+        {
+            "description": "nice 16bit system",
+            "name": "SNES",
+            "screen": "default",
+            "cmd": "/mnt/ext_sd/int_sd/emus/snes9x4d/snes9x4d.dge",
+            "workingDir": "/mnt/ext_sd/int_sd/emus/snes9x4d",
+            "previews": "/mnt/int_sd/previews/snes",
+            "legacy": "False",
+            "overclock": "624",
+            "background": "backgrounds/snes_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/snes",
+            "type": "emulator",
+            "folderIcon": "theme/icons/Sfc_03.png",
+            "icon": "systems/snes.png"
+        },
+        {
+            "description": "nice 8bit system",
+            "name": "NES",
+            "screen": null,
+            "cmd": "//mnt/int_sd/emus/fceux/fceux",
+            "workingDir": "/mnt/ext_sd/int_sd/emus/fceux",
+            "previews": "/mnt/int_sd/previews/nes",
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/nes_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/nes",
+            "type": "emulator",
+            "folderIcon": "theme/icons/Nes.png",
+            "icon": "systems/nes1.png"
+        },
+        {
+            "description": "Gameboy DMG",
+            "name": "GB",
+            "screen": "default",
+            "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
+            "workingDir": "//mnt/int_sd/emus/gamebatte",
+            "previews": "/mnt/int_sd/previews/gb",
+            "legacy": "False",
+            "overclock": "528",
+            "background": "backgrounds/gb_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/gb",
+            "type": "emulator",
+            "folderIcon": "theme/icons/Gameboy03.png",
+            "icon": "systems/gb.png"
+        },
+        {
+            "description": "Gameboy Color",
+            "name": "GBC",
+            "screen": "default",
+            "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
+            "workingDir": "//mnt/int_sd/emus/gamebatte",
+            "previews": "/mnt/int_sd/previews/gbc",
+            "legacy": "False",
+            "overclock": "528",
+            "background": "backgrounds/gbc_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/gbc",
+            "type": "emulator",
+            "folderIcon": "theme/icons/GBC_Purple.png",
+            "icon": "systems/gbc.png"
+        },
+        {
+            "name": "Genesis",
+            "screen": "default",
+            "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive",
+            "workingDir": "//mnt/int_sd/emus/picodrive",
+            "previews": "//mnt/int_sd/previews/md",
+            "legacy": "False",
+            "overclock": "600",
+            "background": "backgrounds/gen_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/md",
+            "type": "emulator",
+            "folderIcon": "theme/icons/MegaDrive2.png",
+            "icon": "systems/gen.png"
+        },
+        {
+            "description": "Gameboy Advance",
+            "name": "GBA",
+            "screen": "default",
+            "cmd": "//mnt/int_sd/emus/regba/regba",
+            "workingDir": "//mnt/ext_sd/int_sd/emus/regba",
+            "previews": "/mnt/ext_sd/int_sd/previews",
+            "legacy": "False",
+            "overclock": "624",
+            "background": "backgrounds/gba_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/gba",
+            "type": "emulator",
+            "folderIcon": "theme/icons/Gba02.png",
+            "icon": "systems/gba.png"
+        },
+        {
+            "name": "SMS",
+            "screen": "default",
+            "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl",
+            "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl",
+            "previews": "//mnt/int_sd/previews/sms",
+            "legacy": "False",
+            "overclock": "524",
+            "background": "backgrounds/sms_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/sms",
+            "type": "emulator",
+            "folderIcon": "theme/icons/Sms.png",
+            "icon": "systems/sms.png"
+        },
+        {
+            "name": "Game Gear",
+            "screen": "default",
+            "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl",
+            "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl",
+            "previews": "//mnt/int_sd/previews/gg",
+            "legacy": "False",
+            "overclock": "524",
+            "background": "backgrounds/gg_art_blur.jpg",
+            "selectionPath": "/mnt/int_sd/roms/gg",
+            "type": "emulator",
+            "folderIcon": "theme/icons/GameGear01.png",
+            "icon": "systems/gg.png"
+        },
+        {
+            "name": "Ports",
+            "type": "native",
+            "description": "Native ports to this device",
+            "background": "backgrounds/ports2_art_blur.jpg",
+            "data": [
+                {
+                    "name": "Wolfenstein 3D",
+                    "screen": "default",
+                    "cmd": "/mnt/vfat/int_sd/games/wolf3d/run.dge",
+                    "legacy": false,
+                    "overclock": "528",
+                    "preview": ".",
+                    "icon": "."
+                }
+            ],
+            "icon": "systems/ports.png"
+        },
+        {
+            "description": "Applications",
+            "name": "Apps",
+            "type": "native",
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": null,
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/izm_art_blur.jpg",
+            "selectionPath": null,
+            "data": [
+                {
+                    "name": "DinguCommander",
+                    "screen": "default",
+                    "cmd": "/mnt/int_sd/apps/commander/run.dge",
+                    "legacy": false,
+                    "overclock": "528",
+                    "preview": ".",
+                    "icon": "."
+                }
+            ],
+            "icon": "systems/apps.png"
+        }
+    ],
+    "options": {
+        "displayTimeout": "60"
+    },
+    "screenHeight": 240,
+    "batteryLow": 3600,
+    "screenWidth": 320,
+    "batteryHight": 4500
+}

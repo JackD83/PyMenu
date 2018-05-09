@@ -77,7 +77,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.subComponent = None
        
 
-    def booleanCallback(self, selection):
+    def booleanCallback(self, selection, text):
         self.overlay = None     
 
         text = "True"
@@ -100,7 +100,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.initList()
        
 
-    def listCallback(self, selection):
+    def listCallback(self, selection, text):
         self.overlay = None
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = self.entryList[self.currentIndex]["options"]["values"][selection]
         self.fireConfigChanged()

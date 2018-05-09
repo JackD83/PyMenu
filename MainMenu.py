@@ -87,35 +87,38 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     
-    def openOptions(self):    
+    def openOptions(self):      
         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openContextMenu(self):
-        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Mount USB", "Poweroff", "Reboot", "Options"], self.contextMenuCallback)
+        if(Configuration.isRS97()):
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
+        else:
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Mount USB", "Poweroff", "Reboot", "Options"], self.contextMenuCallback)
 
-    def contextMenuCallback(self, selection):
+    def contextMenuCallback(self, selection, text):
         self.overlay = None
       
-        if(selection == 0):          
+        if(text == "Mount USB"):          
             print("Mounting USB")
             options = {}
             options["cmd"] = "/opt/usb/usb.sh"
             Runner.runNative(options)
            
-        if(selection == 1):
+        if(text == "Poweroff"):
             if(platform.processor() == ""):
                 subprocess.Popen(["sync"])
                 subprocess.Popen(["poweroff"])
             else:
                 print("Poweroff")
              
-        if(selection == 2):
+        if(text == "Reboot"):
             if(platform.processor() == ""):
                 subprocess.Popen(["sync"])
                 subprocess.Popen(["reboot"])
             else:
                 print("reboot")
-        if(selection == 3):          
+        if(text == "Options"):          
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
@@ -163,13 +166,13 @@ class MainMenu(RenderObject.RenderObject):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
             self.subComponent.setFooter(footer)    
 
-    def nativeCallback(self, selection):
+    def nativeCallback(self, selection, text):
         self.subComponent = None
         if(selection != None):
             Runner.runNative(selection)
 
 
-    def optionsCallback(self, optionID):
+    def optionsCallback(self, optionID, text):
         print("Options came back with: ", optionID)
         self.overlay = None
         if(optionID == 0):
@@ -178,6 +181,8 @@ class MainMenu(RenderObject.RenderObject):
             conf = None
             if(self.config["mainMenu"][self.currentIndex]["type"] == "emulator"):              
                 conf = json.load(open('config/entry.json'))
+                if(not Configuration.isRS97()):                  
+                    conf = conf + json.load(open('config/pap.json'))
             else:               
                 conf = json.load(open('config/native.json'))
 
@@ -190,7 +195,7 @@ class MainMenu(RenderObject.RenderObject):
             RenderControl.setDirty()
 
 
-    def typeAddCallback(self, t):
+    def typeAddCallback(self, t, text):
         self.overlay = None
 
         data = None
@@ -198,6 +203,8 @@ class MainMenu(RenderObject.RenderObject):
         if(t==0):
             data = self.getEmptyEmulatorData()
             conf = json.load(open('config/entry.json'))
+            if(not Configuration.isRS97()):
+                conf = conf + json.load(open('config/pap.json'))
         else:
             data = self.getEmptyNativeData()
             conf = json.load(open('config/native.json'))

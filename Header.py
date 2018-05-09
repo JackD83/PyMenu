@@ -104,7 +104,7 @@ class Header():
     
     def isUsbConnected(self):
         if(self.usbDevice == None):
-            return
+            return False
 
         try:
             self.usbDevice.seek(0)
@@ -118,10 +118,11 @@ class Header():
     
     def updateBattery(self):
         self.readBatteryLevel()
+        self.updateHeader()
+        RenderControl.setDirty()
 
     def readBatteryLevel(self):
-        if(self.battery == None):
-            print("No battery device")
+        if(self.battery == None):          
             return
 
         try:
@@ -142,7 +143,7 @@ class Header():
             self.batteryLevel = (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) / ( int(self.config["batteryHight"]) -  int(self.config["batteryLow"]) )  * 100
 
         except Exception as ex:
-            pass
+            print(str(ex))
     
     def volumeAnimation(self, start, target, current, finished):
         self.volAlpha = int(current)
@@ -173,7 +174,7 @@ class Header():
             TaskHandler.addPeriodicTask(100, self.updateVolume)
             TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
 
-        TaskHandler.addPeriodicTask(1000, self.updateBattery)
+        TaskHandler.addPeriodicTask(10000, self.updateBattery)
     
       
    

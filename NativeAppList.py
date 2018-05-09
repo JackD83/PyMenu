@@ -119,7 +119,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.entryList.append(entry)
         self.onChange()
    
-    def optionsCallback(self, selection):           
+    def optionsCallback(self, selection, text):           
         self.overlay = None
      
         if(selection == 0):
