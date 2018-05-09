@@ -108,11 +108,12 @@ class Header():
 
         try:
             self.usbDevice.seek(0)
-            first_line = self.usbDevice.readline()
-            if(first_line == "USB"):
+            first_line = self.usbDevice.readline().strip()         
+
+            if(first_line == "usb"):
                 return True      
         except Exception as ex:
-            pass
+            print(str(ex))
         
         return False
     
@@ -131,7 +132,7 @@ class Header():
             batteryLevelMVolt = int(first_line)
           
             if (not "batteryLow" in self.config):
-                self.config["batteryLow"] = 3600
+                self.config["batteryLow"] = 3900
                 self.config["batteryHight"] = 4500
 
             if(batteryLevelMVolt < self.config["batteryLow"]):
@@ -140,7 +141,7 @@ class Header():
             if(batteryLevelMVolt > self.config["batteryHight"]):
                 self.config["batteryHigh"] = batteryLevelMVolt
 
-            self.batteryLevel = (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) / ( int(self.config["batteryHight"]) -  int(self.config["batteryLow"]) )  * 100
+            self.batteryLevel = float( (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) ) / float( ( int(self.config["batteryHight"]) -  int(self.config["batteryLow"]) ) )  * 100.0
 
         except Exception as ex:
             print(str(ex))
@@ -165,6 +166,8 @@ class Header():
 
             self.battery = open("/proc/jz/battery", "r")           
             self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
+
+            self.updateBattery()
         except Exception as ex:
             print("Could not open devices" + str(ex))
 
@@ -174,7 +177,7 @@ class Header():
             TaskHandler.addPeriodicTask(100, self.updateVolume)
             TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
 
-        TaskHandler.addPeriodicTask(10000, self.updateBattery)
+        TaskHandler.addPeriodicTask(1000, self.updateBattery)
     
       
    

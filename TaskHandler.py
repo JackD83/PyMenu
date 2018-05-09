@@ -11,7 +11,7 @@ def addPeriodicTask(time, callback, delay=0):
     task = {}
     task["delay"] = counter + (float(Common.FPS) / 1000 * delay)
     task["start"] = counter
-    task["val"] = Common.FPS / 1000 * time
+    task["val"] = float(Common.FPS) / 1000.0 * float(time)
     task["callback"] = callback
 
     periodic[id] = task
@@ -70,9 +70,11 @@ def updateTasks():
     for anim in toDelete:
         del animations[anim]
 
+
     for task in periodic:
         if(counter >= periodic[task]["delay"]):
             time = counter - periodic[task]["start"]
-            if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):          
+                      
+            if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):               
                 periodic[task]["callback"]()
 

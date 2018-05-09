@@ -1,10 +1,9 @@
 {
     "firstStart": false,
-    "RS97": true,
+    "screenHeight": 240,
     "mainMenu": [
         {
             "description": "nice 16bit system",
-            "name": "SNES",
             "screen": "default",
             "cmd": "/mnt/ext_sd/int_sd/emus/snes9x4d/snes9x4d.dge",
             "workingDir": "/mnt/ext_sd/int_sd/emus/snes9x4d",
@@ -13,13 +12,13 @@
             "overclock": "624",
             "background": "backgrounds/snes_art_blur.jpg",
             "selectionPath": "/mnt/int_sd/roms/snes",
+            "icon": "systems/snes.png",
             "type": "emulator",
             "folderIcon": "theme/icons/Sfc_03.png",
-            "icon": "systems/snes.png"
+            "name": "SNES"
         },
         {
             "description": "nice 8bit system",
-            "name": "NES",
             "screen": null,
             "cmd": "//mnt/int_sd/emus/fceux/fceux",
             "workingDir": "/mnt/ext_sd/int_sd/emus/fceux",
@@ -28,13 +27,13 @@
             "overclock": null,
             "background": "backgrounds/nes_art_blur.jpg",
             "selectionPath": "/mnt/int_sd/roms/nes",
+            "icon": "systems/nes1.png",
             "type": "emulator",
             "folderIcon": "theme/icons/Nes.png",
-            "icon": "systems/nes1.png"
+            "name": "NES"
         },
         {
             "description": "Gameboy DMG",
-            "name": "GB",
             "screen": "default",
             "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
             "workingDir": "//mnt/int_sd/emus/gamebatte",
@@ -43,13 +42,13 @@
             "overclock": "528",
             "background": "backgrounds/gb_art_blur.jpg",
             "selectionPath": "/mnt/int_sd/roms/gb",
+            "icon": "systems/gb.png",
             "type": "emulator",
             "folderIcon": "theme/icons/Gameboy03.png",
-            "icon": "systems/gb.png"
+            "name": "GB"
         },
         {
             "description": "Gameboy Color",
-            "name": "GBC",
             "screen": "default",
             "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
             "workingDir": "//mnt/int_sd/emus/gamebatte",
@@ -58,9 +57,10 @@
             "overclock": "528",
             "background": "backgrounds/gbc_art_blur.jpg",
             "selectionPath": "/mnt/int_sd/roms/gbc",
+            "icon": "systems/gbc.png",
             "type": "emulator",
             "folderIcon": "theme/icons/GBC_Purple.png",
-            "icon": "systems/gbc.png"
+            "name": "GBC"
         },
         {
             "name": "Genesis",
@@ -78,7 +78,6 @@
         },
         {
             "description": "Gameboy Advance",
-            "name": "GBA",
             "screen": "default",
             "cmd": "//mnt/int_sd/emus/regba/regba",
             "workingDir": "//mnt/ext_sd/int_sd/emus/regba",
@@ -87,9 +86,10 @@
             "overclock": "624",
             "background": "backgrounds/gba_art_blur.jpg",
             "selectionPath": "/mnt/int_sd/roms/gba",
+            "icon": "systems/gba.png",
             "type": "emulator",
             "folderIcon": "theme/icons/Gba02.png",
-            "icon": "systems/gba.png"
+            "name": "GBA"
         },
         {
             "name": "SMS",
@@ -139,16 +139,6 @@
         },
         {
             "description": "Applications",
-            "name": "Apps",
-            "type": "native",
-            "screen": null,
-            "cmd": null,
-            "workingDir": null,
-            "previews": null,
-            "legacy": null,
-            "overclock": null,
-            "background": "backgrounds/izm_art_blur.jpg",
-            "selectionPath": null,
             "data": [
                 {
                     "name": "DinguCommander",
@@ -160,14 +150,25 @@
                     "icon": "."
                 }
             ],
-            "icon": "systems/apps.png"
+            "screen": null,
+            "cmd": null,
+            "workingDir": null,
+            "previews": null,
+            "legacy": null,
+            "overclock": null,
+            "background": "backgrounds/izm_art_blur.jpg",
+            "selectionPath": null,
+            "icon": "systems/apps.png",
+            "type": "native",
+            "name": "Apps"
         }
     ],
+    "batteryHight": 4500,
+    "RS97": true,
+    "batteryLow": 3900,
+    "screenWidth": 320,
+    "batteryHigh": 2147487908,
     "options": {
         "displayTimeout": "60"
-    },
-    "screenHeight": 240,
-    "batteryLow": 3600,
-    "screenWidth": 320,
-    "batteryHight": 4500
+    }
 }

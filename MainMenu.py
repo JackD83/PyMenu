@@ -166,7 +166,7 @@ class MainMenu(RenderObject.RenderObject):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
             self.subComponent.setFooter(footer)    
 
-    def nativeCallback(self, selection, text):
+    def nativeCallback(self, selection):
         self.subComponent = None
         if(selection != None):
             Runner.runNative(selection)
