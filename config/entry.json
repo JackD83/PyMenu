@@ -17,8 +17,7 @@
 },
 {   "id":"cmd",
     "name" :"Executable",
-    "type":"file",
-    "filter": [".dge", ".sh", ".exe"]
+    "type":"file"    
 },
 {   "id":"workingDir",
     "name" :"Work directory",

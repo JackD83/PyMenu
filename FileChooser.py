@@ -102,7 +102,7 @@ class FileChooser(AbstractList.AbstractList):
    
     def initList(self):
         print(self.currentPath)
-        if(os.path.isdir(self.currentPath)):
+        if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
             entry = {}
             entry["name"] = ".."

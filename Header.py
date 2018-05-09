@@ -121,6 +121,7 @@ class Header():
 
     def readBatteryLevel(self):
         if(self.battery == None):
+            print("No battery device")
             return
 
         try:
@@ -158,8 +159,10 @@ class Header():
         self.updateHeader()      
 
         try:
-            self.battery = open("/proc/jz/battery", "r")
-            self.volumeDevice = open("/opt/volume/volume.cfg", "r")
+            if(not Configuration.isRS97()):
+                self.volumeDevice = open("/opt/volume/volume.cfg", "r")
+
+            self.battery = open("/proc/jz/battery", "r")           
             self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
         except Exception as ex:
             print("Could not open devices" + str(ex))

@@ -105,14 +105,14 @@ class MainMenu(RenderObject.RenderObject):
         if(selection == 1):
             if(platform.processor() == ""):
                 subprocess.Popen(["sync"])
-                subprocess.Popen(["/opt/poweroff.sh"])
+                subprocess.Popen(["poweroff"])
             else:
                 print("Poweroff")
              
         if(selection == 2):
             if(platform.processor() == ""):
                 subprocess.Popen(["sync"])
-                subprocess.Popen(["/opt/reboot.sh"])
+                subprocess.Popen(["reboot"])
             else:
                 print("reboot")
         if(selection == 3):          

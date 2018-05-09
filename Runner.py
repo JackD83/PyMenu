@@ -34,7 +34,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     if(overclock != None):
         try:
-            subprocess.Popen(["/opt/overclock/overclock.dge", overclock])
+            subprocess.Popen(["overclock.dge", overclock])
         except Exception as ex:
             pass
 
@@ -110,7 +110,7 @@ def runNativeMIPS(cmd, config):
 
     if(overclock != None):
         try:
-            subprocess.Popen(["/opt/overclock/overclock.dge", overclock])
+            subprocess.Popen(["overclock.dge", overclock])
         except Exception as ex:
             pass
 
