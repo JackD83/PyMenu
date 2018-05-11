@@ -133,15 +133,15 @@ class Header():
           
             if (not "batteryLow" in self.config):
                 self.config["batteryLow"] = 3900
-                self.config["batteryHight"] = 4500
+                self.config["batteryHigh"] = 4500
 
             if(batteryLevelMVolt < self.config["batteryLow"]):
                 self.config["batteryLow"] = batteryLevelMVolt
             
-            if(batteryLevelMVolt > self.config["batteryHight"]):
+            if(batteryLevelMVolt > self.config["batteryHigh"] and batteryLevelMVolt < 10000 ):
                 self.config["batteryHigh"] = batteryLevelMVolt
 
-            self.batteryLevel = float( (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) ) / float( ( int(self.config["batteryHight"]) -  int(self.config["batteryLow"]) ) )  * 100.0
+            self.batteryLevel = float( (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) ) / float( ( int(self.config["batteryHigh"]) -  int(self.config["batteryLow"]) ) )  * 100.0
 
         except Exception as ex:
             print(str(ex))

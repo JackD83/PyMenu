@@ -1,20 +1,19 @@
 {
     "RS97": true, 
-    "batteryHigh": 2147487532, 
-    "batteryHight": 4500, 
+    "batteryHigh": 4500, 
     "batteryLow": 3900, 
     "firstStart": false, 
     "mainMenu": [
         {
             "background": "backgrounds/snes_art_blur.jpg", 
             "cmd": "/mnt/ext_sd/int_sd/emus/snes9x4d/snes9x4d.dge", 
-            "description": "nice 16bit system", 
+            "description": "Super NES", 
             "folderIcon": "theme/icons/Sfc_03.png", 
             "icon": "systems/snes.png", 
             "legacy": "False", 
             "name": "SNES", 
-            "overclock": "600", 
-            "previews": "\\mnt\\int_sd\\previews\\snes", 
+            "overclock": "624", 
+            "previews": "/mnt/vfat/int_sd/previews/snes", 
             "screen": "default", 
             "selectionPath": "/mnt/int_sd/roms/snes", 
             "type": "emulator", 
@@ -23,7 +22,7 @@
         {
             "background": "backgrounds/nes_art_blur.jpg", 
             "cmd": "//mnt/int_sd/emus/fceux/fceux", 
-            "description": "nice 8bit system", 
+            "description": null, 
             "folderIcon": "theme/icons/Nes.png", 
             "icon": "systems/nes1.png", 
             "legacy": null, 
@@ -111,6 +110,7 @@
         {
             "background": "backgrounds/gg_art_blur.jpg", 
             "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+            "description": "Sega  Game Gear", 
             "folderIcon": "theme/icons/GameGear01.png", 
             "icon": "systems/gg.png", 
             "legacy": "False", 

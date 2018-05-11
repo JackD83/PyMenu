@@ -22,8 +22,7 @@ class FileChooser(AbstractList.AbstractList):
             text = self.renderText(self.entryList[index])
 
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
-
-       
+              
         if(self.entryList[index]["isFolder"]):
             screen.blit(text, (self.listEntryHeight + 4 + xOffset, yOffset + yTextOffset))
             screen.blit(self.folderIcon, (self.xFolderOffset+ xOffset, yOffset +  self.yFolderOffset) )
@@ -98,7 +97,6 @@ class FileChooser(AbstractList.AbstractList):
                
 
         AbstractList.AbstractList.handleEvents(self, events)
-
    
     def initList(self):
         print(self.currentPath)
@@ -110,15 +108,21 @@ class FileChooser(AbstractList.AbstractList):
             entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
+            fileList = os.listdir(os.path.normpath(self.currentPath))     
+             
+            #prevents segfault soring files
+            if(len(fileList) < 1000):
+                fileList.sort()
+          
             try:
-                for f in sorted(os.listdir(self.currentPath)):
+                for f in fileList:                   
                     if(os.path.isdir(self.currentPath + "/" + f)):
                         entry = {}
                         entry["name"] = f
                         entry["isFolder"] = True
                         entry["text"] = None
                         self.entryList.append(entry)
-                for f in sorted(os.listdir(self.currentPath)):
+                for f in fileList:                   
                     if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
                         entry = {}
                         entry["name"] = f

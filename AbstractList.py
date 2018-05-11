@@ -50,28 +50,23 @@ class AbstractList(RenderObject.RenderObject):
     
     def renderScrollbar(self, screen):
         shouldBe = self.listEntryHeight * (len(self.entryList) - self.maxListEntries)
-        if(shouldBe <= self.listHeight):
+        if(shouldBe <= self.listHeight):          
             return
 
-        percent = self.listHeight / shouldBe
+        percent = float(self.listHeight) / shouldBe
         barHeight = self.listHeight * percent
 
         scrollRest = self.listHeight - barHeight
       
         progress = self.currentWrap * self.listEntryHeight
-        percentProgress = progress / shouldBe
+        percentProgress = float(progress) / shouldBe
 
-        offset = scrollRest * percentProgress
+        offset = scrollRest * percentProgress       
 
         pygame.draw.line(screen, (105,105,105), (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
-
-
-
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
-        return
-
         if(not self.previewEnabled):
             return
         

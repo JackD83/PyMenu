@@ -2,7 +2,12 @@
     "id":"name",
     "name" :"Name",
     "type":"string"        
-}, 
+},
+{
+    "id":"description",
+    "name" :"Description",
+    "type":"string"        
+},
 {   "id":"background",
     "name" :"Background Image",
     "type":"image"      
@@ -13,7 +18,7 @@
 },  
 {   "id":"folderIcon",
     "name" :"Folder Icon (32px)",
-    "type":"image"      
+    "type":"image"
 },
 {   "id":"cmd",
     "name" :"Executable",
