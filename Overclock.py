@@ -5,13 +5,12 @@ def setClock(newClock):
         CPPCR = (0x10 >> 2)
 
         m = newClock / 6
-        if(m >= 200){
-            m = 200;
-        }
-
-        if(m < 4){
-            m = 4;
-        }
+        if(m >= 200):
+            m = 200
+        
+        if(m < 4):
+            m = 4
+        
 
         try:
             map.mmap(1024, mmap.MAP_SHARED, mmap.PROT_READ | mmap.PROT_WRITE, 0x10000000) 
