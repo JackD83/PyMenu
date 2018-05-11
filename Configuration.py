@@ -14,7 +14,7 @@ def reloadConfiguration():
 def saveConfiguration():
     subprocess.Popen(["sync"])
     with open('config/config.json', 'w') as fp:
-        json.dump(configuration, fp)
+        json.dump(configuration, fp,sort_keys=True, indent=4)
         subprocess.Popen(["sync"])
 
 def getTheme():

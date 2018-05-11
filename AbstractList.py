@@ -70,6 +70,8 @@ class AbstractList(RenderObject.RenderObject):
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
+        return
+
         if(not self.previewEnabled):
             return
         

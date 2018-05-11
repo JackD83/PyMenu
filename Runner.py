@@ -1,6 +1,6 @@
 import subprocess
 import platform
-import sys, os, stat
+import sys, os, stat, Overclock
 
 def runEmu(config, rom):
     name =  config["name"]
@@ -34,7 +34,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     if(overclock != None):
         try:
-            subprocess.Popen(["overclock.dge", overclock])
+           Overclock.setClock(overclock)
         except Exception as ex:
             pass
 
@@ -110,7 +110,7 @@ def runNativeMIPS(cmd, config):
 
     if(overclock != None):
         try:
-            subprocess.Popen(["overclock.dge", overclock])
+            Overclock.setClock(overclock)
         except Exception as ex:
             pass
 
