@@ -15,8 +15,7 @@ class NativeAppList(AbstractList.AbstractList):
     configOptions = [
     {   "id":"cmd",
         "name" :"Executable",
-        "type":"file",
-        "filter": [".dge", ".sh", ".exe"]
+        "type":"file"
     }, 
     {
         "id":"name",

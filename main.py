@@ -18,13 +18,22 @@ try:
 except Exception as ex:
     pass
 
-
+def setVolume():
+    if(Configuration.isRS97()):
+        try:
+            import ossaudiodev, oss_mixer_device
+            mixer=ossaudiodev.openmixer()
+            control = mixer.controls()
+            oss_mixer_device.set(control, (100, 100))
+        except Exception as ex:
+            print("No OSS mixer " + str(ex))
 
 def init():
+    setVolume()
     if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
     else:
-         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
+        realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
 
     screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
 
