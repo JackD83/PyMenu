@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
 import os, Keys, RenderControl, Common, SelectionMenu
-import pygame, sys
+import pygame, sys, ResumeHandler
 import platform
 from operator import itemgetter
 
@@ -66,6 +66,7 @@ class NativeAppList(AbstractList.AbstractList):
 
     def onSelect(self):
         if(len(self.entryList) > 0):
+            ResumeHandler.setLastSelectedLine(self.currentIndex)
             self.callback(self.entryList[self.currentIndex]["options"])
     
     def onExit(self):

@@ -1,8 +1,9 @@
-import subprocess
+import subprocess, ResumeHandler
 import platform
 import sys, os, stat, Overclock
 
 def runEmu(config, rom):
+    ResumeHandler.storeResume()
     name =  config["name"]
     workdir = config["workingDir"] if "workingDir" in config else None
     cmd =  config["cmd"] if "workingDir" in config else None
@@ -88,7 +89,7 @@ def runEmuHost(name, cmd, workdir, config, rom):
     
 
 def runNative(config):
-    print(config)
+    ResumeHandler.storeResume()
     cmd =  config["cmd"] if "cmd" in config else None
 
     if(cmd == None or not os.path.isfile(cmd)):

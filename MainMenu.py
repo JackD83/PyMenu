@@ -1,6 +1,6 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
-import os
+import os, ResumeHandler
 import json
 import pygame, sys, subprocess,platform
 from pprint import pprint
@@ -130,8 +130,11 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openSelection(self):
+
         print("Opening selection")
         current = self.config["mainMenu"][self.currentIndex]
+
+        ResumeHandler.setLastUsedMain(current)
 
         if(current["type"] == "emulator"):
             print("Opening emulator file selection")

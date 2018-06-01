@@ -6,7 +6,7 @@
     "mainMenu": [
         {
             "background": "backgrounds/snes_art_blur.jpg", 
-            "cmd": "/mnt/ext_sd/int_sd/emus/snes9x4d/snes9x4d.dge", 
+            "cmd": "/mnt/int_sd/emus/snes9x4d/snes9x4d.dge", 
             "description": "Super NES", 
             "folderIcon": "theme/icons/Sfc_03.png", 
             "icon": "systems/snes.png", 
@@ -133,6 +133,15 @@
                     "overclock": "528", 
                     "preview": ".", 
                     "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/czdoom/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Doom", 
+                    "overclock": "624", 
+                    "preview": ".", 
+                    "screen": "default"
                 }
             ], 
             "description": "Native ports to this device", 
@@ -149,6 +158,15 @@
                     "icon": ".", 
                     "legacy": false, 
                     "name": "DinguCommander", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/apps/commander/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "run", 
                     "overclock": "528", 
                     "preview": ".", 
                     "screen": "default"

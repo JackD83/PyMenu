@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList
 import os, Keys, RenderControl, Common
-import pygame, sys
+import pygame, sys, ResumeHandler
 from operator import itemgetter
 
 class FileChooser(AbstractList.AbstractList):
@@ -54,6 +54,8 @@ class FileChooser(AbstractList.AbstractList):
         if(self.entryList[self.currentIndex]["isFolder"]):
             self.loadFolder(self.entryList[self.currentIndex])
         else:
+            ResumeHandler.setLastSelectedLine(self.currentIndex)
+            ResumeHandler.setLastPath(os.path.normpath(self.currentPath + "/"))
             self.callback(os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"]))
     
     def onExit(self):

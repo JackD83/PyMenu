@@ -5,6 +5,7 @@ import platform
 from pygame.locals import *
 
 
+
 pygame.init()
 pygame.font.init()
 pygame.mouse.set_visible(False)
@@ -21,12 +22,19 @@ except Exception as ex:
 def setVolume():
     if(Configuration.isRS97()):
         try:
-            import ossaudiodev, oss_mixer_device
-            mixer=ossaudiodev.openmixer()
-            control = mixer.controls()
-            oss_mixer_device.set(control, (100, 100))
+            pass
+            ##not working
+            # from fcntl import ioctl
+       
+            # filename = "/dev/mixer"
+            # SOUND_MIXER_WRITE_VOLUME = 0xc0044d00
+            # oss_volume = 100 | (100 << 8)
+          
+            # fd = open(filename, "wb")            
+            # ioctl(fd, SOUND_MIXER_WRITE_VOLUME, oss_volume)
+            # fd.close()
         except Exception as ex:
-            print("No OSS mixer " + str(ex))
+            print("could not set volume: " + str(ex))
 
 def init():
     setVolume()

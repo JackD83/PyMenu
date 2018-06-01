@@ -4,7 +4,7 @@ export SDL_AUDIODRIVER=dsp
 export SDL_NOMOUSE=1
 export HOME=/mnt/int_sd
 
-cp overclock.dge /tmp
+/mnt/game/PyMenu/setVolume 100
 
 FILE="/tmp/run"
 while true
