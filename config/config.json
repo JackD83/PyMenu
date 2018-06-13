@@ -67,12 +67,13 @@
         {
             "background": "backgrounds/gen_art_blur.jpg", 
             "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
+            "description": null, 
             "folderIcon": "theme/icons/MegaDrive2.png", 
             "icon": "systems/gen.png", 
             "legacy": "False", 
             "name": "Genesis", 
             "overclock": "600", 
-            "previews": "//mnt/int_sd/previews/md", 
+            "previews": "//mnt/int_sd/previews/gamegear", 
             "screen": "default", 
             "selectionPath": "/mnt/int_sd/roms/md", 
             "type": "emulator", 
@@ -87,7 +88,7 @@
             "legacy": "False", 
             "name": "GBA", 
             "overclock": "624", 
-            "previews": "/mnt/ext_sd/int_sd/previews", 
+            "previews": "/mnt/int_sd/previews/gba", 
             "screen": "default", 
             "selectionPath": "/mnt/int_sd/roms/gba", 
             "type": "emulator", 
@@ -116,7 +117,7 @@
             "legacy": "False", 
             "name": "Game Gear", 
             "overclock": "524", 
-            "previews": "//mnt/int_sd/previews/gg", 
+            "previews": "//mnt/int_sd/previews/gamegear", 
             "screen": "default", 
             "selectionPath": "/mnt/int_sd/roms/gg", 
             "type": "emulator", 
@@ -138,8 +139,188 @@
                     "cmd": "/mnt/vfat/int_sd/games/czdoom/run.dge", 
                     "icon": ".", 
                     "legacy": false, 
-                    "name": "Doom", 
+                    "name": "Doom II", 
                     "overclock": "624", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/hhexen/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Hexen", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/hheretic/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Heretic", 
+                    "overclock": "624", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/arkanoid/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Arkanoid", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/asciiportal/asciiportal", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "asciiportal", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/bermuda/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Bermuda", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/boulder/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "boulder", 
+                    "overclock": "528", 
+                    "preview": "/mnt/vfat/int_sd/games/boulder/boulder.png", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/cavestory/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Cave Story", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/chocolate_doom/chocolate-doom", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Doom", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/digger/digger", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "digger", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/eduke32/eduke32", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Duke3D", 
+                    "overclock": "528", 
+                    "preview": "/mnt/vfat/int_sd/games/eduke32/eduke32.png", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/freedroid/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "freedroid", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/ganbare/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Ganbare", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/homing/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Homing Fever", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/quake/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Quake", 
+                    "overclock": "624", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/just4qix/just4qix", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "just4qix", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/ketm/ketm", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "ketm", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/lastmission/last-mission", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "last-mission", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/meritous/meritous", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "meritous", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/meteoroid3d/meteoroid3d", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "meteoroid3d", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/mrdrillux/drill", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "mrdriller", 
+                    "overclock": "528", 
                     "preview": ".", 
                     "screen": "default"
                 }
@@ -163,12 +344,39 @@
                     "screen": "default"
                 }, 
                 {
-                    "cmd": "/mnt/vfat/int_sd/apps/commander/run.dge", 
+                    "cmd": "/mnt/vfat/game/gmenu2x/gmenu2x", 
                     "icon": ".", 
                     "legacy": false, 
-                    "name": "run", 
+                    "name": "gmenu2x", 
                     "overclock": "528", 
                     "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/apps/glutexto/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Glutexto", 
+                    "overclock": "528", 
+                    "preview": "/mnt/vfat/int_sd/apps/glutexto/data/keyboard320.png", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/apps/gmu/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "GMU", 
+                    "overclock": "528", 
+                    "preview": "/mnt/vfat/int_sd/apps/gmu/gmu.png", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/apps/o2xiv/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "O2xiv", 
+                    "overclock": "528", 
+                    "preview": "/mnt/vfat/int_sd/apps/o2xiv/o2xiv.png", 
                     "screen": "default"
                 }
             ], 
