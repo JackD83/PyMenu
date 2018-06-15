@@ -1,0 +1,4 @@
+{   "id":"legacy",
+    "name" :"Legacy app",
+    "type":"boolean"      
+}

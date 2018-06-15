@@ -215,6 +215,12 @@ class AbstractList(RenderObject.RenderObject):
         if(len(self.entryList) < self.maxListEntries):
             self.currentWrap = 0
 
+    def setSelection(self,selection):
+        self.currentIndex = 0
+        self.currentWrap = 0
+        self.down(selection)
+
+
     def initBackground(self):       
         if("background" in self.options):
             self.background = pygame.transform.scale(Common.loadImage(self.options["background"]), (self.config["screenWidth"],self.config["screenHeight"]))

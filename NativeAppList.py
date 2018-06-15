@@ -2,6 +2,7 @@ import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOve
 import os, Keys, RenderControl, Common, SelectionMenu
 import pygame, sys, ResumeHandler
 import platform
+import json
 from operator import itemgetter
 
 class NativeAppList(AbstractList.AbstractList):
@@ -21,15 +22,10 @@ class NativeAppList(AbstractList.AbstractList):
         "id":"name",
         "name" :"Name",
         "type":"string",        
-    },
-      
+    },      
     {   "id":"preview",
         "name" :"Preview Image",
         "type":"image"      
-    },     
-    {   "id":"legacy",
-        "name" :"Legacy app",
-        "type":"boolean"      
     },     
     {   "id":"screen",
         "name" :"Screen option",
@@ -58,7 +54,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.overlay.render(screen)
           
  
-    def renderEntry(self, screen, index, xOffset, yOffset):
+    def renderEntry(self, screen, index, xOffset, yOffset):       
         text = self.entryList[index]["text"]
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
         screen.blit(text, (4 + xOffset, yOffset + yTextOffset + 1))
@@ -121,6 +117,10 @@ class NativeAppList(AbstractList.AbstractList):
    
     def optionsCallback(self, selection, text):           
         self.overlay = None
+
+        if(not Configuration.isRS97()):
+            self.configOptions = self.configOptions + json.load(open('config/legacy.json'))
+          
      
         if(selection == 0):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
@@ -141,20 +141,22 @@ class NativeAppList(AbstractList.AbstractList):
 
     def deleteCallback(self, res):
         self.overlay = None
-        if(res == 1):
+        if(res == 1):            
             self.data.remove(self.currentSelection)
-            Configuration.saveConfiguration()
+            Configuration.saveConfiguration()          
             self.initList()
+            self.setSelection(self.currentSelection - 1)            
+            
 
     def addEditCallback(self, configCallback):        
         if(configCallback != None and not configCallback in self.data):
             self.data.append(configCallback)            
    
-
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
-        self.currentIndex = len(self.entryList) - 1
+        self.setSelection(len(self.entryList) - 1)
+       
 
     def configCallback(self, config):
         if(config["name"] == None and ( config["cmd"] != None or config["cmd"] == "None" )   ):

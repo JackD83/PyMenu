@@ -52,12 +52,12 @@ class MainMenu(RenderObject.RenderObject):
             if event.type == pygame.KEYDOWN:           
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
                     if(not self.inTransition):
-                        TaskHandler.addAnimation(0, -160, 200, self.transitionCallback)
+                        TaskHandler.addAnimation(0, 160, 200, self.transitionCallback)
                         self.inTransition = True             
                         RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_RIGHT:
                     if(not self.inTransition):
-                        TaskHandler.addAnimation(0, 160,200, self.transitionCallback)
+                        TaskHandler.addAnimation(0, -160,200, self.transitionCallback)
                         self.inTransition = True             
                         RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_SELECT:                    
@@ -92,7 +92,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def openContextMenu(self):
         if(Configuration.isRS97()):
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
         else:
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Mount USB", "Poweroff", "Reboot", "Options"], self.contextMenuCallback)
 
@@ -102,7 +102,7 @@ class MainMenu(RenderObject.RenderObject):
         if(text == "Mount USB"):          
             print("Mounting USB")
             options = {}
-            options["cmd"] = "/opt/usb/usb.sh"
+            options["cmd"] = "/usr/bin/udc_connect.sh"
             Runner.runNative(options)
            
         if(text == "Poweroff"):
