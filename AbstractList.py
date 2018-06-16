@@ -1,5 +1,5 @@
 import RenderObject, Configuration, Footer
-import os, Keys, RenderControl, Common, TaskHandler
+import os, Keys, RenderControl, Common, TaskHandler,ResumeHandler
 import pygame, sys
 from operator import itemgetter
 
@@ -154,6 +154,7 @@ class AbstractList(RenderObject.RenderObject):
                     self.onSelect()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_B:
+                    ResumeHandler.clearResume()
                     self.onExit()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_Y:

@@ -194,7 +194,7 @@ class NativeAppList(AbstractList.AbstractList):
         self.initList()
 
         res = ResumeHandler.getResumeFile()
-        if(res != None):
+        if(res != None and res["line"] != None):
             self.setSelection(res["line"])
 
         

@@ -352,7 +352,7 @@ class MainMenu(RenderObject.RenderObject):
 
 
         res = ResumeHandler.getResumeFile()
-        if(res != None):
+        if(res != None and res["mainIndex"] != None and res["main"] != None):
             self.currentIndex = res["mainIndex"]
             self.openSelection(res["main"])
 

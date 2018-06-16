@@ -171,7 +171,7 @@ class FileChooser(AbstractList.AbstractList):
 
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
         AbstractList.AbstractList.__init__(self,screen, titel, options)
-
+      
         if(initialPath == None):
             initialPath = "/"
 
@@ -200,13 +200,17 @@ class FileChooser(AbstractList.AbstractList):
         self.yFileOffset =  0
         
         res = ResumeHandler.getResumeFile()
-        if(res != None):
+        if(res != None and res["path"] != None):
             self.currentSelection = res["path"]
             self.currentPath = res["path"]
             self.initialPath = res["path"]
 
         self.initList()
   
-        if(res != None):
+        if(res != None and res["line"] != None):
             self.setSelection(res["line"])
+            self.onChange()
+            
+            self.preview_final = self.previewPath          
+            RenderControl.setDirty()
       

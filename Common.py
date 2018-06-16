@@ -8,7 +8,7 @@ imageCache = {}
 
 def loadImage(path): 
 
-    if(os.path.exists(path)):
+    if(path != None and os.path.exists(path)):
         try:
             return pygame.image.load(path)
         except Exception:

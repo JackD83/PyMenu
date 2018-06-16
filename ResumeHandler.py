@@ -1,4 +1,4 @@
-import json
+import json, os
 lastUsed = None
 lastSelectedLine = None
 lastPath = None
@@ -10,8 +10,11 @@ def setLastUsedMain(json, index):
     lastUsed = json
     mainIndex = index
 
-
-
+def clearResume():
+    try:
+        os.remove("/tmp/resume.json")
+    except Exception as ex:
+        return None
 
 def setLastSelectedLine(line):
     global lastSelectedLine
@@ -37,6 +40,6 @@ def storeResume():
 def getResumeFile():
     try:
         res = json.load(open('/tmp/resume.json'))
-        return res
+        return res      
     except Exception as ex:
         return None
