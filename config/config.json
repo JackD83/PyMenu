@@ -5,6 +5,21 @@
     "firstStart": false, 
     "mainMenu": [
         {
+            "background": "backgrounds/lynx_art_blur.jpg", 
+            "cmd": "/mnt/vfat/int_sd/emus/handy/handy320", 
+            "description": null, 
+            "folderIcon": null, 
+            "icon": "systems/lynx.png", 
+            "legacy": false, 
+            "name": "Emulator", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": ".", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/handy"
+        }, 
+        {
             "background": "backgrounds/snes_art_blur.jpg", 
             "cmd": "/mnt/int_sd/emus/snes9x4d/snes9x4d.dge", 
             "description": "Super NES", 
@@ -320,6 +335,204 @@
                     "icon": ".", 
                     "legacy": false, 
                     "name": "mrdriller", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/openjazz/OpenJazz", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "OpenJazz", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/opentitus/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "opentitus", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/opentyrian/opentyrian", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Tyrian", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "center"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/pang/pang", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "pang", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/profadeluxe/profanation", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "profanation", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/puzzletube/puzzletube", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "puzzletube", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/reminiscence/rs", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "rs", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/rockbot/rockbot", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "rockbot", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/shifty/shifty", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "shifty", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/shisen/shisen.elf", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "shisen", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/smw/smw", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "smw", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/snowman/snowman", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "snowman", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/sorr/run.dge", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "sor", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/int_sd/games/spartak/spartak-chess", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "spartak-chess", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/spout/spout-od", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "spout", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/srb2/srb2", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "srb2", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/stransball2/stransball2", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "stransball2", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/supertux/supertux", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "supertux", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/tileworld/tworld", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "Tileworld", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/triple/tt", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "tt", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/wizznic/wizznic", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "wizznic", 
+                    "overclock": "528", 
+                    "preview": ".", 
+                    "screen": "default"
+                }, 
+                {
+                    "cmd": "/mnt/vfat/int_sd/games/zelda_roth/ZeldaROTH_US", 
+                    "icon": ".", 
+                    "legacy": false, 
+                    "name": "ZeldaROTH_US", 
                     "overclock": "528", 
                     "preview": ".", 
                     "screen": "default"

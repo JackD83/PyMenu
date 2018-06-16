@@ -64,7 +64,7 @@ class MainMenu(RenderObject.RenderObject):
                     self.openOptions()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
-                    self.openSelection()
+                    self.openSelection(self.config["mainMenu"][self.currentIndex])
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
                     self.openContextMenu()
@@ -129,12 +129,9 @@ class MainMenu(RenderObject.RenderObject):
         self.subComponent = None
         RenderControl.setDirty()
 
-    def openSelection(self):
-
-        print("Opening selection")
-        current = self.config["mainMenu"][self.currentIndex]
-
-        ResumeHandler.setLastUsedMain(current)
+    def openSelection(self, current):
+        print("Opening selection")       
+        ResumeHandler.setLastUsedMain(current, self.currentIndex)
 
         if(current["type"] == "emulator"):
             print("Opening emulator file selection")
@@ -352,5 +349,12 @@ class MainMenu(RenderObject.RenderObject):
 
         if("firstStart" in self.config and self.config["firstStart"]):
              self.overlay = InfoOverlay.InfoOverlay("theme/info.png", self.infoCallback)
+
+
+        res = ResumeHandler.getResumeFile()
+        if(res != None):
+            self.currentIndex = res["mainIndex"]
+            self.openSelection(res["main"])
+
 
         #self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))

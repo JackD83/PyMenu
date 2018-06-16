@@ -199,7 +199,14 @@ class FileChooser(AbstractList.AbstractList):
 
         self.yFileOffset =  0
         
+        res = ResumeHandler.getResumeFile()
+        if(res != None):
+            self.currentSelection = res["path"]
+            self.currentPath = res["path"]
+            self.initialPath = res["path"]
 
         self.initList()
   
+        if(res != None):
+            self.setSelection(res["line"])
       

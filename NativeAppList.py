@@ -192,5 +192,11 @@ class NativeAppList(AbstractList.AbstractList):
         self.xFileOffset =  (self.listEntryHeight - self.fileIcon.get_width()) / 2
 
         self.initList()
+
+        res = ResumeHandler.getResumeFile()
+        if(res != None):
+            self.setSelection(res["line"])
+
+        
       
       
