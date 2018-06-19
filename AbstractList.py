@@ -12,10 +12,14 @@ class AbstractList(RenderObject.RenderObject):
     selection = None
     footer = None
 
+    keyDown = False
+
     previewCache = {}
-    previewEnabled = False
+    previewEnabled = True
     previewPath = None
     preview_final = None
+
+    entryDescription = None
 
     previewBoxSize = 200
 
@@ -61,25 +65,30 @@ class AbstractList(RenderObject.RenderObject):
         progress = self.currentWrap * self.listEntryHeight
         percentProgress = float(progress) / shouldBe
 
-        offset = scrollRest * percentProgress       
+        offset = (scrollRest * percentProgress)  + self.headerHeight
 
         pygame.draw.line(screen, (105,105,105), (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
-        if(not self.previewEnabled):
-            return
-        
         if(self.currentIndex == -1):
             print("index - 1")
             return
+
+        if(not self.previewEnabled):
+            print("render descpription")
+            desc = self.renderDescription()
+            if(not desc == None):
+                screen.blit(desc,(5,56))
+            return
+               
 
         if(not self.useSidebar):
             previewBox = pygame.Surface((self.previewBoxSize, self.previewBoxSize))
             previewBox.fill(Configuration.toColor(self.theme["side"]["color"]))
 
-        if(self.preview_final != None and os.path.exists(self.preview_final)):
-            print("render " + self.preview_final)
+        if(self.preview_final != None and os.path.exists(self.preview_final) and os.path.isfile(self.preview_final) ):
+            #print("render " + self.preview_final)
                  
             image = None
             if(not self.preview_final in self.previewCache):
@@ -102,12 +111,37 @@ class AbstractList(RenderObject.RenderObject):
             else:
                 xOffset = (128 - image.get_width()) / 2
                 yOffset = (128 - image.get_height()) / 2
-                screen.blit(image,(5 + xOffset,56 + yOffset))
-
+                screen.blit(image,(5 + xOffset,56 + yOffset)) 
+        else:
+            if(not self.keyDown):
+                #fallback if image not found
+                desc = self.renderDescription()
+                if(not desc == None):
+                    if(not self.useSidebar):
+                        previewBox.blit(desc,(5,5))
+                    else:
+                        screen.blit(desc,(5,56))
 
         if(not self.useSidebar):
             screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
+
+     
+
         
+    def renderDescription(self):
+        if(not self.useSidebar):
+            return
+        
+        if(not self.entryDescription == None):
+            descriptionBox = pygame.Surface((128, 128))
+            descriptionBox.fill(Configuration.toColor(self.theme["side"]["color"]))
+            Common.blitMultilineText(descriptionBox, self.entryDescription, (0,10), self.descriptionFont, (255,255,255))
+
+            return descriptionBox
+
+           
+
+
 
     def renderHeader(self, screen):
         if(not self.useSidebar):
@@ -129,6 +163,8 @@ class AbstractList(RenderObject.RenderObject):
     def handleEvents(self, events):
         for event in events:    
             if event.type == pygame.KEYDOWN:
+                self.keyDown = True
+
                 if(not len(self.entryList) <= 1):              
                     self.preview_final = None
 
@@ -157,12 +193,16 @@ class AbstractList(RenderObject.RenderObject):
                     ResumeHandler.clearResume()
                     self.onExit()
                     RenderControl.setDirty()
-                if event.key == Keys.DINGOO_BUTTON_Y:
+                if event.key == Keys.DINGOO_BUTTON_Y:                  
+                    self.toggleSidebar(not self.useSidebar)
+                    RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_X:
                     self.previewEnabled = not self.previewEnabled
                     RenderControl.setDirty()
             if event.type == pygame.KEYUP:
-               self.preview_final = self.previewPath
-               RenderControl.setDirty()
+                self.keyDown = False              
+                self.preview_final = self.previewPath
+                RenderControl.setDirty()
 
     def onSelect(self):
         pass
@@ -178,7 +218,27 @@ class AbstractList(RenderObject.RenderObject):
 
     def renderEntry(self, index, yOffset):
         pass
-   
+
+    def toggleSidebar(self, useSidebar):
+        self.headerHeight = 42
+        self.sidebarWidth = 138
+
+        if(useSidebar):
+            self.useSidebar = True
+            self.headerHeight = 0
+            self.initSidebar()
+        else:
+            self.useSidebar = False
+            self.sidebarWidth = 0
+            self.initHeader()
+        
+        self.listHeight = self.config["screenHeight"] - self.headerHeight
+        self.listEntryHeight = int(self.listHeight / self.maxListEntries)
+        self.initBackground()
+
+        self.initSelection()
+     
+        RenderControl.setDirty()
 
     def renderEntries(self, screen):
         max = 0
@@ -337,19 +397,8 @@ class AbstractList(RenderObject.RenderObject):
         else:
             self.backgroundColor = (221,221,221, 160)
                
-      
-        if("useSidebar" in options and options["useSidebar"]):
-            self.useSidebar = True
-            self.headerHeight = 0
-            self.initSidebar()
-        else:
-            self.useSidebar = False
-            self.sidebarWidth = 0
-            self.initHeader()
-        
-        self.listHeight = self.config["screenHeight"] - self.headerHeight
-        self.listEntryHeight = int(self.listHeight / self.maxListEntries)
-        self.initBackground()
+        self.toggleSidebar("useSidebar" in options and options["useSidebar"])
+
 
         self.initSelection()
 

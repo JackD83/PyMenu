@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
 import os, Keys, RenderControl, Common, SelectionMenu
-import pygame, sys, ResumeHandler
+import pygame, sys, ResumeHandler, os
 import platform
 import json
 from operator import itemgetter
@@ -27,11 +27,6 @@ class NativeAppList(AbstractList.AbstractList):
         "name" :"Preview Image",
         "type":"image"      
     },     
-    {   "id":"screen",
-        "name" :"Screen option",
-        "type":"list",
-        "values": ["default", "fullscreen", "center"]      
-    },     
     {   "id":"overclock",
         "name" :"Overclock",
         "type":"list",
@@ -40,7 +35,7 @@ class NativeAppList(AbstractList.AbstractList):
     ]
 
     previewCache = {}
-    previewEnabled = True
+
     currentSelection = None
 
     def render(self, screen):
@@ -72,15 +67,25 @@ class NativeAppList(AbstractList.AbstractList):
     def onChange(self):
         if(len(self.entryList) == 0):
             self.previewPath = None
-            self.previewEnabled = False
+         
             return
 
         if(len(self.entryList) - 1 < self.currentIndex):
             self.currentIndex = len(self.entryList) - 1
 
         self.currentSelection = self.entryList[self.currentIndex]["options"]
-        self.previewPath = self.currentSelection["preview"]
-        
+
+        if(os.path.isfile(self.currentSelection["preview"])):
+            self.previewPath = self.currentSelection["preview"]
+        else:
+            self.previewPath = None
+
+        if("description" in self.currentSelection):
+            print("Setting description")
+            self.entryDescription = self.currentSelection["description"]
+        else:
+            self.entryDescription = None
+            
        
 
     def handleEvents(self, events):
@@ -123,7 +128,7 @@ class NativeAppList(AbstractList.AbstractList):
           
      
         if(selection == 0):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
@@ -145,7 +150,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.data.remove(self.currentSelection)
             Configuration.saveConfiguration()          
             self.initList()
-            self.setSelection(self.currentSelection - 1)            
+            self.setSelection(self.currentIndex - 1)            
             
 
     def addEditCallback(self, configCallback):        
@@ -155,7 +160,7 @@ class NativeAppList(AbstractList.AbstractList):
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
-        self.setSelection(len(self.entryList) - 1)
+        self.setSelection(self.currentIndex)
        
 
     def configCallback(self, config):
@@ -196,7 +201,10 @@ class NativeAppList(AbstractList.AbstractList):
         res = ResumeHandler.getResumeFile()
         if(res != None and res["line"] != None):
             self.setSelection(res["line"])
-
-        
+            self.onChange()
+            self.previewPath = self.currentSelection["preview"]
+            self.preview_final = self.previewPath
+            RenderControl.setDirty()
+            print(self.preview_final + " fibak")
       
       
