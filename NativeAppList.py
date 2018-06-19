@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
 import os, Keys, RenderControl, Common, SelectionMenu
-import pygame, sys, ResumeHandler
+import pygame, sys, ResumeHandler, os
 import platform
 import json
 from operator import itemgetter
@@ -35,7 +35,7 @@ class NativeAppList(AbstractList.AbstractList):
     ]
 
     previewCache = {}
-    previewEnabled = True
+
     currentSelection = None
 
     def render(self, screen):
@@ -67,15 +67,25 @@ class NativeAppList(AbstractList.AbstractList):
     def onChange(self):
         if(len(self.entryList) == 0):
             self.previewPath = None
-            self.previewEnabled = False
+         
             return
 
         if(len(self.entryList) - 1 < self.currentIndex):
             self.currentIndex = len(self.entryList) - 1
 
         self.currentSelection = self.entryList[self.currentIndex]["options"]
-        self.previewPath = self.currentSelection["preview"]
-        
+
+        if(os.path.isfile(self.currentSelection["preview"])):
+            self.previewPath = self.currentSelection["preview"]
+        else:
+            self.previewPath = None
+
+        if("description" in self.currentSelection):
+            print("Setting description")
+            self.entryDescription = self.currentSelection["description"]
+        else:
+            self.entryDescription = None
+            
        
 
     def handleEvents(self, events):
@@ -140,7 +150,7 @@ class NativeAppList(AbstractList.AbstractList):
             self.data.remove(self.currentSelection)
             Configuration.saveConfiguration()          
             self.initList()
-            self.setSelection(self.currentSelection - 1)            
+            self.setSelection(self.currentIndex - 1)            
             
 
     def addEditCallback(self, configCallback):        
@@ -150,7 +160,7 @@ class NativeAppList(AbstractList.AbstractList):
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
-        self.setSelection(self.currentSelection)
+        self.setSelection(self.currentIndex)
        
 
     def configCallback(self, config):

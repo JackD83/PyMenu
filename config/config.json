@@ -552,11 +552,12 @@
             "data": [
                 {
                     "cmd": "/mnt/int_sd/apps/commander/run.dge",
+                    "description": "Filebrowser like the midnight commander. Allows all file operations (copy,delete...)",
                     "icon": ".",
                     "legacy": false,
                     "name": "DinguCommander",
                     "overclock": "528",
-                    "preview": ".",
+                    "preview": "systems\\a800.png",
                     "screen": "default"
                 },
                 {
