@@ -1,4 +1,9 @@
 {   "id":"legacy",
     "name" :"Legacy app",
     "type":"boolean"      
-}
+},
+{   "id":"screen",
+    "name" :"Screen option",
+    "type":"list",
+    "values": ["default", "fullscreen", "center"]      
+},

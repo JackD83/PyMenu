@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import RenderObject, Configuration, AbstractList
 import os, Keys, RenderControl, Common
 import pygame, sys, ResumeHandler
@@ -12,7 +13,7 @@ class FileChooser(AbstractList.AbstractList):
     previewTmp = None
 
     def renderText(self, entry):
-        text = self.entryFont.render(entry["name"], True, self.textColor)
+        text = self.entryFont.render(self.filterName(entry["name"]), True, self.textColor)
         entry["text"] = text
         return text
  
@@ -32,15 +33,29 @@ class FileChooser(AbstractList.AbstractList):
 
 
     def loadFolder(self, folder):
+       
         if(folder["name"] == ".."):
-            self.currentPath = os.path.abspath(os.path.join(self.currentPath, os.pardir))
+           self.moveFolderUp()          
         else:
             self.currentPath += "/" + folder["name"]
+            self.currentWrap = 0
+            self.currentIndex = 0
+            self.initList()
         
         print("new current path is", self.currentPath)
+           
+    def moveFolderUp(self):
+        reset = None
+        reset = os.path.basename(self.currentPath)
+        self.currentPath = os.path.abspath(os.path.join(self.currentPath, os.pardir))
         self.currentWrap = 0
         self.currentIndex = 0
         self.initList()
+
+        if(not reset == None):
+            for entry in self.entryList:
+                if(entry["name"] == reset):
+                    self.setSelection(self.entryList.index(entry))
     
     def setFooter(self, footer):
         AbstractList.AbstractList.setFooter(self, footer)
@@ -93,8 +108,10 @@ class FileChooser(AbstractList.AbstractList):
                     if(self.selectFolder):
                           self.callback(self.currentPath)
                           RenderControl.setDirty()
-                          return
-           
+                        
+                if event.key == Keys.DINGOO_BUTTON_LEFT:
+                    self.moveFolderUp()
+                    RenderControl.setDirty()
                     
                
 
@@ -110,11 +127,13 @@ class FileChooser(AbstractList.AbstractList):
             entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
-            fileList = os.listdir(os.path.normpath(self.currentPath))     
-             
-            #prevents segfault soring files
-            if(len(fileList) < 1000):
-                fileList.sort()
+            flist = os.listdir(os.path.normpath(self.currentPath))
+            fileList = []
+
+            for name in flist:
+                fileList.append(name)
+
+            fileList.sort()
           
             try:
                 for f in fileList:                   
@@ -153,6 +172,15 @@ class FileChooser(AbstractList.AbstractList):
         if(self.currentSelection.lower().endswith("png") or 
             self.currentSelection.lower().endswith("jpg") ):
             return True
+
+        
+    def filterName(self, filename):
+        if(not "fileFilter" in self.options):
+            return filename
+
+        return os.path.splitext(filename)[0]
+        
+        
 
     def filterFile(self, file):
         if(not "fileFilter" in self.options):

@@ -61,7 +61,7 @@ class AbstractList(RenderObject.RenderObject):
         progress = self.currentWrap * self.listEntryHeight
         percentProgress = float(progress) / shouldBe
 
-        offset = scrollRest * percentProgress       
+        offset = (scrollRest * percentProgress)  + self.headerHeight
 
         pygame.draw.line(screen, (105,105,105), (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
         #print("is " + str(progress) + " should " + str(percentProgress))
@@ -158,7 +158,8 @@ class AbstractList(RenderObject.RenderObject):
                     self.onExit()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_Y:
-                    self.previewEnabled = not self.previewEnabled
+                    #self.previewEnabled = not self.previewEnabled
+                    self.toggleSidebar(not self.useSidebar)
                     RenderControl.setDirty()
             if event.type == pygame.KEYUP:
                self.preview_final = self.previewPath
@@ -178,7 +179,27 @@ class AbstractList(RenderObject.RenderObject):
 
     def renderEntry(self, index, yOffset):
         pass
-   
+
+    def toggleSidebar(self, useSidebar):
+        self.headerHeight = 42
+        self.sidebarWidth = 138
+
+        if(useSidebar):
+            self.useSidebar = True
+            self.headerHeight = 0
+            self.initSidebar()
+        else:
+            self.useSidebar = False
+            self.sidebarWidth = 0
+            self.initHeader()
+        
+        self.listHeight = self.config["screenHeight"] - self.headerHeight
+        self.listEntryHeight = int(self.listHeight / self.maxListEntries)
+        self.initBackground()
+
+        self.initSelection()
+     
+        RenderControl.setDirty()
 
     def renderEntries(self, screen):
         max = 0
@@ -337,19 +358,8 @@ class AbstractList(RenderObject.RenderObject):
         else:
             self.backgroundColor = (221,221,221, 160)
                
-      
-        if("useSidebar" in options and options["useSidebar"]):
-            self.useSidebar = True
-            self.headerHeight = 0
-            self.initSidebar()
-        else:
-            self.useSidebar = False
-            self.sidebarWidth = 0
-            self.initHeader()
-        
-        self.listHeight = self.config["screenHeight"] - self.headerHeight
-        self.listEntryHeight = int(self.listHeight / self.maxListEntries)
-        self.initBackground()
+        self.toggleSidebar("useSidebar" in options and options["useSidebar"])
+
 
         self.initSelection()
 

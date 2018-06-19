@@ -27,11 +27,6 @@ class NativeAppList(AbstractList.AbstractList):
         "name" :"Preview Image",
         "type":"image"      
     },     
-    {   "id":"screen",
-        "name" :"Screen option",
-        "type":"list",
-        "values": ["default", "fullscreen", "center"]      
-    },     
     {   "id":"overclock",
         "name" :"Overclock",
         "type":"list",
@@ -123,7 +118,7 @@ class NativeAppList(AbstractList.AbstractList):
           
      
         if(selection == 0):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
@@ -155,7 +150,7 @@ class NativeAppList(AbstractList.AbstractList):
         Configuration.saveConfiguration()            
         self.subComponent = None
         self.initList()
-        self.setSelection(len(self.entryList) - 1)
+        self.setSelection(self.currentSelection)
        
 
     def configCallback(self, config):
@@ -196,7 +191,10 @@ class NativeAppList(AbstractList.AbstractList):
         res = ResumeHandler.getResumeFile()
         if(res != None and res["line"] != None):
             self.setSelection(res["line"])
-
-        
+            self.onChange()
+            self.previewPath = self.currentSelection["preview"]
+            self.preview_final = self.previewPath
+            RenderControl.setDirty()
+            print(self.preview_final + " fibak")
       
       

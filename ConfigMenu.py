@@ -56,6 +56,7 @@ class ConfigMenu(AbstractList.AbstractList):
         if(self.entryList[self.currentIndex]["type"] == "image"):
             options = {}   
             options["preview"] = True
+            options["useSidebar"] = True
             options["directPreview"] = True 
             options["fileFilter"] = [".png", ".jpg"] 
             options["textColor"] = self.textColor
