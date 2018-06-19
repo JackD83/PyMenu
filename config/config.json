@@ -277,7 +277,7 @@
                     "screen": "default"
                 }, 
                 {
-                    "cmd": "/mnt/vfat/int_sd/games/quake/run.dge", 
+                    "cmd": "/mnt/vfat/int_sd/games/quake/sdlquake.dge", 
                     "icon": ".", 
                     "legacy": false, 
                     "name": "Quake", 
