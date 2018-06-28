@@ -127,13 +127,9 @@ class FileChooser(AbstractList.AbstractList):
             entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
-            flist = os.listdir(os.path.normpath(self.currentPath))
-            fileList = []
-
-            for name in flist:
-                fileList.append(name)
-
-            fileList.sort()
+            fileList = os.listdir(os.path.normpath(self.currentPath))
+      
+            Common.quick_sort(fileList)
           
             try:
                 for f in fileList:                   
@@ -156,7 +152,7 @@ class FileChooser(AbstractList.AbstractList):
 
 
     def getExistingParent(self, path):
-        if(path == "/" or path == ""):
+        if(path == "/" or path == "" or path == "."):
             return "/"
 
         parent = os.path.abspath(os.path.join(path, os.pardir))

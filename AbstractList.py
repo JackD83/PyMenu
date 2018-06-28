@@ -31,7 +31,7 @@ class AbstractList(RenderObject.RenderObject):
       
     titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 15)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
-    descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
+    descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 14)
 
     maxListEntries = 13  
 
@@ -71,12 +71,10 @@ class AbstractList(RenderObject.RenderObject):
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
-        if(self.currentIndex == -1):
-            print("index - 1")
+        if(self.currentIndex == -1):            
             return
 
-        if(not self.previewEnabled):
-            print("render descpription")
+        if(not self.previewEnabled):           
             desc = self.renderDescription()
             if(not desc == None):
                 screen.blit(desc,(5,56))
