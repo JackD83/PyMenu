@@ -31,7 +31,7 @@ def storeResume():
         resume["mainIndex"]= mainIndex
         resume["line"]=lastSelectedLine
         resume["path"]=lastPath
-        print("Storing resume file: " + str(lastUsed) + " line:"+ str(lastSelectedLine) + " lastPath" + str(lastPath))
+        #print("Storing resume file: " + str(lastUsed) + " line:"+ str(lastSelectedLine) + " lastPath" + str(lastPath))
         with open('/tmp/resume.json', 'w') as fp:
             json.dump(resume, fp,sort_keys=True, indent=4)
     except Exception as ex:
