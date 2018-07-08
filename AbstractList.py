@@ -400,6 +400,6 @@ class AbstractList(RenderObject.RenderObject):
 
         self.initSelection()
 
-        TaskHandler.addAnimation(self.config["screenHeight"] - self.footer.getHeight(), self.config["screenHeight"], 600, self.updateFooterPos, 1000) 
+        TaskHandler.addAnimation(self.config["screenHeight"] - self.footer.getHeight(), self.config["screenHeight"], 600, self.updateFooterPos, 2500) 
 
        

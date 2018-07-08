@@ -4,16 +4,17 @@ import pygame, sys
 
 class SelectionMenu(RenderObject.RenderObject):
 
-    optionHeight = 30
+    optionHeight = 18
     width = 150
     height = 0
     maxOptionHeight = optionHeight * 5
-    menuAlpha = 230
+    menuAlpha = 255
     maxRenderItems = 0
 
     config = Configuration.getConfiguration()
 
     background = None
+    backgroundShadow = None
     options = None
     currentIndex = 0
     wrapIndex = 0
@@ -32,20 +33,26 @@ class SelectionMenu(RenderObject.RenderObject):
         self.x = (self.config["screenWidth"] - self.width) / 2
         self.y = (self.config["screenHeight"] - self.height) / 2
 
+        self.backgroundShadow = pygame.Surface((self.width,self.height),pygame.SRCALPHA)
+        self.backgroundShadow.fill((0,0,0, 120))
+
     def renderBackground(self):
-        self.background = pygame.Surface((self.width,self.height),pygame.SRCALPHA)
-        self.background.fill((220,220,220, self.menuAlpha))
+        self.background = pygame.Surface((self.width,self.height))
+        self.background.fill((255,255,255))
+
+
         self.maxRenderItems = int(self.height / self.optionHeight)
 
         for x in range(1, int(self.height / self.optionHeight)):
-            pygame.draw.line(self.background, (105,105,105, self.menuAlpha- 30), (0, x * self.optionHeight), (self.width, x * self.optionHeight), 1)
+            pass
+            #pygame.draw.line(self.background, (105,105,105, self.menuAlpha), (0, x * self.optionHeight), (self.width, x * self.optionHeight), 1)
 
 
     def initOptionText(self):
         self.optionsText = []
-        font = pygame.font.Font('theme/NotoSans-Regular.ttf', 20)
+        font = pygame.font.Font('theme/NotoSans-Regular.ttf', 14)
         for opt in self.options: 
-            text = font.render(opt, True, (105,105,105))
+            text = font.render(opt, True, (55,55,55))
             self.optionsText.append(text)
 
     def renderOptionText(self):
@@ -64,9 +71,12 @@ class SelectionMenu(RenderObject.RenderObject):
         self.background.blit(self.selection, (0,offset))
 
     def render(self, screen):
+        
         self.renderBackground()
         self.renderOptionText()
         self.renderSelection()
+
+        screen.blit(self.backgroundShadow, (self.x + 4,self.y + 4))
         screen.blit(self.background, (self.x,self.y))
 
 
@@ -112,7 +122,7 @@ class SelectionMenu(RenderObject.RenderObject):
         self.options = options
         self.callback = callback
         self.selection = pygame.Surface((self.width,self.optionHeight),pygame.SRCALPHA)
-        self.selection.fill((255,255,255, 180))
+        self.selection.fill((55,55,55, 120))
 
         self.init()
         self.initOptionText()
