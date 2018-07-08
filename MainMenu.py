@@ -349,7 +349,7 @@ class MainMenu(RenderObject.RenderObject):
         if(self.selection=="band"):
             self.banderole.fill((255,255,255, 160))
         else:
-            self.banderole.fill((255,255,255, 120))
+            self.banderole.fill((255,255,255, 90))
 
         screen.blit(self.banderole, (0,80))
 
@@ -379,7 +379,7 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.powerFinal == None):
             self.powerFinal = self.power.convert_alpha().copy()
-            self.powerFinal.fill((255, 255, 255, 170), None, pygame.BLEND_RGBA_MULT)  
+            self.powerFinal.fill((255, 255, 255, 120), None, pygame.BLEND_RGBA_MULT)  
                
         if(self.selection == "power"):
             screen.blit(self.power, (powerXPos,powerYPos))
@@ -391,7 +391,7 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.gearFinal == None):
             self.gearFinal = self.gear.convert_alpha().copy()
-            self.gearFinal.fill((255, 255, 255, 170), None, pygame.BLEND_RGBA_MULT)  
+            self.gearFinal.fill((255, 255, 255, 120), None, pygame.BLEND_RGBA_MULT)  
         
         if(self.selection == "settings"):
             screen.blit(self.gear, (settingsXPos,settingsYPos))
