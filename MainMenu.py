@@ -8,6 +8,12 @@ from pprint import pprint
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
+   
+    gear = Common.aspect_scale(Common.loadCachedImage("theme/gear.png"),20,20)
+    gearFinal = None
+
+    power = Common.aspect_scale(Common.loadCachedImage("theme/power.png"),18,18)
+    powerFinal = None   
 
    
     header = None
@@ -23,6 +29,8 @@ class MainMenu(RenderObject.RenderObject):
    
     overlay = None
     subComponent = None
+
+    selection = "band"
         
     def loadSystemImages(self):
         self.systems = []
@@ -49,26 +57,47 @@ class MainMenu(RenderObject.RenderObject):
             return
 
         for event in events:    
-            if event.type == pygame.KEYDOWN:           
+            if event.type == pygame.KEYDOWN:      
+                if event.key == Keys.DINGOO_BUTTON_DOWN:
+                    if(self.selection == "band"):
+                        self.selection = "power"
+                        RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_UP:
+                    if(self.selection == "power" or self.selection == "settings"):
+                        self.selection = "band"
+                        RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
-                    if(not self.inTransition):
+                    if(not self.inTransition and self.selection == "band"):
                         TaskHandler.addAnimation(0, 160, 200, self.transitionCallback)
                         self.inTransition = True             
-                        RenderControl.setDirty()
+                        
+                    if( self.selection == "power"):
+                        self.selection = "settings"
+
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_RIGHT:
-                    if(not self.inTransition):
+                    if(not self.inTransition and self.selection == "band"):
                         TaskHandler.addAnimation(0, -160,200, self.transitionCallback)
                         self.inTransition = True             
-                        RenderControl.setDirty()
+                       
+                    if( self.selection == "settings"):
+                        self.selection = "power"
+                    
+                    RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_SELECT:                    
                     self.openOptions()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_A:
-                    self.openSelection(self.config["mainMenu"][self.currentIndex])
+                    if(self.selection == "band"):
+                        self.openSelection(self.config["mainMenu"][self.currentIndex])
+                    if(self.selection == "power"):
+                       self.openPowerMenu()
+                    
+                    if(self.selection == "settings"):
+                        self.openSettings()
+
                     RenderControl.setDirty()
-                if event.key == Keys.DINGOO_BUTTON_START:
-                    self.openContextMenu()
-                    RenderControl.setDirty()
+             
                 if event.key == Keys.DINGOO_BUTTON_VOL_DOWN or event.key == Keys.DINGOO_BUTTON_VOL_UP:
                     self.header.updateVolume()
                     RenderControl.setDirty()
@@ -86,15 +115,19 @@ class MainMenu(RenderObject.RenderObject):
 
         RenderControl.setDirty()
 
+    def openPowerMenu(self):
+        if(Configuration.isRS97()):
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
     
     def openOptions(self):      
         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
-    def openContextMenu(self):
-        if(Configuration.isRS97()):
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
-        else:
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Mount USB", "Poweroff", "Reboot", "Options"], self.contextMenuCallback)
+    def openSettings(self):
+        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+                                        Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
+        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+        self.subComponent.setFooter(footer)
+        RenderControl.setDirty()   
 
     def contextMenuCallback(self, selection, text):
         self.overlay = None
@@ -118,12 +151,7 @@ class MainMenu(RenderObject.RenderObject):
                 subprocess.Popen(["reboot"])
             else:
                 print("reboot")
-        if(text == "Options"):          
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Options",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                                        Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
-            self.subComponent.setFooter(footer)
-            RenderControl.setDirty()
+       
 
     def configCallback(self, select):
         self.subComponent = None
@@ -317,6 +345,12 @@ class MainMenu(RenderObject.RenderObject):
             return     
 
         screen.blit(self.systembackgrounds[self.currentIndex], (0, 0))
+
+        if(self.selection=="band"):
+            self.banderole.fill((255,255,255, 160))
+        else:
+            self.banderole.fill((255,255,255, 120))
+
         screen.blit(self.banderole, (0,80))
 
         #current
@@ -333,17 +367,43 @@ class MainMenu(RenderObject.RenderObject):
 
         self.header.render(screen)
 
+        self.renderIcons(screen)
+
+       
         if(self.overlay != None):
             self.overlay.render(screen)           
    
- 
+    def renderIcons(self, screen):
+        powerYPos = self.config["screenHeight"] - 30
+        powerXPos = self.config["screenWidth"] - 50
+
+        if(self.powerFinal == None):
+            self.powerFinal = self.power.convert_alpha().copy()
+            self.powerFinal.fill((255, 255, 255, 170), None, pygame.BLEND_RGBA_MULT)  
+               
+        if(self.selection == "power"):
+            screen.blit(self.power, (powerXPos,powerYPos))
+        else:
+            screen.blit(self.powerFinal, (powerXPos,powerYPos))
+
+        settingsYPos = self.config["screenHeight"] - 30
+        settingsXPos = 30     
+
+        if(self.gearFinal == None):
+            self.gearFinal = self.gear.convert_alpha().copy()
+            self.gearFinal.fill((255, 255, 255, 170), None, pygame.BLEND_RGBA_MULT)  
+        
+        if(self.selection == "settings"):
+            screen.blit(self.gear, (settingsXPos,settingsYPos))
+        else:
+            screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
     
     def __init__(self, screen):
         print("Main Menu Init")
         self.loadSystemImages()
         self.screen = screen
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
-        self.banderole.fill((255,255,255, 160))
+        
       
         self.header = Header.Header(24)
 
