@@ -7,7 +7,7 @@ Installation RS97:
 1. You need the custom firmware for your device. Follow the guides listed here:
 https://jutleys.wixsite.com/retrogamers97-90 , I recomend the external version 
 
-2. Clone or copy the files from this repo besides the gmenu2x folder. (Can only be accessed by using a cardreader. Gmenu2x has its own partition). Folder has to be named "PyMenu"
+2. Clone or copy the files from this repo next to the gmenu2x folder. (Can only be accessed by using a cardreader. Gmenu2x has its own partition). Folder has to be named "PyMenu"
 
 3. run PyMenu/python/install.dge to install python
 
