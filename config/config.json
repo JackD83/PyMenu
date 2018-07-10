@@ -1,11 +1,26 @@
 {
     "RS97": true, 
     "batteryHigh": 4500, 
-    "batteryLow": 3900, 
+    "batteryLow": 3752, 
     "firstStart": false, 
     "mainMenu": [
         {
-            "background": "backgrounds/snes_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/pocketsnes.png", 
+            "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
+            "description": "Famicom", 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/snes2.png", 
+            "icon": "systems/sfc.png", 
+            "legacy": false, 
+            "name": "SNES", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/pocketsnes"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/sfc.png", 
             "cmd": "/mnt/int_sd/emus/snes9x4d/snes9x4d.dge", 
             "description": "Super NES", 
             "fileFilter": [
@@ -18,12 +33,12 @@
             "overclock": "624", 
             "previews": "/mnt/int_sd/previews/snes", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/snes", 
+            "selectionPath": "/mnt/int_sd/roms", 
             "type": "emulator", 
             "workingDir": "/mnt/ext_sd/int_sd/emus/snes9x4d"
         }, 
         {
-            "background": "backgrounds/nes_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/fceux.png", 
             "cmd": "//mnt/int_sd/emus/fceux/fceux", 
             "description": null, 
             "fileFilter": [
@@ -36,21 +51,216 @@
             "overclock": null, 
             "previews": "/mnt/int_sd/previews/nes", 
             "screen": null, 
-            "selectionPath": "/mnt/int_sd/roms/nes", 
+            "selectionPath": "/mnt/int_sd/roms", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/fceux"
         }, 
         {
-            "background": "backgrounds/gb_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/temper.png", 
+            "cmd": "/mnt/int_sd/emus/temper/temper", 
+            "description": null, 
+            "folderIcon": "/mnt/game/PyMenu/theme/icons/Pce_02.png", 
+            "icon": "systems/pce.png", 
+            "legacy": false, 
+            "name": "PC ENGINE", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/temper"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/mame.png", 
+            "cmd": "/mnt/int_sd/emus/mame4all/mame4all.dge", 
+            "description": "Arcade", 
+            "folderIcon": "//mnt/game/PyMenu/theme/icons/Arcade_Astrocity.png", 
+            "icon": "systems/mame.png", 
+            "legacy": false, 
+            "name": "MAME", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/mame4all"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/speccy.png", 
+            "cmd": "/mnt/int_sd/emus/speccy/speccy", 
+            "description": null, 
+            "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/speccy.png", 
+            "icon": "systems/zxs.png", 
+            "legacy": false, 
+            "name": "ZX SPECTRUM", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/speccy"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/gngeo.png", 
+            "cmd": "/mnt/int_sd/emus/gngeo/gngeo", 
+            "description": null, 
+            "folderIcon": "//mnt/game/PyMenu/theme/icons/NeoGeo01.png", 
+            "icon": "systems/neogeo.png", 
+            "legacy": false, 
+            "name": "NEOGEO", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/gngeo"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/dingux_atari.png", 
+            "cmd": "//mnt/int_sd/emus/dingux_atari/dingux-atari", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/atari5200.png", 
+            "icon": "systems/a5200.png", 
+            "legacy": false, 
+            "name": "ATARI 5200", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dingux_atari"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/np2.png", 
+            "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/dosbox.png", 
+            "icon": "/mnt/game/PyMenu/systems/pc.png", 
+            "legacy": false, 
+            "name": "DOSBOX", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dosbox"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/jzintv.png", 
+            "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
+            "description": "IntelliVision", 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/intellivision.png", 
+            "icon": "systems/int.png", 
+            "legacy": false, 
+            "name": "INTV", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/jzintv"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/prosystem.png", 
+            "cmd": "/mnt/int_sd/emus/prosystem/prosystem-od.dge", 
+            "description": "Pro System", 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/atari7800.png", 
+            "icon": "systems/a7800.png", 
+            "legacy": false, 
+            "name": "ATARI 7800", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/prosystem"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/openbor.png", 
+            "cmd": "/mnt/int_sd/emus/openbor/OpenBOR", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/openbor.png", 
+            "icon": "/mnt/game/PyMenu/systems/OpenBOR.png", 
+            "legacy": false, 
+            "name": "OPENBOR", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/emus/openbor/Paks", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/openbor"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/dingux_cap32.png", 
+            "cmd": "/mnt/int_sd/emus/dingux_cap32/dingux-cap32", 
+            "description": "CPC", 
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/amstradcpc.png", 
+            "icon": "systems/cpc.png", 
+            "legacy": false, 
+            "name": "AMSTRAD", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dingux_cap32"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/dingux_2600.png", 
+            "cmd": "/mnt/int_sd/emus/dingux_2600/dingux-2600", 
+            "description": null, 
+            "folderIcon": "//mnt/game/PyMenu/theme/icons/Atari2600.png", 
+            "icon": "systems/a2600.png", 
+            "legacy": false, 
+            "name": "ATARI 2600", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dingux_2600"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/uae4all.png", 
+            "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/Default/icons/uae4all.png", 
+            "icon": "systems/ami.png", 
+            "legacy": false, 
+            "name": "AMIGA", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/uae4all"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/pcsx4all.png", 
+            "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all", 
+            "description": "Playstation", 
+            "folderIcon": "//mnt/game/PyMenu/theme/icons/Psone.png", 
+            "icon": "systems/psx.png", 
+            "legacy": false, 
+            "name": "PCSX4ALL", 
+            "overclock": "528", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/pcsx4all"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/gambatte_sdl.png", 
             "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl", 
-            "description": "Gameboy DMG", 
+            "description": "Handheld", 
             "fileFilter": [
                 ".zip"
             ], 
             "folderIcon": "theme/icons/Gameboy03.png", 
             "icon": "systems/gb.png", 
             "legacy": false, 
-            "name": "GB", 
+            "name": "GAMEBOY", 
             "overclock": "528", 
             "previews": "/mnt/int_sd/previews/gb", 
             "screen": "default", 
@@ -59,7 +269,52 @@
             "workingDir": "//mnt/int_sd/emus/gamebatte"
         }, 
         {
-            "background": "backgrounds/gbc_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/race_od.png", 
+            "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+            "description": "NeoGeo Pocket", 
+            "folderIcon": "/mnt/game/PyMenu/theme/icons/NeoGeoPocket_b.png", 
+            "icon": "systems/ngp.png", 
+            "legacy": false, 
+            "name": "NGP", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/race_od"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/dcastaway.png", 
+            "cmd": "/mnt/int_sd/emus/dcastaway/dcastaway", 
+            "description": null, 
+            "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/dcastaway.png", 
+            "icon": "systems/ast.png", 
+            "legacy": false, 
+            "name": "ATARI ST", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dcastaway"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/oswan.png", 
+            "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+            "description": "Handheld", 
+            "folderIcon": "//mnt/game/PyMenu/theme/icons/WonderSwan_04.png", 
+            "icon": "systems/wonderswan.png", 
+            "legacy": false, 
+            "name": "WONDERSWAN", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "///mnt/int_sd/emus/oswan"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/ohboy.png", 
             "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl", 
             "description": "Gameboy Color", 
             "fileFilter": [
@@ -68,7 +323,7 @@
             "folderIcon": "theme/icons/GBC_Purple.png", 
             "icon": "systems/gbc.png", 
             "legacy": false, 
-            "name": "GBC", 
+            "name": "GAMEBOY", 
             "overclock": "528", 
             "previews": "/mnt/int_sd/previews/gbc", 
             "screen": "default", 
@@ -77,14 +332,14 @@
             "workingDir": "//mnt/int_sd/emus/gamebatte"
         }, 
         {
-            "background": "backgrounds/gen_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/picodrive.png", 
             "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
             "description": null, 
             "fileFilter": [
                 ".zip"
             ], 
             "folderIcon": "theme/icons/MegaDrive2.png", 
-            "icon": "systems/gen.png", 
+            "icon": "/mnt/game/PyMenu/systems/megadrive.png", 
             "legacy": false, 
             "name": "Genesis", 
             "overclock": "600", 
@@ -96,7 +351,7 @@
             "workingDir": "//mnt/int_sd/emus/picodrive"
         }, 
         {
-            "background": "backgrounds/gba_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/regba.png", 
             "cmd": "//mnt/int_sd/emus/regba/regba", 
             "description": "Gameboy Advance", 
             "fileFilter": [
@@ -114,8 +369,54 @@
             "workingDir": "//mnt/ext_sd/int_sd/emus/regba"
         }, 
         {
-            "background": "backgrounds/sms_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/fbasdl.png", 
+            "cmd": "/mnt/int_sd/emus/fba_gcw0/fbasdl.dge", 
+            "description": "Finalburn Alpha", 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/fba1.png", 
+            "icon": "systems/fba.png", 
+            "legacy": false, 
+            "name": "FBA", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/fba_gcw0"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/scummvm.png", 
+            "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
+            "description": null, 
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/scummvm.png", 
+            "icon": "systems/scummvm.png", 
+            "legacy": false, 
+            "name": "SCUMMVM", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/scummvm"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/vice.png", 
+            "cmd": "/mnt/int_sd/emus/vice/x64", 
+            "description": "Commodore", 
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/c64.png", 
+            "icon": "systems/c64.png", 
+            "legacy": false, 
+            "name": "C64", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/vice"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/sms_sdl.png", 
             "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+            "description": "Master System", 
             "fileFilter": [
                 ".zip"
             ], 
@@ -131,27 +432,72 @@
             "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl"
         }, 
         {
-            "background": "backgrounds/lynx_art_blur.jpg", 
-            "cmd": "/mnt/vfat/int_sd/emus/handy/handy320", 
+            "background": "/mnt/game/PyMenu/ports previews/openmsx.png", 
+            "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx", 
             "description": null, 
+            "folderIcon": "None", 
+            "icon": "systems/msx.png", 
+            "legacy": false, 
+            "name": "MSX", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/dingux-msx"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/beebem.png", 
+            "cmd": "/mnt/int_sd/emus/beebem/beebem", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/bbcmicro.png", 
+            "icon": "/mnt/game/PyMenu/systems/bbc-micro-logo.png", 
+            "legacy": false, 
+            "name": "BBC MICRO", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/emus/beebem/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/beebem"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/colem.png", 
+            "cmd": "/mnt/int_sd/emus/colem/colem", 
+            "description": null, 
+            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/colem.png", 
+            "icon": "systems/col.png", 
+            "legacy": false, 
+            "name": "COLECO", 
+            "overclock": "524", 
+            "previews": null, 
+            "screen": "default", 
+            "selectionPath": "/mnt/int_sd/emus/colem/roms", 
+            "type": "emulator", 
+            "workingDir": "//mnt/int_sd/emus/colem"
+        }, 
+        {
+            "background": "/mnt/game/PyMenu/ports previews/handy320.png", 
+            "cmd": "/mnt/int_sd/emus/handy/handy320", 
+            "description": "Handheld", 
             "fileFilter": [
                 ".zip"
             ], 
             "folderIcon": null, 
             "icon": "systems/lynx.png", 
             "legacy": false, 
-            "name": "Emulator", 
+            "name": "ATARI LYNX", 
             "overclock": "524", 
             "previews": null, 
             "screen": "default", 
-            "selectionPath": ".", 
+            "selectionPath": "/mnt/int_sd/roms", 
             "type": "emulator", 
             "workingDir": "//mnt/int_sd/emus/handy"
         }, 
         {
-            "background": "backgrounds/gg_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/gamegear.png", 
             "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
-            "description": "Sega  Game Gear", 
+            "description": "Handheld", 
             "fileFilter": [
                 ".zip"
             ], 
@@ -175,7 +521,7 @@
                     "legacy": false, 
                     "name": "Apricots", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/apricots.png", 
                     "screen": "default"
                 }, 
                 {
@@ -184,7 +530,7 @@
                     "legacy": false, 
                     "name": "Arkanoid", 
                     "overclock": "528", 
-                    "preview": "/mnt/int_sd/posters/arkanoid.png", 
+                    "preview": "/mnt/game/PyMenu/ports previews/arkanoid.png", 
                     "screen": "default"
                 }, 
                 {
@@ -193,7 +539,7 @@
                     "legacy": false, 
                     "name": "Asciiportal", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/asciiportal.png", 
                     "screen": "default"
                 }, 
                 {
@@ -202,7 +548,7 @@
                     "legacy": false, 
                     "name": "Bermuda", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/bermuda.png", 
                     "screen": "default"
                 }, 
                 {
@@ -211,7 +557,7 @@
                     "legacy": false, 
                     "name": "BlockOut 2", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/blockout2.png", 
                     "screen": "default"
                 }, 
                 {
@@ -220,7 +566,7 @@
                     "legacy": false, 
                     "name": "Boulder", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/boulder.png", 
                     "screen": "default"
                 }, 
                 {
@@ -229,7 +575,7 @@
                     "legacy": false, 
                     "name": "Cannonball", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/cannonball.png", 
                     "screen": "default"
                 }, 
                 {
@@ -238,7 +584,7 @@
                     "legacy": false, 
                     "name": "CaveStory", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/cavestory.png", 
                     "screen": "default"
                 }, 
                 {
@@ -247,7 +593,7 @@
                     "legacy": false, 
                     "name": "CaveStory", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/cavestory.png", 
                     "screen": "default"
                 }, 
                 {
@@ -256,7 +602,7 @@
                     "legacy": false, 
                     "name": "CaveStory", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/cavestory.png", 
                     "screen": "default"
                 }, 
                 {
@@ -265,7 +611,7 @@
                     "legacy": false, 
                     "name": "C-Dogs SDL", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/cdogs.png", 
                     "screen": "default"
                 }, 
                 {
@@ -274,7 +620,7 @@
                     "legacy": false, 
                     "name": "CCDoom", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/chocolate_doom.png", 
                     "screen": "default"
                 }, 
                 {
@@ -283,7 +629,7 @@
                     "legacy": false, 
                     "name": "Chroma", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/chroma.png", 
                     "screen": "default"
                 }, 
                 {
@@ -292,7 +638,7 @@
                     "legacy": false, 
                     "name": "CZDoom", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/czdoom.png", 
                     "screen": "default"
                 }, 
                 {
@@ -301,7 +647,7 @@
                     "legacy": false, 
                     "name": "Digger", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/digger.png", 
                     "screen": "default"
                 }, 
                 {
@@ -310,7 +656,7 @@
                     "legacy": false, 
                     "name": "Dlight", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/dlight.png", 
                     "screen": "default"
                 }, 
                 {
@@ -319,7 +665,7 @@
                     "legacy": false, 
                     "name": "EDuke32", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/eduke32.jpg", 
                     "screen": "default"
                 }, 
                 {
@@ -328,7 +674,7 @@
                     "legacy": false, 
                     "name": "Free", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/Freedroid.png", 
                     "screen": "default"
                 }, 
                 {
@@ -337,7 +683,7 @@
                     "legacy": false, 
                     "name": "Ganbare", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/ganbare.png", 
                     "screen": "default"
                 }, 
                 {
@@ -346,7 +692,7 @@
                     "legacy": false, 
                     "name": "HHeretic", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/hheretic.png", 
                     "screen": "default"
                 }, 
                 {
@@ -355,7 +701,7 @@
                     "legacy": false, 
                     "name": "HHexen", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/hhexen.png", 
                     "screen": "default"
                 }, 
                 {
@@ -364,7 +710,7 @@
                     "legacy": false, 
                     "name": "Homing", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/homing.png", 
                     "screen": "default"
                 }, 
                 {
@@ -373,7 +719,7 @@
                     "legacy": false, 
                     "name": "JinYong", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/jinyong_legend.png", 
                     "screen": "default"
                 }, 
                 {
@@ -382,7 +728,7 @@
                     "legacy": false, 
                     "name": "JinYong", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/jinyong_legend.png", 
                     "screen": "default"
                 }, 
                 {
@@ -391,7 +737,7 @@
                     "legacy": false, 
                     "name": "Just4Qix", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/just4qix.png", 
                     "screen": "default"
                 }, 
                 {
@@ -400,7 +746,7 @@
                     "legacy": false, 
                     "name": "KETM", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/ketm.png", 
                     "screen": "default"
                 }, 
                 {
@@ -409,7 +755,7 @@
                     "legacy": false, 
                     "name": "Mission", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/lastmission.png", 
                     "screen": "default"
                 }, 
                 {
@@ -418,7 +764,7 @@
                     "legacy": false, 
                     "name": "Meritous", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/meritous.png", 
                     "screen": "default"
                 }, 
                 {
@@ -427,7 +773,7 @@
                     "legacy": false, 
                     "name": "Meteoroid", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/meteoroid3d.png", 
                     "screen": "default"
                 }, 
                 {
@@ -436,7 +782,7 @@
                     "legacy": false, 
                     "name": "Drillux", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/mrdrillux.png", 
                     "screen": "default"
                 }, 
                 {
@@ -445,7 +791,7 @@
                     "legacy": false, 
                     "name": "Noiz2sa", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/noiz2sa.png", 
                     "screen": "default"
                 }, 
                 {
@@ -454,7 +800,7 @@
                     "legacy": false, 
                     "name": "OpenJazz", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/PyMenu/ports previews/openjazz.png", 
                     "screen": "default"
                 }, 
                 {
@@ -463,7 +809,7 @@
                     "legacy": false, 
                     "name": "OpenTitus", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/opentitus.png", 
                     "screen": "default"
                 }, 
                 {
@@ -472,7 +818,7 @@
                     "legacy": false, 
                     "name": "OpenTyrian", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/opentyrian.png", 
                     "screen": "default"
                 }, 
                 {
@@ -481,7 +827,7 @@
                     "legacy": false, 
                     "name": "Overheated", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/overheated.png", 
                     "screen": "default"
                 }, 
                 {
@@ -490,7 +836,7 @@
                     "legacy": false, 
                     "name": "Pang", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/pang.png", 
                     "screen": "default"
                 }, 
                 {
@@ -499,7 +845,7 @@
                     "legacy": false, 
                     "name": "Profa", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/profadeluxe.png", 
                     "screen": "default"
                 }, 
                 {
@@ -508,7 +854,7 @@
                     "legacy": false, 
                     "name": "Puzzletube", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/puzzletube.png", 
                     "screen": "default"
                 }, 
                 {
@@ -517,7 +863,7 @@
                     "legacy": false, 
                     "name": "Quake", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/quake.png", 
                     "screen": "default"
                 }, 
                 {
@@ -526,7 +872,7 @@
                     "legacy": false, 
                     "name": "Reminiscence", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/reminiscence.png", 
                     "screen": "default"
                 }, 
                 {
@@ -535,7 +881,7 @@
                     "legacy": false, 
                     "name": "Rockbot", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/rockbot.png", 
                     "screen": "default"
                 }, 
                 {
@@ -544,7 +890,7 @@
                     "legacy": false, 
                     "name": "Rott", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/rott.png", 
                     "screen": "default"
                 }, 
                 {
@@ -553,7 +899,7 @@
                     "legacy": false, 
                     "name": "Rott", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/rott.png", 
                     "screen": "default"
                 }, 
                 {
@@ -562,7 +908,7 @@
                     "legacy": false, 
                     "name": "SDLPAL", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/sdlpal.png", 
                     "screen": "default"
                 }, 
                 {
@@ -571,7 +917,7 @@
                     "legacy": false, 
                     "name": "SDLPAL", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/sdlpal.png", 
                     "screen": "default"
                 }, 
                 {
@@ -580,7 +926,7 @@
                     "legacy": false, 
                     "name": "Shifty", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/shifty.png", 
                     "screen": "default"
                 }, 
                 {
@@ -589,7 +935,7 @@
                     "legacy": false, 
                     "name": "Shisen", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/shisen.png", 
                     "screen": "default"
                 }, 
                 {
@@ -598,7 +944,7 @@
                     "legacy": false, 
                     "name": "SMW", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/smw.png", 
                     "screen": "default"
                 }, 
                 {
@@ -607,7 +953,7 @@
                     "legacy": false, 
                     "name": "Snowman", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/snowman.png", 
                     "screen": "default"
                 }, 
                 {
@@ -616,7 +962,7 @@
                     "legacy": false, 
                     "name": "SORR", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/sorr.png", 
                     "screen": "default"
                 }, 
                 {
@@ -625,7 +971,7 @@
                     "legacy": false, 
                     "name": "Spartak", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/spartak.png", 
                     "screen": "default"
                 }, 
                 {
@@ -634,7 +980,7 @@
                     "legacy": false, 
                     "name": "Spout", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/spout.png", 
                     "screen": "default"
                 }, 
                 {
@@ -643,7 +989,7 @@
                     "legacy": false, 
                     "name": "Sonic", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/srb2.png", 
                     "screen": "default"
                 }, 
                 {
@@ -652,7 +998,7 @@
                     "legacy": false, 
                     "name": "Strife", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/chocolate_strife.png", 
                     "screen": "default"
                 }, 
                 {
@@ -661,7 +1007,7 @@
                     "legacy": false, 
                     "name": "SuperTux", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/supertux.png", 
                     "screen": "default"
                 }, 
                 {
@@ -670,7 +1016,7 @@
                     "legacy": false, 
                     "name": "Transball", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/stransball2.png", 
                     "screen": "default"
                 }, 
                 {
@@ -679,7 +1025,7 @@
                     "legacy": false, 
                     "name": "Triple", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/triple.png", 
                     "screen": "default"
                 }, 
                 {
@@ -688,7 +1034,7 @@
                     "legacy": false, 
                     "name": "Tileworld", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/tileworld.png", 
                     "screen": "default"
                 }, 
                 {
@@ -697,7 +1043,7 @@
                     "legacy": false, 
                     "name": "Wizznic", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/wizznic.png", 
                     "screen": "default"
                 }, 
                 {
@@ -706,7 +1052,7 @@
                     "legacy": false, 
                     "name": "Wolf3D", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/wolf3d.png", 
                     "screen": "default"
                 }, 
                 {
@@ -715,7 +1061,7 @@
                     "legacy": false, 
                     "name": "Wolf3D", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/PyMenu/ports previews/wolf3d.png", 
                     "screen": "default"
                 }, 
                 {
@@ -724,7 +1070,7 @@
                     "legacy": false, 
                     "name": "Zelda", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "ports previews/zelda_roth.png", 
                     "screen": "default"
                 }
             ], 
@@ -734,7 +1080,7 @@
             "type": "native"
         }, 
         {
-            "background": "backgrounds/izm_art_blur.jpg", 
+            "background": "/mnt/game/PyMenu/ports previews/midpath.png", 
             "cmd": null, 
             "data": [
                 {
@@ -743,7 +1089,7 @@
                     "legacy": false, 
                     "name": "Bard", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/gmenu2x/skins/Default/icons/bard.png", 
                     "screen": "default"
                 }, 
                 {
@@ -752,7 +1098,7 @@
                     "legacy": false, 
                     "name": "Commander", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/gmenu2x/skins/Default/icons/commander.png", 
                     "screen": "default"
                 }, 
                 {
@@ -761,7 +1107,7 @@
                     "legacy": false, 
                     "name": "Glutexto", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/gmenu2x/skins/Default/icons/glutexto.png", 
                     "screen": "default"
                 }, 
                 {
@@ -770,7 +1116,7 @@
                     "legacy": false, 
                     "name": "GMU", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/gmenu2x/skins/Default/icons/gmu.png", 
                     "screen": "default"
                 }, 
                 {
@@ -779,7 +1125,7 @@
                     "legacy": false, 
                     "name": "O2xIV", 
                     "overclock": "528", 
-                    "preview": ".", 
+                    "preview": "/mnt/game/gmenu2x/skins/Default/icons/o2xiv.png", 
                     "screen": "default"
                 }
             ], 
@@ -796,7 +1142,7 @@
         }
     ], 
     "options": {
-        "displayTimeout": "60"
+        "displayTimeout": "20"
     }, 
     "screenHeight": 240, 
     "screenWidth": 320
