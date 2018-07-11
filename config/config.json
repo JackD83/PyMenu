@@ -9,7 +9,7 @@
             "background": "ports previews/pocketsnes.png",
             "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES",
             "description": "Famicom",
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/snes2.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/snes2.png",
             "icon": "systems/sfc.png",
             "legacy": false,
             "name": "SNES",
@@ -18,7 +18,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/pocketsnes"
+            "workingDir": "/mnt/int_sd/emus/pocketsnes"
         },
         {
             "background": "ports previews/sfc.png",
@@ -40,7 +40,7 @@
         },
         {
             "background": "ports previews/fceux.png",
-            "cmd": "//mnt/int_sd/emus/fceux/fceux",
+            "cmd": "/mnt/int_sd/emus/fceux/fceux",
             "description": null,
             "fileFilter": [
                 ".zip"
@@ -69,7 +69,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/temper"
+            "workingDir": "/mnt/int_sd/emus/temper"
         },
         {
             "background": "ports previews/mame.png",
@@ -84,7 +84,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/mame4all"
+            "workingDir": "/mnt/int_sd/emus/mame4all"
         },
         {
             "background": "ports previews/speccy.png",
@@ -99,7 +99,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/speccy"
+            "workingDir": "/mnt/int_sd/emus/speccy"
         },
         {
             "background": "ports previews/gngeo.png",
@@ -114,13 +114,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/gngeo"
+            "workingDir": "/mnt/int_sd/emus/gngeo"
         },
         {
             "background": "ports previews/dingux_atari.png",
-            "cmd": "//mnt/int_sd/emus/dingux_atari/dingux-atari",
+            "cmd": "/mnt/int_sd/emus/dingux_atari/dingux-atari",
             "description": null,
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/atari5200.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/atari5200.png",
             "icon": "systems/a5200.png",
             "legacy": false,
             "name": "ATARI 5200",
@@ -129,13 +129,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dingux_atari"
+            "workingDir": "/mnt/int_sd/emus/dingux_atari"
         },
         {
             "background": "ports previews/np2.png",
             "cmd": "/mnt/int_sd/emus/dosbox/dosbox",
             "description": null,
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/dosbox.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/dosbox.png",
             "icon": "systems/pc.png",
             "legacy": false,
             "name": "DOSBOX",
@@ -144,13 +144,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dosbox"
+            "workingDir": "/mnt/int_sd/emus/dosbox"
         },
         {
             "background": "ports previews/jzintv.png",
             "cmd": "/mnt/int_sd/emus/jzintv/jzintv",
             "description": "IntelliVision",
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/intellivision.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/intellivision.png",
             "icon": "systems/int.png",
             "legacy": false,
             "name": "INTV",
@@ -159,13 +159,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/jzintv"
+            "workingDir": "/mnt/int_sd/emus/jzintv"
         },
         {
             "background": "ports previews/prosystem.png",
             "cmd": "/mnt/int_sd/emus/prosystem/prosystem-od.dge",
             "description": "Pro System",
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/atari7800.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/atari7800.png",
             "icon": "systems/a7800.png",
             "legacy": false,
             "name": "ATARI 7800",
@@ -174,13 +174,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/prosystem"
+            "workingDir": "/mnt/int_sd/emus/prosystem"
         },
         {
             "background": "ports previews/openbor.png",
             "cmd": "/mnt/int_sd/emus/openbor/OpenBOR",
             "description": null,
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/openbor.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/openbor.png",
             "icon": "systems/OpenBOR.png",
             "legacy": false,
             "name": "OPENBOR",
@@ -189,7 +189,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/emus/openbor/Paks",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/openbor"
+            "workingDir": "/mnt/int_sd/emus/openbor"
         },
         {
             "background": "ports previews/dingux_cap32.png",
@@ -204,7 +204,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dingux_cap32"
+            "workingDir": "/mnt/int_sd/emus/dingux_cap32"
         },
         {
             "background": "ports previews/dingux_2600.png",
@@ -219,13 +219,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dingux_2600"
+            "workingDir": "/mnt/int_sd/emus/dingux_2600"
         },
         {
             "background": "ports previews/uae4all.png",
             "cmd": "/mnt/int_sd/emus/uae4all/uae4all",
             "description": null,
-            "folderIcon": "//mnt/game/gmenu2x/skins/Default/icons/uae4all.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/uae4all.png",
             "icon": "systems/ami.png",
             "legacy": false,
             "name": "AMIGA",
@@ -234,7 +234,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/uae4all"
+            "workingDir": "/mnt/int_sd/emus/uae4all"
         },
         {
             "background": "ports previews/pcsx4all.png",
@@ -249,11 +249,11 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/pcsx4all"
+            "workingDir": "/mnt/int_sd/emus/pcsx4all"
         },
         {
             "background": "ports previews/gambatte_sdl.png",
-            "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
+            "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl",
             "description": "Handheld",
             "fileFilter": [
                 ".zip"
@@ -267,7 +267,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/gb",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/gamebatte"
+            "workingDir": "/mnt/int_sd/emus/gamebatte"
         },
         {
             "background": "ports previews/race_od.png",
@@ -282,7 +282,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/race_od"
+            "workingDir": "/mnt/int_sd/emus/race_od"
         },
         {
             "background": "ports previews/dcastaway.png",
@@ -297,7 +297,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dcastaway"
+            "workingDir": "/mnt/int_sd/emus/dcastaway"
         },
         {
             "background": "ports previews/oswan.png",
@@ -312,11 +312,11 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "///mnt/int_sd/emus/oswan"
+            "workingDir": "//mnt/int_sd/emus/oswan"
         },
         {
             "background": "ports previews/ohboy.png",
-            "cmd": "//mnt/int_sd/emus/gamebatte/gambatte_sdl",
+            "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl",
             "description": "Gameboy Color",
             "fileFilter": [
                 ".zip"
@@ -330,7 +330,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/gbc",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/gamebatte"
+            "workingDir": "/mnt/int_sd/emus/gamebatte"
         },
         {
             "background": "ports previews/picodrive.png",
@@ -345,15 +345,15 @@
             "name": "Genesis",
             "overclock": "600",
             "preview": ".",
-            "previews": "//mnt/int_sd/previews/gamegear",
+            "previews": "/mnt/int_sd/previews/gamegear",
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/md",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/picodrive"
+            "workingDir": "/mnt/int_sd/emus/picodrive"
         },
         {
             "background": "ports previews/regba.png",
-            "cmd": "//mnt/int_sd/emus/regba/regba",
+            "cmd": "/mnt/int_sd/emus/regba/regba",
             "description": "Gameboy Advance",
             "fileFilter": [
                 ".zip"
@@ -367,13 +367,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/gba",
             "type": "emulator",
-            "workingDir": "//mnt/ext_sd/int_sd/emus/regba"
+            "workingDir": "/mnt/ext_sd/int_sd/emus/regba"
         },
         {
             "background": "ports previews/fbasdl.png",
             "cmd": "/mnt/int_sd/emus/fba_gcw0/fbasdl.dge",
             "description": "Finalburn Alpha",
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/fba1.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/fba1.png",
             "icon": "systems/fba.png",
             "legacy": false,
             "name": "FBA",
@@ -382,7 +382,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/fba_gcw0"
+            "workingDir": "/mnt/int_sd/emus/fba_gcw0"
         },
         {
             "background": "ports previews/scummvm.png",
@@ -397,7 +397,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/scummvm"
+            "workingDir": "/mnt/int_sd/emus/scummvm"
         },
         {
             "background": "ports previews/vice.png",
@@ -412,7 +412,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/vice"
+            "workingDir": "/mnt/int_sd/emus/vice"
         },
         {
             "background": "ports previews/sms_sdl.png",
@@ -426,11 +426,11 @@
             "legacy": false,
             "name": "SMS",
             "overclock": "524",
-            "previews": "//mnt/int_sd/previews/sms",
+            "previews": "/mnt/int_sd/previews/sms",
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/sms",
             "type": "emulator",
-            "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl"
+            "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
         },
         {
             "background": "ports previews/openmsx.png",
@@ -445,13 +445,13 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/dingux-msx"
+            "workingDir": "/mnt/int_sd/emus/dingux-msx"
         },
         {
             "background": "ports previews/beebem.png",
             "cmd": "/mnt/int_sd/emus/beebem/beebem",
             "description": null,
-            "folderIcon": "//mnt/game/gmenu2x/skins/ps4/icons/bbcmicro.png",
+            "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/bbcmicro.png",
             "icon": "systems/bbc-micro-logo.png",
             "legacy": false,
             "name": "BBC MICRO",
@@ -460,7 +460,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/emus/beebem/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/beebem"
+            "workingDir": "/mnt/int_sd/emus/beebem"
         },
         {
             "background": "ports previews/colem.png",
@@ -475,7 +475,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/emus/colem/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/colem"
+            "workingDir": "/mnt/int_sd/emus/colem"
         },
         {
             "background": "ports previews/handy320.png",
@@ -493,7 +493,7 @@
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "//mnt/int_sd/emus/handy"
+            "workingDir": "/mnt/int_sd/emus/handy"
         },
         {
             "background": "ports previews/gamegear.png",
@@ -507,11 +507,11 @@
             "legacy": false,
             "name": "Game Gear",
             "overclock": "524",
-            "previews": "//mnt/int_sd/previews/gamegear",
+            "previews": "/mnt/int_sd/previews/gamegear",
             "screen": "default",
             "selectionPath": "/mnt/int_sd/roms/gg",
             "type": "emulator",
-            "workingDir": "//mnt/ext_sd/int_sd/emus/sms_sdl"
+            "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
         },
         {
             "background": "backgrounds/ports2_art_blur.jpg",

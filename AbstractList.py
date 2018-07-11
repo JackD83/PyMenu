@@ -314,7 +314,7 @@ class AbstractList(RenderObject.RenderObject):
                 yOffset = ((32 - self.titleText.get_height()) / 2)
 
         x = 5
-        if("folderIcon" in self.options):
+        if("folderIcon" in self.options and os.path.exists(self.options["folderIcon"])):
             x = 42
 
         self.sidebar.blit(self.titleText, (x, 5 + yOffset))

@@ -171,7 +171,7 @@ class ConfigMenu(AbstractList.AbstractList):
 
             entry["value"] = self.optionTarget[o["id"]]
 
-            if("names" in o and "values" in o and o["values"].index(entry["value"]) != -1):
+            if("names" in o and "values" in o and entry["value"] in o["values"]):
                 entry["text"] = self.entryFont.render( entry["name"] + ": " + str(o["names"][o["values"].index(entry["value"])]) , True, self.textColor)
             else:      
                 entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)

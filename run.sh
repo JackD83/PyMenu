@@ -4,7 +4,7 @@ export SDL_AUDIODRIVER=dsp
 export SDL_NOMOUSE=1
 export HOME=/mnt/int_sd
 
-/mnt/game/PyMenu/setVolume 100
+/mnt/game/PyMenu/setVolume 255
 
 FILE="/tmp/run"
 while true

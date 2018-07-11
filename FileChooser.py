@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import RenderObject, Configuration, AbstractList
 import os, Keys, RenderControl, Common
-import pygame, sys, ResumeHandler
+import pygame, sys, ResumeHandler, ntpath
 from operator import itemgetter
 
 class FileChooser(AbstractList.AbstractList):
@@ -90,8 +90,7 @@ class FileChooser(AbstractList.AbstractList):
         self.previewPath = None
 
         if("directPreview" in self.options and self.options["directPreview"] and self.isImage()):
-             self.previewPath = self.currentSelection
-             print("onChange" + self.previewPath)
+             self.previewPath = self.currentSelection           
              return
         if("previews" in self.options and self.options["previews"] != None and os.path.exists(self.options["previews"]) and self.currentSelection != None):
             self.previewPath = self.options["previews"] + "/" + os.path.splitext(os.path.basename(self.currentSelection))[0] + ".png"
@@ -117,8 +116,7 @@ class FileChooser(AbstractList.AbstractList):
 
         AbstractList.AbstractList.handleEvents(self, events)
    
-    def initList(self):
-        print(self.currentPath)
+    def initList(self):       
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
             entry = {}
@@ -127,19 +125,19 @@ class FileChooser(AbstractList.AbstractList):
             entry["text"] = self.entryFont.render("..", True, self.textColor)
             self.entryList.append(entry)
 
-            fileList = os.listdir(os.path.normpath(self.currentPath))
+            self.fileList = os.listdir(os.path.normpath(self.currentPath))
       
-            Common.quick_sort(fileList)
+            Common.quick_sort(self.fileList)
           
             try:
-                for f in fileList:                   
+                for f in self.fileList:                   
                     if(os.path.isdir(self.currentPath + "/" + f)):
                         entry = {}
                         entry["name"] = f
                         entry["isFolder"] = True
                         entry["text"] = None
                         self.entryList.append(entry)
-                for f in fileList:                   
+                for f in self.fileList:                   
                     if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
                         entry = {}
                         entry["name"] = f
@@ -191,6 +189,12 @@ class FileChooser(AbstractList.AbstractList):
 
         return False
     
+    def setInitialSelection(self, index):
+        self.setSelection(index)
+        self.onChange()            
+        self.preview_final = self.previewPath            
+        RenderControl.setDirty()
+    
   
 
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
@@ -231,10 +235,12 @@ class FileChooser(AbstractList.AbstractList):
 
         self.initList()
   
-        if(res != None and res["line"] != None):
-            self.setSelection(res["line"])
-            self.onChange()
-            
-            self.preview_final = self.previewPath      
-            RenderControl.setDirty()
+        if(res != None and res["line"] != None):           
+            self.setInitialSelection(res["line"])
+        else:            
+            if(os.path.isfile(initialPath) and self.fileList is not None):
+                name = ntpath.basename(initialPath)
+                index = self.fileList.index(name)
+                if(index != -1):
+                    self.setInitialSelection(index + 1)      
       
