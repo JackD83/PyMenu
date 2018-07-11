@@ -235,6 +235,6 @@ class FileChooser(AbstractList.AbstractList):
             self.setSelection(res["line"])
             self.onChange()
             
-            self.preview_final = self.previewPath          
+            self.preview_final = self.previewPath      
             RenderControl.setDirty()
       

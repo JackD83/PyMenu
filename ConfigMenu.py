@@ -29,8 +29,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.configCallback = callback
       
 
-    def onSelect(self):
-        print("on select")
+    def onSelect(self):        
         if(self.entryList[self.currentIndex]["type"] == "string"):
             self.subComponent = TextInput.TextInput(self.screen, self.entryList[self.currentIndex]["value"], self.textCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], (255,255,255)) 
@@ -45,7 +44,7 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
             options = {}   
-            options["preview"] = False      
+            options["preview"] = False  
 
             if("filter" in self.entryList[self.currentIndex]["options"]):
                 options["fileFilter"] = self.entryList[self.currentIndex]["options"]["filter"]
@@ -64,8 +63,11 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)
-        if(self.entryList[self.currentIndex]["type"] == "list"):        
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
+        if(self.entryList[self.currentIndex]["type"] == "list"):   
+            if("names" in self.entryList[self.currentIndex]["options"]):
+                self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["names"], self.listCallback)
+            else:
+                self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
 
     def textCallback(self, text):      
         if(text == None):
@@ -113,8 +115,15 @@ class ConfigMenu(AbstractList.AbstractList):
        
 
     def onChange(self):
+
+        if("description" in self.entryList[self.currentIndex]["options"]):
+            self.options["description"] = self.entryList[self.currentIndex]["options"]["description"]            
+        else:
+            self.options["description"] = ""
+        self.initHeader()
+
         if(self.entryList[self.currentIndex]["type"] == "image"): 
-            self.previewEnabled = True      
+            #self.previewEnabled = True      
             self.previewPath = self.entryList[self.currentIndex]["value"]
         else:
             self.previewEnabled = False   
@@ -138,6 +147,9 @@ class ConfigMenu(AbstractList.AbstractList):
                 if event.key == Keys.DINGOO_BUTTON_START:
                     self.callback(self.optionTarget)
                     RenderControl.setDirty()
+
+                if event.key == Keys.DINGOO_BUTTON_Y:                  
+                    self.toggleSidebar(True)
                   
 
         if(self.overlay == None and self.subComponent == None):
@@ -154,10 +166,16 @@ class ConfigMenu(AbstractList.AbstractList):
             entry = {}
             entry["options"] = o
             entry["name"] = o["name"]
-            entry["id"] = o["id"]
-            entry["value"] = self.optionTarget[o["id"]]
+            entry["id"] = o["id"]           
             entry["type"] = o["type"]
-            entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)
+
+            entry["value"] = self.optionTarget[o["id"]]
+
+            if("names" in o and "values" in o and o["values"].index(entry["value"]) != -1):
+                entry["text"] = self.entryFont.render( entry["name"] + ": " + str(o["names"][o["values"].index(entry["value"])]) , True, self.textColor)
+            else:      
+                entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)
+
             self.entryList.append(entry)
         self.onChange()
 
@@ -166,7 +184,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.callback = callback
         self.optionConfig = optionConfig
         self.optionTarget = optionTarget
-        self.previewEnabled = True  
-        
+        self.previewEnabled = False  
+        self.toggleSidebar(False)    
         self.initList()
       

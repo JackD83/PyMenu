@@ -1,43 +1,53 @@
 [{
     "id":"name",
     "name" :"Name",
-    "type":"string"        
+    "type":"string",
+    "description": "Name of the entry"   
 },
 {
     "id":"description",
     "name" :"Description",
-    "type":"string"        
+    "type":"string",
+    "description": "Description of the entry"    
 },
 {   "id":"background",
     "name" :"Background Image",
-    "type":"image"      
+    "type":"image",
+    "description": "Used background image"     
 },     
 {   "id":"icon",
     "name" :"Icon",
-    "type":"image"      
+    "type":"image",
+    "description": "Icon used in main menu" 
 },  
 {   "id":"folderIcon",
     "name" :"Folder Icon (32px)",
-    "type":"image"
+    "type":"image",
+    "description": "Icon used in rom selection"
 },
 {   "id":"cmd",
     "name" :"Executable",
-    "type":"file"    
+    "type":"file"   
 },
 {   "id":"workingDir",
     "name" :"Work directory",
-    "type":"folder" 
+    "type":"folder",
+    "description": "Folder where exe is called"
 },
 {   "id":"selectionPath",
     "name" :"Rom folder",
-    "type":"folder" 
+    "type":"folder",
+    "description": "Folder where the roms are"
 },
 {   "id":"previews",
     "name" :"Preview folder",
-    "type":"folder" 
+    "type":"folder",
+    "description": "Folder for preview images"
+
 },     
 {   "id":"overclock",
     "name" :"Overclock",
     "type":"list",
+    "description": "Clockspeed for this entry",
     "values": ["528", "552", "576","600", "624"]
 }]

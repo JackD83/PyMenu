@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
-import platform
+import platform, Suspend
 
 from pygame.locals import *
 
@@ -46,15 +46,19 @@ def init():
     screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
 
     renderObject = MainMenu.MainMenu(screen)
+
+    suspend = Suspend.Suspend()
     
     while True: # main game loop
         events = pygame.event.get()       
         for event in events:
             if event.type == QUIT:
-                pygame.quit()
-                sys.exit()       
+                pygame.quit()            
+                sys.exit()
 
+        suspend.handleEvents(events)
         renderObject.handleEvents(events)
+        
         if(RenderControl.isDirty()):
             update(renderObject, screen,events)
 

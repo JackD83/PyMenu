@@ -13,26 +13,7 @@ class NativeAppList(AbstractList.AbstractList):
     subComponent = None
   
 
-    configOptions = [
-    {   "id":"cmd",
-        "name" :"Executable",
-        "type":"file"
-    }, 
-    {
-        "id":"name",
-        "name" :"Name",
-        "type":"string",        
-    },      
-    {   "id":"preview",
-        "name" :"Preview Image",
-        "type":"image"      
-    },     
-    {   "id":"overclock",
-        "name" :"Overclock",
-        "type":"list",
-        "values": ["528", "552", "576","600", "624"]
-    }
-    ]
+    configOptions = json.load(open('config/optionsNative.json'))
 
     previewCache = {}
 
@@ -80,8 +61,7 @@ class NativeAppList(AbstractList.AbstractList):
         else:
             self.previewPath = None
 
-        if("description" in self.currentSelection):
-            print("Setting description")
+        if("description" in self.currentSelection):           
             self.entryDescription = self.currentSelection["description"]
         else:
             self.entryDescription = None
@@ -204,7 +184,6 @@ class NativeAppList(AbstractList.AbstractList):
             self.onChange()
             self.previewPath = self.currentSelection["preview"]
             self.preview_final = self.previewPath
-            RenderControl.setDirty()
-            print(self.preview_final + " fibak")
+            RenderControl.setDirty()           
       
       

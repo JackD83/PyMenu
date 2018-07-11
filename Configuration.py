@@ -4,6 +4,7 @@ from pprint import pprint
 
 configuration = json.load(open('config/config.json'))
 theme = json.load(open('theme/theme.json'))
+listeners = []
 
 def getConfiguration():
     return configuration
@@ -16,6 +17,9 @@ def saveConfiguration():
     with open('config/config.json', 'w') as fp:
         json.dump(configuration, fp,sort_keys=True, indent=4)
         subprocess.Popen(["sync"])
+    
+    for l in listeners:
+        l()
 
 def getTheme():
     return theme
@@ -25,6 +29,9 @@ def toColor(input):
 
 def isRS97():
     return "RS97" in configuration and configuration["RS97"]
+
+def addConfigChangedCallback(listener):
+    listeners.append(listener)
 
 
 def getPathData(path, data = None):

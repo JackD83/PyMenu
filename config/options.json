@@ -2,7 +2,17 @@
     {
         "name": "Display Timeout",
         "id": "displayTimeout",
+        "description" : "Time of inactivity to turn display off",
         "type": "list",
-        "values": ["10", "20", "30", "60", "off"]
+        "values": ["10", "20", "30", "60", "off"],
+        "names": ["10s", "20s", "30s", "60s", "off"]
+    },
+    {
+        "name": "Suspend Timeout",
+        "id": "suspendTimeout",
+        "description" : "Time of inactivity power down device",
+        "type": "list",
+        "values": ["1", "2", "5", "10", "off"],
+        "names": ["1m", "2m", "5m", "10m", "off"]
     }
 ]

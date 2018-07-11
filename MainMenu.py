@@ -155,6 +155,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def configCallback(self, select):
         self.subComponent = None
+        Configuration.saveConfiguration()
         RenderControl.setDirty()
 
     def openSelection(self, current):

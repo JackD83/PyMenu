@@ -31,7 +31,7 @@ class AbstractList(RenderObject.RenderObject):
       
     titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 15)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
-    descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 14)
+    descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
 
     maxListEntries = 13  
 
@@ -81,9 +81,7 @@ class AbstractList(RenderObject.RenderObject):
             return
                
 
-        if(not self.useSidebar):
-            previewBox = pygame.Surface((self.previewBoxSize, self.previewBoxSize))
-            previewBox.fill(Configuration.toColor(self.theme["side"]["color"]))
+      
 
         if(self.preview_final != None and os.path.exists(self.preview_final) and os.path.isfile(self.preview_final) ):
             #print("render " + self.preview_final)
@@ -102,11 +100,7 @@ class AbstractList(RenderObject.RenderObject):
                 image = self.previewCache[self.preview_final]
 
 
-            if(not self.useSidebar):
-                xOffset = (previewBox.get_width() - image.get_width()) / 2
-                yOffset = (previewBox.get_height() - image.get_height()) / 2
-                previewBox.blit(image,(xOffset,yOffset))
-            else:
+            if(self.useSidebar):           
                 xOffset = (128 - image.get_width()) / 2
                 yOffset = (128 - image.get_height()) / 2
                 screen.blit(image,(5 + xOffset,56 + yOffset)) 
@@ -114,14 +108,8 @@ class AbstractList(RenderObject.RenderObject):
             if(not self.keyDown):
                 #fallback if image not found
                 desc = self.renderDescription()
-                if(not desc == None):
-                    if(not self.useSidebar):
-                        previewBox.blit(desc,(5,5))
-                    else:
-                        screen.blit(desc,(5,56))
-
-        if(not self.useSidebar):
-            screen.blit(previewBox, (self.config["screenWidth"] - previewBox.get_width() ,self.headerHeight))
+                if(not desc == None):                    
+                    screen.blit(desc,(5,56))       
 
      
 
@@ -314,7 +302,7 @@ class AbstractList(RenderObject.RenderObject):
             if(description.get_height() < 9):
                 yOffset = ((9 - description.get_height()) / 2)
 
-            self.header.blit(description, (x, 20 + yOffset))
+            self.header.blit(description, (x, 24 + yOffset))
     
     def initSidebar(self):
         self.sidebar = pygame.Surface((self.sidebarWidth, self.config["screenHeight"]))
