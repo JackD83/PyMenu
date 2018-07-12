@@ -27,8 +27,7 @@ def removePeriodicTask(id):
         del periodic[id]
     
 def stopAnimation(id):
-    if(id in animations):
-        print("Animation stopped")
+    if(id in animations):        
         del animations[id]
 
 def addAnimation(start, target, duration, callback, delay = 0):

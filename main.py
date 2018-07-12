@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
-import platform, Suspend
+import platform, Suspend, BrightnessControl
 
 from pygame.locals import *
 
@@ -48,6 +48,8 @@ def init():
     renderObject = MainMenu.MainMenu(screen)
 
     suspend = Suspend.Suspend()
+    brightness = BrightnessControl.Brightness()
+
     
     while True: # main game loop
         events = pygame.event.get()       
@@ -58,9 +60,11 @@ def init():
 
         suspend.handleEvents(events)
         renderObject.handleEvents(events)
+        brightness.handleEvents(events)
         
         if(RenderControl.isDirty()):
-            update(renderObject, screen,events)
+            renderObject.render(screen)
+            brightness.render(screen)
 
             if(Configuration.isRS97() and platform.processor() == ""):
                 realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
@@ -72,10 +76,5 @@ def init():
 
         TaskHandler.updateTasks()
         fpsClock.tick(Common.FPS)
-
-
-def update(renderObject, screen, events):  
-    renderObject.render(screen)
-
 
 init()

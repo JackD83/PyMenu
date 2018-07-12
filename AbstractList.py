@@ -21,8 +21,6 @@ class AbstractList(RenderObject.RenderObject):
 
     entryDescription = None
 
-    previewBoxSize = 200
-
     useSidebar = False
     sidebarWidth = 138
 
@@ -88,12 +86,8 @@ class AbstractList(RenderObject.RenderObject):
                  
             image = None
             if(not self.preview_final in self.previewCache):
-                image = Common.loadImage(self.preview_final)
-
-                if(not self.useSidebar):
-                    image = Common.aspect_scale(image, self.previewBoxSize - 10, self.previewBoxSize - 10)
-                else:
-                    image = Common.aspect_scale(image, 128, 128)
+                image = Common.loadImage(self.preview_final)              
+                image = Common.aspect_scale(image, 128, 128)
                 
                 self.previewCache[self.preview_final] = image
             else:
@@ -367,11 +361,7 @@ class AbstractList(RenderObject.RenderObject):
         self.title = titel
         self.options = options
         self.setFooter(Footer.Footer([],[],(255,255,255)))
-
-        self.previewBoxSize = int(self.config["screenWidth"] * 0.5)
-        if(self.previewBoxSize > 200):
-            self.previewBoxSize = 200
-       
+            
 
         if("textColor" in self.options):
             self.textColor = options["textColor"]

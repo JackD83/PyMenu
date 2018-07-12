@@ -3,7 +3,7 @@
     "batteryHigh": 4500,
     "batteryLow": 3752,
     "firstStart": false,
-    "lcd_backlight": 30,
+    "lcd_backlight": 70,
     "mainMenu": [
         {
             "background": "ports previews/pocketsnes.png",
