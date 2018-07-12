@@ -98,6 +98,6 @@ class Brightness(RenderObject.RenderObject):
     def __init__(self):
         if("lcd_backlight" in self.config and self.config["lcd_backlight"] in self.BRIGHTNESS_LEVELS):
             self.brightnessIndex = self.BRIGHTNESS_LEVELS.index(self.config["lcd_backlight"])
-            self.setBrightness(30, False)        
+            self.setBrightness(self.config["lcd_backlight"], False)        
         else:
             self.setBrightness(30)        
