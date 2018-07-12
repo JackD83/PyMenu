@@ -66,7 +66,7 @@ class MainMenu(RenderObject.RenderObject):
                     if(self.selection == "power" or self.selection == "settings"):
                         self.selection = "band"
                         RenderControl.setDirty()
-                if event.key == Keys.DINGOO_BUTTON_LEFT:
+                if event.key == Keys.DINGOO_BUTTON_LEFT or event.key == Keys.DINGOO_BUTTON_L:
                     if(not self.inTransition and self.selection == "band"):
                         TaskHandler.addAnimation(0, 160, 200, self.transitionCallback)
                         self.inTransition = True             
@@ -75,7 +75,7 @@ class MainMenu(RenderObject.RenderObject):
                         self.selection = "settings"
 
                     RenderControl.setDirty()
-                if event.key == Keys.DINGOO_BUTTON_RIGHT:
+                if event.key == Keys.DINGOO_BUTTON_RIGHT or event.key == Keys.DINGOO_BUTTON_R:
                     if(not self.inTransition and self.selection == "band"):
                         TaskHandler.addAnimation(0, -160,200, self.transitionCallback)
                         self.inTransition = True             
