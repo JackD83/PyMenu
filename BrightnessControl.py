@@ -1,5 +1,6 @@
 import pygame, sys, Common, TaskHandler, Configuration
 import os,subprocess, RenderObject, Keys,RenderControl
+from threading import Thread
 
 class Brightness(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
@@ -74,8 +75,10 @@ class Brightness(RenderObject.RenderObject):
         if(self.brightnessIndex >= len(self.BRIGHTNESS_LEVELS)):
             self.brightnessIndex = 0
 
-        level = self.BRIGHTNESS_LEVELS[self.brightnessIndex]       
-        self.setBrightness(level)        
+        level = self.BRIGHTNESS_LEVELS[self.brightnessIndex]    
+        thread = Thread(target = self.setBrightness, args = (level,))
+        thread.start()     
+            
 
         self.showBrightness = True
         self.brightnessAlpha = 255

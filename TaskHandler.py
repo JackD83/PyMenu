@@ -53,26 +53,32 @@ def updateTasks():
     counter = counter + 1
 
     for anim in animations.copy():
-        if(counter >= animations[anim]["delay"]):
-            animations[anim]["current"] = animations[anim]["current"] + animations[anim]["speed"]
+        try:
+            if(counter >= animations[anim]["delay"]):
+                animations[anim]["current"] = animations[anim]["current"] + animations[anim]["speed"]
 
-            finished = False
-            if(animations[anim]["target"] > animations[anim]["start"]):
-                finished = animations[anim]["current"] >= animations[anim]["target"]
-            else:
-                finished = animations[anim]["current"] <= animations[anim]["target"]
+                finished = False
+                if(animations[anim]["target"] > animations[anim]["start"]):
+                    finished = animations[anim]["current"] >= animations[anim]["target"]
+                else:
+                    finished = animations[anim]["current"] <= animations[anim]["target"]
+                
             
-        
-            if(finished):
-                animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], True)
-                del animations[anim]
-            else:
-                animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)    
+                if(finished):
+                    animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], True)
+                    del animations[anim]
+                else:
+                    animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)
+        except expression as identifier:
+            pass
 
     for task in periodic.copy():
-        if(counter >= periodic[task]["delay"]):
-            time = counter - periodic[task]["start"]
-                      
-            if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):               
-                periodic[task]["callback"]()
+        try:   
+            if(counter >= periodic[task]["delay"]):
+                time = counter - periodic[task]["start"]
+                        
+                if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):               
+                    periodic[task]["callback"]()
+        except expression as identifier:
+            pass
 
