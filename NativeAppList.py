@@ -1,5 +1,5 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
-import os, Keys, RenderControl, Common, SelectionMenu
+import os, Keys, RenderControl, Common, SelectionMenu, FileChooser
 import pygame, sys, ResumeHandler, os
 import platform
 import json
@@ -38,12 +38,54 @@ class NativeAppList(AbstractList.AbstractList):
 
     def onSelect(self):
         if(len(self.entryList) > 0):
-            ResumeHandler.setLastSelectedLine(self.currentIndex)
-            self.callback(self.entryList[self.currentIndex]["options"])
+            print(self.entryList[self.currentIndex]["options"] )
+            if("selector" in self.entryList[self.currentIndex]["options"] and self.entryList[self.currentIndex]["options"]["selector"]):              
+                self.openSelection()
+            else:
+                ResumeHandler.setLastSelectedLine(self.currentIndex)
+                self.callback(self.entryList[self.currentIndex]["options"])                    
     
     def onExit(self):
         print("exit") 
         self.callback(None)    
+
+    def openSelection(self):
+        print("Opening file selection")
+        options = {}
+        options["textColor"] = (55,55,55)
+        options["background"] = self.options["background"]
+        options["useSidebar"] = False
+
+        if("selectDescription" in self.entryList[self.currentIndex]["options"]):
+            options["description"] =  self.entryList[self.currentIndex]["options"]["selectDescription"]
+
+        if("folderIcon" in  self.options):
+            options["folderIcon"] =  self.options["folderIcon"]
+              
+        
+        if("fileFilter" in  self.entryList[self.currentIndex]["options"]):
+            options["fileFilter"] = self.entryList[self.currentIndex]["options"]
+
+        if("selectionPath" in self.entryList[self.currentIndex]["options"]):
+            selectionPath = self.entryList[self.currentIndex]["options"]
+        else:
+            selectionPath = "/"
+
+        print(options)
+
+
+        self.subComponent = FileChooser.FileChooser(self.screen,self.entryList[self.currentIndex]["options"]["name"], selectionPath, False, options, self.selectionCallback)
+        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+        self.subComponent.setFooter(footer)
+
+    def selectionCallback(self, selection):      
+        self.subComponent = None
+
+        if(selection is not None):
+            self.entryList[self.currentIndex]["options"]["selection"] = selection
+            ResumeHandler.setLastSelectedLine(self.currentIndex)
+            self.callback(self.entryList[self.currentIndex]["options"])
+
     
     def onChange(self):
         if(len(self.entryList) == 0):

@@ -91,7 +91,7 @@ def runEmuHost(name, cmd, workdir, config, rom):
 def runNative(config):
     ResumeHandler.storeResume()
     cmd =  config["cmd"] if "cmd" in config else None
-
+  
     if(cmd == None or not os.path.isfile(cmd)):
         print("cmd needs to be set to an existing executable")
         return
@@ -108,6 +108,7 @@ def runNativeMIPS(cmd, config):
     screen = config["screen"] if "screen" in config else None
     legacy = config["legacy"] if "legacy" in config else None
     overclock = config["overclock"] if "overclock" in config else None
+    selection = overclock = config["selection"] if "selection" in config else ""
 
     if(overclock != None):
         try:
@@ -134,7 +135,7 @@ def runNativeMIPS(cmd, config):
 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")
-    file.write("\"" + cmd + "\"\n")
+    file.write("\"" + cmd  + "\" \"" + selection + "\"\n")
 
     if(screen != None and screen != "default"):
         file.write("echo 0 > /proc/jz/lcd_a320\n")
@@ -157,8 +158,9 @@ def runNativeMIPS(cmd, config):
     
 
 def runNativeHost(cmd, config):
+    selection = overclock = config["selection"] if "selection" in config else ""   
     try:
-        subprocess.Popen([cmd])
+        subprocess.Popen([cmd, selection])
     except Exception as ex:
         print(str(ex))
    
