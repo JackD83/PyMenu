@@ -3,6 +3,7 @@ import os,subprocess, RenderObject, Keys,RenderControl
 
 class Brightness(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
+    lcd_backlight = None
 
     textFont = pygame.font.Font('theme/NotoSansSymbols-Regular.ttf', 19)
  
@@ -88,7 +89,11 @@ class Brightness(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def setBrightness(self, level, store=True):
-        os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
+        
+        #os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
+        if(self.lcd_backlight is not None):
+            self.lcd_backlight.write(str(level) + '\n')
+
         if(store):
             self.config["lcd_backlight"] = level
             Configuration.saveConfiguration()
@@ -100,4 +105,10 @@ class Brightness(RenderObject.RenderObject):
             self.brightnessIndex = self.BRIGHTNESS_LEVELS.index(self.config["lcd_backlight"])
             self.setBrightness(self.config["lcd_backlight"], False)        
         else:
-            self.setBrightness(30)        
+            self.setBrightness(30)
+
+        try:
+            self.lcd_backlight = open("/proc/jz/lcd_backlight", "w")
+        except Exception as identifier:
+            print("Could not open lcd_backlight:" + str(identifier))
+
