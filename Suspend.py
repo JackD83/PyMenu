@@ -21,8 +21,12 @@ class Suspend():
         self.addBrignessTask()
 
     def suspend(self):
-        subprocess.Popen(["poweroff"])
-        TaskHandler.removePeriodicTask(self.suspendTaskId)
+        try:
+            subprocess.Popen(["poweroff"])
+            TaskHandler.removePeriodicTask(self.suspendTaskId)
+        except expression as identifier:
+            pass
+      
 
     def disableScreen(self):       
         os.system('echo 0 > /proc/jz/lcd_backlight')

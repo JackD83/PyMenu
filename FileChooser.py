@@ -200,7 +200,7 @@ class FileChooser(AbstractList.AbstractList):
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
         AbstractList.AbstractList.__init__(self,screen, titel, options)
       
-        if(initialPath == None):
+        if(initialPath == None or initialPath == "/"):
             initialPath = "/"
 
         self.getExistingParent(initialPath)
@@ -243,4 +243,7 @@ class FileChooser(AbstractList.AbstractList):
                 index = self.fileList.index(name)
                 if(index != -1):
                     self.setInitialSelection(index + 1)      
+
+        if(initialPath == None or initialPath == "/"):
+            self.moveFolderUp()
       
