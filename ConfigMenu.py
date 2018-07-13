@@ -9,7 +9,9 @@ class ConfigMenu(AbstractList.AbstractList):
     overlay = None
     footer = None
     configCallback = None
-     
+
+    originalTarget = None
+
     def render(self, screen):
         if(self.subComponent != None):
             self.subComponent.render(screen)
@@ -144,8 +146,10 @@ class ConfigMenu(AbstractList.AbstractList):
 
         for event in events:    
             if event.type == pygame.KEYDOWN:         
-                if event.key == Keys.DINGOO_BUTTON_START:
-                    self.callback(self.optionTarget)
+                if event.key == Keys.DINGOO_BUTTON_START:  
+                    self.originalTarget.update(self.optionTarget)
+
+                    self.callback(self.originalTarget)
                     RenderControl.setDirty()
 
                 if event.key == Keys.DINGOO_BUTTON_Y:                  
@@ -182,8 +186,11 @@ class ConfigMenu(AbstractList.AbstractList):
     def __init__(self, screen, titel,  options, optionTarget, optionConfig, callback):
         AbstractList.AbstractList.__init__(self, screen, titel, options)
         self.callback = callback
+      
+
         self.optionConfig = optionConfig
-        self.optionTarget = optionTarget
+        self.optionTarget = optionTarget.copy()
+        self.originalTarget = optionTarget
         self.previewEnabled = False  
         self.toggleSidebar(False)    
         self.initList()
