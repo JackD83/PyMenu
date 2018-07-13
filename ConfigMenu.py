@@ -145,15 +145,15 @@ class ConfigMenu(AbstractList.AbstractList):
             return
 
         for event in events:    
-            if event.type == pygame.KEYDOWN:         
+            if event.type == pygame.KEYDOWN:
+                if event.key == Keys.DINGOO_BUTTON_Y:                  
+                    self.toggleSidebar(True)
+            if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_START:  
                     self.originalTarget.update(self.optionTarget)
 
                     self.callback(self.originalTarget)
                     RenderControl.setDirty()
-
-                if event.key == Keys.DINGOO_BUTTON_Y:                  
-                    self.toggleSidebar(True)
                   
 
         if(self.overlay == None and self.subComponent == None):

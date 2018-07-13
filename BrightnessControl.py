@@ -65,7 +65,7 @@ class Brightness(RenderObject.RenderObject):
 
     def handleEvents(self, events):     
         for event in events:    
-            if event.type == pygame.KEYDOWN:         
+            if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_BRIGHTNESS:
                     self.adjustBrightness()                                    
                 
@@ -89,10 +89,13 @@ class Brightness(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def setBrightness(self, level, store=True):
+        print("Setting brightness " + str(level))
         
         #os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
         if(self.lcd_backlight is not None):
+            self.lcd_backlight.seek(0)
             self.lcd_backlight.write(str(level) + '\n')
+            self.lcd_backlight.flush()
 
         if(store):
             self.config["lcd_backlight"] = level
