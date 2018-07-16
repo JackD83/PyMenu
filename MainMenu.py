@@ -4,6 +4,7 @@ import os, ResumeHandler
 import json
 import pygame, sys, subprocess,platform
 from pprint import pprint
+from threading import Thread
 
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
@@ -19,7 +20,7 @@ class MainMenu(RenderObject.RenderObject):
     header = None
     footer = None
     systems = []
-    systemNames = []
+
     systembackgrounds = []
     currentIndex = 0
     inTransition = False
@@ -33,19 +34,37 @@ class MainMenu(RenderObject.RenderObject):
     selection = "band"
         
     def loadSystemImages(self):
-        self.systems = []
-        self.systemNames = []
-        self.systembackgrounds = []
+        self.systems = [None] * len(self.config["mainMenu"])
+     
+        self.systembackgrounds = [None] * len(self.config["mainMenu"])
 
-        for entry in self.config["mainMenu"]:
+        self.loadSystem(0)
+        self.loadSystem(len(self.config["mainMenu"]) - 1)
+        self.loadSystem(1)     
+        self.loadSystem(len(self.config["mainMenu"]) - 2)  
+
+        thread = Thread(target = self.loadImagesAsync, args = ())
+        thread.start()   
+
+    
+    def loadSystem(self, index):
+        if(index >= len(self.config["mainMenu"])):
+            return
+
+        entry = self.config["mainMenu"][index]
+        self.systems[index] = Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70)
+        self.systembackgrounds[index] = pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) )
+     
+
+    def loadImagesAsync(self):
+        for index, systemImage in enumerate(self.systems):
             try:
-                self.systems.append(Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70))
-                self.systembackgrounds.append( pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) ))
+                if(systemImage is None):
+                    self.loadSystem(index)
             except ValueError:
                 pass
 
-        print("loaded ", len(self.systems), " images" )
-        print("loaded ", len(self.systembackgrounds), " backgrounds" )
+        print("processd ", len(self.systems), " entries")       
     
     def handleEvents(self, events):   
         if(self.subComponent != None):
@@ -355,14 +374,24 @@ class MainMenu(RenderObject.RenderObject):
         screen.blit(self.banderole, (0,80))
 
         #current
-        screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
+        if(self.systems[self.currentIndex] is not None):
+            screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
+        else:            
+            RenderControl.setDirty()
 
         #previous
-        screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
+        if(self.systems[self.getPrev()] is not None):
+            screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
+        else:            
+            RenderControl.setDirty()
 
         #next
-        screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
+        if(self.systems[self.getNext()] is not None):
+            screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
+        else:            
+            RenderControl.setDirty()       
         
+
         if(self.footer != None):
             self.footer.render(screen)
 
