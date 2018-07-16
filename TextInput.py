@@ -195,6 +195,7 @@ class TextInput(RenderObject.RenderObject):
                     if(self.callback != None):
                         self.callback(self.initialText)
                         RenderControl.setDirty()
+            if event.type == pygame.KEYUP:
                 if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.callback != None):
                         self.callback(self.currentText)
