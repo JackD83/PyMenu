@@ -32,11 +32,11 @@
             "legacy": false,
             "name": "SNES",
             "overclock": "624",
-            "previews": "\\mnt\\int_sd\\previews\\snes",
+            "previews": "/mnt/int_sd/previews/snes",
             "screen": "default",
-            "selectionPath": "\\mnt\\int_sd\\roms",
+            "selectionPath": "/mnt/int_sd/roms",
             "type": "emulator",
-            "workingDir": "\\mnt\\ext_sd\\int_sd\\emus\\snes9x4d"
+            "workingDir": "/mnt/ext_sd/int_sd/emus/snes9x4d"
         },
         {
             "background": "ports previews/fceux.png",
