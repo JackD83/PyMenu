@@ -444,7 +444,7 @@ class MainMenu(RenderObject.RenderObject):
         res = ResumeHandler.getResumeFile()
         if(res != None and res["mainIndex"] != None and res["main"] != None):
             self.currentIndex = res["mainIndex"]
-            self.openSelection(res["main"])
+            self.openSelection(self.config["mainMenu"][self.currentIndex])
 
 
         #self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))
