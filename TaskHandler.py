@@ -69,7 +69,7 @@ def updateTasks():
                     del animations[anim]
                 else:
                     animations[anim]["callback"](animations[anim]["start"], animations[anim]["target"], animations[anim]["current"], False)
-        except expression as identifier:
+        except Exception as identifier:
             pass
 
     for task in periodic.copy():
@@ -79,6 +79,6 @@ def updateTasks():
                         
                 if( time != 0 and periodic[task]["val"] != 0 and time % periodic[task]["val"] == 0):               
                     periodic[task]["callback"]()
-        except expression as identifier:
+        except Exception as identifier:
             pass
 

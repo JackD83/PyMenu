@@ -4,24 +4,33 @@ import pygame, sys
 
 class ConfirmOverlay(RenderObject.RenderObject):
     background = None
+    backgroundShadow = None
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 16)
     footerHeight = 24
     spacing = 6
+
+    width = 160
+    height = 60
        
 
     def render(self, screen):
+
+        screen.blit(self.backgroundShadow, (self.xOffset + 4,self.yOffset + 4))
         screen.blit(self.background, (self.xOffset,self.yOffset))
 
     def initBackground(self):
 
-        self.background = pygame.Surface((160, 110),pygame.SRCALPHA)
-        self.background.fill((0,0,0))
+        self.background = pygame.Surface((self.width, self.height))
+        self.background.fill((137,137,137))
+
+        self.backgroundShadow = pygame.Surface((self.width, self.height),pygame.SRCALPHA)
+        self.backgroundShadow.fill((0,0,0, 128))
 
         text = self.entryFont.render(self.text, True, self.textColor)
         xText =  ( self.background.get_width() - text.get_width()) / 2
-        yText = (self.background.get_height() - text.get_height()) / 2
+        yText = (self.background.get_height() - self.footerHeight - text.get_height()) / 2
         self.background.blit(text, (xText,yText))
 
         self.xOffset = (self.config["screenWidth"] - self.background.get_width()) / 2

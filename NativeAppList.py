@@ -23,10 +23,10 @@ class NativeAppList(AbstractList.AbstractList):
         if(self.subComponent != None):
             self.subComponent.render(screen)
             return
-        else:            
+        else:       
             AbstractList.AbstractList.render(self, screen)      
 
-        if(self.overlay != None):
+        if(self.overlay != None):           
             self.overlay.render(screen)
           
  
@@ -37,20 +37,17 @@ class NativeAppList(AbstractList.AbstractList):
   
 
     def onSelect(self):
-        if(len(self.entryList) > 0):
-            print(self.entryList[self.currentIndex]["options"] )
+        if(len(self.entryList) > 0):            
             if("selector" in self.entryList[self.currentIndex]["options"] and self.entryList[self.currentIndex]["options"]["selector"]):              
                 self.openSelection()
             else:
                 ResumeHandler.setLastSelectedLine(self.currentIndex)
                 self.callback(self.entryList[self.currentIndex]["options"])                    
     
-    def onExit(self):
-        print("exit") 
+    def onExit(self):         
         self.callback(None)    
 
-    def openSelection(self):
-        print("Opening file selection")
+    def openSelection(self):        
         options = {}
         options["textColor"] = (55,55,55)
         options["background"] = self.options["background"]
@@ -71,8 +68,7 @@ class NativeAppList(AbstractList.AbstractList):
         else:
             selectionPath = "/"
 
-        print(options)
-
+        
 
         self.subComponent = FileChooser.FileChooser(self.screen,self.entryList[self.currentIndex]["options"]["name"], selectionPath, False, options, self.selectionCallback)
         footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
@@ -117,7 +113,7 @@ class NativeAppList(AbstractList.AbstractList):
 
 
         if(self.overlay != None):
-            self.overlay.handleEvents(events)           
+            self.overlay.handleEvents(events)            
             return
 
         for event in events:    
@@ -127,12 +123,13 @@ class NativeAppList(AbstractList.AbstractList):
                         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
                     else:
                          self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
-                    RenderControl.setDirty()
+                    RenderControl.setDirty()            
 
-        AbstractList.AbstractList.handleEvents(self, events)
+        if(self.overlay is None):
+            AbstractList.AbstractList.handleEvents(self, events)
 
    
-    def initList(self):
+    def initList(self):    
         self.entryList = []
         for o in self.data:
             entry = {}

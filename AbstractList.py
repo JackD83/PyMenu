@@ -69,16 +69,15 @@ class AbstractList(RenderObject.RenderObject):
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
-        if(self.currentIndex == -1):            
+        if(self.currentIndex == -1):             
             return
 
         if(not self.previewEnabled):           
             desc = self.renderDescription()
             if(not desc == None):
                 screen.blit(desc,(5,56))
-            return
-               
-
+            return               
+ 
       
 
         if(self.preview_final != None and os.path.exists(self.preview_final) and os.path.isfile(self.preview_final) ):
@@ -145,8 +144,8 @@ class AbstractList(RenderObject.RenderObject):
             if event.type == pygame.KEYDOWN:
                 self.keyDown = True
 
-                if(not len(self.entryList) <= 1):              
-                    self.preview_final = None
+                if(not len(self.entryList) <= 1):                         
+                    self.preview_final = None                   
 
                 if event.key == Keys.DINGOO_BUTTON_UP:
                     if(not len(self.entryList) <= 1):
