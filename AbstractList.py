@@ -12,6 +12,8 @@ class AbstractList(RenderObject.RenderObject):
     selection = None
     footer = None
 
+    listReady = True
+
     keyDown = False
 
     previewCache = {}
@@ -26,10 +28,16 @@ class AbstractList(RenderObject.RenderObject):
 
     headerHeight = 42
     initialPath =""
+
+    notReadyCounter = 0
       
     titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 15)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
     descriptionFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
+    
+    waitSymbol = Common.loadCachedImage("theme/wait.png")
+    waitCopy = None
+            
 
     maxListEntries = 13  
 
@@ -37,17 +45,32 @@ class AbstractList(RenderObject.RenderObject):
     currentWrap = 0
 
     def render(self, screen):
+        if(self.waitCopy is None):
+            self.waitCopy = self.waitSymbol.convert_alpha().copy()
+            self.waitCopy.fill((255, 255, 255, 145), None, pygame.BLEND_RGBA_MULT)
+
         screen.blit(self.background, (0,0))
         self.renderHeader(screen)
         self.renderSidebar(screen)
   
-        self.renderEntries(screen)
-        self.renderSelection(screen)
 
-        self.renderScrollbar(screen)
+        if(not self.listReady):          
+            self.notReadyCounter += 1
+            RenderControl.setDirty()
+            if(self.notReadyCounter > 5):
+                x = ( (self.config["screenWidth"] - self.sidebarWidth) / 2 )+ self.sidebarWidth - 16
+                y =  (( self.config["screenHeight"] - self.headerHeight) / 2 ) + self.headerHeight - 16
+                screen.blit(self.waitCopy, (x, y))
+                       
+                   
+        else:
+            self.notReadyCounter = 0
+            self.renderEntries(screen)
+            self.renderSelection(screen)
+            self.renderScrollbar(screen)
+
 
         self.renderPreview(screen)
-
         self.footer.render(screen)
     
     def renderScrollbar(self, screen):

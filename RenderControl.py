@@ -1,5 +1,5 @@
 dirty = True
-transition = True
+
 
 def setDirty(d=True):  
     global dirty
@@ -8,3 +8,4 @@ def setDirty(d=True):
 def isDirty():
     global dirty    
     return dirty
+

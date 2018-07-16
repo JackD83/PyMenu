@@ -2,14 +2,17 @@
 import RenderObject, Configuration, AbstractList
 import os, Keys, RenderControl, Common
 import pygame, sys, ResumeHandler, ntpath
+from threading import Thread
 from operator import itemgetter
 
 class FileChooser(AbstractList.AbstractList):
    
     folderIcon = Common.loadImage( "theme/folder.png")
+    reset = None
+    
 
    
-    currentSelection =""
+    currentSelection = ""
     previewTmp = None
 
     def renderText(self, entry):
@@ -29,8 +32,7 @@ class FileChooser(AbstractList.AbstractList):
             screen.blit(self.folderIcon, (self.xFolderOffset+ xOffset, yOffset +  self.yFolderOffset) )
         else:
             screen.blit(text, (2 + xOffset, yOffset + yTextOffset))
-       
-
+    
 
     def loadFolder(self, folder):
        
@@ -45,17 +47,14 @@ class FileChooser(AbstractList.AbstractList):
         print("new current path is", self.currentPath)
            
     def moveFolderUp(self):
-        reset = None
-        reset = os.path.basename(self.currentPath)
+        self.reset = None
+        self.reset = os.path.basename(self.currentPath)
         self.currentPath = os.path.abspath(os.path.join(self.currentPath, os.pardir))
         self.currentWrap = 0
         self.currentIndex = 0
         self.initList()
 
-        if(not reset == None):
-            for entry in self.entryList:
-                if(entry["name"] == reset):
-                    self.setSelection(self.entryList.index(entry))
+        
     
     def setFooter(self, footer):
         AbstractList.AbstractList.setFooter(self, footer)
@@ -116,7 +115,13 @@ class FileChooser(AbstractList.AbstractList):
 
         AbstractList.AbstractList.handleEvents(self, events)
    
-    def initList(self):       
+    def initList(self):
+        self.listReady = False  
+        thread = Thread(target = self.initListAsync, args = ())
+        thread.start()
+       
+
+    def initListAsync(self):
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
             entry = {}
@@ -145,8 +150,21 @@ class FileChooser(AbstractList.AbstractList):
                         entry["text"] = None
                         self.entryList.append(entry)
             except Exception as ex:
-                pass            
+                pass    
+
+        if(not self.reset == None):
+            for entry in self.entryList:
+                if(entry["name"] == self.reset):
+                    self.setSelection(self.entryList.index(entry))
+        else:
+            self.setSelection(0)
+        
+
         self.onChange()
+        self.listReady = True
+        RenderControl.setDirty()
+
+        
 
 
     def getExistingParent(self, path):

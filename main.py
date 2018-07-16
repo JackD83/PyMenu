@@ -62,17 +62,17 @@ def init():
         renderObject.handleEvents(events)
         brightness.handleEvents(events)
         
-        if(RenderControl.isDirty()):
+        if(RenderControl.isDirty()):                   
+            RenderControl.setDirty(False)
             renderObject.render(screen)
             brightness.render(screen)
 
             if(Configuration.isRS97() and platform.processor() == ""):
                 realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
             else:
-                 realScreen.blit(screen, (0,0))
+                realScreen.blit(screen, (0,0))
 
-            pygame.display.update()
-            RenderControl.setDirty(False)
+            pygame.display.update()        
 
         TaskHandler.updateTasks()
         fpsClock.tick(Common.FPS)

@@ -6,8 +6,7 @@ class Brightness(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     lcd_backlight = None
 
-    textFont = pygame.font.Font('theme/NotoSansSymbols-Regular.ttf', 19)
- 
+    textFont = pygame.font.Font('theme/NotoSansSymbols-Regular.ttf', 19) 
     brightSymbol = textFont.render(u"\u26ef", True, (255,255,255))
    
 
