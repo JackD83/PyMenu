@@ -40,4 +40,14 @@
         "description": "Description for selector",
         "type": "string"
     }
+    ,    
+    {
+        "id": "selectionPath",
+        "name": "Selection path",
+        "description": "Path for selection",
+        "type": "folder"
+    }
+
+
+    
 ]

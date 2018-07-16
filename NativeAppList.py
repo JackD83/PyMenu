@@ -61,10 +61,10 @@ class NativeAppList(AbstractList.AbstractList):
               
         
         if("fileFilter" in  self.entryList[self.currentIndex]["options"]):
-            options["fileFilter"] = self.entryList[self.currentIndex]["options"]
+            options["fileFilter"] = self.entryList[self.currentIndex]["options"]["fileFilter"]
 
         if("selectionPath" in self.entryList[self.currentIndex]["options"]):
-            selectionPath = self.entryList[self.currentIndex]["options"]
+            selectionPath = self.entryList[self.currentIndex]["options"]["selectionPath"]
         else:
             selectionPath = "/"
 

@@ -102,15 +102,15 @@ class FileChooser(AbstractList.AbstractList):
 
     def handleEvents(self, events):     
         for event in events:    
-            if event.type == pygame.KEYDOWN:         
+            if event.type == pygame.KEYDOWN:                        
+                if event.key == Keys.DINGOO_BUTTON_LEFT:
+                    self.moveFolderUp()
+                    RenderControl.setDirty()
+            if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.selectFolder):
                           self.callback(self.currentPath)
                           RenderControl.setDirty()
-                        
-                if event.key == Keys.DINGOO_BUTTON_LEFT:
-                    self.moveFolderUp()
-                    RenderControl.setDirty()
                     
                
 
