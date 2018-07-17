@@ -6,16 +6,10 @@ class Header():
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
     headerHeight = 24
-    lastVolChange = 0
-    vol = 0
-    volAlpha = 255
-    speaker = Common.loadCachedImage("theme/speaker.png")
-
-
+    
     battery = None
-    volumeDevice = None
-    volAnim = None
 
+    
     batteryLevel = 0
 
     usbDevice = None
@@ -27,40 +21,11 @@ class Header():
     def updateHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
-
-        if(not Configuration.isRS97()):
-            if(self.volAlpha > 0):
-                speaker = self.speaker.convert_alpha().copy()
-                speaker.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
-                self.header.blit(speaker, (10, (self.headerHeight - speaker.get_height()) / 2))
-            
-                vol = Common.loadCachedImage(self.getCurrentVolumeImage())
-                vol = vol.convert_alpha().copy()
-                vol.fill((255, 255, 255, self.volAlpha), None, pygame.BLEND_RGBA_MULT) 
-                self.header.blit(vol, (25, (self.headerHeight - vol.get_height()) / 2))
-
-
+      
         battery = Common.loadCachedImage(self.getCurrentBatteryImage())
         self.header.blit(battery, (self.config["screenWidth"] - 40, (self.headerHeight - battery.get_height()) / 2))
 
-             
-
-    def getCurrentVolumeImage(self):
-        self.readVolume()     
-        if(self.vol == 0):
-            return "theme/vol0.png"
-        if(self.vol >= 0 and self.vol < 20):
-            return "theme/vol1.png"
-        if(self.vol >= 20 and self.vol < 40):
-            return "theme/vol2.png"
-        if(self.vol >= 40 and self.vol < 60):
-            return "theme/vol3.png"
-        if(self.vol >= 60 and self.vol < 80):
-            return "theme/vol4.png"
-        if(self.vol >= 80):
-            return "theme/vol5.png"       
-
-       
+                
 
     def getCurrentBatteryImage(self):
         if(self.isUsbConnected()):
@@ -74,34 +39,7 @@ class Header():
             return "theme/battery_2.png"
         if(self.batteryLevel >= 60):
             return "theme/battery_3.png"               
-    
-
-    def updateVolume(self):
-        try:
-            change = os.stat("/opt/volume/volume.cfg").st_mtime
-            if(change != self.lastVolChange):
-                self.lastVolChange = change
-                if(self.volAnim != None):
-                    TaskHandler.stopAnimation(self.volAnim)
-                    self.volAlpha = 255
-                    self.updateHeader()
-                    RenderControl.setDirty()
-               
-                self.volAnim = TaskHandler.addAnimation(255, 0, 400, self.volumeAnimation, 2500) 
-        except Exception as ex:
-            pass
-
-    def readVolume(self):
-        if(self.volumeDevice == None):
-            return
-
-        try:
-            self.volumeDevice.seek(0)
-            first_line = self.volumeDevice.readline()
-            self.vol = int(first_line)          
-        except Exception as ex:
-            pass
-    
+        
     def isUsbConnected(self):
         if(self.usbDevice == None):
             return False
@@ -118,9 +56,12 @@ class Header():
         return False
     
     def updateBattery(self):
+        bat = self.getCurrentBatteryImage()
         self.readBatteryLevel()
-        self.updateHeader()
-        RenderControl.setDirty()
+
+        if(bat != self.getCurrentBatteryImage()):
+            self.updateHeader()
+            RenderControl.setDirty()
 
     def readBatteryLevel(self):
         if(self.battery == None):          
@@ -144,38 +85,20 @@ class Header():
             self.batteryLevel = float( (int(batteryLevelMVolt) - int(self.config["batteryLow"]) ) ) / float( ( int(self.config["batteryHigh"]) -  int(self.config["batteryLow"]) ) )  * 100.0
 
         except Exception as ex:
-            print(str(ex))
+            print(str(ex))   
     
-    def volumeAnimation(self, start, target, current, finished):
-        self.volAlpha = int(current)
-
-        if(finished):
-            self.volAlpha = 0
-            self.volumeAnim = None
-        
-        self.updateHeader()
-        RenderControl.setDirty()
     
     def __init__(self, height):
         self.headerHeight = height
         self.updateHeader()      
 
-        try:
-            if(not Configuration.isRS97()):
-                self.volumeDevice = open("/opt/volume/volume.cfg", "r")
-
+        try: 
             self.battery = open("/proc/jz/battery", "r")           
             self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
 
             self.updateBattery()
         except Exception as ex:
             print("Could not open devices" + str(ex))
-
-        
-
-        if(not Configuration.isRS97()):
-            TaskHandler.addPeriodicTask(100, self.updateVolume)
-            TaskHandler.addAnimation(255, 0, 600, self.volumeAnimation, 2500) 
 
         TaskHandler.addPeriodicTask(1000, self.updateBattery)
     

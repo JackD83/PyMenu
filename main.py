@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
-import platform, Suspend, BrightnessControl
+import platform, Suspend, BrightnessVolumeControl
 import time
 
 from pygame.locals import *
@@ -53,7 +53,7 @@ def init():
     renderObject = MainMenu.MainMenu(screen)
 
     suspend = Suspend.Suspend()
-    brightness = BrightnessControl.Brightness()
+    brightness = BrightnessVolumeControl.BrightnessVolume()
 
     
     while True: # main game loop
@@ -67,7 +67,8 @@ def init():
         renderObject.handleEvents(events)
         brightness.handleEvents(events)
         
-        if(RenderControl.isDirty()):        
+        if(RenderControl.isDirty()):
+            print("render")   
            
             start = int(round(time.time() * 1000))            
             RenderControl.setDirty(False)

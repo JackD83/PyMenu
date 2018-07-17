@@ -115,11 +115,8 @@ class MainMenu(RenderObject.RenderObject):
                     if(self.selection == "settings"):
                         self.openSettings()
 
-                    RenderControl.setDirty()
-             
-                if event.key == Keys.DINGOO_BUTTON_VOL_DOWN or event.key == Keys.DINGOO_BUTTON_VOL_UP:
-                    self.header.updateVolume()
-                    RenderControl.setDirty()
+                    RenderControl.setDirty()            
+                
 
     def transitionCallback(self, start, target, current, finished):
         if(finished):
