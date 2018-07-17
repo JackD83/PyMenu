@@ -67,9 +67,7 @@ def init():
         renderObject.handleEvents(events)
         brightness.handleEvents(events)
         
-        if(RenderControl.isDirty()):
-            print("render")   
-           
+        if(RenderControl.isDirty()):   
             start = int(round(time.time() * 1000))            
             RenderControl.setDirty(False)
             renderObject.render(screen)
