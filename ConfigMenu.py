@@ -89,7 +89,7 @@ class ConfigMenu(AbstractList.AbstractList):
         if(selection == 1):
             text = "False"
        
-        self.optionTarget[self.entryList[self.currentIndex]["id"]] = text
+        self.optionTarget[self.entryList[self.currentIndex]["id"]] = (text == "True")
         self.fireConfigChanged()
         self.initList()
       

@@ -27,9 +27,7 @@ class AbstractList(RenderObject.RenderObject):
     sidebarWidth = 138
 
     headerHeight = 42
-    initialPath =""
-
-    notReadyCounter = 0
+    initialPath =""    
       
     titleFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 15)
     entryFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 12)
@@ -54,17 +52,14 @@ class AbstractList(RenderObject.RenderObject):
         self.renderSidebar(screen)
   
 
-        if(not self.listReady):          
-            self.notReadyCounter += 1
-            RenderControl.setDirty()
-            if(self.notReadyCounter > 5):
-                x = ( (self.config["screenWidth"] - self.sidebarWidth) / 2 )+ self.sidebarWidth - 16
-                y =  (( self.config["screenHeight"] - self.headerHeight) / 2 ) + self.headerHeight - 16
-                screen.blit(self.waitCopy, (x, y))
+        if(not self.listReady): 
+            x = ( (self.config["screenWidth"] - self.sidebarWidth) / 2 )+ self.sidebarWidth - 16
+            y =  (( self.config["screenHeight"] - self.headerHeight) / 2 ) + self.headerHeight - 16
+            screen.blit(self.waitCopy, (x, y))
                        
                    
         else:
-            self.notReadyCounter = 0
+          
             self.renderEntries(screen)
             self.renderSelection(screen)
             self.renderScrollbar(screen)

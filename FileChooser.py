@@ -4,6 +4,7 @@ import os, Keys, RenderControl, Common
 import pygame, sys, ResumeHandler, ntpath
 from threading import Thread
 from operator import itemgetter
+from time import sleep
 
 class FileChooser(AbstractList.AbstractList):
    
@@ -119,6 +120,7 @@ class FileChooser(AbstractList.AbstractList):
         self.listReady = False  
         thread = Thread(target = self.initListAsync, args = ())
         thread.start()
+        sleep(0.05) #allows to skip the drawing of waiting symbol if folder is loaded in 5ms
        
 
     def initListAsync(self):

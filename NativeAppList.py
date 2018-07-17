@@ -119,11 +119,12 @@ class NativeAppList(AbstractList.AbstractList):
         for event in events:    
             if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
-                    if(len(self.options) == 0):
-                        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
-                    else:
-                         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
-                    RenderControl.setDirty()            
+                    if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
+                        if(len(self.options) == 0):
+                            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
+                        else:
+                            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
+                        RenderControl.setDirty()            
 
         if(self.overlay is None):
             AbstractList.AbstractList.handleEvents(self, events)

@@ -138,8 +138,9 @@ class MainMenu(RenderObject.RenderObject):
         if(Configuration.isRS97()):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
     
-    def openOptions(self):      
-        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
+    def openOptions(self):
+        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSettings(self):
         self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
@@ -211,7 +212,10 @@ class MainMenu(RenderObject.RenderObject):
             options["background"] = current["background"]
             options["useSidebar"] = True
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
+            if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
+                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
+            else:
+                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)    
 
     def nativeCallback(self, selection):

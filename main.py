@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
 import platform, Suspend, BrightnessControl
+import time
 
 from pygame.locals import *
 
+textFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 10)
 
 
 pygame.init()
@@ -12,6 +14,8 @@ pygame.mouse.set_visible(False)
 fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
 config = Configuration.getConfiguration()
+
+
 
 #reset to default clockspeed
 try:
@@ -37,6 +41,7 @@ def setVolume():
             print("could not set volume: " + str(ex))
 
 def init():
+    lastRenderTime = 1
     setVolume()
     if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
@@ -62,17 +67,28 @@ def init():
         renderObject.handleEvents(events)
         brightness.handleEvents(events)
         
-        if(RenderControl.isDirty()):                   
+        if(RenderControl.isDirty()):        
+           
+            start = int(round(time.time() * 1000))            
             RenderControl.setDirty(False)
             renderObject.render(screen)
             brightness.render(screen)
+
+            if("showFPS" in config["options"] and config["options"]["showFPS"]):
+                if(lastRenderTime == 0):
+                    lastRenderTime = 1
+                textSurface = textFont.render(str(int(round(1000/lastRenderTime))) + "fps ~" + str(lastRenderTime) + "ms", True, (255,255,255))
+                screen.blit(textSurface, (0,0))
+
 
             if(Configuration.isRS97() and platform.processor() == ""):
                 realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
             else:
                 realScreen.blit(screen, (0,0))
 
-            pygame.display.update()        
+            pygame.display.update()
+            lastRenderTime = int(round(time.time() * 1000))  - start
+            
 
         TaskHandler.updateTasks()
         fpsClock.tick(Common.FPS)

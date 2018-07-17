@@ -14,5 +14,15 @@
         "type": "list",
         "values": ["1", "2", "5", "10", "off"],
         "names": ["1m", "2m", "5m", "10m", "off"]
+    },{
+        "name": "Show FPS",
+        "id": "showFPS",
+        "description" : "Draws current fps on screen",
+        "type": "boolean"  
+    },{
+        "name": "Allow editing",
+        "id": "allowEdit",
+        "description" : "Allows editing of main menu / adding native links",
+        "type": "boolean"  
     }
 ]
