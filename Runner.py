@@ -48,18 +48,14 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     if(legacy == "True"):
         file.write("export HOME=/mnt/ext_sd/home/\n")
-
-    if(screen != None):
-        if(screen == "fullscreen"):
-            file.write("echo 2 > /proc/jz/lcd_a320\n")
-        if(screen == "center"):
-            file.write("echo 1 > /proc/jz/lcd_a320\n")
+    
+    file.write("echo 0 > /proc/jz/lcd_a320\n")   
 
     file.write("cd \"" + workdir + "\"\n")
     file.write(cmd + " \"" + rom + "\"\n")
 
-    if(screen != None and screen != "default"):
-        file.write("echo 0 > /proc/jz/lcd_a320\n")
+   
+    
 
     file.close() 
     
@@ -127,18 +123,12 @@ def runNativeMIPS(cmd, config):
     if(legacy == "True"):
         file.write("export HOME=/mnt/ext_sd/home/\n")
 
-    if(screen != None):
-        if(screen == "fullscreen"):
-            file.write("echo 2 > /proc/jz/lcd_a320\n")
-        if(screen == "center"):
-            file.write("echo 1 > /proc/jz/lcd_a320\n")
+    file.write("echo 0 > /proc/jz/lcd_a320\n") 
 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")
     file.write("\"" + cmd  + "\" \"" + selection + "\"\n")
-
-    if(screen != None and screen != "default"):
-        file.write("echo 0 > /proc/jz/lcd_a320\n")
+   
 
     file.close() 
     st = os.stat('/tmp/' + fileName)

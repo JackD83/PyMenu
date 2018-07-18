@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
 import platform, Suspend, BrightnessVolumeControl
-import time
+import time, os
 
 from pygame.locals import *
 
@@ -16,12 +16,14 @@ pygame.key.set_repeat(50, 50)
 config = Configuration.getConfiguration()
 
 
+#set screen mode
+if(Configuration.isRS97()):
+    try:
+        os.system('echo 2 > /proc/jz/lcd_a320')
+    except Exception as ex:
+        pass
 
-#reset to default clockspeed
-try:
-   subprocess.Popen(["/opt/overclock/overclock.dge", str(Common.CLOCKSPEED)])
-except Exception as ex:
-    pass
+
 
 def setVolume():
     if(Configuration.isRS97()):
@@ -44,7 +46,7 @@ def init():
     lastRenderTime = 1
     setVolume()
     if(Configuration.isRS97() and platform.processor() == ""):
-        realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
+        realScreen = pygame.display.set_mode((320,240), HWSURFACE, 16)
         screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     else:
         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
@@ -79,10 +81,11 @@ def init():
                     lastRenderTime = 1
                 textSurface = textFont.render(str(int(round(1000/lastRenderTime))) + "fps ~" + str(lastRenderTime) + "ms", True, (255,255,255))
                 screen.blit(textSurface, (0,0))
+                print("render time: " + str(lastRenderTime))
 
 
-            if(Configuration.isRS97() and platform.processor() == ""):
-                realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
+            
+            realScreen.blit(screen, (0,0))
             
             
 

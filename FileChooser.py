@@ -260,7 +260,7 @@ class FileChooser(AbstractList.AbstractList):
         self.initList()
   
         if(self.res != None and self.res["line"] != None):           
-            self.setInitialSelection(res["line"])
+            self.setInitialSelection(self.res["line"])
         else:            
             if(os.path.isfile(initialPath) and self.fileList is not None):
                 name = ntpath.basename(initialPath)
