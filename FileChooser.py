@@ -158,6 +158,10 @@ class FileChooser(AbstractList.AbstractList):
             for entry in self.entryList:
                 if(entry["name"] == self.reset):
                     self.setSelection(self.entryList.index(entry))
+
+        elif(self.res != None and self.res["line"] != None):           
+            self.setInitialSelection(self.res["line"])
+            self.res = None
         else:
             self.setSelection(0)
         
@@ -247,15 +251,15 @@ class FileChooser(AbstractList.AbstractList):
 
         self.yFileOffset =  0
         
-        res = ResumeHandler.getResumeFile()
-        if(res != None and res["path"] != None):
-            self.currentSelection = res["path"]
-            self.currentPath = res["path"]
-            self.initialPath = res["path"]
+        self.res = ResumeHandler.getResumeFile()
+        if(self.res != None and self.res["path"] != None):
+            self.currentSelection = self.res["path"]
+            self.currentPath = self.res["path"]
+            self.initialPath = self.res["path"]
 
         self.initList()
   
-        if(res != None and res["line"] != None):           
+        if(self.res != None and self.res["line"] != None):           
             self.setInitialSelection(res["line"])
         else:            
             if(os.path.isfile(initialPath) and self.fileList is not None):

@@ -45,10 +45,11 @@ def init():
     setVolume()
     if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
+        screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     else:
         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
-
-    screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
+        screen = realScreen
+    
 
     renderObject = MainMenu.MainMenu(screen)
 
@@ -82,8 +83,8 @@ def init():
 
             if(Configuration.isRS97() and platform.processor() == ""):
                 realScreen.blit(pygame.transform.scale(screen, (320,480) ), (0,0))
-            else:
-                realScreen.blit(screen, (0,0))
+            
+            
 
             pygame.display.update()
             lastRenderTime = int(round(time.time() * 1000))  - start
