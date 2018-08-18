@@ -1,0 +1,5 @@
+/bin/mount -o remount, rw / >> log.txt 2>> log.txt
+if [ -f main.backup ]; then
+    rm /etc/main
+    cp main.backup /etc/main
+fi
