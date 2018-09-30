@@ -1177,9 +1177,12 @@
         }
     ], 
     "options": {
+        "allowEdit": true, 
         "displayTimeout": "20", 
+        "showFPS": false, 
         "suspendTimeout": "5"
     }, 
     "screenHeight": 240, 
-    "screenWidth": 320
+    "screenWidth": 320, 
+    "volume": 255
 }

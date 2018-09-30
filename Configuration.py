@@ -13,10 +13,18 @@ def reloadConfiguration():
     configuration = json.load(open('config/config.json'))
 
 def saveConfiguration():
-    subprocess.Popen(["sync"])
+    try:
+        subprocess.Popen(["sync"])
+    except Exception:
+        pass
+
     with open('config/config.json', 'w') as fp:
         json.dump(configuration, fp,sort_keys=True, indent=4)
-        subprocess.Popen(["sync"])
+        try:
+            subprocess.Popen(["sync"])
+        except Exception:
+            pass
+       
     
     for l in listeners:
         l()

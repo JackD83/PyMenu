@@ -81,7 +81,7 @@ def init():
                     lastRenderTime = 1
                 textSurface = textFont.render(str(int(round(1000/lastRenderTime))) + "fps ~" + str(lastRenderTime) + "ms", True, (255,255,255))
                 screen.blit(textSurface, (0,0))
-                print("render time: " + str(lastRenderTime))
+                #print("render time: " + str(lastRenderTime))
 
 
             

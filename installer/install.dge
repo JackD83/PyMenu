@@ -1,8 +1,8 @@
-/bin/mount -o remount, rw / >> log.txt 2>> log.txt
-if [ -f main.backup ]; then
-    cp /etc/main main.overwrite
+
+if [ -f autoexec.backup ]; then
+    cp /mnt/int_sd/autoexec.sh autoexec.overwrite
 else
-    cp /etc/main main.backup
+    cp /mnt/int_sd/autoexec.sh autoexec.backup
 fi
 
-cp main /etc
+cp autoexec.sh /mnt/int_sd

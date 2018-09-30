@@ -166,7 +166,7 @@ class BrightnessVolume(RenderObject.RenderObject):
         self.volumeIndex = self.VOLUME_LEVELS.index(self.config["volume"])
         self.currentVolumeLevel = self.VOLUME_LEVELS[self.volumeIndex]
 
-        os.system('setVolume ' + str(self.currentVolumeLevel))
+        os.system('./setVolume ' + str(self.currentVolumeLevel))
 
 
     def __init__(self):
