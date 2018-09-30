@@ -14,7 +14,7 @@ do
 		sh $FILE > /dev/ttyS1 2> /dev/ttyS1
 		rm $FILE
 	else
-		sh /mnt/game/PyMenu/pymenu.sh > /dev/ttyS1 2> /dev/ttyS1
+		sh ./pymenu.sh > /dev/ttyS1 2> /dev/ttyS1
 		echo "File $FILE does not exist"	
 	fi
 	sleep 1
