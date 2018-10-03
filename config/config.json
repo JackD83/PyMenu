@@ -22,7 +22,7 @@
         }, 
         {
             "background": "ports previews/sfc.png", 
-            "cmd": "/mnt/int_sd/emus/snes9x4d/snes9x4d.dge", 
+            "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
             "description": "Super NES", 
             "fileFilter": [
                 ".zip"
@@ -32,9 +32,9 @@
             "legacy": false, 
             "name": "SNES", 
             "overclock": "624", 
-            "previews": "\\mnt\\int_sd\\previews\\snes", 
+            "previews": "/mnt/ext_sd/previews/snes", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms", 
+            "selectionPath": "/mnt/ext_sd/roms/snes", 
             "type": "emulator", 
             "workingDir": "\\mnt\\ext_sd\\int_sd\\emus\\snes9x4d"
         }, 
@@ -633,6 +633,7 @@
                     "preview": "ports previews/chocolate_doom.png", 
                     "screen": "default", 
                     "selectDescription": "wads", 
+                    "selection": "/mnt/ext_sd/Doom1.WAD", 
                     "selectionPath": "///mnt/int_sd/roms", 
                     "selector": "True"
                 }, 

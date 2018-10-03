@@ -151,9 +151,8 @@ class MainMenu(RenderObject.RenderObject):
       
         if(text == "Mount USB"):          
             print("Mounting USB")
-            options = {}
-            options["cmd"] = "/usr/bin/udc_connect.sh"
-            Runner.runNative(options)
+            Common.mountUSB()
+            self.overlay = InfoOverlay.InfoOverlay("theme/usb.png", self.usbMountCallback)
            
         if(text == "Poweroff"):
             if(platform.processor() == ""):
@@ -168,7 +167,16 @@ class MainMenu(RenderObject.RenderObject):
                 subprocess.Popen(["reboot"])
             else:
                 print("reboot")
-       
+
+    def usbMountCallback(self, key):
+        print("Rebooting after usb mount")
+        if(platform.processor() == ""):
+            subprocess.Popen(["sync"])
+            subprocess.Popen(["reboot"])
+        else:
+            print("reboot")
+        
+        self.overlay = None
 
     def configCallback(self, select):
         self.subComponent = None

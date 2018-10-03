@@ -1,6 +1,6 @@
 
 import pygame, sys
-import os.path
+import os, subprocess
 
 FPS = 30 # frames per second setting
 CLOCKSPEED = 628 #default clockspeed
@@ -55,6 +55,42 @@ def aspect_scale(img, bx,by ):
 
     return pygame.transform.scale(img, (int(sx),int(sy)) )
 
+def mountSD(ext):
+    try:
+        if ext:
+            cmd = "par=$(( $(readlink /tmp/.int_sd | head -c -3 | tail -c 1) ^ 1 )); par=$(ls /dev/mmcblk$par* | tail -n 1); sync; umount -fl /mnt/ext_sd; mount -t vfat -o rw,utf8 $par /mnt/ext_sd"
+        else:
+            cmd = "par=$(readlink /tmp/.int_sd | head -c -3 | tail -c 1); par=$(ls /dev/mmcblk$par* | tail -n 1); sync; umount -fl /mnt/int_sd; mount -t vfat -o rw,utf8 $par /mnt/int_sd"
+
+        p = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
+
+    except Exception:
+        pass
+
+def umountSD(ext):
+    try:
+        if ext:
+            cmd = "sync; umount -fl /mnt/ext_sd"
+        else:
+            cmd = "sync; umount -fl /mnt/int_sd"
+
+        p = subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
+    except Exception:
+        pass
+
+def mountUSB():
+    try:
+        umountSD(True)
+        umountSD(False)
+
+        intSD = "echo \"\" > /sys/devices/platform/musb_hdrc.0/gadget/gadget-lun1/file; par=$(readlink /tmp/.int_sd | head -c -3 | tail -c 1); par=$(ls /dev/mmcblk$par* | tail -n 1); echo \"$par\" > /sys/devices/platform/musb_hdrc.0/gadget/gadget-lun1/file"
+        extSD = "echo \"\" > /sys/devices/platform/musb_hdrc.0/gadget/gadget-lun0/file; par=$(( $(readlink /tmp/.int_sd | head -c -3 | tail -c 1) ^ 1 )); par=$(ls /dev/mmcblk$par* | tail -n 1); echo \"$par\" > /sys/devices/platform/musb_hdrc.0/gadget/gadget-lun0/file"
+
+        subprocess.Popen(intSD, shell=True, stderr=subprocess.PIPE)
+        subprocess.Popen(extSD, shell=True, stderr=subprocess.PIPE)
+
+    except Exception as ex:
+        print("mount exception " + str(ex))
 
 def blitMultilineText(surface, text, pos, font, color=pygame.Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.

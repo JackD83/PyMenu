@@ -45,6 +45,7 @@ def setVolume():
 def init():
     lastRenderTime = 1
     setVolume()
+    Common.mountSD(True)
     if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,240), HWSURFACE, 16)
         screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
