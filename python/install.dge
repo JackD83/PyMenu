@@ -1,3 +1,0 @@
-#!/bin/sh
-/bin/mount -o remount, rw / >> log.txt 2>> log.txt
-tar xvf python.tar -C / >> log.txt 2>> log.txt
