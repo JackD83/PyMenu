@@ -1,4 +1,4 @@
 if [ -f autoexec.backup ]; then
     rm /mnt/int_sd/autoexec.sh
-    cp autoexec.backup /mnt/int_sd
+    cp autoexec.backup /mnt/int_sd/autoexec.sh
 fi
