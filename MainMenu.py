@@ -60,8 +60,7 @@ class MainMenu(RenderObject.RenderObject):
         for index, systemImage in enumerate(self.systems):
             try:
                 if(systemImage is None):
-                    self.loadSystem(index)       
-                    time.sleep(0.1)            
+                    self.loadSystem(index) 
             except ValueError:
                 pass
 
