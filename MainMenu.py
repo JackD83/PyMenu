@@ -1,7 +1,7 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
 import os, ResumeHandler
-import json
+import json, time
 import pygame, sys, subprocess,platform
 from pprint import pprint
 from threading import Thread
@@ -34,14 +34,14 @@ class MainMenu(RenderObject.RenderObject):
     selection = "band"
         
     def loadSystemImages(self):
+      
         self.systems = [None] * len(self.config["mainMenu"])
      
         self.systembackgrounds = [None] * len(self.config["mainMenu"])
 
-        self.loadSystem(0)
-        self.loadSystem(len(self.config["mainMenu"]) - 1)
-        self.loadSystem(1)     
-        self.loadSystem(len(self.config["mainMenu"]) - 2)  
+        self.loadSystem(self.currentIndex)
+        self.loadSystem(self.getPrev())
+        self.loadSystem(self.getNext())         
 
         thread = Thread(target = self.loadImagesAsync, args = ())
         thread.start()   
@@ -60,11 +60,12 @@ class MainMenu(RenderObject.RenderObject):
         for index, systemImage in enumerate(self.systems):
             try:
                 if(systemImage is None):
-                    self.loadSystem(index)
+                    self.loadSystem(index)       
+                    time.sleep(0.1)            
             except ValueError:
                 pass
 
-        print("processd ", len(self.systems), " entries")       
+        print("processed ", len(self.systems), " entries")       
     
     def handleEvents(self, events):   
         if(self.subComponent != None):
@@ -372,8 +373,10 @@ class MainMenu(RenderObject.RenderObject):
         if(self.subComponent != None):
             self.subComponent.render(screen)
             return     
-
-        screen.blit(self.systembackgrounds[self.currentIndex], (0, 0))
+        if(self.systembackgrounds[self.currentIndex] is not None):
+            screen.blit(self.systembackgrounds[self.currentIndex], (0, 0))
+        else:
+            RenderControl.setDirty()
 
         if(self.selection=="band"):
             self.banderole.fill((255,255,255, 160))
@@ -389,13 +392,13 @@ class MainMenu(RenderObject.RenderObject):
             RenderControl.setDirty()
 
         #previous
-        if(self.systems[self.getPrev()] is not None):
+        if(self.systems[self.getPrev()] is not None and self.systems[self.getPrev()] is not None):
             screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
         else:            
             RenderControl.setDirty()
 
         #next
-        if(self.systems[self.getNext()] is not None):
+        if(self.systems[self.getNext()] is not None and self.systems[self.currentIndex] is not None):
             screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
         else:            
             RenderControl.setDirty()       
