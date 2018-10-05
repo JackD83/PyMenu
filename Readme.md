@@ -12,10 +12,8 @@ https://boards.dingoonity.org/ingenic-jz4760-devices/uselessrs97-internal-firmwa
 
 2. Clone or copy the files from this repo next to the gmenu2x folder in /apps/. Folder has to be named "PyMenu"
 
-3. run PyMenu/python/install_useless.dge to install python
+3. PyMenu can be run by starting PyMenu/run.sh
 
-4. PyMenu can be run by starting PyMenu/run.sh
-
-5. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx
+4. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx
 
 Tested on UselessRS97 1.3 internal
