@@ -49,10 +49,10 @@
             "icon": "systems/nes1.png", 
             "legacy": null, 
             "name": "NES", 
-            "overclock": null, 
-            "previews": "/mnt/int_sd/previews/nes", 
+            "overclock": "624", 
+            "previews": "/mnt/ext_sd/previews/nes", 
             "screen": null, 
-            "selectionPath": "/mnt/int_sd/roms", 
+            "selectionPath": "/mnt/ext_sd/roms/nes", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/fceux"
         }, 
@@ -112,7 +112,7 @@
             "overclock": "524", 
             "previews": null, 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms", 
+            "selectionPath": "/mnt/ext_sd/roms/fba/NeoGeo", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/gngeo"
         }, 
@@ -263,9 +263,9 @@
             "legacy": false, 
             "name": "GAMEBOY", 
             "overclock": "528", 
-            "previews": "/mnt/int_sd/previews/gb", 
+            "previews": "/mnt/ext_sd/previews/gb", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/gb", 
+            "selectionPath": "/mnt/ext_sd/roms/gb", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/gamebatte"
         }, 
@@ -326,9 +326,9 @@
             "legacy": false, 
             "name": "GAMEBOY", 
             "overclock": "528", 
-            "previews": "/mnt/int_sd/previews/gbc", 
+            "previews": "/mnt/ext_sd/previews/gbc", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/gbc", 
+            "selectionPath": "/mnt/ext_sd/roms/gbc", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/gamebatte"
         }, 
@@ -345,9 +345,9 @@
             "name": "Genesis", 
             "overclock": "600", 
             "preview": ".", 
-            "previews": "/mnt/int_sd/previews/gamegear", 
+            "previews": "/mnt/ext_sd/previews/genesis", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/md", 
+            "selectionPath": "/mnt/ext_sd/roms/genesis", 
             "type": "emulator", 
             "workingDir": "/mnt/int_sd/emus/picodrive"
         }, 
@@ -363,11 +363,11 @@
             "legacy": false, 
             "name": "GBA", 
             "overclock": "624", 
-            "previews": "/mnt/int_sd/previews/gba", 
+            "previews": "/mnt/ext_sd/previews/gba", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/gba", 
+            "selectionPath": "/mnt/ext_sd/roms/gba", 
             "type": "emulator", 
-            "workingDir": "/mnt/ext_sd/int_sd/emus/regba"
+            "workingDir": "/mnt/int_sd/emus/regba"
         }, 
         {
             "background": "ports previews/fbasdl.png", 
@@ -426,9 +426,9 @@
             "legacy": false, 
             "name": "SMS", 
             "overclock": "524", 
-            "previews": "/mnt/int_sd/previews/sms", 
+            "previews": "/mnt/ext_sd/previews/sms", 
             "screen": "default", 
-            "selectionPath": "/mnt/int_sd/roms/sms", 
+            "selectionPath": "/mnt/ext_sd/roms/mastersystem", 
             "type": "emulator", 
             "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
         }, 
@@ -1181,7 +1181,7 @@
         "allowEdit": true, 
         "displayTimeout": "20", 
         "showFPS": false, 
-        "suspendTimeout": "5"
+        "suspendTimeout": "off"
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 

@@ -1,6 +1,6 @@
 __pycache__
 *.pyc
-!python/*.pyc
+!python/**/*.pyc
 /installer/main.backup
 /installer/log.txt
 /python/log.txt
