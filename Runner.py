@@ -104,7 +104,7 @@ def runNativeMIPS(cmd, config):
     screen = config["screen"] if "screen" in config else None
     legacy = config["legacy"] if "legacy" in config else None
     overclock = config["overclock"] if "overclock" in config else None
-    selection = overclock = config["selection"] if "selection" in config else ""
+    selection = config["selection"] if "selection" in config else ""
 
     if(overclock != None):
         try:

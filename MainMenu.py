@@ -189,6 +189,14 @@ class MainMenu(RenderObject.RenderObject):
         ResumeHandler.setLastUsedMain(current, self.currentIndex)
 
         if(current["type"] == "emulator"):
+            print()
+
+            if("useSelection" in current and current["useSelection"] == False):
+                print("Running emulator directly")
+                Runner.runNative(self.config["mainMenu"][self.currentIndex])
+                return
+
+
             print("Opening emulator file selection")
             options = {}
             options["textColor"] = (55,55,55)
@@ -288,12 +296,14 @@ class MainMenu(RenderObject.RenderObject):
             "background": "backgrounds",
             "icon": "systems",
             "cmd": ".",
-            "workingDir": None,           
+            "workingDir": None,  
+             "useSelection" : True,         
             "selectionPath": ".",
             "previews": None,
             "legacy":False,
             "screen":"default",
             "overclock":"524"
+           
         }
         return emptyEntry
 
@@ -442,7 +452,6 @@ class MainMenu(RenderObject.RenderObject):
     
     def __init__(self, screen, suspend):
         print("Main Menu Init")
-        self.loadSystemImages()
         self.screen = screen
         self.suspend = suspend
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
@@ -450,14 +459,29 @@ class MainMenu(RenderObject.RenderObject):
       
         self.header = Header.Header(24)
 
-        if("firstStart" in self.config and self.config["firstStart"]):
-             self.overlay = InfoOverlay.InfoOverlay("theme/info.png", self.infoCallback)
-
-
         res = ResumeHandler.getResumeFile()
         if(res != None and res["mainIndex"] != None and res["main"] != None):
             self.currentIndex = res["mainIndex"]
-            self.openSelection(self.config["mainMenu"][self.currentIndex])
 
+            if("useSelection" in self.config["mainMenu"][self.currentIndex] and self.config["mainMenu"][self.currentIndex]["useSelection"] != None):
+                if(self.config["mainMenu"][self.currentIndex]["useSelection"] == True):
+                    self.openSelection(self.config["mainMenu"][self.currentIndex])
+                else:
+                    ResumeHandler.clearResume()
+
+            else:
+                self.openSelection(self.config["mainMenu"][self.currentIndex])
+            
+        else:
+            if("firstStart" in self.config and self.config["firstStart"]):
+                self.overlay = InfoOverlay.InfoOverlay("theme/info.png", self.infoCallback)
+
+        self.loadSystemImages()
+
+
+        
+
+
+       
 
         #self.footer = Footer.Footer([("theme/direction.png","select")], [("theme/select_button.png", "options"), ("theme/a_button.png", "open")], (255,255,255))

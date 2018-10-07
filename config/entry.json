@@ -34,6 +34,11 @@
     "type":"folder",
     "description": "Folder where exe is called"
 },
+{   "id":"useSelection",
+    "name" :"Use Selection",
+    "type":"boolean",
+    "description": "Use the selection screen"
+},
 {   "id":"selectionPath",
     "name" :"Rom folder",
     "type":"folder",
