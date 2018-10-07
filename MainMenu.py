@@ -1,6 +1,6 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
-import os, ResumeHandler
+import os, ResumeHandler, Suspend
 import json, time
 import pygame, sys, subprocess,platform
 from pprint import pprint
@@ -152,6 +152,7 @@ class MainMenu(RenderObject.RenderObject):
         if(text == "Mount USB"):          
             print("Mounting USB")
             Common.mountUSB()
+            self.suspend.disableSuspend()
             self.overlay = InfoOverlay.InfoOverlay("theme/usb.png", self.usbMountCallback)
            
         if(text == "Poweroff"):
@@ -175,8 +176,8 @@ class MainMenu(RenderObject.RenderObject):
             subprocess.Popen(["reboot"])
         else:
             print("reboot")
-        
-        self.overlay = None
+            self.overlay = None
+       
 
     def configCallback(self, select):
         self.subComponent = None
@@ -439,10 +440,11 @@ class MainMenu(RenderObject.RenderObject):
         else:
             screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
     
-    def __init__(self, screen):
+    def __init__(self, screen, suspend):
         print("Main Menu Init")
         self.loadSystemImages()
         self.screen = screen
+        self.suspend = suspend
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
         
       

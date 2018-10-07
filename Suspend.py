@@ -4,7 +4,9 @@ import os,subprocess
 
 class Suspend():
 
+    
     suspendTaskId = None
+
     brightnessTaskId = None
     config = Configuration.getConfiguration()
 
@@ -43,6 +45,10 @@ class Suspend():
             
             os.system('echo ' + str(backlight) + ' > /proc/jz/lcd_backlight')
             self.displayDark = False
+
+    def disableSuspend(self):
+        if(self.suspendTaskId is not None):
+            TaskHandler.removePeriodicTask(self.suspendTaskId)
 
     def addSuspendTask(self):
         if(self.suspendTaskId is not None):

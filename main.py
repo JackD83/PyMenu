@@ -53,10 +53,10 @@ def init():
         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
         screen = realScreen
     
-
-    renderObject = MainMenu.MainMenu(screen)
-
     suspend = Suspend.Suspend()
+    renderObject = MainMenu.MainMenu(screen, suspend)
+
+    
     brightness = BrightnessVolumeControl.BrightnessVolume()
 
     
