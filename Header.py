@@ -11,6 +11,7 @@ class Header():
 
     
     batteryLevel = 0
+    currentBatteryImage = None
 
     usbDevice = None
   
@@ -21,8 +22,10 @@ class Header():
     def updateHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
         self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
-      
-        battery = Common.loadCachedImage(self.getCurrentBatteryImage())
+
+        self.currentBatteryImage = self.getCurrentBatteryImage()
+
+        battery = Common.loadCachedImage(self.currentBatteryImage)
         self.header.blit(battery, (self.config["screenWidth"] - 40, (self.headerHeight - battery.get_height()) / 2))
 
                 
@@ -55,11 +58,10 @@ class Header():
         
         return False
     
-    def updateBattery(self):
-        bat = self.getCurrentBatteryImage()
+    def updateBattery(self):      
         self.readBatteryLevel()
 
-        if(bat != self.getCurrentBatteryImage()):
+        if(self.currentBatteryImage != self.getCurrentBatteryImage()):
             self.updateHeader()
             RenderControl.setDirty()
 
@@ -92,10 +94,10 @@ class Header():
         self.headerHeight = height
         self.updateHeader()      
 
-        try: 
-            self.battery = open("/proc/jz/battery", "r")           
+        try:
             self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
-
+            self.battery = open("/proc/jz/battery", "r")           
+         
             self.updateBattery()
         except Exception as ex:
             print("Could not open devices" + str(ex))
