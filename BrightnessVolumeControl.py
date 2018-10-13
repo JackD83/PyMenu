@@ -4,7 +4,7 @@ from threading import Thread
 
 class BrightnessVolume(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
-    lcd_backlight = None
+    
 
     textFont = pygame.font.Font('theme/NotoSansSymbols-Regular.ttf', 19) 
     brightSymbol = textFont.render(u"\u26ef", True, (255,255,255))
@@ -145,12 +145,8 @@ class BrightnessVolume(RenderObject.RenderObject):
     def setBrightness(self, level, store=True):
         print("Setting brightness " + str(level))
         
-        #os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
-        if(self.lcd_backlight is not None):
-            self.lcd_backlight.seek(0)
-            self.lcd_backlight.write(str(level) + '\n')
-            self.lcd_backlight.flush()
-
+        os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
+        
         if(store):
             self.config["lcd_backlight"] = level
             Configuration.saveConfiguration()
@@ -174,12 +170,7 @@ class BrightnessVolume(RenderObject.RenderObject):
             self.brightnessIndex = self.BRIGHTNESS_LEVELS.index(self.config["lcd_backlight"])
             self.setBrightness(self.config["lcd_backlight"], False)        
         else:
-            self.setBrightness(30)
-
-        try:
-            self.lcd_backlight = open("/proc/jz/lcd_backlight", "w")
-        except Exception as identifier:
-            print("Could not open lcd_backlight:" + str(identifier))
+            self.setBrightness(30)       
 
         self.initVolume()
 
