@@ -132,8 +132,7 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openPowerMenu(self):
-        if(Configuration.isRS97()):
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
+        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):

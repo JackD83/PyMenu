@@ -51,7 +51,7 @@ def init():
         screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     else:
         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
-        screen = realScreen
+        screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     
     suspend = Suspend.Suspend()
     renderObject = MainMenu.MainMenu(screen, suspend)
@@ -95,6 +95,6 @@ def init():
             
 
         TaskHandler.updateTasks()
-        fpsClock.tick(Common.FPS)
+        fpsClock.tick(Common.getFPS())
 
 init()

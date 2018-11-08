@@ -1,10 +1,12 @@
 
-import pygame, sys
-import os, subprocess
+import pygame, sys, Configuration
+import os, subprocess, platform
 
-FPS = 30 # frames per second setting
+
 CLOCKSPEED = 628 #default clockspeed
 imageCache = {}
+
+
 
 def loadImage(path): 
 
@@ -19,6 +21,12 @@ def loadImage(path):
         print("File not found " + str(path))
 
     return  pygame.Surface((1,1),pygame.SRCALPHA)
+
+def getFPS():
+    if(Configuration.isRS97() or platform.processor() == ""):
+       return 30
+    else:
+       return 20
 
 
 

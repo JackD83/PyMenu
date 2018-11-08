@@ -9,13 +9,13 @@ def addPeriodicTask(time, callback, delay=0):
     id = uuid.uuid4()
 
     #min time -> every frame
-    if(time <  1000 / float(Common.FPS)):
-        time = 1000 /  float(Common.FPS)
+    if(time <  1000 / float(Common.getFPS())):
+        time = 1000 /  float(Common.getFPS())
 
     task = {}
-    task["delay"] = counter + (float(Common.FPS) / 1000 * delay)
+    task["delay"] = counter + (float(Common.getFPS()) / 1000 * delay)
     task["start"] = counter
-    task["val"] = float(Common.FPS) / 1000.0 * float(time)
+    task["val"] = float(Common.getFPS()) / 1000.0 * float(time)
     task["callback"] = callback
 
     periodic[id] = task
@@ -37,10 +37,10 @@ def addAnimation(start, target, duration, callback, delay = 0):
 
     id = uuid.uuid4()
     anim = {}
-    anim["delay"] = counter + (float(Common.FPS) / 1000 * delay)
+    anim["delay"] = counter + (float(Common.getFPS()) / 1000 * delay)
     anim["start"] = start
     anim["target"] = target
-    anim["speed"] =  (target- start) / ((float(Common.FPS) / 1000) * duration)
+    anim["speed"] =  (target- start) / ((float(Common.getFPS()) / 1000) * duration)
     anim["current"] = start
     anim["callback"] = callback
     
