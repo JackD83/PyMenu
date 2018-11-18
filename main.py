@@ -25,26 +25,10 @@ if(Configuration.isRS97()):
 
 
 
-def setVolume():
-    if(Configuration.isRS97()):
-        try:
-            pass
-            ##not working
-            # from fcntl import ioctl
-       
-            # filename = "/dev/mixer"
-            # SOUND_MIXER_WRITE_VOLUME = 0xc0044d00
-            # oss_volume = 100 | (100 << 8)
-          
-            # fd = open(filename, "wb")            
-            # ioctl(fd, SOUND_MIXER_WRITE_VOLUME, oss_volume)
-            # fd.close()
-        except Exception as ex:
-            print("could not set volume: " + str(ex))
 
 def init():
     lastRenderTime = 1
-    setVolume()
+
     Common.mountSD(True)
     if(Configuration.isRS97() and platform.processor() == ""):
         realScreen = pygame.display.set_mode((320,240), HWSURFACE, 16)

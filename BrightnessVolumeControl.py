@@ -12,9 +12,7 @@ class BrightnessVolume(RenderObject.RenderObject):
 
     BRIGHTNESS_LEVELS = [10,30,50,70,100]
     brightnessIndex = 0
-    VOLUME_LEVELS = [0,51,102,153,204,255]
-    volumeIndex = 0
-
+   
     showBrightness = False
     showVolume = False
 
@@ -45,9 +43,9 @@ class BrightnessVolume(RenderObject.RenderObject):
                 if(self.brightnessIndex == 0):
                     barWidth = 5  
             else:
-                barWidth =  (self.width - 40) / len(self.VOLUME_LEVELS) * self.volumeIndex
-                if(self.volumeIndex == 0):
-                    barWidth = 5         
+                barWidth =  (self.width - 80) * self.currentVolumeLevel / 100
+                if(self.currentVolumeLevel < 0):
+                    barWidth = 1      
 
             bar = pygame.Surface((barWidth,10))
             bar.fill((255,255,255, 255))
@@ -84,35 +82,28 @@ class BrightnessVolume(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_BRIGHTNESS:
                     self.adjustBrightness()
                 if event.key == Keys.DINGOO_BUTTON_VOL_DOWN:
+                   
                     self.volumeDown()
                 if event.key == Keys.DINGOO_BUTTON_VOL_UP:
+                    
                     self.volumeUp()         
 
     def volumeUp(self):
-        self.volumeIndex = self.volumeIndex + 1
-        if(self.volumeIndex >= len(self.VOLUME_LEVELS)):
-            self.volumeIndex = len(self.VOLUME_LEVELS) - 1
+       
 
-        self.currentVolumeLevel = self.VOLUME_LEVELS[self.volumeIndex]
+        self.currentVolumeLevel = self.getCurrentVolume()
         self.showVolume = True
         self.showBrightness = False
 
-        self.config["volume"] = self.currentVolumeLevel
-        Configuration.saveConfiguration()
+       
 
         self.resetAnimation()
 
     def volumeDown(self):
-        self.volumeIndex = self.volumeIndex -1
-        if(self.volumeIndex < 0):
-            self.volumeIndex = 0
-
-        self.currentVolumeLevel = self.VOLUME_LEVELS[self.volumeIndex]
+        
+        self.currentVolumeLevel = self.getCurrentVolume()
         self.showVolume = True
         self.showBrightness = False
-
-        self.config["volume"] = self.currentVolumeLevel
-        Configuration.saveConfiguration()
 
         self.resetAnimation()
 
@@ -151,18 +142,20 @@ class BrightnessVolume(RenderObject.RenderObject):
             self.config["lcd_backlight"] = level
             Configuration.saveConfiguration()
 
+
+    def getCurrentVolume(self):
+        try:
+            with open("config/volume.cfg") as f:
+                vol = f.readlines()
+               
+                return int(float(str(vol[0])))
+        except Exception as ex:
+            print("Could not get volume: " + str(ex))
+            return 0; 
+
     def initVolume(self):
-        if("volume" in self.config and self.config["volume"] in self.VOLUME_LEVELS):
-            self.volumeIndex = self.VOLUME_LEVELS.index(self.config["volume"])        
-            print("restoring volume")  
-        else:
-            self.config["volume"] = 255
-            Configuration.saveConfiguration()
-
-        self.volumeIndex = self.VOLUME_LEVELS.index(self.config["volume"])
-        self.currentVolumeLevel = self.VOLUME_LEVELS[self.volumeIndex]
-
-        os.system('./setVolume ' + str(self.currentVolumeLevel))
+        print("Setting initial volume: " + str(self.getCurrentVolume()))
+        os.system('./setVolume ' + str(self.getCurrentVolume()))
 
 
     def __init__(self):

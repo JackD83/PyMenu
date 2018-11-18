@@ -6,8 +6,8 @@ export HOME=/mnt/int_sd
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/python/usr/lib
 export PATH=$PATH:$PWD/python/usr/bin
 
-
-./setVolume 255
+#run volume deamon
+./setVolume &
 
 #store device menu runs from
 ln -sf $(mount | grep int_sd | cut -f 1 -d ' ') /tmp/.int_sd
