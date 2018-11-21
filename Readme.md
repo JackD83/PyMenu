@@ -1,4 +1,4 @@
-Menu System for the RS97 and PAP KIII Plus (K3P) and the Arcade Mini
+Menu System for the RS97, PAP KIII Plus (K3P) and the Arcade Mini
 
 You need the custom firmware for your device.
 
@@ -16,17 +16,17 @@ They need to be installed on the internal sd-card
 Arcade Mini:
 Install instructions: https://boards.dingoonity.org/ingenic-jz4760-devices/custom-firmware-for-the-retro-arcade-mini/
  
-2. Clone or copy the files from the repo next to the gmenu2x folder in /apps/. Folder has to be named "PyMenu"
+1. Clone or copy the files from the repo next to the gmenu2x folder in /apps/. Folder has to be named "PyMenu"
 
-2b. for the Arcade Mini or K3P
+1b. for the Arcade Mini or K3P
 in the file config/config.json set:
 
 RS97 = false
 screenWidth = 480
 screenHeight = 272
 
-3. PyMenu can be run by starting PyMenu/run.sh
+2. PyMenu can be run by starting PyMenu/run.sh
 
-4. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx. Try to start it using run.sh first
+3. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx. Try to start it using run.sh first
 
 Tested on UselessRS97 1.3 internal & external and K3P old version
