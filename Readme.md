@@ -27,6 +27,8 @@ screenHeight = 272
 
 2. PyMenu can be run by starting PyMenu/run.sh
 
-3. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx. Try to start it using run.sh first
+3. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx. Try to start it using run.sh first!
 
 Tested on UselessRS97 1.3 internal & external and K3P old version
+
+Check https://boards.dingoonity.org/ingenic-jz4760-devices/ for any updatates
