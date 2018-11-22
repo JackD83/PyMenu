@@ -365,17 +365,17 @@ class MainMenu(RenderObject.RenderObject):
         Configuration.saveConfiguration()
     
     
-    def getNext(self):     
-        if(self.currentIndex + 1 >= len(self.systems)):
-            return 0
+    def getNext(self, stride=1):     
+        if(self.currentIndex + stride >= len(self.systems)):
+            return (self.currentIndex + stride) - len(self.systems)
         else:
-            return self.currentIndex + 1
+            return self.currentIndex + stride
 
-    def getPrev(self):       
-        if(self.currentIndex - 1 < 0):
-            return len(self.systems) - 1
+    def getPrev(self, stride=1):       
+        if(self.currentIndex - stride <= 0):
+            return len(self.systems) - stride
         else:
-            return self.currentIndex -1
+            return self.currentIndex - stride
         
 
     def render(self, screen):
@@ -410,7 +410,25 @@ class MainMenu(RenderObject.RenderObject):
         if(self.systems[self.getNext()] is not None and self.systems[self.currentIndex] is not None):
             screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
         else:            
-            RenderControl.setDirty()       
+            RenderControl.setDirty() 
+
+        #transition next
+        if(self.inTransition and self.transitionOffset != 0 and not Configuration.isRS97()):
+            index = 0  
+            offset = 0
+            if(self.transitionOffset > 0):
+                index = self.getPrev(2)
+                offset = -self.systemOffset
+
+            elif(self.transitionOffset < 0):
+                index = self.getNext(2)   
+                offset = self.config["screenWidth"] - self.systems[self.currentIndex].get_width() + self.systemOffset
+
+            if(self.systems[index] is not None and self.systems[index] is not None):
+                screen.blit(self.systems[index], (offset + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[index].get_height() / 2 ))
+            else:            
+                RenderControl.setDirty()
+
         
 
         if(self.footer != None):
