@@ -1,4 +1,4 @@
-import json, subprocess, os, copy
+import json, subprocess, os, copy,shutil
 from ast import literal_eval as make_tuple
 from pprint import pprint
 
@@ -42,9 +42,9 @@ def saveConfiguration():
         pass
       
     try:
-        os.rmdir("config/main")
-    except Exception:
-        pass
+        shutil.rmtree("config/main") 
+    except Exception as ex:
+        print(str(ex))     
     
     allConfig = copy.deepcopy(configuration)
     main = allConfig["mainMenu"]
