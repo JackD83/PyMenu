@@ -1,9 +1,11 @@
 import subprocess, ResumeHandler
-import platform
+import platform,copy, json
 import sys, os, stat, Overclock
 
 def runEmu(config, rom):
     ResumeHandler.storeResume()
+    addToLastPlayed(config, rom)
+
     name =  config["name"]
     workdir = config["workingDir"] if "workingDir" in config else None
     cmd =  config["cmd"] if "workingDir" in config else None
@@ -31,7 +33,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     overclock = config["overclock"] if "overclock" in config else None
 
     if(workdir == None and not cmd == None):    
-        workdir = os.path.abspath(os.path.join(cmd, os.pardir))   
+        workdir = os.path.abspath(os.path.join(cmd, os.pardir))
 
     if(overclock != None):
         try:
@@ -86,6 +88,7 @@ def runEmuHost(name, cmd, workdir, config, rom):
 
 def runNative(config):
     ResumeHandler.storeResume()
+    addToLastPlayed(config, None)
     cmd =  config["cmd"] if "cmd" in config else None
   
     if(cmd == None or not os.path.isfile(cmd)):
@@ -153,4 +156,62 @@ def runNativeHost(cmd, config):
         subprocess.Popen([cmd, selection])
     except Exception as ex:
         print(str(ex))
-   
+
+def addToLastPlayed(config, rom):
+    data = copy.deepcopy(config)
+
+    if(not rom == None):        
+        filename_w_ext = os.path.basename(rom)
+        filename, file_extension = os.path.splitext(filename_w_ext)
+
+        if("fileFilter" in config):
+            if any(file_extension in s for s in config["fileFilter"]):
+                data["name"] = filename
+            else:
+                data["name"] = filename_w_ext
+        else:
+            data["name"] = filename_w_ext
+
+        data["rom"] = rom
+        data["type"] = "emulator"
+
+        if(not "preview" in data):
+            data["preview"] = ""
+
+        if("previews" in config and not config["previews"] == None):
+             data["preview"] = str(config["previews"]) + "/" + str(filename) + ".png"
+
+    else:
+        data["type"] = "native"   
+
+
+    try:
+        lastPlayed = json.load(open("config/lastPlayed.json"))
+        if("data" not in lastPlayed):
+            lastPlayed["data"] = []
+
+        last = wasLastPlayed(lastPlayed, data)
+        if(   last != None ):            
+            lastPlayed["data"].remove(last)          
+
+
+        lastPlayed["data"].insert(0, data)
+        lastPlayed["data"] = lastPlayed["data"][0:20]
+
+        with open('config/lastPlayed.json', 'w') as fp: 
+            json.dump(lastPlayed, fp,sort_keys=True, indent=4)
+
+        
+    except Exception as ex:
+        print(str(ex))
+
+def wasLastPlayed(lastPlayed, data):
+    for last in lastPlayed["data"]:       
+        if( (data["rom"] != None and last["rom"] == data["rom"]) or (last["type"] == "native" and last["cmd"] == data["cmd"]) ):   
+            print("last")
+            return last
+          
+    return None
+
+
+    

@@ -219,11 +219,15 @@ class NativeAppList(AbstractList.AbstractList):
         self.initList()
 
         res = ResumeHandler.getResumeFile()
-        if(res != None and res["line"] != None):
+
+        if(res != None and res["line"] != None and ("type" in options and options["type"] != "lastPlayed")): 
             self.setSelection(res["line"])
             self.onChange()
-            self.previewPath = self.currentSelection["preview"]
-            self.preview_final = self.previewPath
+
+            if(not self.currentSelection  == None):
+                self.previewPath = self.currentSelection["preview"]
+                self.preview_final = self.previewPath
+
             RenderControl.setDirty()           
       
       

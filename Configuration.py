@@ -63,7 +63,8 @@ def saveConfiguration():
                 dataName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
                 storeConfigPart(dataName, dataItem)
 
-        storeConfigPart(fileName, item)
+        if(item["type"] != "lastPlayed"):
+            storeConfigPart(fileName, item)
 
        
     for l in listeners:

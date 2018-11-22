@@ -229,12 +229,30 @@ class MainMenu(RenderObject.RenderObject):
                 footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
             else:
                 footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
-            self.subComponent.setFooter(footer)    
+            self.subComponent.setFooter(footer)
+        if(current["type"] == "lastPlayed"):
+            print("Opening native selection")
+            options = {}
+            options["background"] = current["background"]
+            options["useSidebar"] = True
+            options["type"] = "lastPlayed"
+            self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.lastPlayedCallback)        
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            self.subComponent.setFooter(footer)  
 
     def nativeCallback(self, selection):
         self.subComponent = None
         if(selection != None):
             Runner.runNative(selection)
+
+    def lastPlayedCallback(self, selection):
+        self.subComponent = None
+        if(selection != None):
+            if(selection["type"] == "native"):
+                Runner.runNative(selection)
+            elif(selection["type"] == "emulator"):
+                Runner.runEmu(selection, selection["rom"])
+    
 
 
     def optionsCallback(self, optionID, text):
@@ -372,7 +390,7 @@ class MainMenu(RenderObject.RenderObject):
             return self.currentIndex + stride
 
     def getPrev(self, stride=1):       
-        if(self.currentIndex - stride <= 0):
+        if(self.currentIndex - stride < 0):
             return len(self.systems) - stride
         else:
             return self.currentIndex - stride
@@ -466,19 +484,32 @@ class MainMenu(RenderObject.RenderObject):
             screen.blit(self.gear, (settingsXPos,settingsYPos))
         else:
             screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
+
+    def loadLastPlayed(self):
+        print("loading last played games")
+        try:
+            lastPlayed = json.load(open("config/lastPlayed.json"))
+            if(not "data" in lastPlayed):
+                lastPlayed["data"] = []
+            self.config["mainMenu"].append(lastPlayed)        
+        except Exception as ex:
+            print(str(ex))
+
     
     def __init__(self, screen, suspend):
         print("Main Menu Init")
         self.screen = screen
         self.suspend = suspend
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
+
+        self.loadLastPlayed()
         
       
         self.header = Header.Header(24)
 
         res = ResumeHandler.getResumeFile()
         if(res != None and res["mainIndex"] != None and res["main"] != None):
-            self.currentIndex = res["mainIndex"]
+            self.currentIndex = res["mainIndex"]            
 
             if("useSelection" in self.config["mainMenu"][self.currentIndex] and self.config["mainMenu"][self.currentIndex]["useSelection"] != None):
                 if(self.config["mainMenu"][self.currentIndex]["useSelection"] == True):
