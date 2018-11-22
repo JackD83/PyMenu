@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/scummvm.png",
+    "cmd": "/mnt/int_sd/emus/scummvm/scummvm",
+    "description": null,
+    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/scummvm.png",
+    "icon": "systems/scummvm.png",
+    "legacy": false,
+    "name": "SCUMMVM",
+    "overclock": "524",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/scummvm"
+}

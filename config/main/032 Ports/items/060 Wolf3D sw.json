@@ -1,0 +1,12 @@
+{
+    "cmd": "/mnt/int_sd/games/wolf3d SW/wolf3d",
+    "description": "Wolfenstein 3D SW Game",
+    "legacy": false,
+    "name": "Wolf3D sw",
+    "overclock": "528",
+    "preview": "/mnt/game/PyMenu/ports previews/wolf3d.png",
+    "screen": "default",
+    "selectDescription": null,
+    "selectionPath": null,
+    "selector": null
+}

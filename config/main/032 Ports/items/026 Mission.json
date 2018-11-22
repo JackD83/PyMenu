@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/lastmission/run.dge",
+    "description": "Last Mission Game",
+    "legacy": false,
+    "name": "Mission",
+    "overclock": "528",
+    "preview": "ports previews/lastmission.png",
+    "screen": "default"
+}

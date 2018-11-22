@@ -1,0 +1,18 @@
+{
+    "background": "ports previews/gambatte_sdl.png",
+    "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl",
+    "description": "Handheld",
+    "fileFilter": [
+        ".zip"
+    ],
+    "folderIcon": "theme/icons/Gameboy03.png",
+    "icon": "systems/gb.png",
+    "legacy": false,
+    "name": "GAMEBOY",
+    "overclock": "528",
+    "previews": "/mnt/ext_sd/previews/gb",
+    "screen": "default",
+    "selectionPath": "/mnt/ext_sd/roms/gb",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/gamebatte"
+}

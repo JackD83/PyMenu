@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/dingux_2600.png",
+    "cmd": "/mnt/int_sd/emus/dingux_2600/dingux-2600",
+    "description": null,
+    "folderIcon": "/icons/Atari2600.png",
+    "icon": "systems/a2600.png",
+    "legacy": false,
+    "name": "ATARI 2600",
+    "overclock": "524",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/dingux_2600"
+}

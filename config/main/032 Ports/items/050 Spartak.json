@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/spartak/run.dge",
+    "description": "Spartak Chess Game",
+    "legacy": false,
+    "name": "Spartak",
+    "overclock": "528",
+    "preview": "ports previews/spartak.png",
+    "screen": "default"
+}

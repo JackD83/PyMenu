@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/hhexen/run.dge",
+    "description": "HHexen Game",
+    "legacy": false,
+    "name": "HHexen",
+    "overclock": "528",
+    "preview": "ports previews/hhexen.png",
+    "screen": "default"
+}

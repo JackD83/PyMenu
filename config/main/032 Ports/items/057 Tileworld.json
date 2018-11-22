@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/tileworld/tworld",
+    "description": "Tileworld Game",
+    "legacy": false,
+    "name": "Tileworld",
+    "overclock": "528",
+    "preview": "ports previews/tileworld.png",
+    "screen": "default"
+}

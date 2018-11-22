@@ -1,0 +1,19 @@
+{
+    "background": "ports previews/picodrive.png",
+    "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive",
+    "description": null,
+    "fileFilter": [
+        ".zip"
+    ],
+    "folderIcon": "theme/icons/MegaDrive2.png",
+    "icon": "systems/megadrive.png",
+    "legacy": false,
+    "name": "Genesis",
+    "overclock": "600",
+    "preview": ".",
+    "previews": "/mnt/ext_sd/previews/genesis",
+    "screen": "default",
+    "selectionPath": "/mnt/ext_sd/roms/genesis",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/picodrive"
+}

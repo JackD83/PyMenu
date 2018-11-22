@@ -1,0 +1,7 @@
+{
+    "background": "backgrounds/ports2_art_blur.jpg",
+    "description": "Native ports to this device",
+    "icon": "systems/ports.png",
+    "name": "Ports",
+    "type": "native"
+}

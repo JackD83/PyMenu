@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/openmsx.png",
+    "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx",
+    "description": null,
+    "folderIcon": "None",
+    "icon": "systems/msx.png",
+    "legacy": false,
+    "name": "MSX",
+    "overclock": "524",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/dingux-msx"
+}

@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/pcsx4all.png",
+    "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all",
+    "description": "Playstation",
+    "folderIcon": "/icons/Psone.png",
+    "icon": "systems/psx.png",
+    "legacy": false,
+    "name": "PCSX4ALL",
+    "overclock": "528",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/pcsx4all"
+}

@@ -1,0 +1,18 @@
+{
+    "background": "ports previews/regba.png",
+    "cmd": "/mnt/int_sd/emus/regba/regba",
+    "description": "Gameboy Advance",
+    "fileFilter": [
+        ".zip"
+    ],
+    "folderIcon": "theme/icons/Gba02.png",
+    "icon": "systems/gba.png",
+    "legacy": false,
+    "name": "GBA",
+    "overclock": "624",
+    "previews": "/mnt/ext_sd/previews/gba",
+    "screen": "default",
+    "selectionPath": "/mnt/ext_sd/roms/gba",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/regba"
+}

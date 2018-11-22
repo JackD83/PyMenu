@@ -1,0 +1,12 @@
+{
+    "cmd": "/mnt/int_sd/games/rott/rott_sw",
+    "description": "Rise Of The Triad SW Game",
+    "legacy": false,
+    "name": "Rott sw",
+    "overclock": "528",
+    "preview": "ports previews/rott.png",
+    "screen": "default",
+    "selectDescription": null,
+    "selectionPath": null,
+    "selector": null
+}

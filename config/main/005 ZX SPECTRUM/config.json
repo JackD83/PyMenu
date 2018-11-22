@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/speccy.png",
+    "cmd": "/mnt/int_sd/emus/speccy/speccy",
+    "description": null,
+    "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/speccy.png",
+    "icon": "systems/zxs.png",
+    "legacy": false,
+    "name": "ZX SPECTRUM",
+    "overclock": "524",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/speccy"
+}

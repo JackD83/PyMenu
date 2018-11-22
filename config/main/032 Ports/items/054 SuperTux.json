@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/supertux/run.dge",
+    "description": "SuperTux Game",
+    "legacy": false,
+    "name": "SuperTux",
+    "overclock": "528",
+    "preview": "ports previews/supertux.png",
+    "screen": "default"
+}

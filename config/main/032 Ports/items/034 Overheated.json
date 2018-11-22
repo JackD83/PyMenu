@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/overheated/run.dge",
+    "description": "Overheated Game",
+    "legacy": false,
+    "name": "Overheated",
+    "overclock": "528",
+    "preview": "ports previews/overheated.png",
+    "screen": "default"
+}

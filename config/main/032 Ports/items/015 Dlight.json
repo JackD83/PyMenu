@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/dlight/run.dge",
+    "description": "Dlight Game",
+    "legacy": false,
+    "name": "Dlight",
+    "overclock": "528",
+    "preview": "ports previews/dlight.png",
+    "screen": "default"
+}

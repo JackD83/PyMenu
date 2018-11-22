@@ -1,0 +1,15 @@
+{
+    "background": "ports previews/vice.png",
+    "cmd": "/mnt/int_sd/emus/vice/x64",
+    "description": "Commodore",
+    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/c64.png",
+    "icon": "systems/c64.png",
+    "legacy": false,
+    "name": "C64",
+    "overclock": "524",
+    "previews": null,
+    "screen": "default",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "workingDir": "/mnt/int_sd/emus/vice"
+}

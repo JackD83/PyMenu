@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/quake/sdlquake.dge",
+    "description": "SDL Quake Game",
+    "legacy": false,
+    "name": "Quake",
+    "overclock": "528",
+    "preview": "ports previews/quake.png",
+    "screen": "default"
+}

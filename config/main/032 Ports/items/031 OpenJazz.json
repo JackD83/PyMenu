@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/openjazz/OpenJazz",
+    "description": "OpenJazz Game",
+    "legacy": false,
+    "name": "OpenJazz",
+    "overclock": "528",
+    "preview": "/mnt/game/PyMenu/ports previews/openjazz.png",
+    "screen": "default"
+}
