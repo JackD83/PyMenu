@@ -39,6 +39,11 @@
     "type":"boolean",
     "description": "Use the selection screen"
 },
+{   "id":"useGamelist",
+    "name" :"Use Gamelist",
+    "type":"boolean",
+    "description": "Use the gamelist to get correct Game name"
+},
 {   "id":"selectionPath",
     "name" :"Rom folder",
     "type":"folder",

@@ -205,6 +205,7 @@ class MainMenu(RenderObject.RenderObject):
             options["textColor"] = (55,55,55)
             options["background"] = current["background"]
             options["useSidebar"] = True
+            options["useGamelist"] = current["useGamelist"] if "useGamelist" in current else False
 
             if("description" in current):
                 options["description"] = current["description"]

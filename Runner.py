@@ -1,5 +1,5 @@
 import subprocess, ResumeHandler
-import platform,copy, json
+import platform,copy, json, Common
 import sys, os, stat, Overclock
 
 def runEmu(config, rom):
@@ -171,6 +171,11 @@ def addToLastPlayed(config, rom):
                 data["name"] = filename_w_ext
         else:
             data["name"] = filename_w_ext
+    
+        if("useGamelist" in config and config["useGamelist"] == True):
+            data["name"] = Common.getGameName(filename_w_ext)
+           
+        
 
         data["rom"] = rom
         data["type"] = "emulator"

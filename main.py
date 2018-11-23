@@ -40,6 +40,8 @@ def init():
     suspend = Suspend.Suspend()
     renderObject = MainMenu.MainMenu(screen, suspend)
 
+    Common.loadGameListAsync()
+
     
     brightness = BrightnessVolumeControl.BrightnessVolume()
 

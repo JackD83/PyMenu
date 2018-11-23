@@ -193,6 +193,9 @@ class FileChooser(AbstractList.AbstractList):
 
         
     def filterName(self, filename):
+        if("useGamelist" in self.options and self.options["useGamelist"] == True):
+            return Common.getGameName(filename)
+
         if(not "fileFilter" in self.options):
             return filename
 
