@@ -14,6 +14,12 @@
         "type": "list",
         "values": ["1", "2", "5", "10", "off"],
         "names": ["1m", "2m", "5m", "10m", "off"]
+    },
+    {
+        "name": "Show Last Played",
+        "id": "showLastPlayed",
+        "description" : "Shows a main menu entry with last played games",
+        "type": "boolean"  
     },{
         "name": "Show FPS",
         "id": "showFPS",

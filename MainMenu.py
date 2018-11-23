@@ -1,7 +1,7 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
 import os, ResumeHandler, Suspend
-import json, time
+import json, time, math
 import pygame, sys, subprocess,platform
 from pprint import pprint
 from threading import Thread
@@ -180,15 +180,19 @@ class MainMenu(RenderObject.RenderObject):
 
     def configCallback(self, select):
         self.subComponent = None
+        isLastPlayed = self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed" 
         Configuration.saveConfiguration()
+        if(isLastPlayed and "showLastPlayed" in self.config["options"] and not self.config["options"]["showLastPlayed"]):
+            self.currentIndex = 0
+
+        self.reload()
         RenderControl.setDirty()
 
     def openSelection(self, current):
         print("Opening selection")       
         ResumeHandler.setLastUsedMain(current, self.currentIndex)
 
-        if(current["type"] == "emulator"):
-            print()
+        if(current["type"] == "emulator"):            
 
             if("useSelection" in current and current["useSelection"] == False):
                 print("Running emulator directly")
@@ -337,8 +341,6 @@ class MainMenu(RenderObject.RenderObject):
     def addEditCallback(self, entry):
         self.subComponent = None
 
-        print(entry)
-
         if(entry == None):
             self.reload()
             return
@@ -364,6 +366,7 @@ class MainMenu(RenderObject.RenderObject):
     def reload(self):
         Configuration.reloadConfiguration()
         self.config = Configuration.getConfiguration()
+        self.loadLastPlayed()
         self.loadSystemImages()
     
     
@@ -391,7 +394,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def getPrev(self, stride=1):       
         if(self.currentIndex - stride < 0):
-            return len(self.systems) - stride
+            return len(self.systems) - int(math.fabs(self.currentIndex - stride))
         else:
             return self.currentIndex - stride
         
@@ -485,15 +488,16 @@ class MainMenu(RenderObject.RenderObject):
         else:
             screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
 
-    def loadLastPlayed(self):
-        print("loading last played games")
-        try:
-            lastPlayed = json.load(open("config/lastPlayed.json"))
-            if(not "data" in lastPlayed):
-                lastPlayed["data"] = []
-            self.config["mainMenu"].append(lastPlayed)        
-        except Exception as ex:
-            print(str(ex))
+    def loadLastPlayed(self):     
+        if("showLastPlayed" in self.config["options"] and self.config["options"]["showLastPlayed"] ):
+            print("loading last played games")
+            try:
+                lastPlayed = json.load(open("config/lastPlayed.json"))
+                if(not "data" in lastPlayed):
+                    lastPlayed["data"] = []
+                self.config["mainMenu"].append(lastPlayed)        
+            except Exception as ex:
+                print("Exception: " + str(ex))
 
     
     def __init__(self, screen, suspend):
