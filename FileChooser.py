@@ -25,6 +25,7 @@ class FileChooser(AbstractList.AbstractList):
         text = self.entryList[index]["text"]
         if(text== None):
             text = self.renderText(self.entryList[index])
+       
 
         yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
               
@@ -124,6 +125,10 @@ class FileChooser(AbstractList.AbstractList):
        
 
     def initListAsync(self):
+        if("useGamelist" in self.options and self.options["useGamelist"] == True):
+            Common.loadGameList()
+
+
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
             entry = {}
@@ -193,6 +198,9 @@ class FileChooser(AbstractList.AbstractList):
 
         
     def filterName(self, filename):
+        if("useGamelist" in self.options and self.options["useGamelist"] == True):
+            return Common.getGameName(filename)
+
         if(not "fileFilter" in self.options):
             return filename
 
@@ -223,6 +231,8 @@ class FileChooser(AbstractList.AbstractList):
 
     def __init__(self, screen, titel, initialPath, selectFolder, options, callback):        
         AbstractList.AbstractList.__init__(self,screen, titel, options)
+
+        print("Opening selection with options: " + str(options))
       
         if(initialPath == None or initialPath == "/"):
             initialPath = "/"

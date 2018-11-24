@@ -1,11 +1,51 @@
 
 import pygame, sys, Configuration
 import os, subprocess, platform
+from threading import Thread
 
 
 CLOCKSPEED = 628 #default clockspeed
 imageCache = {}
+gameList = {}
+isLoaded = False
 
+
+def loadGameListAsync():
+    thread = Thread(target = loadGameList, args = ())
+    thread.start()   
+
+
+def loadGameList():
+    global gameList
+    global isLoaded
+
+    if(isLoaded):
+        return
+
+    isLoaded = True
+    try:
+        print("Loading game list")
+        with open("config/gamelist.txt") as f:
+            lines = f.readlines() 
+            for line in lines:
+                try:
+                    res = line.split("|")
+                    gameList[res[1].strip() + ".zip"] = res[3].strip()    
+                except Exception as ex:
+                     print("Error adding game to list: " + line)               
+
+       
+    except Exception as ex:
+        print("could not loa game list")
+    
+
+            
+def getGameName(romName):
+    global gameList
+    if(romName in gameList and gameList[romName] != None):
+        return gameList[romName]
+    else:
+        return romName
 
 
 def loadImage(path): 
@@ -31,6 +71,7 @@ def getFPS():
 
 
 def loadCachedImage(path):
+    global imageCache
     if(path in imageCache):
         return imageCache[path]
     else:

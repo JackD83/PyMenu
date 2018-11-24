@@ -41,6 +41,7 @@ def init():
     renderObject = MainMenu.MainMenu(screen, suspend)
 
     
+    
     brightness = BrightnessVolumeControl.BrightnessVolume()
 
     

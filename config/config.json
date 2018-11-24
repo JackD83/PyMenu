@@ -8,9 +8,10 @@
         "allowEdit": true,
         "displayTimeout": "20",
         "showFPS": false,
+        "showLastPlayed": true,
         "suspendTimeout": "off"
     },
     "screenHeight": 240,
-    "screenWidth": 320,
+    "screenWidth": 320,    
     "volume": 255
 }
