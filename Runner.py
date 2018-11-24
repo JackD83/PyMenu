@@ -211,8 +211,8 @@ def addToLastPlayed(config, rom):
         print("Exception " + str(ex))        
 
 def wasLastPlayed(lastPlayed, data):
-    for last in lastPlayed["data"]:       
-        if( (data["type"] == "emulator" and last["rom"] == data["rom"]) or (data["type"] == "native" and last["cmd"] == data["cmd"]) ):   
+    for last in lastPlayed["data"]:
+        if( (data["type"] == "emulator" and last["type"] == "emulator" and last["rom"] == data["rom"]) or (data["type"] == "native" and last["type"] == "native" and last["cmd"] == data["cmd"]) ):   
      
             return last
           

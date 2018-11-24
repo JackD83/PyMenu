@@ -7,6 +7,7 @@ from threading import Thread
 CLOCKSPEED = 628 #default clockspeed
 imageCache = {}
 gameList = {}
+isLoaded = False
 
 
 def loadGameListAsync():
@@ -16,8 +17,14 @@ def loadGameListAsync():
 
 def loadGameList():
     global gameList
-    gameList = {}
+    global isLoaded
+
+    if(isLoaded):
+        return
+
+    isLoaded = True
     try:
+        print("Loading game list")
         with open("config/gamelist.txt") as f:
             lines = f.readlines() 
             for line in lines:
@@ -30,6 +37,8 @@ def loadGameList():
        
     except Exception as ex:
         print("could not loa game list")
+    
+
             
 def getGameName(romName):
     global gameList
