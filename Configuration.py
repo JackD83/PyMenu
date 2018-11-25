@@ -39,6 +39,8 @@ def reloadConfiguration():
    
 def checkRS97():
     infoObject = pygame.display.Info()
+
+    print("RS97 check " + str(infoObject.current_h))
     
     if(infoObject.current_h == 480):
         return True
@@ -63,8 +65,8 @@ def setResolution():
     
     #windows platform
     elif(os.name == "nt"):
-        configuration["screenWidth"] = 480
-        configuration["screenHeight"] = 272
+        configuration["screenWidth"] = 320
+        configuration["screenHeight"] = 240
 
 def saveConfiguration():
     try:
