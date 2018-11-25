@@ -20,8 +20,9 @@ do
 		sh $FILE > /dev/ttyS1 2> /dev/ttyS1
 		rm $FILE
 	else
+		echo "starting PyMenu"
 		sh ./pymenu.sh > /dev/ttyS1 2> /dev/ttyS1
-		echo "File $FILE does not exist"	
+		
 	fi
 	sleep 1
 done
