@@ -246,8 +246,6 @@ class MainMenu(RenderObject.RenderObject):
             conf = None
             if(self.config["mainMenu"][self.currentIndex]["type"] == "emulator"):              
                 conf = json.load(open('config/entry.json'))
-                if(not Configuration.isRS97()):                  
-                    conf = conf + json.load(open('config/pap.json'))
             else:               
                 conf = json.load(open('config/native.json'))
 
@@ -268,8 +266,7 @@ class MainMenu(RenderObject.RenderObject):
         if(t==0):
             data = self.getEmptyEmulatorData()
             conf = json.load(open('config/entry.json'))
-            if(not Configuration.isRS97()):
-                conf = conf + json.load(open('config/pap.json'))
+            
         else:
             data = self.getEmptyNativeData()
             conf = json.load(open('config/native.json'))

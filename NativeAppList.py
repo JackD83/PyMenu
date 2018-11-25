@@ -11,6 +11,7 @@ class NativeAppList(AbstractList.AbstractList):
     fileIcon =  Common.loadImage( "theme/file.png")
     overlay = None
     subComponent = None
+    options = None
   
 
     configOptions = json.load(open('config/optionsNative.json'))
@@ -119,12 +120,15 @@ class NativeAppList(AbstractList.AbstractList):
         for event in events:    
             if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
-                    if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
-                        if(len(self.options) == 0):
-                            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
-                        else:
-                            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
-                        RenderControl.setDirty()            
+                    if("type" in self.options and self.options["type"] == "lastPlayed"):
+                        pass        
+                    else:
+                        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
+                            if(len(self.options) == 0):
+                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
+                            else:
+                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
+                            RenderControl.setDirty()
 
         if(self.overlay is None):
             AbstractList.AbstractList.handleEvents(self, events)
@@ -142,26 +146,24 @@ class NativeAppList(AbstractList.AbstractList):
    
     def optionsCallback(self, selection, text):           
         self.overlay = None
-
-        if(not Configuration.isRS97()):
-            self.configOptions = self.configOptions + json.load(open('config/legacy.json'))
           
      
-        if(selection == 0):
+        if(text == "add"):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
-        if(selection == 1):
+        if(text == "edit"):
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.currentSelection ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
-        if(selection == 2):
+        if(text == "remove"):
             self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
-            RenderControl.setDirty()  
+            RenderControl.setDirty()
+      
          
 
     def deleteCallback(self, res):
@@ -170,7 +172,9 @@ class NativeAppList(AbstractList.AbstractList):
             self.data.remove(self.currentSelection)
             Configuration.saveConfiguration()          
             self.initList()
-            self.setSelection(self.currentIndex - 1)            
+            self.setSelection(self.currentIndex - 1)
+
+   
             
 
     def addEditCallback(self, configCallback):        
@@ -196,7 +200,6 @@ class NativeAppList(AbstractList.AbstractList):
             "cmd":".",
             "icon":".",
             "preview":".",
-            "legacy":False,
             "screen":"default",
             "overclock":"528"
         }
@@ -206,7 +209,7 @@ class NativeAppList(AbstractList.AbstractList):
     def __init__(self, screen, titel, data, options, callback):        
         AbstractList.AbstractList.__init__(self, screen, titel, options)
                  
-   
+        self.options = options
         self.callback = callback
         self.data = data
 

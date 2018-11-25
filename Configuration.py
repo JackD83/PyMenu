@@ -1,4 +1,4 @@
-import json, subprocess, os, copy,shutil
+import json, subprocess, os, copy,shutil, platform, pygame
 from ast import literal_eval as make_tuple
 from pprint import pprint
 
@@ -16,6 +16,10 @@ def reloadConfiguration():
     global configuration
     configuration = json.load(open('config/config.json'))
     configuration["mainMenu"] = []
+    pygame.init()
+    configuration["RS97"] = checkRS97()
+    setResolution()
+
     if os.path.exists(os.path.dirname("config/main")):       
         for name in os.listdir("config/main"):
             try:                   
@@ -33,7 +37,34 @@ def reloadConfiguration():
             except Exception as ex:
                 print(str(ex))                  
    
+def checkRS97():
+    infoObject = pygame.display.Info()
+    
+    if(infoObject.current_h == 480):
+        return True
+
+    #windows platform
+    elif(os.name == "nt"):
+        return False
+
+    return False    
+
+def setResolution():
+    global configuration
+    infoObject = pygame.display.Info()
   
+    if(checkRS97()):
+        configuration["screenWidth"] = 320
+        configuration["screenHeight"] = 240
+    
+    elif(infoObject.current_w == 480):
+        configuration["screenWidth"] = 480
+        configuration["screenHeight"] = 272
+    
+    #windows platform
+    elif(os.name == "nt"):
+        configuration["screenWidth"] = 480
+        configuration["screenHeight"] = 272
 
 def saveConfiguration():
     try:
