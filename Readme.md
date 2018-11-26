@@ -18,13 +18,6 @@ Install instructions: https://boards.dingoonity.org/ingenic-jz4760-devices/custo
  
 1. Clone or copy the files from the repo next to the gmenu2x folder in /apps/. Folder has to be named "PyMenu"
 
-1b. for the Arcade Mini or K3P
-in the file config/config.json set:
-
-RS97 = false
-screenWidth = 480
-screenHeight = 272
-
 2. PyMenu can be run by starting PyMenu/run.sh
 
 3. If you want to make it your default launcher, run PyMenu/installer/install.dge. Run uninstall.dge to switch back to gmenunx. Try to start it using run.sh first!
