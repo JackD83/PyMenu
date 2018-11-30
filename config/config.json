@@ -13,5 +13,5 @@
     },
     "screenHeight": 240,
     "screenWidth": 320,    
-    "volume": 255
+    "volumeControl": true
 }

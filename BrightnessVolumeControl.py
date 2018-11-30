@@ -154,11 +154,14 @@ class BrightnessVolume(RenderObject.RenderObject):
             return 0; 
 
     def initVolume(self):
-        if(not Configuration.isRS97()):
+        if("volumeControl" in self.config and self.config["volumeControl"]):
+            print("Using volume deamon")
+            subprocess.Popen(["./setVolume &"], shell=True)
             print("Setting initial volume: " + str(self.getCurrentVolume()))
+            
             os.system('./setVolume ' + str(self.getCurrentVolume()))
         else:
-            os.system('./setVolume 100')
+            os.system('./setVolume 255')
 
     def __init__(self):
         if("lcd_backlight" in self.config and self.config["lcd_backlight"] in self.BRIGHTNESS_LEVELS):
