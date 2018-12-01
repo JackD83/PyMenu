@@ -14,7 +14,7 @@ def runEmu(config, rom):
         print("cmd needs to be set to an existing executable")
         return
     
-    print("Platform is: " + platform.processor())
+    print("Platform is: '" + platform.processor() + "'")
     if(workdir == None and not cmd == None):    
         workdir = os.path.abspath(os.path.join(cmd, os.pardir))   
 

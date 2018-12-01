@@ -9,6 +9,9 @@ export PATH=$PATH:$PWD/python/usr/bin
 #store device menu runs from
 ln -sf $(mount | grep int_sd | cut -f 1 -d ' ') /tmp/.int_sd
 
+echo "Starting volume service"
+./setVolume &
+
 FILE="/tmp/run"
 while true
 do

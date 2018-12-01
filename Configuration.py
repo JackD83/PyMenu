@@ -38,6 +38,7 @@ def reloadConfiguration():
                 print(str(ex))                  
    
 def checkRS97():
+    
     infoObject = pygame.display.Info()
 
     print("RS97 check " + str(infoObject.current_h))
