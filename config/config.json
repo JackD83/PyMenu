@@ -1,5 +1,5 @@
 {
-    "RS97": false, 
+    "RS97": true, 
     "batteryHigh": 4500, 
     "batteryLow": 3752, 
     "firstStart": false, 
@@ -7,11 +7,11 @@
     "options": {
         "allowEdit": true, 
         "displayTimeout": "20", 
-        "showFPS": true, 
+        "showFPS": false, 
         "showLastPlayed": true, 
         "suspendTimeout": "off"
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
-    "volumeControl": true
+    "volumeControl": false
 }
