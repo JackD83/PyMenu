@@ -1,18 +1,18 @@
 {
-    "background": "ports previews/sfc.png",
-    "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES",
-    "description": "Super NES",
+    "background": "ports previews/sfc.png", 
+    "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
+    "description": "Super NES", 
     "fileFilter": [
         ".zip"
-    ],
-    "folderIcon": "theme/icons/Sfc_03.png",
-    "icon": "systems/snes.png",
-    "legacy": false,
-    "name": "SNES",
-    "overclock": "624",
-    "previews": "/mnt/ext_sd/previews/snes",
-    "screen": "default",
-    "selectionPath": "/mnt/ext_sd/roms/snes",
-    "type": "emulator",
+    ], 
+    "folderIcon": "theme/icons/Sfc_03.png", 
+    "icon": "systems/snes.png", 
+    "legacy": false, 
+    "name": "SNES", 
+    "overclock": "624", 
+    "previews": "/mnt/ext_sd/previews/snes", 
+    "screen": "default", 
+    "selectionPath": "/mnt/ext_sd/roms/snes", 
+    "type": "emulator", 
     "workingDir": "\\mnt\\ext_sd\\int_sd\\emus\\snes9x4d"
 }

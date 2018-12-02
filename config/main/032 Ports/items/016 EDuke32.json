@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/eduke32/run.dge",
-    "description": "EDuke32 Game",
-    "legacy": false,
-    "name": "EDuke32",
-    "overclock": "528",
-    "preview": "ports previews/eduke32.jpg",
+    "cmd": "/mnt/int_sd/games/eduke32/run.dge", 
+    "description": "EDuke32 Game", 
+    "legacy": false, 
+    "name": "EDuke32", 
+    "overclock": "528", 
+    "preview": "ports previews/eduke32.jpg", 
     "screen": "default"
 }

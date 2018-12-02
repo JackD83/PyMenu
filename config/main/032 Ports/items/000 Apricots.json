@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/apricots/run.dge",
-    "description": "Apricots Game",
-    "legacy": false,
-    "name": "Apricots",
-    "overclock": "528",
-    "preview": "ports previews/apricots.png",
+    "cmd": "/mnt/int_sd/games/apricots/run.dge", 
+    "description": "Apricots Game", 
+    "legacy": false, 
+    "name": "Apricots", 
+    "overclock": "528", 
+    "preview": "ports previews/apricots.png", 
     "screen": "default"
 }

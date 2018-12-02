@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/shisen/run.dge",
-    "description": "Shisen Seki Game",
-    "legacy": false,
-    "name": "Shisen",
-    "overclock": "528",
-    "preview": "ports previews/shisen.png",
+    "cmd": "/mnt/int_sd/games/shisen/run.dge", 
+    "description": "Shisen Seki Game", 
+    "legacy": false, 
+    "name": "Shisen", 
+    "overclock": "528", 
+    "preview": "ports previews/shisen.png", 
     "screen": "default"
 }

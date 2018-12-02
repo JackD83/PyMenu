@@ -156,11 +156,12 @@ class BrightnessVolume(RenderObject.RenderObject):
     def initVolume(self):
         if("volumeControl" in self.config and self.config["volumeControl"]):
             print("Using volume deamon")
-            subprocess.Popen(["./setVolume &"], shell=True)
+       
             print("Setting initial volume: " + str(self.getCurrentVolume()))
             
             os.system('./setVolume ' + str(self.getCurrentVolume()))
         else:
+            os.system("killall setVolume")
             os.system('./setVolume 255')
 
     def __init__(self):

@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/mrdrillux/run.dge",
-    "description": "Mr. Driller Game",
-    "legacy": false,
-    "name": "Drillux",
-    "overclock": "528",
-    "preview": "ports previews/mrdrillux.png",
+    "cmd": "/mnt/int_sd/games/mrdrillux/run.dge", 
+    "description": "Mr. Driller Game", 
+    "legacy": false, 
+    "name": "Drillux", 
+    "overclock": "528", 
+    "preview": "ports previews/mrdrillux.png", 
     "screen": "default"
 }

@@ -1,4 +1,4 @@
-import json, subprocess, os, copy,shutil, platform, pygame
+import json, subprocess, os, copy,shutil, platform, pygame, Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
 
@@ -20,16 +20,22 @@ def reloadConfiguration():
     configuration["RS97"] = checkRS97()
     setResolution()
 
-    if os.path.exists(os.path.dirname("config/main")):       
-        for name in os.listdir("config/main"):
+    if os.path.exists(os.path.dirname("config/main")):
+        fileList = os.listdir("config/main")
+        Common.quick_sort(fileList)       
+        for name in fileList:
             try:                   
                 entry = json.load(open("config/main/" + name + "/config.json"))
+                entry["source"] = name
                 configuration["mainMenu"].append(entry)
                 if(entry["type"] == "native"):
                     entry["data"] = []
                     try:
-                        for itemName in os.listdir("config/main/" + name + "/items"):
+                        itemlist =  os.listdir("config/main/" + name + "/items")
+                        Common.quick_sort(itemlist) 
+                        for itemName in itemlist:
                             item = json.load(open("config/main/" + name + "/items/" + itemName))
+                            item["source"] = itemName
                             entry["data"].append(item)
                     except Exception as ex:
                         print(str(ex))
@@ -88,16 +94,25 @@ def saveConfiguration():
         json.dump(allConfig, fp,sort_keys=True, indent=4)
 
     for index, item in enumerate(main):
-        fileName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
+        if( "source" not in item):
+            fileName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
+        else:
+            fileName = "config/main/" + item["source"] + "/config.json"
 
         if(item["type"] == "native"):
             data = item["data"]
             item.pop('data', None)
             for dataIndex, dataItem in enumerate(data):
-                dataName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
+                if("source" not in dataItem):
+                    dataName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
+                else:
+                    dataName = "config/main/" + item["source"] + "/items/" + dataItem["source"]
+
+                del dataItem["source"]
                 storeConfigPart(dataName, dataItem)
 
         if(item["type"] != "lastPlayed"):
+            del item["source"]
             storeConfigPart(fileName, item)
 
        

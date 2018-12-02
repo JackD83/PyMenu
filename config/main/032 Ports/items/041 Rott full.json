@@ -1,12 +1,12 @@
 {
-    "cmd": "/mnt/int_sd/games/rott/rott",
-    "description": "Rise Of The Triad Full Game",
-    "legacy": false,
-    "name": "Rott full",
-    "overclock": "528",
-    "preview": "ports previews/rott.png",
-    "screen": "default",
-    "selectDescription": null,
-    "selectionPath": null,
+    "cmd": "/mnt/int_sd/games/rott/rott", 
+    "description": "Rise Of The Triad Full Game", 
+    "legacy": false, 
+    "name": "Rott full", 
+    "overclock": "528", 
+    "preview": "ports previews/rott.png", 
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
     "selector": null
 }

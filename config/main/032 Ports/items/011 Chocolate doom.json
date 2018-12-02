@@ -1,13 +1,13 @@
 {
-    "cmd": "/mnt/int_sd/games/chocolate_doom/run.dge",
-    "description": "Chocolate Doom Game",
-    "legacy": false,
-    "name": "Chocolate doom",
-    "overclock": "528",
-    "preview": "ports previews/chocolate_doom.png",
-    "screen": "default",
-    "selectDescription": "wads",
-    "selection": "/mnt/ext_sd/Doom1.WAD",
-    "selectionPath": "///mnt/int_sd/roms",
+    "cmd": "/mnt/int_sd/games/chocolate_doom/run.dge", 
+    "description": "Chocolate Doom Game", 
+    "legacy": false, 
+    "name": "Chocolate doom", 
+    "overclock": "528", 
+    "preview": "ports previews/chocolate_doom.png", 
+    "screen": "default", 
+    "selectDescription": "wads", 
+    "selection": "/mnt/ext_sd/Doom1.WAD", 
+    "selectionPath": "///mnt/int_sd/roms", 
     "selector": "True"
 }

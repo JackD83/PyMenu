@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/arkanoid/run.dge",
-    "description": "Arkanoid Game",
-    "legacy": false,
-    "name": "Arkanoid",
-    "overclock": "528",
-    "preview": "/mnt/game/PyMenu/ports previews/arkanoid.png",
+    "cmd": "/mnt/int_sd/games/arkanoid/run.dge", 
+    "description": "Arkanoid Game", 
+    "legacy": false, 
+    "name": "Arkanoid", 
+    "overclock": "528", 
+    "preview": "/mnt/game/PyMenu/ports previews/arkanoid.png", 
     "screen": "default"
 }

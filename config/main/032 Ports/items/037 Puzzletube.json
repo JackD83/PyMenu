@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/puzzletube/run.dge",
-    "description": "Puzzletube Game",
-    "legacy": false,
-    "name": "Puzzletube",
-    "overclock": "528",
-    "preview": "ports previews/puzzletube.png",
+    "cmd": "/mnt/int_sd/games/puzzletube/run.dge", 
+    "description": "Puzzletube Game", 
+    "legacy": false, 
+    "name": "Puzzletube", 
+    "overclock": "528", 
+    "preview": "ports previews/puzzletube.png", 
     "screen": "default"
 }

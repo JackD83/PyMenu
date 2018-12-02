@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/snowman/run.dge",
-    "description": "Snowman Game",
-    "legacy": false,
-    "name": "Snowman",
-    "overclock": "528",
-    "preview": "ports previews/snowman.png",
+    "cmd": "/mnt/int_sd/games/snowman/run.dge", 
+    "description": "Snowman Game", 
+    "legacy": false, 
+    "name": "Snowman", 
+    "overclock": "528", 
+    "preview": "ports previews/snowman.png", 
     "screen": "default"
 }

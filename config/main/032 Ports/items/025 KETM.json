@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/ketm/run.dge",
-    "description": "KETM Game",
-    "legacy": false,
-    "name": "KETM",
-    "overclock": "528",
-    "preview": "ports previews/ketm.png",
+    "cmd": "/mnt/int_sd/games/ketm/run.dge", 
+    "description": "KETM Game", 
+    "legacy": false, 
+    "name": "KETM", 
+    "overclock": "528", 
+    "preview": "ports previews/ketm.png", 
     "screen": "default"
 }

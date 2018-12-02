@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/profadeluxe/run.dge",
-    "description": "ProfaDeluxe Game",
-    "legacy": false,
-    "name": "Profa",
-    "overclock": "528",
-    "preview": "ports previews/profadeluxe.png",
+    "cmd": "/mnt/int_sd/games/profadeluxe/run.dge", 
+    "description": "ProfaDeluxe Game", 
+    "legacy": false, 
+    "name": "Profa", 
+    "overclock": "528", 
+    "preview": "ports previews/profadeluxe.png", 
     "screen": "default"
 }

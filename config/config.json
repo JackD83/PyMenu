@@ -1,17 +1,17 @@
 {
-    "RS97": true,
-    "batteryHigh": 4500,
-    "batteryLow": 3752,
-    "firstStart": false,
-    "lcd_backlight": 70,
+    "RS97": false, 
+    "batteryHigh": 4500, 
+    "batteryLow": 3752, 
+    "firstStart": false, 
+    "lcd_backlight": 70, 
     "options": {
-        "allowEdit": true,
-        "displayTimeout": "20",
-        "showFPS": false,
-        "showLastPlayed": true,
+        "allowEdit": true, 
+        "displayTimeout": "20", 
+        "showFPS": true, 
+        "showLastPlayed": true, 
         "suspendTimeout": "off"
-    },
-    "screenHeight": 240,
-    "screenWidth": 320,    
+    }, 
+    "screenHeight": 240, 
+    "screenWidth": 320, 
     "volumeControl": true
 }

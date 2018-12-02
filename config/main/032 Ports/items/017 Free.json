@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/freedroid/run.dge",
-    "description": "FreeDroid Classic Game",
-    "legacy": false,
-    "name": "Free",
-    "overclock": "528",
-    "preview": "ports previews/Freedroid.png",
+    "cmd": "/mnt/int_sd/games/freedroid/run.dge", 
+    "description": "FreeDroid Classic Game", 
+    "legacy": false, 
+    "name": "Free", 
+    "overclock": "528", 
+    "preview": "ports previews/Freedroid.png", 
     "screen": "default"
 }

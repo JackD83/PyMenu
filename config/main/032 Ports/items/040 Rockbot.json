@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/rockbot/run.dge",
-    "description": "Rockbot Game",
-    "legacy": false,
-    "name": "Rockbot",
-    "overclock": "528",
-    "preview": "ports previews/rockbot.png",
+    "cmd": "/mnt/int_sd/games/rockbot/run.dge", 
+    "description": "Rockbot Game", 
+    "legacy": false, 
+    "name": "Rockbot", 
+    "overclock": "528", 
+    "preview": "ports previews/rockbot.png", 
     "screen": "default"
 }

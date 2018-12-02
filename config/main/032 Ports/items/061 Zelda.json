@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/zelda_roth/run.dge",
-    "description": "Zelda Roth Game",
-    "legacy": false,
-    "name": "Zelda",
-    "overclock": "528",
-    "preview": "ports previews/zelda_roth.png",
+    "cmd": "/mnt/int_sd/games/zelda_roth/run.dge", 
+    "description": "Zelda Roth Game", 
+    "legacy": false, 
+    "name": "Zelda", 
+    "overclock": "528", 
+    "preview": "ports previews/zelda_roth.png", 
     "screen": "default"
 }

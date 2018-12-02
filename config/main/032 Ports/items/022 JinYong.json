@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/jinyong_legend/run.dge",
-    "description": "JinYong Legend Game",
-    "legacy": false,
-    "name": "JinYong",
-    "overclock": "528",
-    "preview": "ports previews/jinyong_legend.png",
+    "cmd": "/mnt/int_sd/games/jinyong_legend/run.dge", 
+    "description": "JinYong Legend Game", 
+    "legacy": false, 
+    "name": "JinYong", 
+    "overclock": "528", 
+    "preview": "ports previews/jinyong_legend.png", 
     "screen": "default"
 }

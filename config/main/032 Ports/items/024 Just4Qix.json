@@ -1,9 +1,9 @@
 {
-    "cmd": "/mnt/int_sd/games/just4qix/run.dge",
-    "description": "Just4Qix Game",
-    "legacy": false,
-    "name": "Just4Qix",
-    "overclock": "528",
-    "preview": "ports previews/just4qix.png",
+    "cmd": "/mnt/int_sd/games/just4qix/run.dge", 
+    "description": "Just4Qix Game", 
+    "legacy": false, 
+    "name": "Just4Qix", 
+    "overclock": "528", 
+    "preview": "ports previews/just4qix.png", 
     "screen": "default"
 }
