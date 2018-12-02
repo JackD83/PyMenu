@@ -108,11 +108,11 @@ def saveConfiguration():
                 else:
                     dataName = "config/main/" + item["source"] + "/items/" + dataItem["source"]
 
-                del dataItem["source"]
+                if "source" in dataItem: del dataItem["source"]
                 storeConfigPart(dataName, dataItem)
 
         if(item["type"] != "lastPlayed"):
-            del item["source"]
+            if "source" in item: del item["source"]
             storeConfigPart(fileName, item)
 
        
