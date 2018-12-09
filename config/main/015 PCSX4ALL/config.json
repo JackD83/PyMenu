@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/pcsx4all.png", 
+    "background": "images/backgrounds/rs97/pcsx4all.png", 
     "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all", 
     "description": "Playstation", 
     "folderIcon": "/icons/Psone.png", 
-    "icon": "systems/psx.png", 
+    "icon": "images/systems/psx.png", 
     "legacy": false, 
     "name": "PCSX4ALL", 
     "overclock": "528", 

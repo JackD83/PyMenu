@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/oswan.png", 
+    "background": "images/backgrounds/rs97/oswan.png", 
     "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
     "description": "Handheld", 
     "folderIcon": "/icons/WonderSwan_04.png", 
-    "icon": "systems/wonderswan.png", 
+    "icon": "images/systems/wonderswan.png", 
     "legacy": false, 
     "name": "WONDERSWAN", 
     "overclock": "524", 

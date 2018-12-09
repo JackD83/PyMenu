@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Spout", 
     "overclock": "528", 
-    "preview": "ports previews/spout.png", 
+    "preview": "images/previews/spout.png", 
     "screen": "default"
 }

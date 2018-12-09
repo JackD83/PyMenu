@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Digger", 
     "overclock": "528", 
-    "preview": "ports previews/digger.png", 
+    "preview": "images/previews/digger.png", 
     "screen": "default"
 }

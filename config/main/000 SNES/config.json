@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/pocketsnes.png", 
+    "background": "images/backgrounds/rs97/pocketsnes.png", 
     "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
     "description": "Famicom", 
     "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/snes2.png", 
-    "icon": "systems/sfc.png", 
+    "icon": "images/systems/sfc.png", 
     "legacy": false, 
     "name": "SNES", 
     "overclock": "524", 

@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/fceux.png", 
+    "background": "images/backgrounds/rs97/fceux.png", 
     "cmd": "/mnt/int_sd/emus/fceux/fceux", 
     "description": null, 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/Nes.png", 
-    "icon": "systems/nes1.png", 
+    "icon": "images/systems/nes1.png", 
     "legacy": null, 
     "name": "NES", 
     "overclock": "624", 

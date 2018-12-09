@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/vice.png", 
+    "background": "images/backgrounds/rs97/vice.png", 
     "cmd": "/mnt/int_sd/emus/vice/x64", 
     "description": "Commodore", 
     "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/c64.png", 
-    "icon": "systems/c64.png", 
+    "icon": "images/systems/c64.png", 
     "legacy": false, 
     "name": "C64", 
     "overclock": "524", 

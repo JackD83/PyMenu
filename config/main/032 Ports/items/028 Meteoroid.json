@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Meteoroid", 
     "overclock": "528", 
-    "preview": "ports previews/meteoroid3d.png", 
+    "preview": "images/previews/meteoroid3d.png", 
     "screen": "default"
 }

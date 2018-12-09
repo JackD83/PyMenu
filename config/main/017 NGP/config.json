@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/race_od.png", 
+    "background": "images/backgrounds/rs97/race_od.png", 
     "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
     "description": "NeoGeo Pocket", 
     "folderIcon": "icons/NeoGeoPocket_b.png", 
-    "icon": "systems/ngp.png", 
+    "icon": "images/systems/ngp.png", 
     "legacy": false, 
     "name": "NGP", 
     "overclock": "524", 

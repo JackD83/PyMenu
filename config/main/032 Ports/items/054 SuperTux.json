@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "SuperTux", 
     "overclock": "528", 
-    "preview": "ports previews/supertux.png", 
+    "preview": "images/previews/supertux.png", 
     "screen": "default"
 }

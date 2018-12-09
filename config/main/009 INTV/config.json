@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/jzintv.png", 
+    "background": "images/backgrounds/rs97/jzintv.png", 
     "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
     "description": "IntelliVision", 
     "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/intellivision.png", 
-    "icon": "systems/int.png", 
+    "icon": "images/systems/int.png", 
     "legacy": false, 
     "name": "INTV", 
     "overclock": "524", 

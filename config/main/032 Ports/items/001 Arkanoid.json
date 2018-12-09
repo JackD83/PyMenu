@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Arkanoid", 
     "overclock": "528", 
-    "preview": "/mnt/game/PyMenu/ports previews/arkanoid.png", 
+    "preview": "/mnt/game/PyMenu/images/previews/arkanoid.png", 
     "screen": "default"
 }

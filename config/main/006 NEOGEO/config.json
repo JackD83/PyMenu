@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/gngeo.png", 
+    "background": "images/backgrounds/rs97/gngeo.png", 
     "cmd": "/mnt/int_sd/emus/gngeo/gngeo", 
     "description": null, 
     "folderIcon": "/icons/NeoGeo01.png", 
-    "icon": "systems/neogeo.png", 
+    "icon": "images/systems/neogeo.png", 
     "legacy": false, 
     "name": "NEOGEO", 
     "overclock": "524", 

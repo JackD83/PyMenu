@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/fbasdl.png", 
+    "background": "images/backgrounds/rs97/fbasdl.png", 
     "cmd": "/mnt/int_sd/emus/fba_gcw0/fbasdl.dge", 
     "description": "Finalburn Alpha", 
     "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/fba1.png", 
-    "icon": "systems/fba.png", 
+    "icon": "images/systems/fba.png", 
     "legacy": false, 
     "name": "FBA", 
     "overclock": "524", 

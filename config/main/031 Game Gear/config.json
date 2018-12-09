@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/gamegear.png", 
+    "background": "images/backgrounds/rs97/gamegear.png", 
     "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
     "description": "Handheld", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/GameGear01.png", 
-    "icon": "systems/gg.png", 
+    "icon": "images/systems/gg.png", 
     "legacy": false, 
     "name": "Game Gear", 
     "overclock": "524", 

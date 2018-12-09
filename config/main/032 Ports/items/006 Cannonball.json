@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Cannonball", 
     "overclock": "528", 
-    "preview": "ports previews/cannonball.png", 
+    "preview": "images/previews/cannonball.png", 
     "screen": "default"
 }

@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "EDuke32", 
     "overclock": "528", 
-    "preview": "ports previews/eduke32.jpg", 
+    "preview": "images/previews/eduke32.jpg", 
     "screen": "default"
 }

@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/ohboy.png", 
+    "background": "images/backgrounds/rs97/ohboy.png", 
     "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
     "description": "Gameboy Color", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/GBC_Purple.png", 
-    "icon": "systems/gbc.png", 
+    "icon": "images/systems/gbc.png", 
     "legacy": false, 
     "name": "GAMEBOY", 
     "overclock": "528", 

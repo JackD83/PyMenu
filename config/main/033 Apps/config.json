@@ -1,8 +1,8 @@
 {
-    "background": "ports previews/midpath.png", 
+    "background": "images/backgrounds/rs97/midpath.png", 
     "cmd": null, 
     "description": "Applications", 
-    "icon": "systems/apps.png", 
+    "icon": "images/systems/apps.png", 
     "legacy": null, 
     "name": "Apps", 
     "overclock": null, 

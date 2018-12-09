@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Snowman", 
     "overclock": "528", 
-    "preview": "ports previews/snowman.png", 
+    "preview": "images/previews/snowman.png", 
     "screen": "default"
 }

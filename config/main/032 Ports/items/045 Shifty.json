@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Shifty", 
     "overclock": "528", 
-    "preview": "ports previews/shifty.png", 
+    "preview": "images/previews/shifty.png", 
     "screen": "default"
 }

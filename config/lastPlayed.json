@@ -1,9 +1,9 @@
 {
-    "background": "backgrounds/ports_art_blur.jpg",
+    "background": "images/backgrounds/rs97/ports_art_blur.jpg",
     "data": [
     ],
     "description": "Last played games",
-    "icon": "systems/auto-lastplayed.png",
+    "icon": "images/systems/auto-lastplayed.png",
     "name": "Last Played",
     "type": "lastPlayed"
 }

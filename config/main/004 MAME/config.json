@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/mame.png", 
+    "background": "images/backgrounds/rs97/mame.png", 
     "cmd": "/mnt/int_sd/emus/mame4all/mame4all.dge", 
     "description": "Arcade", 
     "folderIcon": "icons/Arcade_Astrocity.png", 
-    "icon": "systems/mame.png", 
+    "icon": "images/systems/mame.png", 
     "legacy": false, 
     "name": "MAME", 
     "overclock": "524", 

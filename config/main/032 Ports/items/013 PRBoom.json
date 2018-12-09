@@ -4,7 +4,7 @@
     "legacy": false, 
     "name": "PRBoom", 
     "overclock": "528", 
-    "preview": "ports previews/czdoom.png", 
+    "preview": "images/previews/czdoom.png", 
     "screen": "default", 
     "selectDescription": "wads", 
     "selection": "/mnt/int_sd/roms/wads/doom2.wad", 

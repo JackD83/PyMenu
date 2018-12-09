@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/temper.png", 
+    "background": "images/backgrounds/rs97/temper.png", 
     "cmd": "/mnt/int_sd/emus/temper/temper", 
     "description": null, 
     "folderIcon": "icons/Pce_02.png", 
-    "icon": "systems/pce.png", 
+    "icon": "images/systems/pce.png", 
     "legacy": false, 
     "name": "PC ENGINE", 
     "overclock": "524", 

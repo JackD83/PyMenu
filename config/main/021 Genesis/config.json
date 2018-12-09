@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/picodrive.png", 
+    "background": "images/backgrounds/rs97/picodrive.png", 
     "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
     "description": null, 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/MegaDrive2.png", 
-    "icon": "systems/megadrive.png", 
+    "icon": "images/systems/megadrive.png", 
     "legacy": false, 
     "name": "Genesis", 
     "overclock": "600", 

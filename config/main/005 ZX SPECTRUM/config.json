@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/speccy.png", 
+    "background": "images/backgrounds/rs97/speccy.png", 
     "cmd": "/mnt/int_sd/emus/speccy/speccy", 
     "description": null, 
     "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/speccy.png", 
-    "icon": "systems/zxs.png", 
+    "icon": "images/systems/zxs.png", 
     "legacy": false, 
     "name": "ZX SPECTRUM", 
     "overclock": "524", 

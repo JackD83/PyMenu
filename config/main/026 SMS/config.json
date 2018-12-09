@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/sms_sdl.png", 
+    "background": "images/backgrounds/rs97/sms_sdl.png", 
     "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
     "description": "Master System", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/Sms.png", 
-    "icon": "systems/sms.png", 
+    "icon": "images/systems/sms.png", 
     "legacy": false, 
     "name": "SMS", 
     "overclock": "524", 

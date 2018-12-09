@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/sfc.png", 
+    "background": "images/backgrounds/rs97/sfc.png", 
     "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
     "description": "Super NES", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/Sfc_03.png", 
-    "icon": "systems/snes.png", 
+    "icon": "images/systems/snes.png", 
     "legacy": false, 
     "name": "SNES", 
     "overclock": "624", 

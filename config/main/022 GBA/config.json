@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/regba.png", 
+    "background": "images/backgrounds/rs97/regba.png", 
     "cmd": "/mnt/int_sd/emus/regba/regba", 
     "description": "Gameboy Advance", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": "theme/icons/Gba02.png", 
-    "icon": "systems/gba.png", 
+    "icon": "images/systems/gba.png", 
     "legacy": false, 
     "name": "GBA", 
     "overclock": "624", 

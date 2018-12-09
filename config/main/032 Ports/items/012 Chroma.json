@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Chroma", 
     "overclock": "528", 
-    "preview": "ports previews/chroma.png", 
+    "preview": "images/previews/chroma.png", 
     "screen": "default"
 }

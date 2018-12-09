@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/scummvm.png", 
+    "background": "images/backgrounds/rs97/scummvm.png", 
     "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
     "description": null, 
     "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/scummvm.png", 
-    "icon": "systems/scummvm.png", 
+    "icon": "images/systems/scummvm.png", 
     "legacy": false, 
     "name": "SCUMMVM", 
     "overclock": "524", 

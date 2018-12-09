@@ -1,12 +1,12 @@
 {
-    "background": "ports previews/handy320.png", 
+    "background": "images/backgrounds/rs97/handy320.png", 
     "cmd": "/mnt/int_sd/emus/handy/handy320", 
     "description": "Handheld", 
     "fileFilter": [
         ".zip"
     ], 
     "folderIcon": null, 
-    "icon": "systems/lynx.png", 
+    "icon": "images/systems/lynx.png", 
     "legacy": false, 
     "name": "ATARI LYNX", 
     "overclock": "524", 

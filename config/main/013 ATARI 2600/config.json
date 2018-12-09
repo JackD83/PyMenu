@@ -1,9 +1,9 @@
 {
-    "background": "ports previews/dingux_2600.png", 
+    "background": "images/backgrounds/rs97/dingux_2600.png", 
     "cmd": "/mnt/int_sd/emus/dingux_2600/dingux-2600", 
     "description": null, 
     "folderIcon": "/icons/Atari2600.png", 
-    "icon": "systems/a2600.png", 
+    "icon": "images/systems/a2600.png", 
     "legacy": false, 
     "name": "ATARI 2600", 
     "overclock": "524", 
