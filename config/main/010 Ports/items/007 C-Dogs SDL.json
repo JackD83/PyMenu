@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/cdogs/cdogs-sdl", 
+    "description": "C-Dogs SDL Game", 
+    "legacy": false, 
+    "name": "C-Dogs SDL", 
+    "overclock": "528", 
+    "preview": "ports previews/cdogs.png", 
+    "screen": "default"
+}

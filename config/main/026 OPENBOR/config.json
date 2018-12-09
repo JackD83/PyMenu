@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/openbor.png", 
+    "cmd": "/mnt/int_sd/emus/openbor/OpenBOR", 
+    "description": "Arcade", 
+    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/openbor.png", 
+    "icon": "images/systems/OpenBOR.png", 
+    "legacy": false, 
+    "name": "OPENBOR", 
+    "overclock": "524", 
+    "previews": null, 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/emus/openbor/Paks", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/openbor"
+}

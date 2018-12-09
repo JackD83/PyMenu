@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/homing/run.dge", 
-    "description": "Homing Fever Game", 
-    "legacy": false, 
-    "name": "Homing", 
-    "overclock": "528", 
-    "preview": "images/previews/homing.png", 
-    "screen": "default"
-}

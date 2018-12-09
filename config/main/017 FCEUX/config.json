@@ -1,0 +1,20 @@
+{
+    "background": "images/backgrounds/rs97/fceux.png", 
+    "cmd": "/mnt/int_sd/emus/fceux/fceux", 
+    "description": "Nes", 
+    "fileFilter": [
+        ".zip"
+    ], 
+    "folderIcon": "theme/icons/Nes.png", 
+    "icon": "images/systems/nes1.png", 
+    "legacy": null, 
+    "name": "FCEUX", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/nes/previews", 
+    "screen": null, 
+    "selectionPath": "/mnt/int_sd/roms/nes", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fceux"
+}

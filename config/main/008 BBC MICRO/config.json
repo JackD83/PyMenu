@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/beebem.png", 
+    "cmd": "/mnt/int_sd/emus/beebem/beebem", 
+    "description": "Beebem", 
+    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/bbcmicro.png", 
+    "icon": "images/systems/bbc-micro-logo.png", 
+    "legacy": false, 
+    "name": "BBC MICRO", 
+    "overclock": "524", 
+    "previews": null, 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/emus/beebem/roms", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/beebem"
+}

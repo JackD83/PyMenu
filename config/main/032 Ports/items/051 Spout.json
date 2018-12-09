@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/spout/run.dge", 
-    "description": "Spout Game", 
-    "legacy": false, 
-    "name": "Spout", 
-    "overclock": "528", 
-    "preview": "images/previews/spout.png", 
-    "screen": "default"
-}

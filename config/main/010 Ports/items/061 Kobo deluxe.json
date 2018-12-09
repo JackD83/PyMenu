@@ -1,0 +1,11 @@
+{
+    "cmd": "/mnt/int_sd/games/kobo_deluxe/run.sh", 
+    "icon": ".", 
+    "name": "Kobo deluxe", 
+    "overclock": "528", 
+    "preview": "ports previews/kobo-deluxe.png", 
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
+}

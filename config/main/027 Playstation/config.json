@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/pcsx4all.png", 
+    "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all", 
+    "description": "Pcsx4all", 
+    "folderIcon": "//mnt/int_sd/apps/PyMenu/theme/icons/Ps01.png", 
+    "icon": "images/systems/psx.png", 
+    "legacy": false, 
+    "name": "Playstation", 
+    "overclock": "528", 
+    "previews": "//mnt/int_sd/roms/psx/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/psx", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/pcsx4all"
+}

@@ -1,0 +1,21 @@
+{
+    "background": "images/backgrounds/rs97/picodrive.png", 
+    "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
+    "description": "Picodrive", 
+    "fileFilter": [
+        ".zip"
+    ], 
+    "folderIcon": "theme/icons/MegaDrive2.png", 
+    "icon": "images/systems/megadrive.png", 
+    "legacy": false, 
+    "name": "Megadrive", 
+    "overclock": "600", 
+    "preview": ".", 
+    "previews": "/mnt/int_sd/roms/megadrive/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/megadrive", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/picodrive"
+}

@@ -1,0 +1,20 @@
+{
+    "background": "images/backgrounds/rs97/handy320.png", 
+    "cmd": "/mnt/int_sd/emus/handy/handy320.dge", 
+    "description": "Handy320", 
+    "fileFilter": [
+        ".zip"
+    ], 
+    "folderIcon": "//mnt/int_sd/apps/PyMenu/theme/icons/Lynx.png", 
+    "icon": "images/systems/lynx.png", 
+    "legacy": false, 
+    "name": "ATARI LYNX", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/lynx/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/lynx", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/handy"
+}

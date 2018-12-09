@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/fbasdl.png", 
+    "cmd": "/mnt/int_sd/emus/fba-gcw0/fbasdl.dge", 
+    "description": "Arcade", 
+    "folderIcon": "/mnt/int_sd/apps/PyMenu/theme/icons/Arcade_Astrocity.png", 
+    "icon": "images/systems/arcade.png", 
+    "legacy": false, 
+    "name": "Finalburn Alpha", 
+    "overclock": "624", 
+    "previews": "//mnt/int_sd/roms/fba/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/fba", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fba-gcw0"
+}

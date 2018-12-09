@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/triple/run.dge", 
-    "description": "Triple Trapled Game", 
-    "legacy": false, 
-    "name": "Triple", 
-    "overclock": "528", 
-    "preview": "images/previews/triple.png", 
-    "screen": "default"
-}

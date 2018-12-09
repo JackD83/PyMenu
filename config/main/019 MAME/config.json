@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/mame.png", 
+    "cmd": "/mnt/int_sd/emus/mame4all/mame4all.dge", 
+    "description": "Arcade", 
+    "folderIcon": "icons/Arcade_Astrocity.png", 
+    "icon": "images/systems/mame.png", 
+    "legacy": false, 
+    "name": "MAME", 
+    "overclock": "524", 
+    "previews": null, 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/mame4all"
+}

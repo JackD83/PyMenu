@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/asciiportal/asciiportal", 
-    "description": "Asciiportal Game", 
-    "legacy": false, 
-    "name": "Asciiportal", 
-    "overclock": "528", 
-    "preview": "images/previews/asciiportal.png", 
-    "screen": "default"
-}

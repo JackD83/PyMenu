@@ -1,0 +1,12 @@
+{
+    "cmd": "/mnt/int_sd/games/openjazz/OpenJazz", 
+    "description": "OpenJazz Game", 
+    "legacy": false, 
+    "name": "OpenJazz", 
+    "overclock": "528", 
+    "preview": "/mnt/int_sd/apps/gmenu2x/skins/Default/backdrops/openjazz.png", 
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
+}

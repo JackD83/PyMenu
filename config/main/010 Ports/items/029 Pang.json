@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/pang/run.dge", 
+    "description": "Pang Game", 
+    "legacy": false, 
+    "name": "Pang", 
+    "overclock": "528", 
+    "preview": "ports previews/pang.png", 
+    "screen": "default"
+}

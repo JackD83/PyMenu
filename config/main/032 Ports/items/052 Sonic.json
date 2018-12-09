@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/srb2/run_purge.dge", 
-    "description": "Sonic Robo Blast 2 Game", 
-    "legacy": false, 
-    "name": "Sonic", 
-    "overclock": "528", 
-    "preview": "images/previews/srb2.png", 
-    "screen": "default"
-}

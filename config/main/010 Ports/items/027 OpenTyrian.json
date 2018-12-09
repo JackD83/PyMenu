@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/opentyrian/opentyrian", 
+    "description": "OpenTyrian Game", 
+    "legacy": false, 
+    "name": "OpenTyrian", 
+    "overclock": "528", 
+    "preview": "ports previews/opentyrian.png", 
+    "screen": "default"
+}

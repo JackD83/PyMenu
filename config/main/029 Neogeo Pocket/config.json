@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/race_od.png", 
+    "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+    "description": "Race_od", 
+    "folderIcon": "/mnt/int_sd/apps/PyMenu/theme/icons/NeoGeoPocket_com.png", 
+    "icon": "images/systems/ngp.png", 
+    "legacy": false, 
+    "name": "Neogeo Pocket", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/ngp/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/ngp", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/race_od"
+}

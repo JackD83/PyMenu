@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/uae4all.png", 
+    "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
+    "description": "Uae4all", 
+    "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/uae4all.png", 
+    "icon": "images/systems/ami.png", 
+    "legacy": false, 
+    "name": "AMIGA", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/amiga/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/amiga", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/uae4all"
+}

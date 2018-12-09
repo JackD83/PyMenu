@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/noiz2sa/run.dge", 
-    "description": "Noiz2sa Game", 
-    "legacy": false, 
-    "name": "Noiz2sa", 
-    "overclock": "528", 
-    "preview": "images/previews/noiz2sa.png", 
-    "screen": "default"
-}

@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/meteoroid3d/run.dge", 
-    "description": "Meteoroid3D Game", 
-    "legacy": false, 
-    "name": "Meteoroid", 
-    "overclock": "528", 
-    "preview": "images/previews/meteoroid3d.png", 
-    "screen": "default"
-}

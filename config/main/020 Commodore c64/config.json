@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/vice.png", 
+    "cmd": "/mnt/int_sd/emus/vice/x64", 
+    "description": "Vice", 
+    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/c64.png", 
+    "icon": "images/systems/c64.png", 
+    "legacy": false, 
+    "name": "Commodore c64", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/c64/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/c64", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/vice"
+}

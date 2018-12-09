@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/apps/bard/run.dge", 
-    "description": "Comic Viewer", 
-    "legacy": false, 
-    "name": "Bard", 
-    "overclock": "528", 
-    "preview": "/mnt/game/gmenu2x/skins/Default/icons/bard.png", 
-    "screen": "default"
-}

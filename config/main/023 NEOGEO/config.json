@@ -1,0 +1,17 @@
+{
+    "background": "images/backgrounds/rs97/gngeo.png", 
+    "cmd": "/mnt/int_sd/emus/gngeo/gngeo", 
+    "description": null, 
+    "folderIcon": "/icons/NeoGeo01.png", 
+    "icon": "images/systems/neogeo.png", 
+    "legacy": false, 
+    "name": "NEOGEO", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/neogeo/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/neogeo", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/gngeo"
+}

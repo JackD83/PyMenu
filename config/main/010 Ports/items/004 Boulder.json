@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/boulder/run.dge", 
+    "description": "Boulder Game", 
+    "legacy": false, 
+    "name": "Boulder", 
+    "overclock": "528", 
+    "preview": "ports previews/boulder.png", 
+    "screen": "default"
+}

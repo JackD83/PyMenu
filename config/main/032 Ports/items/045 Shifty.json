@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/shifty/run.dge", 
-    "description": "Shifty Pills Game", 
-    "legacy": false, 
-    "name": "Shifty", 
-    "overclock": "528", 
-    "preview": "images/previews/shifty.png", 
-    "screen": "default"
-}

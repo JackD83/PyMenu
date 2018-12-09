@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/digger/run.dge", 
-    "description": "Digger Game", 
-    "legacy": false, 
-    "name": "Digger", 
-    "overclock": "528", 
-    "preview": "images/previews/digger.png", 
-    "screen": "default"
-}

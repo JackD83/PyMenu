@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/sorr/run.dge", 
-    "description": "SORR Game", 
-    "legacy": false, 
-    "name": "SORR", 
-    "overclock": "528", 
-    "preview": "images/previews/sorr.png", 
-    "screen": "default"
-}
