@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/dcastaway.png", 
+    "background": "images/backgrounds/rs97/ast.png", 
     "cmd": "/mnt/int_sd/emus/dcastaway/dcastaway", 
     "description": null, 
-    "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/dcastaway.png", 
+    "folderIcon": "images/icons/ast.png", 
     "icon": "images/systems/ast.png", 
     "legacy": false, 
     "name": "ATARI ST", 

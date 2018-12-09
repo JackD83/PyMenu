@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Puzzletube", 
     "overclock": "528", 
-    "preview": "ports previews/puzzletube.png", 
+    "preview": "images/previews/puzzletube.png", 
     "screen": "default"
 }

@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Mission", 
     "overclock": "528", 
-    "preview": "ports previews/lastmission.png", 
+    "preview": "images/previews/lastmission.png", 
     "screen": "default"
 }

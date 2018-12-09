@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "freeblocks", 
     "overclock": "528", 
-    "preview": "/mnt/int_sd/apps/PyMenu/ports previews/freeblocks.png", 
+    "preview": "images/previews/freeblocks.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

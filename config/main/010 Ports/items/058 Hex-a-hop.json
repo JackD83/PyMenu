@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "Hex-a-hop", 
     "overclock": "528", 
-    "preview": "/mnt/int_sd/apps/PyMenu/ports previews/hex-a-hop.png", 
+    "preview": "images/previews/hex-a-hop.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "Prince", 
     "overclock": "528", 
-    "preview": "/mnt/int_sd/apps/PyMenu/ports previews/prince.png", 
+    "preview": "images/previews/prince.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

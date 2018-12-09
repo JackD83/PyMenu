@@ -1,11 +1,11 @@
 {
-    "background": "images/backgrounds/rs97/sfc.png", 
+    "background": "images/backgrounds/rs97/snes.png", 
     "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
     "description": "Super NES", 
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Sfc_03.png", 
+    "folderIcon": "images/icons/snes.png", 
     "icon": "images/systems/snes.png", 
     "legacy": false, 
     "name": "Pocket SNES", 

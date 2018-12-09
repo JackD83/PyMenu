@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "Kobo deluxe", 
     "overclock": "528", 
-    "preview": "ports previews/kobo-deluxe.png", 
+    "preview": "images/previews/kobo-deluxe.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

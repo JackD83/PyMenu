@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/temper.png", 
+    "background": "images/backgrounds/rs97/pce.png", 
     "cmd": "/mnt/int_sd/emus/temper/temper", 
     "description": "PCE", 
-    "folderIcon": "/mnt/int_sd/apps/PyMenu/theme/icons/Pce_01.png", 
+    "folderIcon": "images/icons/pce.png", 
     "icon": "images/systems/pce.png", 
     "legacy": false, 
     "name": "PC ENGINE", 

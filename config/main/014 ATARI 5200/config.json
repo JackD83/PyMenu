@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/dingux_atari.png", 
+    "background": "images/backgrounds/rs97/a5200.png", 
     "cmd": "/mnt/int_sd/emus/dingux_atari/dingux-atari", 
     "description": null, 
-    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/atari5200.png", 
+    "folderIcon": "images/icons/a5200.png", 
     "icon": "images/systems/a5200.png", 
     "legacy": false, 
     "name": "ATARI 5200", 

@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/race_od.png", 
+    "background": "images/backgrounds/rs97/ngp.png", 
     "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
     "description": "Race_od", 
-    "folderIcon": "/mnt/int_sd/apps/PyMenu/theme/icons/NeoGeoPocket_com.png", 
+    "folderIcon": "images/icons/ngp.png", 
     "icon": "images/systems/ngp.png", 
     "legacy": false, 
     "name": "Neogeo Pocket", 

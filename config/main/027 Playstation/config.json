@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/pcsx4all.png", 
+    "background": "images/backgrounds/rs97/psx.png", 
     "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all", 
     "description": "Pcsx4all", 
-    "folderIcon": "//mnt/int_sd/apps/PyMenu/theme/icons/Ps01.png", 
+    "folderIcon": "images/icons/psx.png", 
     "icon": "images/systems/psx.png", 
     "legacy": false, 
     "name": "Playstation", 

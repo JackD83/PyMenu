@@ -4,7 +4,7 @@
     "legacy": false, 
     "name": "Chocolate Heretic", 
     "overclock": "528", 
-    "preview": "ports previews/hheretic.png", 
+    "preview": "images/previews/hheretic.png", 
     "screen": "default", 
     "selectDescription": "wads", 
     "selectionPath": "//mnt/int_sd/roms/wads", 

@@ -1,9 +1,9 @@
 {
-    "background": "images/backgrounds/rs97/beebem.png", 
+    "background": "images/backgrounds/rs97/bbcmicro.png", 
     "cmd": "/mnt/int_sd/emus/beebem/beebem", 
     "description": "Beebem", 
-    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/bbcmicro.png", 
-    "icon": "images/systems/bbc-micro-logo.png", 
+    "folderIcon": "images/icons/bbcmicro.png", 
+    "icon": "images/systems/bbcmicro.png", 
     "legacy": false, 
     "name": "BBC MICRO", 
     "overclock": "524", 

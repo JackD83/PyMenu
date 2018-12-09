@@ -1,9 +1,9 @@
 {
-    "background": "images/backgrounds/rs97/uae4all.png", 
+    "background": "images/backgrounds/rs97/amiga.png", 
     "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
     "description": "Uae4all", 
-    "folderIcon": "/mnt/game/gmenu2x/skins/Default/icons/uae4all.png", 
-    "icon": "images/systems/ami.png", 
+    "folderIcon": "images/icons/amiga.png", 
+    "icon": "images/systems/amiga.png", 
     "legacy": false, 
     "name": "AMIGA", 
     "overclock": "524", 

@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/jzintv.png", 
+    "background": "images/backgrounds/rs97/int.png", 
     "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
     "description": "IntelliVision", 
-    "folderIcon": "//mnt/int_sd/apps/gmenu2x/skins/Default/icons/jzintv.png", 
+    "folderIcon": "images/icons/int.png", 
     "icon": "images/systems/int.png", 
     "legacy": false, 
     "name": "INTV", 

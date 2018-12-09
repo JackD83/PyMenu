@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Overheated", 
     "overclock": "528", 
-    "preview": "ports previews/overheated.png", 
+    "preview": "images/previews/overheated.png", 
     "screen": "default"
 }

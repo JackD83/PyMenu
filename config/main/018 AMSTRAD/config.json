@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/dingux_cap32.png", 
+    "background": "images/backgrounds/rs97/cpc.png", 
     "cmd": "/mnt/int_sd/emus/dingux_cap32/dingux-cap32", 
     "description": "CPC", 
-    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/amstradcpc.png", 
+    "folderIcon": "images/icons/cpc.png", 
     "icon": "images/systems/cpc.png", 
     "legacy": false, 
     "name": "AMSTRAD", 

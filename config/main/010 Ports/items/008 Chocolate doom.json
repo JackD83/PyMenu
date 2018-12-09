@@ -4,7 +4,7 @@
     "legacy": false, 
     "name": "Chocolate doom", 
     "overclock": "528", 
-    "preview": "ports previews/chocolate_doom.png", 
+    "preview": "images/previews/chocolate_doom.png", 
     "screen": "default", 
     "selectDescription": "wads", 
     "selection": "/mnt/ext_sd/Doom1.WAD", 

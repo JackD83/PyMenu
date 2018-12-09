@@ -4,7 +4,7 @@
     "legacy": false, 
     "name": "OpenJazz", 
     "overclock": "528", 
-    "preview": "/mnt/int_sd/apps/gmenu2x/skins/Default/backdrops/openjazz.png", 
+    "preview": "images/previews/openjazz.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

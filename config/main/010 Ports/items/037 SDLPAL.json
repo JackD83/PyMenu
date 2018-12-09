@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "SDLPAL", 
     "overclock": "528", 
-    "preview": "ports previews/sdlpal.png", 
+    "preview": "images/previews/sdlpal.png", 
     "screen": "default"
 }

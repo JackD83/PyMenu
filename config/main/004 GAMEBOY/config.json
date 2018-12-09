@@ -1,11 +1,11 @@
 {
-    "background": "images/backgrounds/rs97/ohboy.png", 
+    "background": "images/backgrounds/rs97/gbc.png", 
     "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
     "description": "Gameboy Color", 
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/GBC_Purple.png", 
+    "folderIcon": "images/icons/gbc.png", 
     "icon": "images/systems/gbc.png", 
     "legacy": false, 
     "name": "GAMEBOY", 

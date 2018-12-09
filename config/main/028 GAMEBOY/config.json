@@ -1,11 +1,11 @@
 {
-    "background": "images/backgrounds/rs97/gambatte_sdl.png", 
+    "background": "images/backgrounds/rs97/gb.png", 
     "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
     "description": "Handheld", 
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Gameboy03.png", 
+    "folderIcon": "images/icons/gb.png", 
     "icon": "images/systems/gb.png", 
     "legacy": false, 
     "name": "GAMEBOY", 

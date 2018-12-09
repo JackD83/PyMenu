@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Tileworld", 
     "overclock": "528", 
-    "preview": "ports previews/tileworld.png", 
+    "preview": "images/previews/tileworld.png", 
     "screen": "default"
 }

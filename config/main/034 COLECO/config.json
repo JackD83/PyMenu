@@ -1,9 +1,9 @@
 {
-    "background": "images/backgrounds/rs97/colem.png", 
+    "background": "images/backgrounds/rs97/coleco.png", 
     "cmd": "/mnt/int_sd/emus/colem/colem", 
     "description": "Colem", 
-    "folderIcon": "theme/icons/coleco.png", 
-    "icon": "images/systems/col.png", 
+    "folderIcon": "images/icons/coleco.png", 
+    "icon": "images/systems/coleco.png", 
     "legacy": false, 
     "name": "COLECO", 
     "overclock": "524", 

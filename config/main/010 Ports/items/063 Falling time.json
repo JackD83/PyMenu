@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "Falling time", 
     "overclock": "528", 
-    "preview": "ports previews/fallingtime.png", 
+    "preview": "images/previews/fallingtime.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

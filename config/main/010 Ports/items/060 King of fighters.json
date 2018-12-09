@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "King of fighters", 
     "overclock": "528", 
-    "preview": "ports previews/kof.png", 
+    "preview": "images/previews/kof.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

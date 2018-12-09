@@ -3,7 +3,7 @@
     "icon": ".", 
     "name": "Hydra castle", 
     "overclock": "528", 
-    "preview": "ports previews/hydracastle.png", 
+    "preview": "images/previews/hydracastle.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": null, 

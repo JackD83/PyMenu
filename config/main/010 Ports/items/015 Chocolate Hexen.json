@@ -4,7 +4,7 @@
     "legacy": false, 
     "name": "Chocolate Hexen", 
     "overclock": "528", 
-    "preview": "ports previews/hhexen.png", 
+    "preview": "images/previews/hhexen.png", 
     "screen": "default", 
     "selectDescription": null, 
     "selectionPath": "//mnt/int_sd/roms/wads", 

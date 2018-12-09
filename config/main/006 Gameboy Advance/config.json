@@ -1,11 +1,11 @@
 {
-    "background": "images/backgrounds/rs97/regba.png", 
+    "background": "images/backgrounds/rs97/gba.png", 
     "cmd": "/mnt/int_sd/emus/regba/regba", 
     "description": "Regba", 
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Gba02.png", 
+    "folderIcon": "images/icons/gba.png", 
     "icon": "images/systems/gba.png", 
     "legacy": false, 
     "name": "Gameboy Advance", 

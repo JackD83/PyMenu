@@ -1,11 +1,11 @@
 {
-    "background": "images/backgrounds/rs97/picodrive.png", 
+    "background": "images/backgrounds/rs97/megadrive.png", 
     "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
     "description": "Picodrive", 
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/MegaDrive2.png", 
+    "folderIcon": "images/icons/megadrive.png", 
     "icon": "images/systems/megadrive.png", 
     "legacy": false, 
     "name": "Megadrive", 

@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/vice.png", 
+    "background": "images/backgrounds/rs97/c64.png", 
     "cmd": "/mnt/int_sd/emus/vice/x64", 
     "description": "Vice", 
-    "folderIcon": "/mnt/game/gmenu2x/skins/ps4/icons/c64.png", 
+    "folderIcon": "images/icons/c64.png", 
     "icon": "images/systems/c64.png", 
     "legacy": false, 
     "name": "Commodore c64", 

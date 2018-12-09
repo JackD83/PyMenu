@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/speccy.png", 
+    "background": "images/backgrounds/rs97/zxs.png", 
     "cmd": "/mnt/int_sd/emus/speccy/speccy", 
     "description": "Speccy", 
-    "folderIcon": "/mnt/int_sd/apps/gmenu2x/skins/Default/icons/speccy.png", 
+    "folderIcon": "images/icons/zxs.png", 
     "icon": "images/systems/zxs.png", 
     "legacy": false, 
     "name": "ZX SPECTRUM", 

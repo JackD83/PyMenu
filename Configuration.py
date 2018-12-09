@@ -54,7 +54,7 @@ def checkRS97():
 
     #windows platform
     elif(os.name == "nt"):
-        return False
+        return True
 
     return False    
 

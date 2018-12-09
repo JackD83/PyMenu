@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Wizznic", 
     "overclock": "528", 
-    "preview": "ports previews/wizznic.png", 
+    "preview": "images/previews/wizznic.png", 
     "screen": "default"
 }

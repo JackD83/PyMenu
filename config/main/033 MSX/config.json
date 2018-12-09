@@ -1,5 +1,5 @@
 {
-    "background": "images/backgrounds/rs97/openmsx.png", 
+    "background": "images/backgrounds/rs97/msx.png", 
     "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx", 
     "description": "Open msx", 
     "folderIcon": "None", 

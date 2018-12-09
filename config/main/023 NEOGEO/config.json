@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/gngeo.png", 
+    "background": "images/backgrounds/rs97/neogeo.png", 
     "cmd": "/mnt/int_sd/emus/gngeo/gngeo", 
     "description": null, 
-    "folderIcon": "/icons/NeoGeo01.png", 
+    "folderIcon": "images/icons/neogeo.png", 
     "icon": "images/systems/neogeo.png", 
     "legacy": false, 
     "name": "NEOGEO", 
@@ -11,7 +11,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/neogeo", 
     "type": "emulator", 
-    "useGamelist": null, 
-    "useSelection": false, 
+    "useGamelist": true, 
+    "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/gngeo"
 }

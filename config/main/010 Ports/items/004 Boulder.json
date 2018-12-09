@@ -4,6 +4,6 @@
     "legacy": false, 
     "name": "Boulder", 
     "overclock": "528", 
-    "preview": "ports previews/boulder.png", 
+    "preview": "images/previews/boulder.png", 
     "screen": "default"
 }

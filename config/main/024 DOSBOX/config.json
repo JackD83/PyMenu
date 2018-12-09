@@ -1,8 +1,8 @@
 {
-    "background": "images/backgrounds/rs97/np2.png", 
+    "background": "images/backgrounds/rs97/pc.png", 
     "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
     "description": null, 
-    "folderIcon": "/mnt/int_sd/apps/PyMenu/theme/icons/Fcc_Diskb01.png", 
+    "folderIcon": "images/icons/pc.png", 
     "icon": "images/systems/pc.png", 
     "legacy": false, 
     "name": "DOSBOX", 

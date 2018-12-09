@@ -1,9 +1,9 @@
 {
-    "background": "images/backgrounds/rs97/oswan.png", 
+    "background": "images/backgrounds/rs97/ws.png", 
     "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
     "description": "Handheld", 
-    "folderIcon": "//mnt/int_sd/apps/PyMenu/theme/icons/WonderSwan_05.png", 
-    "icon": "images/systems/wonderswan.png", 
+    "folderIcon": "images/icons/ws.png", 
+    "icon": "images/systems/ws.png", 
     "legacy": false, 
     "name": "WONDERSWAN", 
     "overclock": "524", 
