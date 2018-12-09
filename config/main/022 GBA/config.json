@@ -5,7 +5,7 @@
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Gba02.png", 
+    "folderIcon": "images/icons/Gba02.png", 
     "icon": "images/systems/gba.png", 
     "legacy": false, 
     "name": "GBA", 

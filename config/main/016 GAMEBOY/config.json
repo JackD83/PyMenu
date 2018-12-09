@@ -5,7 +5,7 @@
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Gameboy03.png", 
+    "folderIcon": "images/icons/Gameboy03.png", 
     "icon": "images/systems/gb.png", 
     "legacy": false, 
     "name": "GAMEBOY", 

@@ -5,7 +5,7 @@
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/GBC_Purple.png", 
+    "folderIcon": "images/icons/GBC_Purple.png", 
     "icon": "images/systems/gbc.png", 
     "legacy": false, 
     "name": "GAMEBOY", 

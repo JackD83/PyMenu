@@ -2,7 +2,7 @@
     "background": "images/backgrounds/rs97/colem.png", 
     "cmd": "/mnt/int_sd/emus/colem/colem", 
     "description": null, 
-    "folderIcon": "theme/icons/coleco.png", 
+    "folderIcon": "images/icons/coleco.png", 
     "icon": "images/systems/col.png", 
     "legacy": false, 
     "name": "COLECO", 

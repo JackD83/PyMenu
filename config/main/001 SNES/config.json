@@ -5,7 +5,7 @@
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/Sfc_03.png", 
+    "folderIcon": "images/icons/Sfc_03.png", 
     "icon": "images/systems/snes.png", 
     "legacy": false, 
     "name": "SNES", 

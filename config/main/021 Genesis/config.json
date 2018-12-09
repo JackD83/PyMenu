@@ -5,7 +5,7 @@
     "fileFilter": [
         ".zip"
     ], 
-    "folderIcon": "theme/icons/MegaDrive2.png", 
+    "folderIcon": "images/icons/MegaDrive2.png", 
     "icon": "images/systems/megadrive.png", 
     "legacy": false, 
     "name": "Genesis", 
