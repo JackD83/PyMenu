@@ -48,12 +48,13 @@ def checkRS97():
     infoObject = pygame.display.Info()
 
     print("RS97 check " + str(infoObject.current_h))
-    
+
+
     if(infoObject.current_h == 480):
         return True
 
-    #windows platform
-    elif(os.name == "nt"):
+    #windows platform or mac
+    elif(os.name == "nt" or os.name == "posix"):
         return True
 
     return False    
@@ -70,8 +71,8 @@ def setResolution():
         configuration["screenWidth"] = 480
         configuration["screenHeight"] = 272
     
-    #windows platform
-    elif(os.name == "nt"):
+    #windows platform or mac
+    elif(os.name == "nt" or os.name == "posix"):
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
 

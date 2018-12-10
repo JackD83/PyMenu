@@ -15,9 +15,10 @@ fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
 config = Configuration.getConfiguration()
 
+rs97ScreenFix =  config["RS97ScreenFix"] if "RS97ScreenFix" in config else None
 
 #set screen mode
-if(Configuration.isRS97()):
+if(Configuration.isRS97() and not rs97ScreenFix):
     try:
         os.system('echo 2 > /proc/jz/lcd_a320')
     except Exception as ex:
@@ -30,8 +31,12 @@ def init():
     lastRenderTime = 1
 
     Common.mountSD(True)
-    if(Configuration.isRS97() and platform.processor() == ""):
+    if(Configuration.isRS97() and not rs97ScreenFix):
         realScreen = pygame.display.set_mode((320,240), HWSURFACE, 16)
+        screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
+    elif(Configuration.isRS97() and rs97ScreenFix):
+        print("setting 480 screen")
+        realScreen = pygame.display.set_mode((320,480), HWSURFACE, 16)
         screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     else:
         realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
@@ -69,9 +74,12 @@ def init():
                 screen.blit(textSurface, (0,0))
                 #print("render time: " + str(lastRenderTime))
 
-
-            
-            realScreen.blit(screen, (0,0))
+            if(rs97ScreenFix):
+                screenFix = pygame.transform.scale(screen, (int(320),int(480)) )
+                realScreen.blit(screenFix, (0,0))
+                
+            else:
+                realScreen.blit(screen, (0,0))
             
             
 
