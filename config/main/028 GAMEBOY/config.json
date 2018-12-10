@@ -8,7 +8,7 @@
     "folderIcon": "images/icons/gb.png", 
     "icon": "images/systems/gb.png", 
     "legacy": false, 
-    "name": "GAMEBOY", 
+    "name": "GAMEBOY2", 
     "overclock": "528", 
     "previews": "/mnt/int_sd/roms/gb/previews", 
     "screen": "default", 

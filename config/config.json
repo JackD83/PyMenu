@@ -1,7 +1,9 @@
 {
     "RS97": true, 
+    "RS97ScreenFix": false, 
     "batteryHigh": 4500, 
     "batteryLow": 3752, 
+    "configName": "main", 
     "firstStart": false, 
     "lcd_backlight": 70, 
     "options": {
@@ -13,6 +15,5 @@
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
-    "volumeControl": false,
-    "RS97ScreenFix" : true
+    "volumeControl": false
 }
