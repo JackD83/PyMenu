@@ -1,6 +1,6 @@
 import RenderObject, Configuration, Footer
 import os, Keys, RenderControl, Common, TaskHandler,ResumeHandler
-import pygame, sys
+import pygame, sys, Animation
 from operator import itemgetter
 
 class AbstractList(RenderObject.RenderObject):
@@ -11,7 +11,8 @@ class AbstractList(RenderObject.RenderObject):
     background = None
     selection = None
     footer = None
-
+    renderAnim = False
+    animTask = None
     listReady = True
 
     keyDown = False
@@ -96,25 +97,44 @@ class AbstractList(RenderObject.RenderObject):
                 screen.blit(desc,(5,56))
             return               
  
-      
+        if(self.useSidebar):           
+            xOffset = (128) / 2
+            yOffset = (128) / 2
 
-        if(self.preview_final != None and os.path.exists(self.preview_final) and os.path.isfile(self.preview_final) ):
+        if(self.preview_final != None):
+
+            animPath = self.preview_final.replace(".png", ".anim.png")
+            
             #print("render " + self.preview_final)
-                 
-            image = None
-            if(not self.preview_final in self.previewCache):
-                image = Common.loadImage(self.preview_final)              
-                image = Common.aspect_scale(image, 128, 128)
-                
-                self.previewCache[self.preview_final] = image
-            else:
-                image = self.previewCache[self.preview_final]
+            if(os.path.exists(animPath) and os.path.isfile(animPath) and self.renderAnim ):
+                anim = None
+                if(not animPath in self.previewCache):
+                    anim = Animation.Animation(animPath, (128,128))             
+                    
+                    self.previewCache[animPath] = anim
+                else:
+                    anim = self.previewCache[animPath]
 
 
-            if(self.useSidebar):           
-                xOffset = (128 - image.get_width()) / 2
-                yOffset = (128 - image.get_height()) / 2
-                screen.blit(image,(5 + xOffset,56 + yOffset)) 
+                if(self.useSidebar and anim != None):           
+                    anim.render(screen,(5,56) )
+                    RenderControl.setDirty()
+
+            elif(os.path.exists(self.preview_final) and os.path.isfile(self.preview_final)):
+                image = None
+                if(not self.preview_final in self.previewCache):
+                    image = Common.loadImage(self.preview_final)              
+                    image = Common.aspect_scale(image, 128, 128)
+                    
+                    self.previewCache[self.preview_final] = image
+                else:
+                    image = self.previewCache[self.preview_final]
+
+
+                if(self.useSidebar):           
+                    xOffset = (128 - image.get_width()) / 2
+                    yOffset = (128 - image.get_height()) / 2
+                    screen.blit(image,(5 + xOffset,56 + yOffset)) 
         else:
             if(not self.keyDown):
                 #fallback if image not found
@@ -199,7 +219,18 @@ class AbstractList(RenderObject.RenderObject):
             if event.type == pygame.KEYUP:
                 self.keyDown = False              
                 self.preview_final = self.previewPath
+                
+                self.renderAnim = False
+                TaskHandler.removePeriodicTask(self.animTask)
+                self.animTask = TaskHandler.addPeriodicTask(1000, self.onShowAnim, 1000)
                 RenderControl.setDirty()
+
+    def onShowAnim(self):
+        self.renderAnim = True
+   
+        TaskHandler.removePeriodicTask(self.animTask)
+        RenderControl.setDirty()
+
 
     def onSelect(self):
         pass
@@ -378,6 +409,7 @@ class AbstractList(RenderObject.RenderObject):
         self.title = titel
         self.options = options
         self.setFooter(Footer.Footer([],[],(255,255,255)))
+
             
 
         if("textColor" in self.options):
