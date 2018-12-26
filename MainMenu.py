@@ -490,9 +490,18 @@ class MainMenu(RenderObject.RenderObject):
         if("showLastPlayed" in self.config["options"] and self.config["options"]["showLastPlayed"] ):
             print("loading last played games")
             try:
-                lastPlayed = json.load(open("config/lastPlayed.json"))
-                if(not "data" in lastPlayed):
+                lastPlayed = json.load(open("config/" + self.config["configName"] + "/lastPlayed.json"))
+
+                if(os.path.exists("config/lastPlayedData.json")):
+                    lastPlayedData = json.load(open("config/lastPlayedData.json"))
+                    lastPlayed["data"] = lastPlayedData["data"]
+                else:
+                    newData = {}
+                    newData["data"] = []
                     lastPlayed["data"] = []
+                    with open('config/lastPlayedData.json', 'w') as fp: 
+                        json.dump(newData, fp,sort_keys=True, indent=4)
+                
                 self.config["mainMenu"].append(lastPlayed)        
             except Exception as ex:
                 print("Exception: " + str(ex))

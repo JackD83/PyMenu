@@ -171,10 +171,15 @@ def addToLastPlayed(config, rom):
                 data["name"] = filename_w_ext
         else:
             data["name"] = filename_w_ext
-    
-        if("useGamelist" in config and config["useGamelist"] == True):
+
+        if("gameListName" in data):
+            data["name"] = data["gameListName"]
+            
+        elif("useGamelist" in config and config["useGamelist"] == True):
             data["name"] = Common.getGameName(filename_w_ext)
+            data["gameListName"] = data["name"]
            
+        
         
 
         data["rom"] = rom
@@ -186,14 +191,15 @@ def addToLastPlayed(config, rom):
         if("previews" in config and not config["previews"] == None):
              data["preview"] = str(config["previews"]) + "/" + str(filename) + ".png"
 
+        
+
     else:
         data["type"] = "native"   
 
 
     try:
-        lastPlayed = json.load(open("config/lastPlayed.json"))
-        if("data" not in lastPlayed):
-            lastPlayed["data"] = []
+        lastPlayed = json.load(open("config/lastPlayedData.json"))
+       
 
         last = wasLastPlayed(lastPlayed, data)
         if(   last != None ):            
@@ -203,7 +209,7 @@ def addToLastPlayed(config, rom):
         lastPlayed["data"].insert(0, data)
         lastPlayed["data"] = lastPlayed["data"][0:20]
 
-        with open('config/lastPlayed.json', 'w') as fp: 
+        with open('config/lastPlayedData.json', 'w') as fp: 
             json.dump(lastPlayed, fp,sort_keys=True, indent=4)
 
         

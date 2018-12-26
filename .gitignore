@@ -4,3 +4,4 @@ __pycache__
 /installer/main.backup
 /installer/log.txt
 /python/log.txt
+config/lastPlayedData.json

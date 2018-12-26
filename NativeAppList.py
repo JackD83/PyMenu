@@ -95,7 +95,7 @@ class NativeAppList(AbstractList.AbstractList):
 
         self.currentSelection = self.entryList[self.currentIndex]["options"]
 
-        if(os.path.isfile(self.currentSelection["preview"])):
+        if("preview" in self.currentSelection and os.path.isfile(self.currentSelection["preview"])):
             self.previewPath = self.currentSelection["preview"]
         else:
             self.previewPath = None

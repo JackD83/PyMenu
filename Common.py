@@ -39,9 +39,9 @@ def loadGameList():
     
 def clearLastPlayed():
     try:
-        lastPlayed = json.load(open("config/lastPlayed.json"))
+        lastPlayed = json.load(open("config/lastPlayedData.json"))
         del lastPlayed["data"][:]
-        with open('config/lastPlayed.json', 'w') as fp: 
+        with open('config/lastPlayedData.json', 'w') as fp: 
             json.dump(lastPlayed, fp,sort_keys=True, indent=4)
     except Exception as ex:
         print("Exception " + str(ex))

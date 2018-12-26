@@ -24,21 +24,23 @@ def reloadConfiguration():
         fileList = os.listdir("config/" + configuration["configName"]  + "/")
         Common.quick_sort(fileList)       
         for name in fileList:
-            try:                   
-                entry = json.load(open("config/" + configuration["configName"]  + "/" + name + "/config.json"))
-                entry["source"] = name
-                configuration["mainMenu"].append(entry)
-                if(entry["type"] == "native"):
-                    entry["data"] = []
-                    try:
-                        itemlist =  os.listdir("config/" + configuration["configName"]  + "/" + name + "/items")
-                        Common.quick_sort(itemlist) 
-                        for itemName in itemlist:
-                            item = json.load(open("config/" + configuration["configName"]  + "/" + name + "/items/" + itemName))
-                            item["source"] = itemName
-                            entry["data"].append(item)
-                    except Exception as ex:
-                        print(str(ex))
+            try:         
+                if(os.path.isdir("config/" + configuration["configName"]  + "/" + name )):       
+                    entry = json.load(open("config/" + configuration["configName"]  + "/" + name + "/config.json"))
+                    entry["source"] = name
+                    configuration["mainMenu"].append(entry)
+                    if(entry["type"] == "native"):
+                        entry["data"] = []
+                        try:
+                            itemlist =  os.listdir("config/" + configuration["configName"]  + "/" + name + "/items")
+                            Common.quick_sort(itemlist) 
+                            for itemName in itemlist:
+                                item = json.load(open("config/" + configuration["configName"]  + "/" + name + "/items/" + itemName))
+                                item["source"] = itemName
+                                entry["data"].append(item)
+                        except Exception as ex:
+                            print(str(ex))
+                
 
             except Exception as ex:
                 print(str(ex))                  
@@ -115,6 +117,10 @@ def saveConfiguration():
         if(item["type"] != "lastPlayed"):
             if "source" in item: del item["source"]
             storeConfigPart(fileName, item)
+        elif(item["type"] == "lastPlayed"):
+            dataName = "config/" + configuration["configName"] + "/lastPlayed.json"
+            del item["data"]
+            storeConfigPart(dataName, item)
 
        
     for l in listeners:
