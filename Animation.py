@@ -27,22 +27,27 @@ class Animation(object):
         self.tilesX = ix / self.sizeX
         self.tilesY = iy / self.sizeY
 
-        if(self.tilesX != 0 and self.tilesY != 0 and self.image != None):
+        if(self.tilesX > 2 and self.tilesY > 2 and self.image != None):
             self.valid = True
       
 
     def render(self, screen, pos):
         if(not self.valid):
             return
+
+        try:
+            column = self.cur % self.tilesX
+            row = int(self.cur / self.tilesX)
+
+            sub = self.image.subsurface((column * self.sizeX ,row*self.sizeY, self.sizeX,self.sizeY))
+
+            screen.blit(sub, pos) 
+
+            self.update()
+        except Exception as err:
+            print(str(err))
+            self.valid = False
         
-        column = self.cur % self.tilesX
-        row = int(self.cur / self.tilesX)
-
-        sub = self.image.subsurface((column * self.sizeX ,row*self.sizeY, self.sizeX,self.sizeY))
-
-        screen.blit(sub, pos) 
-
-        self.update()
 
     def update(self):
 
