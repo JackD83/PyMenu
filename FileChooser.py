@@ -110,8 +110,12 @@ class FileChooser(AbstractList.AbstractList):
             if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.selectFolder):
-                          self.callback(self.currentPath)
-                          RenderControl.setDirty()
+                        if(self.entryList[self.currentIndex]["isFolder"] and self.entryList[self.currentIndex]["name"] != ".."):
+                            self.callback(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
+                        else:
+                            self.callback(self.currentPath)
+                        
+                        RenderControl.setDirty()
                     
                
 
