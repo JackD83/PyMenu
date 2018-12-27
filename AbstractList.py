@@ -15,6 +15,9 @@ class AbstractList(RenderObject.RenderObject):
     animTask = None
     listReady = True
 
+    image = None
+    anim = None
+
     keyDown = False
 
     previewCache = {}
@@ -103,38 +106,36 @@ class AbstractList(RenderObject.RenderObject):
 
         if(self.preview_final != None):
 
-            animPath = self.preview_final.replace(".png", ".anim.png")
-            
-            #print("render " + self.preview_final)
-            if(os.path.exists(animPath) and os.path.isfile(animPath) and self.renderAnim ):
-                anim = None
-                if(not animPath in self.previewCache):
-                    anim = Animation.Animation(animPath, (128,128))             
-                    
-                    self.previewCache[animPath] = anim
-                else:
-                    anim = self.previewCache[animPath]
+            animPath = None
+            animPath1 = self.preview_final.replace(".png", ".anim.jpg")
+            animPath2 = self.preview_final.replace(".png", ".anim.png")
 
+            if(os.path.exists(animPath1) and os.path.isfile(animPath1) ):
+                animPath = animPath1
+            elif(os.path.exists(animPath2) and os.path.isfile(animPath2) ):
+                animPath = animPath2
+           
+            if(animPath != None and self.renderAnim ):
+                
+                
+                if(self.anim == None):
+                    self.anim = Animation.Animation(animPath, (128,128))             
 
-                if(self.useSidebar and anim != None):           
-                    anim.render(screen,(5,56) )
+                if(self.useSidebar and self.anim != None):           
+                    self.anim.render(screen,(5,56) )
                     RenderControl.setDirty()
 
             elif(os.path.exists(self.preview_final) and os.path.isfile(self.preview_final)):
-                image = None
-                if(not self.preview_final in self.previewCache):
-                    image = Common.loadImage(self.preview_final)              
-                    image = Common.aspect_scale(image, 128, 128)
-                    
-                    self.previewCache[self.preview_final] = image
-                else:
-                    image = self.previewCache[self.preview_final]
-
+               
+                if(self.image == None):
+                    self.image = Common.loadImage(self.preview_final)              
+                    self.image = Common.aspect_scale(self.image, 128, 128)
+               
 
                 if(self.useSidebar):           
-                    xOffset = (128 - image.get_width()) / 2
-                    yOffset = (128 - image.get_height()) / 2
-                    screen.blit(image,(5 + xOffset,56 + yOffset)) 
+                    xOffset = (128 - self.image.get_width()) / 2
+                    yOffset = (128 - self.image.get_height()) / 2
+                    screen.blit(self.image,(5 + xOffset,56 + yOffset)) 
         else:
             if(not self.keyDown):
                 #fallback if image not found
@@ -219,6 +220,9 @@ class AbstractList(RenderObject.RenderObject):
             if event.type == pygame.KEYUP:
                 self.keyDown = False              
                 self.preview_final = self.previewPath
+
+                self.anim = None
+                self.image = None
                 
                 self.renderAnim = False
                 TaskHandler.removePeriodicTask(self.animTask)
