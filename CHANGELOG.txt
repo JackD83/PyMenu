@@ -15,3 +15,6 @@ Version 1.0.0
 - added theme/configurations for the RS07
 - added pixel Theme/configuration for the RS07
 - added ability to switch between themes
+
+Versiomn 1.0.1
+- scrapped autodetection of RS97. Was not working anyway

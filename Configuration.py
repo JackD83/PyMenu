@@ -19,8 +19,7 @@ def reloadConfiguration():
         configuration["version"] = "0"
 
     configuration["mainMenu"] = []
-    pygame.init()
-    configuration["RS97"] = checkRS97()
+  
     setResolution()
 
 
@@ -53,37 +52,22 @@ def reloadConfiguration():
 
             except Exception as ex:
                 print(str(ex))                  
-   
-def checkRS97():
     
-    infoObject = pygame.display.Info()
-
-    print("RS97 check " + str(infoObject.current_h))
-
-
-    if(infoObject.current_h == 480):
-        return True
-
-    #windows platform or mac
-    elif(os.name == "nt" or os.name == "posix"):
-        return True
-
-    return False    
 
 def setResolution():
     global configuration
-    infoObject = pygame.display.Info()
-  
-    if(checkRS97()):
+   
+    if(isRS97()):
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
     
-    elif(infoObject.current_w == 480):
+    #RS07 & K3P
+    else:
         configuration["screenWidth"] = 480
         configuration["screenHeight"] = 272
     
     #windows platform or mac
-    elif(os.name == "nt" or os.name == "posix"):
+    if(platform.processor() != ""):
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
 
