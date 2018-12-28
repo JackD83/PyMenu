@@ -1,8 +1,15 @@
+Featues
+- animated main menu using large images
+- editable configuration directly on the device
+- rom selection browser
+- links to native ports of apps and gamelist
+- list of last played games / roms
+- ability to show preview images for roms, apps and games (128x128px)
+
+
 Pre 1.0.0
 - added animated preview images
 - fixed bug where last played roms reverted to romname instead of gamelist name
-
-
 
 Version 1.0.0
 - added theme/configurations for the RS07

@@ -25,3 +25,13 @@ Install instructions: https://boards.dingoonity.org/ingenic-jz4760-devices/custo
 Tested on UselessRS97 1.3 internal & external and K3P old version
 
 Check https://boards.dingoonity.org/ingenic-jz4760-devices/ for any updatates
+
+
+Creation of animated previews:
+
+The animated previews are a kind of custom format. Like the still preview images, their animated counterparts are just 128x128 pixel images stiched together in a grid and saved as one large image. To batch process a lot of videos, I created two coverter scripts (windows and linux/macos) found under "tools" 
+
+Thy rely on image magick and ffmpeg to convert any video to a 6 seconds preview animation.
+Please use the latest versions of both tools. On windows, the version of ffmpg that comes with image magick is too old!
+
+Simply call convert.sh with all the videos you want to convert as parameter (like ./convert.sh videos/* ). This will create a folder called "output" with all converted previews
