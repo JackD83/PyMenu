@@ -1,0 +1,21 @@
+{
+    "background": "images/pixel/backgrounds/gba.png", 
+    "cmd": "/mnt/int_sd/emus/gpsp/gpsp.dge", 
+    "description": "Regba", 
+    "fileFilter": [
+        ".zip", 
+        ".gba"
+    ], 
+    "folderIcon": "images/pixel/icons/gba.png", 
+    "icon": "images/pixel/systems/gba.png", 
+    "legacy": false, 
+    "name": "Gameboy Advance", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/gba/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/gba", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/gpsp"
+}

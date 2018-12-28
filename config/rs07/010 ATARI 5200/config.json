@@ -1,0 +1,22 @@
+{
+    "background": "images/backgrounds/rs97/a5200.png", 
+    "cmd": "/mnt/int_sd/emus/dingux-5200/dingux-atari.dge", 
+    "description": null, 
+    "fileFilter": [
+        ".zip", 
+        ".a52"
+    ], 
+    "folderIcon": "images/icons/a5200.png", 
+    "icon": "images/systems/a5200.png", 
+    "legacy": false, 
+    "name": "ATARI 5200", 
+    "overclock": "524", 
+    "preview": "images/systems/a5200.png", 
+    "previews": "/mnt/int_sd/roms/atari5200/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/atari5200", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux_atari"
+}

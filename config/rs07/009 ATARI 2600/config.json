@@ -1,0 +1,23 @@
+{
+    "background": "images/backgrounds/rs97/a2600.png", 
+    "cmd": "/mnt/int_sd/emus/dingux-2600/dingux-2600.dge", 
+    "description": "Dingux_2600", 
+    "fileFilter": [
+        ".zip", 
+        ".a26", 
+        ".bin"
+    ], 
+    "folderIcon": "images/icons/a2600.png", 
+    "icon": "images/systems/a2600.png", 
+    "legacy": false, 
+    "name": "ATARI 2600", 
+    "overclock": "524", 
+    "preview": "images/systems/a2600.png", 
+    "previews": "/mnt/int_sd/roms/atari2600/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/atari2600", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux_2600"
+}

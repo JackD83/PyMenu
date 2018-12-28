@@ -3,11 +3,11 @@
     "RS97ScreenFix": false, 
     "batteryHigh": 4500, 
     "batteryLow": 3752, 
-    "configName": "main", 
     "firstStart": false, 
     "lcd_backlight": 70, 
     "options": {
         "allowEdit": true, 
+        "configName": "main", 
         "displayTimeout": "20", 
         "showFPS": false, 
         "showLastPlayed": true, 
@@ -15,5 +15,6 @@
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
+    "version": "1.0.0", 
     "volumeControl": false
 }

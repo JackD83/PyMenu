@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/apps/glutexto/run.dge", 
+    "description": "Text Editor", 
+    "legacy": false, 
+    "name": "Glutexto", 
+    "overclock": "528", 
+    "preview": "images/pixel/icons/glutexto.png", 
+    "screen": "default"
+}

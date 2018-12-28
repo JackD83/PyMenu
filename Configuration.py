@@ -15,27 +15,36 @@ def getConfiguration():
 def reloadConfiguration(): 
     global configuration
     configuration = json.load(open('config/config.json'))
+    if("version" not in configuration):
+        configuration["version"] = "0"
+
     configuration["mainMenu"] = []
     pygame.init()
     configuration["RS97"] = checkRS97()
     setResolution()
 
-    if os.path.exists(os.path.dirname("config/" + configuration["configName"]  + "/")):
-        fileList = os.listdir("config/" + configuration["configName"]  + "/")
+
+    if( not os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/"))):
+         changeConfigName("main")
+         reloadConfiguration()
+         return
+
+    if os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/")):
+        fileList = os.listdir("config/" + configuration["options"]["configName"]  + "/")
         Common.quick_sort(fileList)       
         for name in fileList:
             try:         
-                if(os.path.isdir("config/" + configuration["configName"]  + "/" + name )):       
-                    entry = json.load(open("config/" + configuration["configName"]  + "/" + name + "/config.json"))
+                if(os.path.isdir("config/" + configuration["options"]["configName"]  + "/" + name )):       
+                    entry = json.load(open("config/" + configuration["options"]["configName"]  + "/" + name + "/config.json"))
                     entry["source"] = name
                     configuration["mainMenu"].append(entry)
                     if(entry["type"] == "native"):
                         entry["data"] = []
                         try:
-                            itemlist =  os.listdir("config/" + configuration["configName"]  + "/" + name + "/items")
+                            itemlist =  os.listdir("config/" + configuration["options"]["configName"]  + "/" + name + "/items")
                             Common.quick_sort(itemlist) 
                             for itemName in itemlist:
-                                item = json.load(open("config/" + configuration["configName"]  + "/" + name + "/items/" + itemName))
+                                item = json.load(open("config/" + configuration["options"]["configName"]  + "/" + name + "/items/" + itemName))
                                 item["source"] = itemName
                                 entry["data"].append(item)
                         except Exception as ex:
@@ -78,14 +87,23 @@ def setResolution():
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
 
+def changeConfigName(name):
+    allConfig = copy.deepcopy(configuration)
+    allConfig["options"]["configName"] = name
+    del allConfig["mainMenu"]
+
+    with open('config/config.json', 'w') as fp: 
+        json.dump(allConfig, fp,sort_keys=True, indent=4)
+
 def saveConfiguration():
+
     try:
         subprocess.Popen(["sync"])
     except Exception:
         pass
       
     try:
-        shutil.rmtree("config/main") 
+        shutil.rmtree("config/" + configuration["options"]["configName"]) 
     except Exception as ex:
         print(str(ex))     
     
@@ -98,18 +116,18 @@ def saveConfiguration():
 
     for index, item in enumerate(main):
         if( "source" not in item):
-            fileName = "config/" + configuration["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
+            fileName = "config/" + configuration["options"]["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
         else:
-            fileName = "config/" + configuration["configName"]  + "/" + item["source"] + "/config.json"
+            fileName = "config/" + configuration["options"]["configName"]  + "/" + item["source"] + "/config.json"
 
         if(item["type"] == "native"):
             data = item["data"]
             item.pop('data', None)
             for dataIndex, dataItem in enumerate(data):
                 if("source" not in dataItem):
-                    dataName = "config/" + configuration["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
+                    dataName = "config/" + configuration["options"]["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
                 else:
-                    dataName = "config/" + configuration["configName"]  + "/" + item["source"] + "/items/" + dataItem["source"]
+                    dataName = "config/" + configuration["options"]["configName"]  + "/" + item["source"] + "/items/" + dataItem["source"]
 
                 if "source" in dataItem: del dataItem["source"]
                 storeConfigPart(dataName, dataItem)
@@ -118,7 +136,7 @@ def saveConfiguration():
             if "source" in item: del item["source"]
             storeConfigPart(fileName, item)
         elif(item["type"] == "lastPlayed"):
-            dataName = "config/" + configuration["configName"] + "/lastPlayed.json"
+            dataName = "config/" + configuration["options"]["configName"] + "/lastPlayed.json"
             del item["data"]
             storeConfigPart(dataName, item)
 

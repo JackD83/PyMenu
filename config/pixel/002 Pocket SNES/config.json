@@ -1,0 +1,21 @@
+{
+    "background": "images/pixel/backgrounds/snes.png", 
+    "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
+    "description": "Super NES", 
+    "fileFilter": [
+        ".zip", 
+        ".smc"
+    ], 
+    "folderIcon": "images/pixel/icons/snes.png", 
+    "icon": "images/pixel/systems/snes.png", 
+    "legacy": false, 
+    "name": "Pocket SNES", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/snes/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/snes", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/pocketsnes"
+}

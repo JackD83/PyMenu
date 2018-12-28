@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel/backgrounds/msx.png", 
+    "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx.dge", 
+    "description": "Open msx", 
+    "fileFilter": [
+        ".zip", 
+        ".rom"
+    ], 
+    "folderIcon": "images/pixel/icons/msx.png", 
+    "icon": "images/pixel/systems/msx.png", 
+    "legacy": false, 
+    "name": "MSX", 
+    "overclock": "524", 
+    "preview": "images/pixel/systems/msx.png", 
+    "previews": "/mnt/int_sd/roms/msx/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/msx", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux-msx"
+}

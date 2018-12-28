@@ -1,0 +1,22 @@
+{
+    "background": "images/backgrounds/rs97/pce.png", 
+    "cmd": "/mnt/int_sd/emus/dingux-hugo/dingux-hugo.dge", 
+    "description": "PCE", 
+    "fileFilter": [
+        ".zip", 
+        ".pce"
+    ], 
+    "folderIcon": "images/icons/pce.png", 
+    "icon": "images/systems/pce.png", 
+    "legacy": false, 
+    "name": "PC ENGINE", 
+    "overclock": "624", 
+    "preview": "images/systems/pce.png", 
+    "previews": "/mnt/int_sd/roms/pce/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/pce", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux-hugo"
+}

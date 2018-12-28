@@ -9,6 +9,9 @@ from threading import Thread
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
+
+    configName = config["options"]["configName"]
+
    
     gear = Common.aspect_scale(Common.loadCachedImage("theme/gear.png"),20,20)
     gearFinal = None
@@ -139,7 +142,7 @@ class MainMenu(RenderObject.RenderObject):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSettings(self):
-        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings (PyMenu v" + str(self.config["version"]) + ")",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
                                         Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
         footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
         self.subComponent.setFooter(footer)
@@ -179,11 +182,19 @@ class MainMenu(RenderObject.RenderObject):
        
 
     def configCallback(self, select):
+        
+        newConfigName = self.config["options"]["configName"]
+        if(self.configName != self.config["options"]["configName"]):
+            print("config changed")
+            self.config["options"]["configName"] = self.configName
+
         self.subComponent = None
         isLastPlayed = self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed" 
         Configuration.saveConfiguration()
         if(isLastPlayed and "showLastPlayed" in self.config["options"] and not self.config["options"]["showLastPlayed"]):
             self.currentIndex = 0
+
+        Configuration.changeConfigName(newConfigName)
 
         self.reload()
         RenderControl.setDirty()
@@ -362,8 +373,10 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()       
     
     def reload(self):
+        self.currentIndex = 0
         Configuration.reloadConfiguration()
         self.config = Configuration.getConfiguration()
+        self.configName = self.config["options"]["configName"]
         self.loadLastPlayed()
         self.loadSystemImages()
     
@@ -490,7 +503,7 @@ class MainMenu(RenderObject.RenderObject):
         if("showLastPlayed" in self.config["options"] and self.config["options"]["showLastPlayed"] ):
             print("loading last played games")
             try:
-                lastPlayed = json.load(open("config/" + self.config["configName"] + "/lastPlayed.json"))
+                lastPlayed = json.load(open("config/" + self.config["options"]["configName"] + "/lastPlayed.json"))
 
                 if(os.path.exists("config/lastPlayedData.json")):
                     lastPlayedData = json.load(open("config/lastPlayedData.json"))

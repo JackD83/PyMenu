@@ -5,3 +5,4 @@ __pycache__
 /installer/log.txt
 /python/log.txt
 config/lastPlayedData.json
+/.vscode

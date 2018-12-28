@@ -1,0 +1,10 @@
+Pre 1.0.0
+- added animated preview images
+- fixed bug where last played roms reverted to romname instead of gamelist name
+
+
+
+Version 1.0.0
+- added theme/configurations for the RS07
+- added pixel Theme/configuration for the RS07
+- added ability to switch between themes

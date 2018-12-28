@@ -30,5 +30,13 @@
         "id": "allowEdit",
         "description" : "Allows editing of main menu / adding native links",
         "type": "boolean"  
+    }, {
+        "name": "Theme",
+        "id": "configName",
+        "description" : "Changes the theme/configuration",
+        "type": "list",
+        "values": ["main", "rs07", "pixel"],
+        "names": ["Main (RS97)", "Arcade Mini (RS07)", "Pixel Theme (RS07)"]
+
     }
 ]

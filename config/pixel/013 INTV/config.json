@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel/backgrounds/int.png", 
+    "cmd": "/mnt/int_sd/emus/dingux-int/dingux-int.dge", 
+    "description": "IntelliVision", 
+    "fileFilter": [
+        ".zip", 
+        ".int"
+    ], 
+    "folderIcon": "images/pixel/icons/int.png", 
+    "icon": "images/pixel/systems/int.png", 
+    "legacy": false, 
+    "name": "INTV", 
+    "overclock": "524", 
+    "preview": "images/pixel/systems/int.png", 
+    "previews": "/mnt/int_sd/roms/inttellivision/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/intellivision", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux-int"
+}

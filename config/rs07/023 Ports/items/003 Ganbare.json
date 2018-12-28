@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/ganbare/run.dge", 
+    "description": "Ganbare-Natsuki-San Game", 
+    "legacy": false, 
+    "name": "Ganbare", 
+    "overclock": "528", 
+    "preview": "images/previews/ganbare.png", 
+    "screen": "default"
+}
