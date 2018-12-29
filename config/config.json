@@ -1,5 +1,4 @@
 {
-    "RS97": true, 
     "RS97ScreenFix": false, 
     "batteryHigh": 4500, 
     "batteryLow": 3752, 
@@ -15,6 +14,7 @@
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
+    "type": "RS97", 
     "version": "1.0.2", 
     "volumeControl": false
 }

@@ -1,5 +1,20 @@
 # -*- coding: utf-8 -*-
-import pygame, sys, Common, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
+import sys, Common
+
+# catch global exception and try to enable usb
+def except_hook(exctype, value, traceback):
+    if(traceback != None):
+       traceback.print_exception(exctype, value)
+
+    Common.mountSD(True)
+    Common.mountUSB()
+    import time
+    while True:
+        time.sleep(1)
+    
+sys.excepthook = except_hook
+
+import pygame, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
 import platform, Suspend, BrightnessVolumeControl
 import time, os
 
@@ -24,12 +39,9 @@ if(Configuration.isRS97() and not rs97ScreenFix):
     except Exception as ex:
         pass
 
-
-
-
 def init():
     lastRenderTime = 1
-
+    
     Common.mountSD(True)
     if(Configuration.isRS97() and not rs97ScreenFix):
         realScreen = pygame.display.set_mode((320,240), HWSURFACE, 16)
@@ -89,5 +101,8 @@ def init():
 
         TaskHandler.updateTasks()
         fpsClock.tick(Common.getFPS())
-
-init()
+try:
+    init()
+except Exception as err:
+    print(str(err))
+    except_hook(None, None, None)

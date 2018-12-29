@@ -5,6 +5,7 @@ from pprint import pprint
 configuration = None
 theme = json.load(open('theme/theme.json'))
 listeners = []
+types = ["RS97", "RS07", "K3P"]
 
 def getConfiguration():   
     if(configuration == None):      
@@ -18,12 +19,17 @@ def reloadConfiguration():
     if("version" not in configuration):
         configuration["version"] = "0"
 
+    if("type" not in configuration or configuration["type"] not in types):
+        print("forcing type to RS97")
+        configuration["type"] = "RS97"
+
     configuration["mainMenu"] = []
   
     setResolution()
 
 
-    if( not os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/"))):
+    if( configuration["options"]["configName"] != "main" and 
+        not os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/"))):
          changeConfigName("main")
          reloadConfiguration()
          return
@@ -150,7 +156,7 @@ def toColor(input):
     return make_tuple(input)
 
 def isRS97():
-    return "RS97" in configuration and configuration["RS97"]
+    return "type" in configuration and configuration["type"] == "RS97"
 
 def addConfigChangedCallback(listener):
     listeners.append(listener)
