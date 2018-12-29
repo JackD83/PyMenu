@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/wsc.png", 
+    "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+    "description": "Wonderswan Color", 
+    "fileFilter": [
+        ".zip", 
+        ".ws", 
+        ".wsc"
+    ], 
+    "folderIcon": "images/pixel97/icons/wsc.png", 
+    "icon": "images/pixel97/systems/wsc.png", 
+    "legacy": false, 
+    "name": "WSC", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/wsc/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/wswanc", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/oswan"
+}

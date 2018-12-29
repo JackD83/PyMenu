@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/cannonball/run.dge", 
+    "description": "Cannonball Game", 
+    "legacy": false, 
+    "name": "Cannonball", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/cannonball.png", 
+    "screen": "default"
+}

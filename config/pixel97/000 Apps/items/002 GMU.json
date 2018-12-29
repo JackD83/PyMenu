@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/apps/gmu/run.dge", 
+    "description": "Music Player", 
+    "legacy": false, 
+    "name": "GMU", 
+    "overclock": "528", 
+    "preview": "images/pixel97/icons/gmu.png", 
+    "screen": "default"
+}

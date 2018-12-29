@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/reminiscence/rs", 
+    "description": "Reminiscence Game", 
+    "legacy": false, 
+    "name": "Reminiscence", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/reminiscence.png", 
+    "screen": "default"
+}

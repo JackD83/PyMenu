@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/ws.png", 
+    "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+    "description": "Wonderswan", 
+    "fileFilter": [
+        ".zip", 
+        ".ws", 
+        ".wsc"
+    ], 
+    "folderIcon": "images/pixel97/icons/ws.png", 
+    "icon": "images/pixel97/systems/ws.png", 
+    "legacy": false, 
+    "name": "WS", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/ws/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/wswan", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "//mnt/int_sd/emus/oswan"
+}

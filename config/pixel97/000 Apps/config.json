@@ -1,0 +1,14 @@
+{
+    "background": "images/pixel97/backgrounds/midpath.png", 
+    "cmd": null, 
+    "description": "Applications", 
+    "icon": "images/pixel97/systems/apps.png", 
+    "legacy": null, 
+    "name": "Apps", 
+    "overclock": null, 
+    "previews": null, 
+    "screen": null, 
+    "selectionPath": null, 
+    "type": "native", 
+    "workingDir": null
+}

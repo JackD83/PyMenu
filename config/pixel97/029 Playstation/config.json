@@ -1,0 +1,24 @@
+{
+    "background": "images/pixel97/backgrounds/psx.png", 
+    "cmd": "/mnt/int_sd/emus/pcsx4all/pcsx4all", 
+    "description": "Sony Playstation", 
+    "fileFilter": [
+        ".pbp", 
+        ".cue", 
+        ".bin", 
+        ".iso"
+    ], 
+    "folderIcon": "images/pixel97/icons/psx.png", 
+    "icon": "images/pixel97/systems/psx.png", 
+    "legacy": false, 
+    "name": "PSX", 
+    "overclock": "528", 
+    "preview": "images/pixel97/systems/psx.png", 
+    "previews": "/mnt/int_sd/roms/psx/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/psx", 
+    "type": "emulator", 
+    "useGamelist": true, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/pcsx4all"
+}

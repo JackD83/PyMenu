@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/ketm/run.dge", 
+    "description": "KETM Game", 
+    "legacy": false, 
+    "name": "KETM", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/ketm.png", 
+    "screen": "default"
+}

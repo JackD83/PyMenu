@@ -1,0 +1,21 @@
+{
+    "background": "images/pixel97/backgrounds/mame.png", 
+    "cmd": "/mnt/int_sd/emus/mame4all/mame4all.dge", 
+    "description": "MAME Arcade EMU", 
+    "fileFilter": [
+        ".zip"
+    ], 
+    "folderIcon": "images/pixel97/icons/fba.png", 
+    "icon": "images/pixel97/systems/mame.png", 
+    "legacy": false, 
+    "name": "MAME", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/mame.png", 
+    "previews": "/mnt/int_sd/roms/mame/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/mame", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/mame4all"
+}

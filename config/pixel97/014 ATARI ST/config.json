@@ -1,0 +1,18 @@
+{
+    "background": "images/pixel97/backgrounds/ast.png", 
+    "cmd": "/mnt/int_sd/emus/dcastaway/dcastaway", 
+    "description": "ATARI ST", 
+    "folderIcon": "images/pixel97/icons/ast.png", 
+    "icon": "images/pixel97/systems/ast.png", 
+    "legacy": false, 
+    "name": "AST", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/ast.png", 
+    "previews": "/mnt/int_sd/roms/atarist/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dcastaway"
+}

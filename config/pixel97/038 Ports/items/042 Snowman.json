@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/snowman/run.dge", 
+    "description": "Snowman Game", 
+    "legacy": false, 
+    "name": "Snowman", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/snowman.png", 
+    "screen": "default"
+}

@@ -1,0 +1,21 @@
+{
+    "background": "images/pixel97/backgrounds/fba.png", 
+    "cmd": "/mnt/int_sd/emus/fba-gcw0/fbasdl.dge", 
+    "description": "Final Burn Alpha", 
+    "fileFilter": [
+        ".zip", 
+        ".fba"
+    ], 
+    "folderIcon": "images/pixel97/icons/fba.png", 
+    "icon": "images/pixel97/systems/fba.png", 
+    "legacy": false, 
+    "name": "FBA", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/fba/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/cps1", 
+    "type": "emulator", 
+    "useGamelist": true, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fba-gcw0"
+}

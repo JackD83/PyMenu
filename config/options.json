@@ -35,8 +35,8 @@
         "id": "configName",
         "description" : "Changes the theme/configuration",
         "type": "list",
-        "values": ["main", "rs07", "pixel"],
-        "names": ["Main (RS97)", "Arcade Mini (RS07)", "Pixel Theme (RS07)"]
+        "values": ["main","pixel97", "rs07", "pixel"],
+        "names": ["Main (RS97)","Pixel Theme (RS97)",  "Arcade Mini (RS07)", "Pixel Theme (RS07)"]
 
     }
 ]

@@ -1,0 +1,18 @@
+{
+    "background": "images/pixel/backgrounds/cps1.png", 
+    "cmd": "/mnt/int_sd/emus/fba-a320/fbasdl.dge", 
+    "description": "Arcade", 
+    "folderIcon": "images/pixel/icons/fba.png", 
+    "icon": "images/pixel/systems/cps1.png", 
+    "legacy": false, 
+    "name": "CPS1", 
+    "overclock": "624", 
+    "preview": "images/pixel/icons/fba.png", 
+    "previews": "/mnt/int_sd/roms/cps1/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/cps1", 
+    "type": "emulator", 
+    "useGamelist": true, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fba-a320"
+}

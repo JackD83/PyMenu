@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/gb.png", 
+    "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
+    "description": "Gameboy", 
+    "fileFilter": [
+        ".zip", 
+        ".gb", 
+        ".gbc"
+    ], 
+    "folderIcon": "images/pixel97/icons/gb.png", 
+    "icon": "images/pixel97/systems/gb.png", 
+    "legacy": false, 
+    "name": "GB", 
+    "overclock": "528", 
+    "previews": "/mnt/int_sd/roms/gb/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/gb", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/gamebatte"
+}

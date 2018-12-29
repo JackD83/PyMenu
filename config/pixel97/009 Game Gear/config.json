@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/gg.png", 
+    "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+    "description": "SEGA Game Gear", 
+    "fileFilter": [
+        ".zip", 
+        ".gg", 
+        ".GG"
+    ], 
+    "folderIcon": "images/pixel97/icons/gg.png", 
+    "icon": "images/pixel97/systems/gg.png", 
+    "legacy": false, 
+    "name": "GG", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/gg/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/gg", 
+    "type": "emulator", 
+    "useGamelist": false, 
+    "useSelection": true, 
+    "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
+}

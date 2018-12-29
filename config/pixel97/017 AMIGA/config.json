@@ -1,0 +1,18 @@
+{
+    "background": "images/pixel97/backgrounds/amiga.png", 
+    "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
+    "description": "Commodore Amiga", 
+    "folderIcon": "images/pixel97/icons/amiga.png", 
+    "icon": "images/pixel97/systems/amiga.png", 
+    "legacy": false, 
+    "name": "AMIGA", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/amiga.png", 
+    "previews": "//mnt/int_sd/roms/amiga/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/amiga", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/uae4all"
+}

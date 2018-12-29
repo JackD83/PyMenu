@@ -7,14 +7,14 @@
     "lcd_backlight": 70, 
     "options": {
         "allowEdit": true, 
-        "configName": "pixel", 
+        "configName": "main", 
         "displayTimeout": "off", 
         "showFPS": false, 
         "showLastPlayed": true, 
         "suspendTimeout": "off"
     }, 
-    "screenHeight": 272, 
-    "screenWidth": 480, 
-    "version": "1.0.1", 
+    "screenHeight": 240, 
+    "screenWidth": 320, 
+    "version": "1.0.2", 
     "volumeControl": false
 }

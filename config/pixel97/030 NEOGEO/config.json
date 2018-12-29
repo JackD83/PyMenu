@@ -1,0 +1,20 @@
+{
+    "background": "images/pixel97/backgrounds/neogeo.png", 
+    "cmd": "/mnt/int_sd/emus/gngeo/gngeo", 
+    "description": "SNK NEOGEO", 
+    "fileFilter": [
+        ".zip"
+    ], 
+    "folderIcon": "images/pixel97/icons/neogeo.png", 
+    "icon": "images/pixel97/systems/neogeo.png", 
+    "legacy": false, 
+    "name": "SNK", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/neogeo/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/neogeo", 
+    "type": "emulator", 
+    "useGamelist": true, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/gngeo"
+}

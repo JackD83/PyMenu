@@ -1,0 +1,23 @@
+{
+    "background": "images/pixel97/backgrounds/cpc.png", 
+    "cmd": "/mnt/int_sd/emus/dingux_cap32/dingux-cap32", 
+    "description": "Amstrad CPC", 
+    "fileFilter": [
+        ".zip", 
+        ".dsk", 
+        ".cpc"
+    ], 
+    "folderIcon": "images/pixel97/icons/cpc.png", 
+    "icon": "images/pixel97/systems/cpc.png", 
+    "legacy": false, 
+    "name": "CPC", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/cpc.png", 
+    "previews": null, 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/dingux_cap32"
+}

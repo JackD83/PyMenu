@@ -1,0 +1,17 @@
+{
+    "background": "images/pixel97/backgrounds/cps2.png", 
+    "cmd": "/mnt/int_sd/emus/fba-a320/fbasdl.dge", 
+    "description": "Capcom Play Sys 2", 
+    "folderIcon": "images/pixel97/icons/fba1.png", 
+    "icon": "images/pixel97/systems/cps2.png", 
+    "legacy": false, 
+    "name": "CPS2", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/cps2/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/cps2", 
+    "type": "emulator", 
+    "useGamelist": true, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fba-a320"
+}

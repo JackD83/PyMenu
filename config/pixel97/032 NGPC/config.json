@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/ngpc.png", 
+    "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+    "description": "Neogeo Pocket Color", 
+    "fileFilter": [
+        ".zip", 
+        ".ngp", 
+        ".ngc"
+    ], 
+    "folderIcon": "images/pixel97/icons/ngpc.png", 
+    "icon": "images/pixel97/systems/ngpc.png", 
+    "legacy": false, 
+    "name": "NGPC", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/ngpc/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/ngpc", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/race_od"
+}

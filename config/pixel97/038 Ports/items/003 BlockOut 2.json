@@ -1,0 +1,9 @@
+{
+    "cmd": "/mnt/int_sd/games/blockout2/run.dge", 
+    "description": "BlockOut 2 Game", 
+    "legacy": false, 
+    "name": "BlockOut 2", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/blockout2.png", 
+    "screen": "default"
+}

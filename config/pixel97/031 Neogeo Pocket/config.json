@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/ngp.png", 
+    "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+    "description": "NEOGEO Pocket", 
+    "fileFilter": [
+        ".zip", 
+        ".ngp", 
+        ".ngc"
+    ], 
+    "folderIcon": "images/pixel97/icons/ngp.png", 
+    "icon": "images/pixel97/systems/ngp.png", 
+    "legacy": false, 
+    "name": "NGP", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/ngp/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/ngp", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/race_od"
+}

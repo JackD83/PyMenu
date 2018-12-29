@@ -1,0 +1,11 @@
+{
+    "cmd": "/mnt/int_sd/games/powermanga/run.sh", 
+    "icon": ".", 
+    "name": "Powermanga", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/powermanga.png", 
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
+}

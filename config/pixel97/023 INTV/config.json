@@ -1,0 +1,24 @@
+{
+    "background": "images/pixel97/backgrounds/int.png", 
+    "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
+    "description": "IntelliVision", 
+    "fileFilter": [
+        ".zip", 
+        ".bin", 
+        ".int", 
+        ".itv", 
+        ".rom"
+    ], 
+    "folderIcon": "images/pixel97/icons/int.png", 
+    "icon": "images/pixel97/systems/int.png", 
+    "legacy": false, 
+    "name": "INTV", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/inttellivision/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/intellevision", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/jzintv"
+}

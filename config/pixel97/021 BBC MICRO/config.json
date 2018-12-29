@@ -1,0 +1,29 @@
+{
+    "background": "images/pixel97/backgrounds/bbcmicro.png", 
+    "cmd": "/mnt/int_sd/emus/beebem/beebem", 
+    "description": "BCC Micro Computer", 
+    "fileFilter": [
+        ".zip", 
+        ".img", 
+        ".SSD", 
+        ".ADL", 
+        ".DSD", 
+        ".IMG", 
+        ".ssd", 
+        ".adl", 
+        ".dsd"
+    ], 
+    "folderIcon": "images/pixel97/icons/bbcmicro.png", 
+    "icon": "images/pixel97/systems/bbcmicro.png", 
+    "legacy": false, 
+    "name": "BBC", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/bbcmicro.png", 
+    "previews": null, 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/emus/beebem/roms", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/beebem"
+}

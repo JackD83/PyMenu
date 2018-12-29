@@ -1,0 +1,11 @@
+{
+    "cmd": "/mnt/int_sd/games/hex-a-hop/run.dge", 
+    "icon": ".", 
+    "name": "Hex-a-hop", 
+    "overclock": "528", 
+    "preview": "images/pixel97/previews/hex-a-hop.png", 
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
+}

@@ -1,0 +1,22 @@
+{
+    "background": "images/pixel97/backgrounds/openbor.png", 
+    "cmd": "/mnt/int_sd/emus/openbor/OpenBOR", 
+    "description": "OpenBor", 
+    "fileFilter": [
+        ".zip", 
+        ".pak"
+    ], 
+    "folderIcon": "images/pixel97/icons/openbor.png", 
+    "icon": "images/pixel97/systems/OpenBOR.png", 
+    "legacy": false, 
+    "name": "PAK", 
+    "overclock": "524", 
+    "preview": "images/pixel97/systems/OpenBOR.png", 
+    "previews": "/mnt/int_sd/emus/openbor/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/emus/openbor/Paks", 
+    "type": "emulator", 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/openbor"
+}
