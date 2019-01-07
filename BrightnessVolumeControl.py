@@ -154,7 +154,7 @@ class BrightnessVolume(RenderObject.RenderObject):
             return 0; 
 
     def initVolume(self):
-        if("volumeControl" in self.config and self.config["volumeControl"]):
+        if("volumeControl" in self.config["options"] and self.config["options"]["volumeControl"]):
             print("Using volume deamon")
        
             print("Setting initial volume: " + str(self.getCurrentVolume()))

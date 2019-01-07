@@ -39,6 +39,11 @@
     "type":"boolean",
     "description": "Use the selection screen"
 },
+{   "id":"useFileFilter",
+    "name" :"Use File Filter",
+    "type":"boolean",
+    "description": "Show only roms with configured extension"
+},
 {   "id":"useGamelist",
     "name" :"Use Gamelist",
     "type":"boolean",

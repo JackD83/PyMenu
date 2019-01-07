@@ -1,20 +1,20 @@
 {
-    "RS97ScreenFix": false, 
     "batteryHigh": 4500, 
     "batteryLow": 3752, 
     "firstStart": false, 
     "lcd_backlight": 70, 
     "options": {
+        "RS97ScreenFix": false, 
         "allowEdit": true, 
-        "configName": "main", 
+        "configName": "pixel97", 
         "displayTimeout": "off", 
         "showFPS": false, 
         "showLastPlayed": true, 
-        "suspendTimeout": "off"
+        "suspendTimeout": "off", 
+        "type": "RS97", 
+        "volumeControl": false
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
-    "type": "RS97", 
-    "version": "1.0.2", 
-    "volumeControl": false
+    "version": "1.0.3"
 }

@@ -1,42 +1,106 @@
 [
     {
+        "name": "Device Type",
+        "id": "type",
+        "description": "Type of the device (reboot)",
+        "type": "list",
+        "values": [
+            "RS97",
+            "RS07",
+            "K3P"
+        ],
+        "names": [
+            "RS97",
+            "Arcade Mini (RS07)",
+            "PAP KIII Plus (K3P)"
+        ]
+    },
+    {
         "name": "Display Timeout",
         "id": "displayTimeout",
-        "description" : "Time of inactivity to turn display off",
+        "description": "Time of inactivity to turn display off",
         "type": "list",
-        "values": ["10", "20", "30", "60", "off"],
-        "names": ["10s", "20s", "30s", "60s", "off"]
+        "values": [
+            "10",
+            "20",
+            "30",
+            "60",
+            "off"
+        ],
+        "names": [
+            "10s",
+            "20s",
+            "30s",
+            "60s",
+            "off"
+        ]
     },
     {
         "name": "Suspend Timeout",
         "id": "suspendTimeout",
-        "description" : "Time of inactivity power down device",
+        "description": "Time of inactivity power down device",
         "type": "list",
-        "values": ["1", "2", "5", "10", "off"],
-        "names": ["1m", "2m", "5m", "10m", "off"]
+        "values": [
+            "1",
+            "2",
+            "5",
+            "10",
+            "off"
+        ],
+        "names": [
+            "1m",
+            "2m",
+            "5m",
+            "10m",
+            "off"
+        ]
     },
     {
         "name": "Show Last Played",
         "id": "showLastPlayed",
-        "description" : "Shows a main menu entry with last played games",
-        "type": "boolean"  
-    },{
+        "description": "Shows a main menu entry with last played games",
+        "type": "boolean"
+    },
+    {
         "name": "Show FPS",
         "id": "showFPS",
-        "description" : "Draws current fps on screen",
-        "type": "boolean"  
-    },{
+        "description": "Draws current fps on screen",
+        "type": "boolean"
+    },
+    {
         "name": "Allow editing",
         "id": "allowEdit",
-        "description" : "Allows editing of main menu / adding native links",
-        "type": "boolean"  
-    }, {
+        "description": "Allows editing of main menu / adding native links",
+        "type": "boolean"
+    },
+    {
         "name": "Theme",
         "id": "configName",
-        "description" : "Changes the theme/configuration",
+        "description": "Changes the theme/configuration",
         "type": "list",
-        "values": ["main","pixel97", "rs07", "pixel"],
-        "names": ["Main (RS97)","Pixel Theme (RS97)",  "Arcade Mini (RS07)", "Pixel Theme (RS07)"]
-
+        "values": [
+            "main",
+            "pixel97",
+            "rs07",
+            "pixel"
+        ],
+        "names": [
+            "Main (RS97)",
+            "Pixel Theme (RS97)",
+            "Arcade Mini (RS07)",
+            "Pixel Theme (RS07)"
+        ]
+    },
+    {
+        "name": "RS97 Screen Fix",
+        "id": "RS97ScreenFix",
+        "description": "Use alternate rendering mode for RS97 (reboot)",
+        "type": "boolean"
+    },
+    {
+        "name": "Volume control",
+        "id": "volumeControl",
+        "description": "Use buttons for volume control (K3P)",
+        "type": "boolean"
     }
 ]

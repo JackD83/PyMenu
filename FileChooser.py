@@ -205,7 +205,9 @@ class FileChooser(AbstractList.AbstractList):
         if("useGamelist" in self.options and self.options["useGamelist"] == True):
             return Common.getGameName(filename)
 
-        if(not "fileFilter" in self.options):
+        if(not "fileFilter" in self.options or "useFileFilter" not in self.options
+            or not self.options["useFileFilter"]):
+        
             return filename
 
         return os.path.splitext(filename)[0]
@@ -213,7 +215,8 @@ class FileChooser(AbstractList.AbstractList):
         
 
     def filterFile(self, file):
-        if(not "fileFilter" in self.options):
+        if(not "fileFilter" in self.options or ("useFileFilter" in self.options
+            and not self.options["useFileFilter"])):
             return True #allow all files
 
         filename, file_extension = os.path.splitext(file)

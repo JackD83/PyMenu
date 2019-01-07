@@ -30,7 +30,7 @@ fpsClock = pygame.time.Clock()
 pygame.key.set_repeat(50, 50)
 config = Configuration.getConfiguration()
 
-rs97ScreenFix =  config["RS97ScreenFix"] if "RS97ScreenFix" in config else None
+rs97ScreenFix =  config["options"]["RS97ScreenFix"] if "RS97ScreenFix" in config["options"] else None
 
 #set screen mode
 if(Configuration.isRS97() and not rs97ScreenFix):

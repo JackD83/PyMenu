@@ -19,9 +19,9 @@ def reloadConfiguration():
     if("version" not in configuration):
         configuration["version"] = "0"
 
-    if("type" not in configuration or configuration["type"] not in types):
+    if("type" not in configuration["options"] or configuration["options"]["type"] not in types):
         print("forcing type to RS97")
-        configuration["type"] = "RS97"
+        configuration["options"]["type"] = "RS97"
 
     configuration["mainMenu"] = []
   
@@ -156,7 +156,7 @@ def toColor(input):
     return make_tuple(input)
 
 def isRS97():
-    return "type" in configuration and configuration["type"] == "RS97"
+    return "type" in configuration["options"] and configuration["options"]["type"] == "RS97"
 
 def addConfigChangedCallback(listener):
     listeners.append(listener)

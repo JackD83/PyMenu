@@ -23,3 +23,6 @@ Version 1.0.2
 - updated pixel theme for Arcade Mini (RS07)
 - added pixel theme for RS97
 
+Version 1.0.3
+- made type, screenfix and volume control accessible in options
+- added "useFileFilter" option for rom selection. Disable if your roms are not showing
