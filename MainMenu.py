@@ -1,7 +1,7 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
 import os, ResumeHandler, Suspend
-import json, time, math
+import json, time, math, copy
 import pygame, sys, subprocess,platform
 from pprint import pprint
 from threading import Thread
@@ -217,6 +217,7 @@ class MainMenu(RenderObject.RenderObject):
             options["background"] = current["background"]
             options["useSidebar"] = True
             options["useGamelist"] = current["useGamelist"] if "useGamelist" in current else False
+        
 
             if("description" in current):
                 options["description"] = current["description"]
@@ -388,10 +389,47 @@ class MainMenu(RenderObject.RenderObject):
         print("Text callback, got text: " + text)
         self.subComponent = None
 
-    def emulatorCallback(self, selectedFile):     
+    def emulatorCallback(self, selectedFile):
+        self.selectedFile = selectedFile  
+        
+
+        if("emu" in self.config["mainMenu"][self.currentIndex] and selectedFile != None):
+            emus = []
+            for e in self.config["mainMenu"][self.currentIndex]["emu"]:
+                emus.append(e["name"])
+
+            if(len(emus) > 1):
+                overlay = SelectionMenu.SelectionMenu(self.screen, emus, self.emuSelectionCallback)
+                self.subComponent.setOverlay(overlay)
+            elif(len(emus) == 1):
+                 self.emuSelectionCallback(0, emus[0])
+            elif(len(emus) == 0):
+                self.subComponent = None
+                self.overlay = ConfirmOverlay.ConfirmOverlay("Emulator not found!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
+                RenderControl.setDirty()
+
+            return
+
+        ##old config
         self.subComponent = None
         if(selectedFile != None):
-            Runner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
+                Runner.runEmu(self.config["mainMenu"][self.currentIndex], selectedFile)
+     
+  
+    def emuSelectionCallback(self, index, selection):
+       
+        self.subComponent.setOverlay(None)
+
+        if(index != -1):
+            self.subComponent = None
+
+            if(self.selectedFile != None):
+                data = copy.deepcopy(self.config["mainMenu"][self.currentIndex])
+                data["cmd"] = data["emu"][index]["cmd"]
+                data["workingDir"] = data["emu"][index]["workingDir"]
+                Runner.runEmu(data, self.selectedFile)
+     
+            print(str(selection) + " " + str(index) + " " + str(data["emu"][index]))
 
     def infoCallback(self, res):
         self.overlay = None
@@ -412,6 +450,8 @@ class MainMenu(RenderObject.RenderObject):
         else:
             return self.currentIndex - stride
         
+    def clearOverlay(self, res):
+        self.overlay = None
 
     def render(self, screen):
         if(self.subComponent != None):

@@ -5,7 +5,7 @@ import platform
 import json
 from operator import itemgetter
 
-class NativeAppList(AbstractList.AbstractList):
+class EmulatorList(AbstractList.AbstractList):
    
     folderIcon = Common.loadImage( "theme/folder.png")
     fileIcon =  Common.loadImage( "theme/file.png")
@@ -14,10 +14,9 @@ class NativeAppList(AbstractList.AbstractList):
     options = None
   
 
-    configOptions = json.load(open('config/optionsNative.json'))
+    configOptions = json.load(open('config/optionsEmulator.json'))
 
-    previewCache = {}
-
+  
     currentSelection = None
 
     def render(self, screen):
@@ -38,50 +37,13 @@ class NativeAppList(AbstractList.AbstractList):
   
 
     def onSelect(self):
-        if(len(self.entryList) > 0):            
-            if("selector" in self.entryList[self.currentIndex]["options"] and self.entryList[self.currentIndex]["options"]["selector"]):              
-                self.openSelection()
-            else:
-                ResumeHandler.setLastSelectedLine(self.currentIndex)
-                self.callback(self.entryList[self.currentIndex]["options"])                    
+       pass                    
     
     def onExit(self):         
         self.callback(None)    
 
     def openSelection(self):        
-        options = {}
-        options["textColor"] = (55,55,55)
-        options["background"] = self.options["background"]
-        options["useSidebar"] = False
-
-        if("selectDescription" in self.entryList[self.currentIndex]["options"]):
-            options["description"] =  self.entryList[self.currentIndex]["options"]["selectDescription"]
-
-        if("folderIcon" in  self.options):
-            options["folderIcon"] =  self.options["folderIcon"]
-              
-        
-        if("fileFilter" in  self.entryList[self.currentIndex]["options"]):
-            options["fileFilter"] = self.entryList[self.currentIndex]["options"]["fileFilter"]
-
-        if("selectionPath" in self.entryList[self.currentIndex]["options"]):
-            selectionPath = self.entryList[self.currentIndex]["options"]["selectionPath"]
-        else:
-            selectionPath = "/"
-
-        
-
-        self.subComponent = FileChooser.FileChooser(self.screen,self.entryList[self.currentIndex]["options"]["name"], selectionPath, False, options, self.selectionCallback)
-        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
-        self.subComponent.setFooter(footer)
-
-    def selectionCallback(self, selection):      
-        self.subComponent = None
-
-        if(selection is not None):
-            self.entryList[self.currentIndex]["options"]["selection"] = selection
-            ResumeHandler.setLastSelectedLine(self.currentIndex)
-            self.callback(self.entryList[self.currentIndex]["options"])
+        pass
 
     
     def onChange(self):
@@ -90,20 +52,15 @@ class NativeAppList(AbstractList.AbstractList):
          
             return
 
-        if(len(self.entryList) - 1 < self.currentIndex):
+       
+        elif (len(self.entryList) - 1 < self.currentIndex):
             self.currentIndex = len(self.entryList) - 1
 
+        if(len(self.entryList) == 1):
+            self.currentIndex == 0
+        
+
         self.currentSelection = self.entryList[self.currentIndex]["options"]
-
-        if("preview" in self.currentSelection and os.path.isfile(self.currentSelection["preview"])):
-            self.previewPath = self.currentSelection["preview"]
-        else:
-            self.previewPath = None
-
-        if("description" in self.currentSelection):           
-            self.entryDescription = self.currentSelection["description"]
-        else:
-            self.entryDescription = None
             
        
 
@@ -120,15 +77,16 @@ class NativeAppList(AbstractList.AbstractList):
         for event in events:    
             if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
-                    if("type" in self.options and self.options["type"] == "lastPlayed"):
-                        pass        
+                
+                    if(len(self.data) == 0):
+                        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
                     else:
-                        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
-                            if(len(self.options) == 0):
-                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
-                            else:
-                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
-                            RenderControl.setDirty()
+                        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
+                    RenderControl.setDirty()
+            if event.type == pygame.KEYUP:         
+                if event.key == Keys.DINGOO_BUTTON_START:
+                   self.callback(self.data)
+                   return
 
         if(self.overlay is None):
             AbstractList.AbstractList.handleEvents(self, events)
@@ -149,13 +107,13 @@ class NativeAppList(AbstractList.AbstractList):
           
      
         if(text == "add"):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new emulator",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
         if(text == "edit"):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit emulator",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.currentSelection ,self.configOptions ,self.addEditCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
@@ -170,21 +128,18 @@ class NativeAppList(AbstractList.AbstractList):
         self.overlay = None
         if(res == 1):            
             self.data.remove(self.currentSelection)
-            Configuration.saveConfiguration()          
+          
             self.initList()
-            self.setSelection(self.currentIndex - 1)
 
-   
-            
 
     def addEditCallback(self, configCallback):        
         if(configCallback != None and not configCallback in self.data):
             self.data.append(configCallback)            
-   
-        Configuration.saveConfiguration()            
+     
         self.subComponent = None
         self.initList()
-        
+       
+
         if(self.currentIndex == -1):
             self.setSelection(0)
         else:
@@ -196,22 +151,25 @@ class NativeAppList(AbstractList.AbstractList):
             name = os.path.basename(config["cmd"])
             name = os.path.splitext(name)[0]
             config["name"] = name
+        
+       
     
 
     def getEmptyData(self):
         emptyEntry = {
             "name": None,
             "cmd":".",
-            "icon":".",
-            "preview":".",
-            "screen":"default",
-            "overclock":"528"
+            "workingDir":"."
+           
         }
         return emptyEntry
 
 
     def __init__(self, screen, titel, data, options, callback):        
         AbstractList.AbstractList.__init__(self, screen, titel, options)
+
+        if(data == None):
+            data = []
                  
         self.options = options
         self.callback = callback
@@ -225,16 +183,6 @@ class NativeAppList(AbstractList.AbstractList):
 
         self.initList()
 
-        res = ResumeHandler.getResumeFile()
-
-        if(res != None and res["line"] != None and ("type" in options and options["type"] != "lastPlayed")): 
-            self.setSelection(res["line"])
-            self.onChange()
-
-            if(not self.currentSelection  == None):
-                self.previewPath = self.currentSelection["preview"]
-                self.preview_final = self.previewPath
-
-            RenderControl.setDirty()           
+                  
       
       

@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
-import os, RenderControl, Keys
-import pygame, sys, ntpath
+import os, RenderControl, Keys, EmulatorList
+import pygame, sys, ntpath, copy
 
 from operator import itemgetter
 
@@ -70,12 +70,49 @@ class ConfigMenu(AbstractList.AbstractList):
                 self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["names"], self.listCallback)
             else:
                 self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
+        if(self.entryList[self.currentIndex]["type"] == "emu"):
+            options = {}
+            options["useSidebar"] = False
 
+            
+            data = copy.deepcopy(self.entryList[self.currentIndex]["value"] )
+            ##inject default if non found
+            if(data == None or len(data) == 0):
+                data = []
+                default = {}
+                default["cmd"] = self.optionTarget["cmd"] if "cmd" in self.optionTarget else "."
+                default["workingDir"] = self.optionTarget["workingDir"] if "workingDir" in self.optionTarget else "."
+                default["name"] = "default"
+                data.append(default)
+               
+            self.subComponent = EmulatorList.EmulatorList(self.screen, "Emulators",data, options, self.emuListCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options"),("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+
+    def emuListCallback(self, data):
+
+      
+
+        if(data != None):
+            self.optionTarget[self.entryList[self.currentIndex]["id"]] = data
+            
+            # remove old configuration if new is present
+            if "cmd" in self.optionTarget:
+                del self.optionTarget["cmd"]
+            
+            if "workingDir" in self.optionTarget:
+                del self.optionTarget["workingDir"]
+
+        self.fireConfigChanged()
+        self.initList()
+        self.subComponent = None
+        RenderControl.setDirty() 
+    
     def textCallback(self, text):      
         if(text == None):
             text = self.optionTarget[self.entryList[self.currentIndex]["id"]]
 
-        print("Got new text for: " + self.entryList[self.currentIndex]["id"]  + ": " + text)
+        print("Got new text for: " + self.entryList[self.currentIndex]["id"]  + ": " + str(text))
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = text
         self.fireConfigChanged()
         self.initList()
@@ -92,6 +129,7 @@ class ConfigMenu(AbstractList.AbstractList):
         self.optionTarget[self.entryList[self.currentIndex]["id"]] = (text == "True")
         self.fireConfigChanged()
         self.initList()
+
       
 
     def fileFolderCallback(self, folder):
@@ -179,6 +217,10 @@ class ConfigMenu(AbstractList.AbstractList):
                 entry["text"] = self.entryFont.render( entry["name"] + ": " + str(o["names"][o["values"].index(entry["value"])]) , True, self.textColor)
             else:      
                 entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)
+            
+            if(o["type"] == "emu"):
+                entry["text"] =  self.entryFont.render( entry["name"] + ": ...", True, self.textColor)
+
 
             self.entryList.append(entry)
         self.onChange()

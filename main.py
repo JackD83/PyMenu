@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, Common
+import sys, Common, traceback
 
 # catch global exception and try to enable usb
 def except_hook(exctype, value, traceback):
@@ -105,4 +105,5 @@ try:
     init()
 except Exception as err:
     print(str(err))
+    traceback.print_exc()
     except_hook(None, None, None)

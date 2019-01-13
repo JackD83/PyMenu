@@ -11,10 +11,16 @@ class FileChooser(AbstractList.AbstractList):
     folderIcon = Common.loadImage( "theme/folder.png")
     reset = None
     
-
+    overlay = None
    
     currentSelection = ""
     previewTmp = None
+
+    def render(self, screen):
+        AbstractList.AbstractList.render(self, screen)      
+
+        if(self.overlay != None):           
+            self.overlay.render(screen)
 
     def renderText(self, entry):
         text = self.entryFont.render(self.filterName(entry["name"]), True, self.textColor)
@@ -47,6 +53,9 @@ class FileChooser(AbstractList.AbstractList):
             self.initList()
         
         print("new current path is", self.currentPath)
+    
+    def setOverlay(self, overlay):
+        self.overlay = overlay
            
     def moveFolderUp(self):
         self.reset = None
@@ -102,6 +111,10 @@ class FileChooser(AbstractList.AbstractList):
 
 
     def handleEvents(self, events):     
+        if(self.overlay != None):
+            self.overlay.handleEvents(events)
+            return
+
         for event in events:    
             if event.type == pygame.KEYDOWN:                        
                 if event.key == Keys.DINGOO_BUTTON_LEFT:

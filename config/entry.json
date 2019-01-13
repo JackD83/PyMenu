@@ -25,14 +25,10 @@
     "type":"image",
     "description": "Icon used in rom selection"
 },
-{   "id":"cmd",
-    "name" :"Executable",
-    "type":"file"   
-},
-{   "id":"workingDir",
-    "name" :"Work directory",
-    "type":"folder",
-    "description": "Folder where exe is called"
+{   "id":"emu",
+    "name" :"Emulators",
+    "description": "Configure multiple emulators",
+    "type":"emu"   
 },
 {   "id":"useSelection",
     "name" :"Use Selection",
