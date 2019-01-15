@@ -75,7 +75,7 @@ class NativeAppList(AbstractList.AbstractList):
         footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
         self.subComponent.setFooter(footer)
 
-    def selectionCallback(self, selection):      
+    def selectionCallback(self, selection, key=Keys.DINGOO_BUTTON_A):      
         self.subComponent = None
 
         if(selection is not None):

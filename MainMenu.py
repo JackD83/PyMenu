@@ -235,7 +235,7 @@ class MainMenu(RenderObject.RenderObject):
                 options["useFileFilter"] = current["useFileFilter"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"),("theme/start_button.png", "Open with"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)
                
                      
@@ -389,23 +389,21 @@ class MainMenu(RenderObject.RenderObject):
         print("Text callback, got text: " + text)
         self.subComponent = None
 
-    def emulatorCallback(self, selectedFile):
-        self.selectedFile = selectedFile  
-        
+    def emulatorCallback(self, selectedFile, key=Keys.DINGOO_BUTTON_A):
+        self.selectedFile = selectedFile 
 
         if("emu" in self.config["mainMenu"][self.currentIndex] and selectedFile != None):
             emus = []
             for e in self.config["mainMenu"][self.currentIndex]["emu"]:
                 emus.append(e["name"])
 
-            if(len(emus) > 1):
+            if(len(emus) > 0 and key == Keys.DINGOO_BUTTON_START):
                 overlay = SelectionMenu.SelectionMenu(self.screen, emus, self.emuSelectionCallback)
                 self.subComponent.setOverlay(overlay)
-            elif(len(emus) == 1):
-                 self.emuSelectionCallback(0, emus[0])
+        
             elif(len(emus) == 0):
                 self.subComponent = None
-                self.overlay = ConfirmOverlay.ConfirmOverlay("Emulator not found!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
+                self.overlay = ConfirmOverlay.ConfirmOverlay("Emulator not configured!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
                 RenderControl.setDirty()
 
             return

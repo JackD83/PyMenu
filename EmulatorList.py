@@ -1,6 +1,6 @@
 import RenderObject, Configuration, AbstractList, ConfigMenu, Footer, ConfirmOverlay
 import os, Keys, RenderControl, Common, SelectionMenu, FileChooser
-import pygame, sys, ResumeHandler, os
+import pygame, sys, ResumeHandler, os, copy
 import platform
 import json
 from operator import itemgetter
@@ -45,7 +45,24 @@ class EmulatorList(AbstractList.AbstractList):
     def openSelection(self):        
         pass
 
-    
+    def moveUp(self):
+        if( self.currentIndex - 1  > -1):
+            cp = copy.deepcopy(self.data[self.currentIndex])
+            del self.data[self.currentIndex]
+            self.data.insert(self.currentIndex - 1, cp)
+            self.initList()
+            self.setSelection(self.currentIndex - 1)
+        
+
+    def moveDown(self):
+        if( self.currentIndex + 1  < len(self.data)):
+            cp = copy.deepcopy(self.data[self.currentIndex])
+            del self.data[self.currentIndex]
+            self.data.insert(self.currentIndex + 1, cp)
+            self.initList()
+            self.setSelection(self.currentIndex + 1)
+        
+
     def onChange(self):
         if(len(self.entryList) == 0):
             self.previewPath = None
@@ -83,6 +100,16 @@ class EmulatorList(AbstractList.AbstractList):
                     else:
                         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
                     RenderControl.setDirty()
+                    return
+                elif event.key == Keys.DINGOO_BUTTON_L:
+                    self.moveUp()
+                    RenderControl.setDirty()
+                    return
+                elif event.key == Keys.DINGOO_BUTTON_R:
+                    self.moveDown()
+                    RenderControl.setDirty()
+                    return
+
             if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_START:
                    self.callback(self.data)

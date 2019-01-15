@@ -71,7 +71,7 @@ class FileChooser(AbstractList.AbstractList):
         AbstractList.AbstractList.setFooter(self, footer)
         
         
-    def onSelect(self):
+    def onSelect(self, key=Keys.DINGOO_BUTTON_A):
         if(len(self.entryList) == 0):
             self.callback(None)
             return
@@ -81,7 +81,7 @@ class FileChooser(AbstractList.AbstractList):
         else:
             ResumeHandler.setLastSelectedLine(self.currentIndex)
             ResumeHandler.setLastPath(os.path.normpath(self.currentPath + "/"))
-            self.callback(os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"]))
+            self.callback(os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"]), key)
     
     def onExit(self):
         if(self.selectFolder):
@@ -125,11 +125,14 @@ class FileChooser(AbstractList.AbstractList):
                     if(self.selectFolder):
                         if(self.entryList[self.currentIndex]["isFolder"] and self.entryList[self.currentIndex]["name"] != ".."):
                             self.callback(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
+                            
                         else:
                             self.callback(self.currentPath)
-                        
+                            
                         RenderControl.setDirty()
-                    
+                        return
+                    else:
+                        self.onSelect(Keys.DINGOO_BUTTON_START)
                
 
         AbstractList.AbstractList.handleEvents(self, events)

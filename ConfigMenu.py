@@ -103,6 +103,8 @@ class ConfigMenu(AbstractList.AbstractList):
             if "workingDir" in self.optionTarget:
                 del self.optionTarget["workingDir"]
 
+            print(str(self.optionTarget))
+
         self.fireConfigChanged()
         self.initList()
         self.subComponent = None
@@ -132,7 +134,7 @@ class ConfigMenu(AbstractList.AbstractList):
 
       
 
-    def fileFolderCallback(self, folder):
+    def fileFolderCallback(self, folder, key=Keys.DINGOO_BUTTON_A):
         if(folder == None):
             folder =  self.optionTarget[self.entryList[self.currentIndex]["id"]]
 

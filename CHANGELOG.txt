@@ -26,3 +26,7 @@ Version 1.0.2
 Version 1.0.3
 - made type, screenfix and volume control accessible in options
 - added "useFileFilter" option for rom selection. Disable if your roms are not showing
+
+Version 1.0.4
+- added multiple emulators configuration, press "start" to change used emulator, a uses first in emulator list
+  list order can be changed by pressing shoulder buttons
