@@ -400,6 +400,8 @@ class MainMenu(RenderObject.RenderObject):
             if(len(emus) > 0 and key == Keys.DINGOO_BUTTON_START):
                 overlay = SelectionMenu.SelectionMenu(self.screen, emus, self.emuSelectionCallback)
                 self.subComponent.setOverlay(overlay)
+            elif(len(emus) > 0):
+                 self.emuSelectionCallback(0, emus[0])
         
             elif(len(emus) == 0):
                 self.subComponent = None
