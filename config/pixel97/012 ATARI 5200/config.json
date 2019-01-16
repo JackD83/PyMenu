@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/a5200.png", 
     "cmd": "/mnt/int_sd/emus/dingux_atari/dingux-atari", 
     "description": "Atari 5200", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dingux_atari/dingux-atari", 
+            "name": "dingux-atari", 
+            "workingDir": "/mnt/int_sd/emus/dingux_atari"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".a52", 
@@ -25,6 +32,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/atari5200", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/dingux_atari"

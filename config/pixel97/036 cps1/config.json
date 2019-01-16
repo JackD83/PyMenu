@@ -2,15 +2,28 @@
     "background": "images/pixel97/backgrounds/cps1.png", 
     "cmd": "/mnt/int_sd/emus/fba-a320/fbasdl.dge", 
     "description": "Capcom Play Sys 1", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/fba-a320/fbasdl.dge", 
+            "name": "fba320", 
+            "workingDir": "/mnt/int_sd/emus/fba-a320"
+        }, 
+        {
+            "cmd": "/mnt/int_sd/emus/fba-gcw0/fbasdl.dge", 
+            "name": "fba-gcw0", 
+            "workingDir": "/mnt/int_sd/emus/fba-gcw0"
+        }
+    ], 
     "folderIcon": "images/pixel97/icons/fba1.png", 
     "icon": "images/pixel97/systems/cps1.png", 
     "legacy": false, 
     "name": "CPS1", 
-    "overclock": "524", 
+    "overclock": "624", 
     "previews": "/mnt/int_sd/roms/cps1/previews", 
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/cps1", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": true, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/fba-a320"

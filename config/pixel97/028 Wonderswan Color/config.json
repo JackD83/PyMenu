@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/wsc.png", 
     "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
     "description": "Wonderswan Color", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+            "name": "oswan", 
+            "workingDir": "/mnt/int_sd/emus/oswan"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".ws", 
@@ -16,6 +23,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/wswanc", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/oswan"

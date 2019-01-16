@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/gg.png", 
     "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
     "description": "SEGA Game Gear", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+            "name": "sms", 
+            "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".gg", 
@@ -16,6 +23,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/gg", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": false, 
     "useSelection": true, 
     "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"

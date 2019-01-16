@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/c64.png", 
     "cmd": "/mnt/int_sd/emus/vice/x64", 
     "description": "Commodore c64", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/vice/x64", 
+            "name": "vice", 
+            "workingDir": "/mnt/int_sd/emus/vice"
+        }
+    ], 
     "folderIcon": "images/pixel97/icons/c64.png", 
     "icon": "images/pixel97/systems/c64.png", 
     "legacy": false, 
@@ -12,6 +19,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/c64", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/vice"

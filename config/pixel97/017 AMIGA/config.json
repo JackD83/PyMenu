@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/amiga.png", 
     "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
     "description": "Commodore Amiga", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/uae4all/uae4all", 
+            "name": "uae4all", 
+            "workingDir": "/mnt/int_sd/emus/uae4all"
+        }
+    ], 
     "folderIcon": "images/pixel97/icons/amiga.png", 
     "icon": "images/pixel97/systems/amiga.png", 
     "legacy": false, 
@@ -12,6 +19,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/amiga", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/uae4all"

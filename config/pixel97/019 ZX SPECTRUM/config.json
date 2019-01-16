@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/zxs.png", 
     "cmd": "/mnt/int_sd/emus/speccy/speccy", 
     "description": "Sinclair ZX Spectrum", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/speccy/speccy", 
+            "name": "speccy", 
+            "workingDir": "/mnt/int_sd/emus/speccy"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".sna", 
@@ -26,6 +33,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/zxspectrum", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/speccy"

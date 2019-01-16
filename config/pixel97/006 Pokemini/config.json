@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/pokemini.png", 
     "cmd": "/mnt/int_sd/emus/pokemini/pokemini.dge", 
     "description": "Pokemon Mini", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/pokemini/pokemini.dge", 
+            "name": "pokemini", 
+            "workingDir": "//mnt/int_sd/emus/pokemini"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".min"
@@ -15,6 +22,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/pokemini", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": true, 
     "useSelection": true, 
     "workingDir": "//mnt/int_sd/emus/pokemini"

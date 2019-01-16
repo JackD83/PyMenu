@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/cpc.png", 
     "cmd": "/mnt/int_sd/emus/dingux_cap32/dingux-cap32", 
     "description": "Amstrad CPC", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dingux_cap32/dingux-cap32", 
+            "name": "cap32", 
+            "workingDir": "/mnt/int_sd/emus/dingux_cap32"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".dsk", 
@@ -17,6 +24,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/dingux_cap32"

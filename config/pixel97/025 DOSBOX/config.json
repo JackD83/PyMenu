@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/pc.png", 
     "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
     "description": "DOSBOX emulation", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
+            "name": "dosbox", 
+            "workingDir": "/mnt/int_sd/emus/dosbox"
+        }
+    ], 
     "fileFilter": [
         ".exe", 
         ".bat", 
@@ -16,6 +23,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/pc", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/dosbox"

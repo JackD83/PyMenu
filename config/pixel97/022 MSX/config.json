@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/msx.png", 
     "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx", 
     "description": "Microsoft MSX", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dingux-msx/dingux-msx", 
+            "name": "msx", 
+            "workingDir": "/mnt/int_sd/emus/dingux-msx"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".rom", 
@@ -20,6 +27,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/msx", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/dingux-msx"

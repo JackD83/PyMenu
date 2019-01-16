@@ -2,6 +2,18 @@
     "background": "images/pixel97/backgrounds/fba.png", 
     "cmd": "/mnt/int_sd/emus/fba-gcw0/fbasdl.dge", 
     "description": "Final Burn Alpha", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/fba-gcw0/fbasdl.dge", 
+            "name": "fba-gcw0", 
+            "workingDir": "/mnt/int_sd/emus/fba-gcw0"
+        }, 
+        {
+            "cmd": "/mnt/int_sd/emus/fba-a320/fbasdl.dge", 
+            "name": "fba320", 
+            "workingDir": "/mnt/int_sd/emus/fba-a320"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".fba"
@@ -15,6 +27,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/cps1", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": true, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/fba-gcw0"

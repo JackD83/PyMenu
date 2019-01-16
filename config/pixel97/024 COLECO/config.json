@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/coleco.png", 
     "cmd": "/mnt/int_sd/emus/colem/run.dge", 
     "description": "ColecoVision", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/colem/run.dge", 
+            "name": "colem", 
+            "workingDir": "/mnt/int_sd/emus/colem"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".bin", 
@@ -18,6 +25,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/collecovision", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/colem"

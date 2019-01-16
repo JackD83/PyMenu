@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/scummvm.png", 
     "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
     "description": "Lucas Arts", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
+            "name": "scummvm", 
+            "workingDir": "/mnt/int_sd/emus/scummvm"
+        }
+    ], 
     "folderIcon": "images/pixel97/icons/scummvm.png", 
     "icon": "images/pixel97/systems/scummvm.png", 
     "legacy": false, 
@@ -12,6 +19,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/scummvm", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/scummvm"

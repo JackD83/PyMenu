@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/int.png", 
     "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
     "description": "IntelliVision", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/jzintv/jzintv", 
+            "name": "jzintv", 
+            "workingDir": "/mnt/int_sd/emus/jzintv"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".bin", 
@@ -18,6 +25,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/intellevision", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/jzintv"

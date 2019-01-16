@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/bbcmicro.png", 
     "cmd": "/mnt/int_sd/emus/beebem/beebem", 
     "description": "BCC Micro Computer", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/beebem/beebem", 
+            "name": "beebem", 
+            "workingDir": "/mnt/int_sd/emus/beebem"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".img", 
@@ -23,6 +30,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/emus/beebem/roms", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": false, 
     "workingDir": "/mnt/int_sd/emus/beebem"

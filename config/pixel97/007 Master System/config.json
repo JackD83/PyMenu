@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/sms.png", 
     "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
     "description": "SEGA Master System", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+            "name": "sms", 
+            "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".bin", 
@@ -16,6 +23,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/mastersystem", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"

@@ -2,6 +2,18 @@
     "background": "images/pixel97/backgrounds/gbc.png", 
     "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
     "description": "Gameboy Color", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/ohboy/ohboy", 
+            "name": "ohboy", 
+            "workingDir": "/mnt/int_sd/emus/ohboy"
+        }, 
+        {
+            "cmd": "/mnt/int_sd/emus/gamebatte/gambatte_sdl", 
+            "name": "gambatte", 
+            "workingDir": "/mnt/int_sd/emus/gamebatte"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".gb", 
@@ -16,6 +28,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/gbc", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/gamebatte"

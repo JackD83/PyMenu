@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/megadrive.png", 
     "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
     "description": "SEGA Megadrive", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/picodrive/PicoDrive", 
+            "name": "PicoDrive", 
+            "workingDir": "/mnt/int_sd/emus/picodrive"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".md"
@@ -16,6 +23,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/megadrive", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/picodrive"

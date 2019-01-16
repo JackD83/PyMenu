@@ -2,6 +2,13 @@
     "background": "images/pixel97/backgrounds/a2600.png", 
     "cmd": "/mnt/int_sd/emus/dingux_2600/dingux-2600", 
     "description": "ATARI 2600", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dingux_2600/dingux-2600", 
+            "name": "dingux-2600", 
+            "workingDir": "/mnt/int_sd/emus/dingux_2600"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".bin", 
@@ -18,6 +25,7 @@
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/atari2600", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/dingux_2600"
