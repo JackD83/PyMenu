@@ -109,16 +109,25 @@ class MainMenu(RenderObject.RenderObject):
                 if event.key == Keys.DINGOO_BUTTON_SELECT:                    
                     self.openOptions()
                     RenderControl.setDirty()
+                if event.key == Keys.DINGOO_BUTTON_START:
+                    if(self.config["mainMenu"][self.currentIndex]["useSelection"] == False):          
+                        self.emulatorCallback("", Keys.DINGOO_BUTTON_START, True)
+                        RenderControl.setDirty()
+                    else:
+                        self.select()
                 if event.key == Keys.DINGOO_BUTTON_A:
-                    if(self.selection == "band"):
-                        self.openSelection(self.config["mainMenu"][self.currentIndex])
-                    if(self.selection == "power"):
-                       self.openPowerMenu()
-                    
-                    if(self.selection == "settings"):
-                        self.openSettings()
+                   self.select()
 
-                    RenderControl.setDirty()            
+    def select(self):
+        if(self.selection == "band"):
+            self.openSelection(self.config["mainMenu"][self.currentIndex])
+        if(self.selection == "power"):
+            self.openPowerMenu()
+        
+        if(self.selection == "settings"):
+            self.openSettings()
+
+        RenderControl.setDirty()     
                 
 
     def transitionCallback(self, start, target, current, finished):
@@ -207,7 +216,7 @@ class MainMenu(RenderObject.RenderObject):
 
             if("useSelection" in current and current["useSelection"] == False):
                 print("Running emulator directly")
-                Runner.runNative(self.config["mainMenu"][self.currentIndex])
+                self.emulatorCallback("", Keys.DINGOO_BUTTON_A, False)
                 return
 
 
@@ -389,8 +398,9 @@ class MainMenu(RenderObject.RenderObject):
         print("Text callback, got text: " + text)
         self.subComponent = None
 
-    def emulatorCallback(self, selectedFile, key=Keys.DINGOO_BUTTON_A):
-        self.selectedFile = selectedFile 
+    def emulatorCallback(self, selectedFile, key=Keys.DINGOO_BUTTON_A, direct=False):
+        self.selectedFile = selectedFile
+       
 
         if("emu" in self.config["mainMenu"][self.currentIndex] and selectedFile != None):
             emus = []
@@ -399,7 +409,11 @@ class MainMenu(RenderObject.RenderObject):
 
             if(len(emus) > 0 and key == Keys.DINGOO_BUTTON_START):
                 overlay = SelectionMenu.SelectionMenu(self.screen, emus, self.emuSelectionCallback)
-                self.subComponent.setOverlay(overlay)
+                if(direct):
+                    self.overlay = overlay
+                else:
+                    self.subComponent.setOverlay(overlay)
+
             elif(len(emus) > 0):
                  self.emuSelectionCallback(0, emus[0])
         
@@ -418,7 +432,10 @@ class MainMenu(RenderObject.RenderObject):
   
     def emuSelectionCallback(self, index, selection):
        
-        self.subComponent.setOverlay(None)
+        if(self.subComponent != None):
+            self.subComponent.setOverlay(None)
+        else:
+            self.overlay = None
 
         if(index != -1):
             self.subComponent = None
