@@ -87,6 +87,13 @@ def changeConfigName(name):
 
 def saveConfiguration():
 
+    ##inject lastPlayd to get it saved. Ugly!
+    try:
+        lastPlayed = json.load(open("config/" + configuration["options"]["configName"] + "/lastPlayed.json"))
+        configuration["mainMenu"].append(lastPlayed)     
+    except Exception:
+        pass
+        
     try:
         subprocess.Popen(["sync"])
     except Exception:
@@ -127,7 +134,7 @@ def saveConfiguration():
             storeConfigPart(fileName, item)
         elif(item["type"] == "lastPlayed"):
             dataName = "config/" + configuration["options"]["configName"] + "/lastPlayed.json"
-            del item["data"]
+            if("data" in item): del item["data"]
             storeConfigPart(dataName, item)
 
        
