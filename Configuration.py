@@ -43,7 +43,7 @@ def reloadConfiguration():
                     if("available" not in entry or entry["available"] == None or 
                     configuration["options"]["type"] in entry["available"] or
                     configuration["options"]["showAll"] ):
-                    
+
                         appendTheme(entry)
                         configuration["mainMenu"].append(entry)
                        
@@ -56,8 +56,13 @@ def reloadConfiguration():
                                 for itemName in itemlist:
                                     item = json.load(open("config/main/" + name + "/items/" + itemName))
                                     item["source"] = itemName
-                                    appendTheme(item)
-                                    entry["data"].append(item)
+
+                                    if("available" not in item or item["available"] == None or
+                                        configuration["options"]["type"] in item["available"] or
+                                        configuration["options"]["showAll"] ):
+
+                                        appendTheme(item)
+                                        entry["data"].append(item)
 
                                     
                             except Exception as ex:
