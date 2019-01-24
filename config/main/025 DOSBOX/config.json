@@ -1,0 +1,30 @@
+{
+    "available": [
+        "RS97"
+    ], 
+    "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
+    "description": "DOSBOX emulation", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/dosbox/dosbox", 
+            "name": "dosbox", 
+            "workingDir": "/mnt/int_sd/emus/dosbox"
+        }
+    ], 
+    "fileFilter": [
+        ".exe", 
+        ".bat", 
+        ".sh"
+    ], 
+    "legacy": false, 
+    "name": "PC", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/pc/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/pc", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/dosbox"
+}

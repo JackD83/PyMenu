@@ -23,42 +23,103 @@ def reloadConfiguration():
         print("forcing type to RS97")
         configuration["options"]["type"] = "RS97"
 
+    if("themeName" not in configuration["options"]):
+        configuration["options"]["themeName"] = "default"
+
+
     configuration["mainMenu"] = []
   
     setResolution()
 
 
-    if( configuration["options"]["configName"] != "main" and 
-        not os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/"))):
-         changeConfigName("main")
-         reloadConfiguration()
-         return
-
-    if os.path.exists(os.path.dirname("config/" + configuration["options"]["configName"]  + "/")):
-        fileList = os.listdir("config/" + configuration["options"]["configName"]  + "/")
+    if os.path.exists(os.path.dirname("config/main/")):
+        fileList = os.listdir("config/main/")
         Common.quick_sort(fileList)       
         for name in fileList:
             try:         
-                if(os.path.isdir("config/" + configuration["options"]["configName"]  + "/" + name )):       
-                    entry = json.load(open("config/" + configuration["options"]["configName"]  + "/" + name + "/config.json"))
+                if(os.path.isdir("config/main/" + name )):       
+                    entry = json.load(open("config/main/" + name + "/config.json"))
                     entry["source"] = name
-                    configuration["mainMenu"].append(entry)
-                    if(entry["type"] == "native"):
-                        entry["data"] = []
-                        try:
-                            itemlist =  os.listdir("config/" + configuration["options"]["configName"]  + "/" + name + "/items")
-                            Common.quick_sort(itemlist) 
-                            for itemName in itemlist:
-                                item = json.load(open("config/" + configuration["options"]["configName"]  + "/" + name + "/items/" + itemName))
-                                item["source"] = itemName
-                                entry["data"].append(item)
-                        except Exception as ex:
-                            print(str(ex))
+                    if("available" not in entry or configuration["options"]["type"] in entry["available"] or
+                    configuration["options"]["showAll"] ):
+                        appendTheme(entry)
+                        configuration["mainMenu"].append(entry)
+                       
+
+                        if(entry["type"] == "native"):
+                            entry["data"] = []
+                            try:
+                                itemlist =  os.listdir("config/main/" + name + "/items")
+                                Common.quick_sort(itemlist) 
+                                for itemName in itemlist:
+                                    item = json.load(open("config/main/" + name + "/items/" + itemName))
+                                    item["source"] = itemName
+                                    appendTheme(item)
+                                    entry["data"].append(item)
+
+                                    
+                            except Exception as ex:
+                                print(str(ex))
                 
 
             except Exception as ex:
-                print(str(ex))                  
-    
+                print(str(ex))  
+
+    print("Load finished!!!")
+
+def appendTheme(entry):
+    themeName = configuration["options"]["themeName"]
+    entryName = entry["name"]
+
+    try:
+        if os.path.exists("theme/" + themeName + "/" + entryName + ".json"):
+            themeConfig = json.load(open("theme/" + themeName + "/" + entryName + ".json")) 
+            entry.update(themeConfig)
+        else:
+            #print("loaded default config for " + entryName)
+            if("type" in entry):
+                #if it hast type param, its a main menu entry
+               
+                themeConfig = json.load(open("theme/default.json")) 
+                entry.update(themeConfig)
+
+            
+    except Exception as ex:
+        print(str(ex))
+
+def saveTheme(entry):
+    themeName = configuration["options"]["themeName"]
+    entryName = entry["name"]
+    try:
+        theme = {}
+        if "folderIcon" in entry:
+            theme["folderIcon"] = entry["folderIcon"]
+            del entry["folderIcon"]
+        if "icon" in entry: 
+            theme["icon"] = entry["icon"]
+            del entry["icon"]
+        if "background" in entry: 
+            theme["background"] = entry["background"]
+            del entry["background"]
+        if "preview" in entry: 
+            theme["preview"] = entry["preview"]
+            del entry["preview"]
+
+        if os.path.exists("theme/" + themeName + "/" + entryName + ".json"):
+            #print("Duplicate name! " + str(entryName) )
+            pass
+
+        with open("theme/" + themeName + "/" + entryName + ".json", 'w') as fp: 
+            json.dump(theme, fp,sort_keys=True, indent=4) 
+
+
+    except Exception as ex:
+        print(str(ex))
+
+   
+
+
+
 
 def setResolution():
     global configuration
@@ -77,32 +138,16 @@ def setResolution():
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
 
-def changeConfigName(name):
-    allConfig = copy.deepcopy(configuration)
-    allConfig["options"]["configName"] = name
-    del allConfig["mainMenu"]
-
-    with open('config/config.json', 'w') as fp: 
-        json.dump(allConfig, fp,sort_keys=True, indent=4)
 
 def saveConfiguration():
-
-    ##inject lastPlayd to get it saved. Ugly!
-    try:
-        lastPlayed = json.load(open("config/" + configuration["options"]["configName"] + "/lastPlayed.json"))
-        configuration["mainMenu"].append(lastPlayed)     
-    except Exception:
-        pass
         
+
+    print("saving")
     try:
         subprocess.Popen(["sync"])
     except Exception:
         pass
-      
-    try:
-        shutil.rmtree("config/" + configuration["options"]["configName"]) 
-    except Exception as ex:
-        print(str(ex))     
+         
     
     allConfig = copy.deepcopy(configuration)
     main = allConfig["mainMenu"]
@@ -113,33 +158,38 @@ def saveConfiguration():
 
     for index, item in enumerate(main):
         if( "source" not in item):
-            fileName = "config/" + configuration["options"]["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
+            fileName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
         else:
-            fileName = "config/" + configuration["options"]["configName"]  + "/" + item["source"] + "/config.json"
+            fileName = "config/main/" + item["source"] + "/config.json"
 
         if(item["type"] == "native"):
             data = item["data"]
             item.pop('data', None)
             for dataIndex, dataItem in enumerate(data):
                 if("source" not in dataItem):
-                    dataName = "config/" + configuration["options"]["configName"]  + "/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
+                    dataName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
                 else:
-                    dataName = "config/" + configuration["options"]["configName"]  + "/" + item["source"] + "/items/" + dataItem["source"]
+                    dataName = "config/main/" + item["source"] + "/items/" + dataItem["source"]
 
                 if "source" in dataItem: del dataItem["source"]
                 storeConfigPart(dataName, dataItem)
+                saveTheme(dataItem)
 
         if(item["type"] != "lastPlayed"):
             if "source" in item: del item["source"]
+            saveTheme(item)
             storeConfigPart(fileName, item)
         elif(item["type"] == "lastPlayed"):
-            dataName = "config/" + configuration["options"]["configName"] + "/lastPlayed.json"
+            dataName = "config/" + "main" + "/lastPlayed.json"
             if("data" in item): del item["data"]
+            saveTheme(item)
             storeConfigPart(dataName, item)
 
        
     for l in listeners:
         l()
+
+    print("Save finished")
        
 
 

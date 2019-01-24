@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/apps/o2xiv/run.dge", 
-    "description": "Image Viewer", 
-    "legacy": false, 
-    "name": "O2xIV", 
-    "overclock": "528", 
-    "preview": "/mnt/game/gmenu2x/skins/Default/icons/o2xiv.png", 
-    "screen": "default"
-}

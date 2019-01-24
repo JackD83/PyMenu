@@ -1,7 +1,0 @@
-{
-    "background": "images/pixel/backgrounds/pixel_lastplayed.jpg", 
-    "description": "Last played games", 
-    "icon": "images/pixel/systems/auto-lastplayed.png", 
-    "name": "Last Played", 
-    "type": "lastPlayed"
-}

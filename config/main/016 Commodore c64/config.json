@@ -1,0 +1,25 @@
+{
+    "available": [
+        "RS97"
+    ], 
+    "cmd": "/mnt/int_sd/emus/vice/x64", 
+    "description": "Commodore c64", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/vice/x64", 
+            "name": "vice", 
+            "workingDir": "/mnt/int_sd/emus/vice"
+        }
+    ], 
+    "legacy": false, 
+    "name": "C64", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/c64/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/c64", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/vice"
+}

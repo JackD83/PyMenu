@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/sdlpal_mhv/run.dge", 
-    "description": "SDLPAL MHV Game", 
-    "legacy": false, 
-    "name": "SDLPAL", 
-    "overclock": "528", 
-    "preview": "images/previews/sdlpal.png", 
-    "screen": "default"
-}

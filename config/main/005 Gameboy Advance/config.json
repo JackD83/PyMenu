@@ -1,0 +1,36 @@
+{
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
+    "cmd": "/mnt/int_sd/emus/regba/regba", 
+    "description": "Gameboy Advance", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/regba/regba", 
+            "name": "ReGBA", 
+            "workingDir": "/mnt/int_sd/emus/regba"
+        }, 
+        {
+            "cmd": "/mnt/int_sd/emus/gpsp/gpsp", 
+            "name": "gpsp", 
+            "workingDir": "/mnt/int_sd/emus/gpsp"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".gba"
+    ], 
+    "legacy": false, 
+    "name": "GBA", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/gba/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/gba", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/regba"
+}

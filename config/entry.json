@@ -55,7 +55,19 @@
     "type":"folder",
     "description": "Folder for preview images"
 
-},     
+}, 
+{
+    "id": "available",
+    "name": "Available",
+    "description": "Availability on system",
+    "type": "selection",
+    "options" : ["RS97","RS07","K3P"],
+    "names": [
+        "RS97",
+        "Arcade Mini (RS07)",
+        "PAP KIII Plus (K3P)"
+    ]
+},  
 {   "id":"overclock",
     "name" :"Overclock",
     "type":"list",

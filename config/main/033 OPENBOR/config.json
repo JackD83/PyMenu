@@ -1,0 +1,29 @@
+{
+    "available": [
+        "RS97"
+    ], 
+    "cmd": "/mnt/int_sd/emus/openbor/OpenBOR", 
+    "description": "OpenBor", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/openbor/OpenBOR", 
+            "name": "OpenBOR", 
+            "workingDir": "/mnt/int_sd/emus/openbor"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".pak"
+    ], 
+    "legacy": false, 
+    "name": "PAK", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/emus/openbor/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/emus/openbor/Paks", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/openbor"
+}

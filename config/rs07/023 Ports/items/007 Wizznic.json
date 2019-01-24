@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/wizznic/run.dge", 
-    "description": "Wizznic Game", 
-    "legacy": false, 
-    "name": "Wizznic", 
-    "overclock": "528", 
-    "preview": "images/previews/wizznic.png", 
-    "screen": "default"
-}

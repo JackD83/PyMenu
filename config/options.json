@@ -75,20 +75,16 @@
     },
     {
         "name": "Theme",
-        "id": "configName",
-        "description": "Changes the theme/configuration",
+        "id": "themeName",
+        "description": "Changes the theme",
         "type": "list",
         "values": [
-            "main",
-            "pixel97",
-            "rs07",
+            "default",
             "pixel"
         ],
         "names": [
-            "Main (RS97)",
-            "Pixel Theme (RS97)",
-            "Arcade Mini (RS07)",
-            "Pixel Theme (RS07)"
+            "Default",
+            "Pixel"
         ]
     },
     {
@@ -101,6 +97,12 @@
         "name": "Volume control",
         "id": "volumeControl",
         "description": "Use buttons for volume control (K3P)",
+        "type": "boolean"
+    },
+    {
+        "name": "Show All",
+        "id": "showAll",
+        "description": "Show all entries even when not available",
         "type": "boolean"
     }
 ]

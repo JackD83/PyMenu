@@ -1,0 +1,30 @@
+{
+    "available": [
+        "RS97"
+    ], 
+    "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+    "description": "NEOGEO Pocket", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/race_od/race-od.dge", 
+            "name": "race", 
+            "workingDir": "/mnt/int_sd/emus/race_od"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".ngp", 
+        ".ngc"
+    ], 
+    "legacy": false, 
+    "name": "NGP", 
+    "overclock": "524", 
+    "previews": "//mnt/int_sd/roms/ngp/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/ngp", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/race_od"
+}

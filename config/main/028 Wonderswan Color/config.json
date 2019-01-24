@@ -1,0 +1,32 @@
+{
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
+    "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+    "description": "Wonderswan Color", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/oswan/oswan.dge", 
+            "name": "oswan", 
+            "workingDir": "/mnt/int_sd/emus/oswan"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".ws", 
+        ".wsc"
+    ], 
+    "legacy": false, 
+    "name": "WSC", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/wsc/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/wswanc", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/oswan"
+}

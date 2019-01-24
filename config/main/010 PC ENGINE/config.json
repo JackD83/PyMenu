@@ -1,0 +1,31 @@
+{
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
+    "cmd": "/mnt/int_sd/emus/temper/temper", 
+    "description": "NEC PC Engine", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/temper/temper", 
+            "name": "temper", 
+            "workingDir": "/mnt/int_sd/emus/temper"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".pce"
+    ], 
+    "legacy": false, 
+    "name": "PCE", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/pce/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/pce", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/temper"
+}

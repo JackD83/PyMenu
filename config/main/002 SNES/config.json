@@ -1,0 +1,42 @@
+{
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
+    "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
+    "description": "Super Nintendo", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/pocketsnes/PocketSNES", 
+            "name": "PocketSNES", 
+            "workingDir": "/mnt/int_sd/emus/pocketsnes"
+        }, 
+        {
+            "cmd": "/mnt/int_sd/emus/dumbsnes/run.dge", 
+            "name": "DumbSNES", 
+            "workingDir": "/mnt/int_sd/emus/dumbsnes"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".bin", 
+        ".bs", 
+        ".fig", 
+        ".mgd", 
+        ".sfc", 
+        ".smc", 
+        ".swc"
+    ], 
+    "legacy": false, 
+    "name": "SNES", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/snes/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/snes", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/pocketsnes"
+}

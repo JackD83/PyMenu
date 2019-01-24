@@ -46,6 +46,18 @@
         "name": "Selection path",
         "description": "Path for selection",
         "type": "folder"
+    }, 
+    {
+        "id": "available",
+        "name": "Available",
+        "description": "Availability on system",
+        "type": "selection",
+        "options" : ["RS97","RS07","K3P"],
+        "names": [
+            "RS97",
+            "Arcade Mini (RS07)",
+            "PAP KIII Plus (K3P)"
+        ]
     }
 
 

@@ -9,9 +9,6 @@ from threading import Thread
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
-
-    configName = config["options"]["configName"]
-
    
     gear = Common.aspect_scale(Common.loadCachedImage("theme/gear.png"),20,20)
     gearFinal = None
@@ -55,8 +52,12 @@ class MainMenu(RenderObject.RenderObject):
             return
 
         entry = self.config["mainMenu"][index]
-        self.systems[index] = Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70)
-        self.systembackgrounds[index] = pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) )
+        if os.path.exists(entry["icon"]):
+            self.systems[index] = Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70)
+        
+        if os.path.exists(entry["background"]):
+            self.systembackgrounds[index] = pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) )
+     
      
 
     def loadImagesAsync(self):
@@ -110,7 +111,7 @@ class MainMenu(RenderObject.RenderObject):
                     self.openOptions()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
-                    if(self.config["mainMenu"][self.currentIndex]["useSelection"] == False):          
+                    if(self.selection == "band" and self.config["mainMenu"][self.currentIndex]["useSelection"] == False):          
                         self.emulatorCallback("", Keys.DINGOO_BUTTON_START, True)
                         RenderControl.setDirty()
                     else:
@@ -192,19 +193,14 @@ class MainMenu(RenderObject.RenderObject):
 
     def configCallback(self, select):
         
-        newConfigName = self.config["options"]["configName"]
-        if(self.configName != self.config["options"]["configName"]):
-            print("config changed")
-            self.config["options"]["configName"] = self.configName
-
+     
         self.subComponent = None
         isLastPlayed = self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed" 
         Configuration.saveConfiguration()
         if(isLastPlayed and "showLastPlayed" in self.config["options"] and not self.config["options"]["showLastPlayed"]):
             self.currentIndex = 0
 
-        Configuration.changeConfigName(newConfigName)
-
+      
         self.reload()
         RenderControl.setDirty()
 
@@ -327,7 +323,10 @@ class MainMenu(RenderObject.RenderObject):
     def deleteCallback(self, res):
         self.overlay = None
         if(res == 1 and len(self.config["mainMenu"])  > 1):
+            
+            #todo: remove config file and folder
             del self.config["mainMenu"][self.currentIndex]
+
             Configuration.saveConfiguration()
             self.currentIndex = 0
             self.loadSystemImages()
@@ -389,7 +388,6 @@ class MainMenu(RenderObject.RenderObject):
         self.currentIndex = 0
         Configuration.reloadConfiguration()
         self.config = Configuration.getConfiguration()
-        self.configName = self.config["options"]["configName"]
         self.loadLastPlayed()
         self.loadSystemImages()
     
@@ -563,7 +561,7 @@ class MainMenu(RenderObject.RenderObject):
         if("showLastPlayed" in self.config["options"] and self.config["options"]["showLastPlayed"] ):
             print("loading last played games")
             try:
-                lastPlayed = json.load(open("config/" + self.config["options"]["configName"] + "/lastPlayed.json"))
+                lastPlayed = json.load(open("config/main/lastPlayed.json"))
 
                 if(os.path.exists("config/lastPlayedData.json")):
                     lastPlayedData = json.load(open("config/lastPlayedData.json"))
@@ -574,6 +572,8 @@ class MainMenu(RenderObject.RenderObject):
                     lastPlayed["data"] = []
                     with open('config/lastPlayedData.json', 'w') as fp: 
                         json.dump(newData, fp,sort_keys=True, indent=4)
+
+                Configuration.appendTheme(lastPlayed)
                 
                 self.config["mainMenu"].append(lastPlayed)        
             except Exception as ex:

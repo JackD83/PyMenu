@@ -1,19 +1,31 @@
 {
-    "background": "images/backgrounds/rs97/gg.png", 
-    "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
-    "description": "Handheld", 
-    "fileFilter": [
-        ".zip"
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
     ], 
-    "folderIcon": "images/icons/gg.png", 
-    "icon": "images/systems/gg.png", 
+    "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+    "description": "SEGA Game Gear", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/sms_sdl/sms_sdl", 
+            "name": "sms", 
+            "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".gg", 
+        ".GG"
+    ], 
     "legacy": false, 
-    "name": "Game Gear", 
+    "name": "GG", 
     "overclock": "524", 
     "previews": "/mnt/int_sd/roms/gg/previews", 
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/gg", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": false, 
     "useSelection": true, 
     "workingDir": "/mnt/ext_sd/int_sd/emus/sms_sdl"

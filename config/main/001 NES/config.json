@@ -1,0 +1,26 @@
+{
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
+    "cmd": "/mnt/int_sd/emus/fceux/fceux", 
+    "description": "Nintendo", 
+    "emu": null, 
+    "fileFilter": [
+        ".zip", 
+        ".fds", 
+        ".nes"
+    ], 
+    "legacy": null, 
+    "name": "NES", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/nes/previews", 
+    "screen": null, 
+    "selectionPath": "/mnt/int_sd/roms/nes", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "workingDir": "/mnt/int_sd/emus/fceux"
+}

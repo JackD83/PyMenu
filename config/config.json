@@ -6,11 +6,12 @@
     "options": {
         "RS97ScreenFix": false, 
         "allowEdit": true, 
-        "configName": "pixel97", 
         "displayTimeout": "off", 
+        "showAll": false, 
         "showFPS": false, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
+        "themeName": "pixel", 
         "type": "RS97", 
         "volumeControl": false
     }, 

@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/meritous/run.dge", 
-    "description": "Meritous Game", 
-    "legacy": false, 
-    "name": "Meritous", 
-    "overclock": "528", 
-    "preview": "images/previews/meritous.png", 
-    "screen": "default"
-}

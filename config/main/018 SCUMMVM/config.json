@@ -1,0 +1,25 @@
+{
+    "available": [
+        "RS97"
+    ], 
+    "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
+    "description": "Lucas Arts", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/scummvm/scummvm", 
+            "name": "scummvm", 
+            "workingDir": "/mnt/int_sd/emus/scummvm"
+        }
+    ], 
+    "legacy": false, 
+    "name": "SCUMMVM", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/scummvm/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/scummvm", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": false, 
+    "workingDir": "/mnt/int_sd/emus/scummvm"
+}

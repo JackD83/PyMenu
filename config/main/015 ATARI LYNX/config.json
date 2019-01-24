@@ -1,19 +1,30 @@
 {
-    "background": "images/backgrounds/rs97/lynx.png", 
-    "cmd": "/mnt/int_sd/emus/handy/handy320.dge", 
-    "description": "Handy320", 
-    "fileFilter": [
-        ".zip"
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
     ], 
-    "folderIcon": "images/icons/lynx.png", 
-    "icon": "images/systems/lynx.png", 
+    "cmd": "/mnt/int_sd/emus/handy/handy320.dge", 
+    "description": "Atari Lynx", 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/handy/handy320.dge", 
+            "name": "handy320", 
+            "workingDir": "/mnt/int_sd/emus/handy"
+        }
+    ], 
+    "fileFilter": [
+        ".zip", 
+        ".lnx"
+    ], 
     "legacy": false, 
-    "name": "ATARI LYNX", 
+    "name": "LNX", 
     "overclock": "524", 
-    "previews": "//mnt/int_sd/roms/lynx/previews", 
+    "previews": "/mnt/int_sd/roms/lynx/previews", 
     "screen": "default", 
     "selectionPath": "/mnt/int_sd/roms/lynx", 
     "type": "emulator", 
+    "useFileFilter": null, 
     "useGamelist": null, 
     "useSelection": true, 
     "workingDir": "/mnt/int_sd/emus/handy"

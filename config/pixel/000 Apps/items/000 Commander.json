@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/apps/commander/run.dge", 
-    "description": "File Manager", 
-    "legacy": false, 
-    "name": "Commander", 
-    "overclock": "528", 
-    "preview": "images/pixel/icons/commander.png", 
-    "screen": "default"
-}

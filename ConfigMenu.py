@@ -1,5 +1,5 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
-import os, RenderControl, Keys, EmulatorList
+import os, RenderControl, Keys, EmulatorList, SelectionList
 import pygame, sys, ntpath, copy
 
 from operator import itemgetter
@@ -88,6 +88,33 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent = EmulatorList.EmulatorList(self.screen, "Emulators",data, options, self.emuListCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options"),("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)
+            
+        if(self.entryList[self.currentIndex]["type"] == "selection"):
+            options = {}
+            options["useSidebar"] = False
+            options["names"] = self.entryList[self.currentIndex]["options"]["names"]
+            options["options"] = self.entryList[self.currentIndex]["options"]["options"]
+
+            data = copy.deepcopy(self.entryList[self.currentIndex]["value"] )
+            ##inject default if non found
+            if(data == None):
+                data = []
+           
+            print(self.entryList[self.currentIndex]["options"])
+               
+            self.subComponent = SelectionList.SelectionList(self.screen, "Select",data, options, self.selectionListCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"),("theme/start_button.png", "save")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+
+    def selectionListCallback(self, data):
+        if(data != None):
+            self.optionTarget[self.entryList[self.currentIndex]["id"]] = data
+
+        
+        print(data)
+
+        self.subComponent = None
+        RenderControl.setDirty() 
 
     def emuListCallback(self, data):
 
@@ -206,7 +233,6 @@ class ConfigMenu(AbstractList.AbstractList):
             if(not o["id"] in self.optionTarget):
                 self.optionTarget[o["id"]] = None
 
-
             entry = {}
             entry["options"] = o
             entry["name"] = o["name"]
@@ -220,7 +246,7 @@ class ConfigMenu(AbstractList.AbstractList):
             else:      
                 entry["text"] = self.entryFont.render( entry["name"] + ": " + ntpath.basename(str(entry["value"])) , True, self.textColor)
             
-            if(o["type"] == "emu"):
+            if(o["type"] == "emu" or o["type"] == "selection"):
                 entry["text"] =  self.entryFont.render( entry["name"] + ": ...", True, self.textColor)
 
 

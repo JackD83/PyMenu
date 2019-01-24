@@ -1,9 +1,0 @@
-{
-    "cmd": "/mnt/int_sd/games/jinyong_psp/jysdllua", 
-    "description": "JinYong PSP Game", 
-    "legacy": false, 
-    "name": "JinYong", 
-    "overclock": "528", 
-    "preview": "images/previews/jinyong_legend.png", 
-    "screen": "default"
-}
