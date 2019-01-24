@@ -40,8 +40,10 @@ def reloadConfiguration():
                 if(os.path.isdir("config/main/" + name )):       
                     entry = json.load(open("config/main/" + name + "/config.json"))
                     entry["source"] = name
-                    if("available" not in entry or configuration["options"]["type"] in entry["available"] or
+                    if("available" not in entry or entry["available"] == None or 
+                    configuration["options"]["type"] in entry["available"] or
                     configuration["options"]["showAll"] ):
+                    
                         appendTheme(entry)
                         configuration["mainMenu"].append(entry)
                        
@@ -65,7 +67,13 @@ def reloadConfiguration():
             except Exception as ex:
                 print(str(ex))  
 
-    print("Load finished!!!")
+def deleteMainEntry(source):
+    try:
+        shutil.rmtree("config/main/" + source)
+
+    except Exception as ex:
+        print(str(ex))
+  
 
 def appendTheme(entry):
     themeName = configuration["options"]["themeName"]
