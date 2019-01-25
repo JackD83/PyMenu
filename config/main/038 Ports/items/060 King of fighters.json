@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/kof/run.dge", 
     "icon": ".", 
     "name": "King of fighters", 

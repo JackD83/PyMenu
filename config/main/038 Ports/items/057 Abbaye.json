@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/abbaye/run.dge", 
     "icon": ".", 
     "name": "Abbaye", 

@@ -1,9 +1,17 @@
 {
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
     "cmd": "/mnt/int_sd/games/puzzletube/run.dge", 
     "description": "Puzzletube Game", 
     "legacy": false, 
     "name": "Puzzletube", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/puzzletube.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

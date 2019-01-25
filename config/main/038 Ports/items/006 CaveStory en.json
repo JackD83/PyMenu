@@ -1,4 +1,9 @@
 {
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
     "cmd": "/mnt/int_sd/games/cavestory/run.dge", 
     "description": "Cave Story CN Game", 
     "legacy": false, 

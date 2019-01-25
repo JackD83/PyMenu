@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/zelda_roth/run.dge", 
     "description": "Zelda Roth Game", 
     "legacy": false, 
     "name": "Zelda", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/zelda_roth.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

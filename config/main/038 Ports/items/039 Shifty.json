@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/shifty/shifty", 
     "description": "Shifty Pills Game", 
     "legacy": false, 

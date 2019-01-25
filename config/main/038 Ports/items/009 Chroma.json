@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/chroma/run.dge", 
     "description": "Chroma Game", 
     "legacy": false, 
     "name": "Chroma", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/chroma.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

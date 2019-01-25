@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/tileworld/tworld", 
     "description": "Tileworld Game", 
     "legacy": false, 
     "name": "Tileworld", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/tileworld.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

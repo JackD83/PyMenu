@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/openjazz/OpenJazz", 
     "description": "OpenJazz Game", 
     "legacy": false, 

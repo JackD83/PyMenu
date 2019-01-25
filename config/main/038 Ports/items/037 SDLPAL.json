@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/sdlpal/run.dge", 
     "description": "SDLPAL Game", 
     "legacy": false, 
     "name": "SDLPAL", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/sdlpal.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/rockbot/run.dge", 
     "description": "Rockbot Game", 
     "legacy": false, 
     "name": "Rockbot", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/rockbot.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

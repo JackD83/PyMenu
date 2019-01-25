@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/spartak/run.dge", 
     "description": "Spartak Chess Game", 
     "legacy": false, 
     "name": "Spartak", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/spartak.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

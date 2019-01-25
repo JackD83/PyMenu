@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/chocolate-strife/run.dge", 
     "description": "Stife Game", 
     "legacy": false, 

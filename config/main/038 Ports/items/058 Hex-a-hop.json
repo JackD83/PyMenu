@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/hex-a-hop/run.dge", 
     "icon": ".", 
     "name": "Hex-a-hop", 

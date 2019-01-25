@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/shisen/run.dge", 
     "description": "Shisen Seki Game", 
     "legacy": false, 
     "name": "Shisen", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/shisen.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

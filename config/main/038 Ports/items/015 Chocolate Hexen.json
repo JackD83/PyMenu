@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/chocolate-hexen/run.dge", 
     "description": "HHexen Game", 
     "legacy": false, 

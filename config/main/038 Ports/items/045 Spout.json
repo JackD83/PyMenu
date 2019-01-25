@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/spout/run.dge", 
     "description": "Spout Game", 
     "legacy": false, 
     "name": "Spout", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/spout.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

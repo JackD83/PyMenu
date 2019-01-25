@@ -1,9 +1,17 @@
 {
+    "available": [
+        "RS97", 
+        "RS07", 
+        "K3P"
+    ], 
     "cmd": "/mnt/int_sd/games/snowman/run.dge", 
     "description": "Snowman Game", 
     "legacy": false, 
     "name": "Snowman", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/snowman.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }

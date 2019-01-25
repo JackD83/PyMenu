@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/fallingtime/run.dge", 
     "icon": ".", 
     "name": "Falling time", 

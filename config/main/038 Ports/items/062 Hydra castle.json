@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/hydracastle/hcl", 
     "icon": ".", 
     "name": "Hydra castle", 

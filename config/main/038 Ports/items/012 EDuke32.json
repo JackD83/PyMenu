@@ -1,4 +1,7 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/eduke32/run.dge", 
     "description": "EDuke32 Game", 
     "legacy": false, 

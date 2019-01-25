@@ -1,9 +1,15 @@
 {
+    "available": [
+        "RS97"
+    ], 
     "cmd": "/mnt/int_sd/games/sorr/run.dge", 
     "description": "SORR Game", 
     "legacy": false, 
     "name": "SORR", 
     "overclock": "528", 
     "preview": "images/pixel97/previews/sorr.png", 
-    "screen": "default"
+    "screen": "default", 
+    "selectDescription": null, 
+    "selectionPath": null, 
+    "selector": null
 }
