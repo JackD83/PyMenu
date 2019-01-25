@@ -16,6 +16,8 @@ class MainMenu(RenderObject.RenderObject):
     power = Common.aspect_scale(Common.loadCachedImage("theme/power.png"),18,18)
     powerFinal = None   
 
+    themeName = config["options"]["themeName"]
+
    
     header = None
     footer = None
@@ -192,13 +194,22 @@ class MainMenu(RenderObject.RenderObject):
        
 
     def configCallback(self, select):
+
+        newThemeName = self.config["options"]["themeName"]
+        if(self.themeName != self.config["options"]["themeName"]):
+            print("themeChanged changed")
+            self.config["options"]["themeName"] = self.themeName
         
      
         self.subComponent = None
         isLastPlayed = self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed" 
-        Configuration.saveConfiguration()
+       
+
+
         if(isLastPlayed and "showLastPlayed" in self.config["options"] and not self.config["options"]["showLastPlayed"]):
             self.currentIndex = 0
+
+        Configuration.changeThemeName(newThemeName)
 
       
         self.reload()
