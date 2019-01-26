@@ -30,3 +30,7 @@ Version 1.0.3
 Version 1.0.4
 - added multiple emulators configuration, press "start" to change used emulator, a uses first in emulator list
   list order can be changed by pressing shoulder buttons
+
+Version 1.0.5
+- separated configuration and theme
+- added pixel and default theme (default is missing some images)

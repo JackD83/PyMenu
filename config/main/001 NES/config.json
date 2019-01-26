@@ -6,7 +6,13 @@
     ], 
     "cmd": "/mnt/int_sd/emus/fceux/fceux", 
     "description": "Nintendo", 
-    "emu": null, 
+    "emu": [
+        {
+            "cmd": "/mnt/int_sd/emus/fceux/fceux", 
+            "name": "default", 
+            "workingDir": "/mnt/int_sd/emus/fceux"
+        }
+    ], 
     "fileFilter": [
         ".zip", 
         ".fds", 
