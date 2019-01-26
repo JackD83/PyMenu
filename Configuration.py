@@ -79,17 +79,27 @@ def deleteMainEntry(source):
     except Exception as ex:
         print(str(ex))
   
+def changeThemeName(name):
+    allConfig = copy.deepcopy(configuration)
+    allConfig["options"]["themeName"] = name
+    del allConfig["mainMenu"]
+
+    with open('config/config.json', 'w') as fp: 
+        json.dump(allConfig, fp,sort_keys=True, indent=4)
 
 def appendTheme(entry):
+    typeName = configuration["options"]["type"]
     themeName = configuration["options"]["themeName"]
     entryName = entry["name"]
 
+    
+
     try:
-        if os.path.exists("theme/" + themeName + "/" + entryName + ".json"):
-            themeConfig = json.load(open("theme/" + themeName + "/" + entryName + ".json")) 
+        if os.path.exists("theme/" + typeName+ "/" + themeName + "/" + entryName + ".json"):
+            themeConfig = json.load(open("theme/" + typeName+ "/" + themeName + "/" + entryName + ".json")) 
             entry.update(themeConfig)
         else:
-            #print("loaded default config for " + entryName)
+            print("loaded default config for " + entryName)
             if("type" in entry):
                 #if it hast type param, its a main menu entry
                
@@ -101,6 +111,7 @@ def appendTheme(entry):
         print(str(ex))
 
 def saveTheme(entry):
+    typeName = configuration["options"]["type"]
     themeName = configuration["options"]["themeName"]
     entryName = entry["name"]
     try:
@@ -118,11 +129,18 @@ def saveTheme(entry):
             theme["preview"] = entry["preview"]
             del entry["preview"]
 
-        if os.path.exists("theme/" + themeName + "/" + entryName + ".json"):
+
+        #create theme folder
+        if not os.path.exists("theme/" + typeName+ "/" + themeName):
+           os.makedirs("theme/" + typeName+ "/" + themeName)
+
+
+        if os.path.exists("theme/" + typeName+ "/" + themeName + "/" + entryName + ".json"):
             #print("Duplicate name! " + str(entryName) )
             pass
+        
 
-        with open("theme/" + themeName + "/" + entryName + ".json", 'w') as fp: 
+        with open("theme/" + typeName+ "/" + themeName + "/" + entryName + ".json", 'w') as fp: 
             json.dump(theme, fp,sort_keys=True, indent=4) 
 
 
