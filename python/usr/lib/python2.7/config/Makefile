@@ -28,17 +28,17 @@ MODLIBS=        $(LOCALMODLIBS) $(BASEMODLIBS)
 VERSION=	2.7
 srcdir=		.
 
-abs_srcdir=	/home/jack/buildroot-rs97/output/build/python-2.7.14
-abs_builddir=	/home/jack/buildroot-rs97/output/build/python-2.7.14
+abs_srcdir=	/opt/buildroot-2018.02.9/output/build/python-2.7.15
+abs_builddir=	/opt/buildroot-2018.02.9/output/build/python-2.7.15
 build=		x86_64-pc-linux-gnu
-host=		mipsel-buildroot-linux-musl
+host=		mipsel-buildroot-linux-uclibc
 
-CC=		/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-gcc
-CXX=		/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-g++
+CC=		/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-gcc
+CXX=		/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-g++
 MAINCC=		$(CC)
 LINKCC=		$(PURIFY) $(MAINCC)
-AR=		/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-ar
-RANLIB=		/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-ranlib
+AR=		/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-ar
+RANLIB=		/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-ranlib
 GITVERSION=	
 GITTAG=		
 GITBRANCH=	
@@ -66,14 +66,14 @@ INSTALL_DATA=	${INSTALL} -m 644
 # Also, making them read-only seems to be a good idea...
 INSTALL_SHARED= ${INSTALL} -m 555
 
-MKDIR_P=	/usr/bin/mkdir -p
+MKDIR_P=	/bin/mkdir -p
 
 MAKESETUP=      $(srcdir)/Modules/makesetup
 
 # Compiler options
 OPT=		-DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes
 BASECFLAGS=	 -fno-strict-aliasing
-CFLAGS=		$(BASECFLAGS) -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2  $(OPT) $(EXTRA_CFLAGS)
+CFLAGS=		$(BASECFLAGS) -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os  $(OPT) $(EXTRA_CFLAGS)
 # Both CPPFLAGS and LDFLAGS need to contain the shell's value for setup.py to
 # be able to build extension modules using the directories specified in the
 # environment variables
@@ -159,7 +159,7 @@ EXEMODE=	755
 FILEMODE=	644
 
 # configure script arguments
-CONFIG_ARGS=	 '--target=mipsel-buildroot-linux-musl' '--host=mipsel-buildroot-linux-musl' '--build=x86_64-pc-linux-gnu' '--prefix=/usr' '--exec-prefix=/usr' '--sysconfdir=/etc' '--localstatedir=/var' '--program-prefix=' '--disable-gtk-doc' '--disable-gtk-doc-html' '--disable-doc' '--disable-docs' '--disable-documentation' '--with-xmlto=no' '--with-fop=no' '--disable-dependency-tracking' '--enable-ipv6' '--disable-nls' '--disable-static' '--enable-shared' '--disable-readline' '--disable-curses' '--with-expat=none' '--disable-bsddb' '--disable-sqlite3' '--disable-ssl' '--disable-codecs-cjk' '--disable-bz2' '--disable-zlib' '--disable-hashlib' '--disable-ossaudiodev' '--without-cxx-main' '--without-doc-strings' '--with-system-ffi' '--disable-pydoc' '--disable-test-modules' '--disable-lib2to3' '--disable-gdbm' '--disable-tk' '--disable-nis' '--disable-dbm' '--disable-pyo-build' '--disable-pyc-build' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=mipsel-buildroot-linux-musl' 'target_alias=mipsel-buildroot-linux-musl' 'CC=/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -O2 ' 'LDFLAGS=' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CPP=/home/jack/buildroot-rs97/output/host/bin/mipsel-buildroot-linux-musl-cpp' 'PKG_CONFIG=/home/jack/buildroot-rs97/output/host/bin/pkg-config'
+CONFIG_ARGS=	 '--target=mipsel-buildroot-linux-uclibc' '--host=mipsel-buildroot-linux-uclibc' '--build=x86_64-pc-linux-gnu' '--prefix=/usr' '--exec-prefix=/usr' '--sysconfdir=/etc' '--localstatedir=/var' '--program-prefix=' '--disable-gtk-doc' '--disable-gtk-doc-html' '--disable-doc' '--disable-docs' '--disable-documentation' '--with-xmlto=no' '--with-fop=no' '--disable-dependency-tracking' '--enable-ipv6' '--disable-nls' '--disable-static' '--enable-shared' '--disable-readline' '--disable-curses' '--with-expat=none' '--disable-bsddb' '--disable-sqlite3' '--disable-ssl' '--disable-codecs-cjk' '--disable-bz2' '--disable-zlib' '--disable-hashlib' '--disable-ossaudiodev' '--without-cxx-main' '--without-doc-strings' '--with-system-ffi' '--disable-pydoc' '--disable-test-modules' '--disable-lib2to3' '--disable-gdbm' '--disable-tk' '--disable-nis' '--disable-dbm' '--disable-pyo-build' '--disable-pyc-build' 'build_alias=x86_64-pc-linux-gnu' 'host_alias=mipsel-buildroot-linux-uclibc' 'target_alias=mipsel-buildroot-linux-uclibc' 'CC=/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-gcc' 'CFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64  -Os ' 'LDFLAGS=' 'CPPFLAGS=-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64' 'CPP=/opt/buildroot-2018.02.9/output/host/bin/mipsel-buildroot-linux-uclibc-cpp' 'PKG_CONFIG=/opt/buildroot-2018.02.9/output/host/bin/pkg-config'
 
 # disabled extensions
 DISABLED_EXTENSIONS=	 pyexpat _sqlite3 _codecs_kr _codecs_jp _codecs_cn _codecs_tw _codecs_hk nis _ssl _hashlib readline bz2 zlib dbm gdbm _bsddb _tkinter _curses _curses_panel ossaudiodev
@@ -205,7 +205,7 @@ BUILDPYTHON=	python$(BUILDEXE)
 PYTHON_FOR_REGEN=python2.7
 PYTHON_FOR_BUILD=_PYTHON_PROJECT_BASE=$(abs_builddir) _PYTHON_HOST_PLATFORM=$(_PYTHON_HOST_PLATFORM) PYTHONPATH=$(shell test -f pysysconfigdatadir.txt && echo $(abs_builddir)/`cat pysysconfigdatadir.txt`:)$(srcdir)/Lib:$(srcdir)/Lib/$(PLATDIR) python2.7
 _PYTHON_HOST_PLATFORM=linux2-mipsel
-HOST_GNU_TYPE=  mipsel-buildroot-linux-musl
+HOST_GNU_TYPE=  mipsel-buildroot-linux-uclibc
 
 # Tcl and Tk config info from --with-tcltk-includes and -libs options
 TCLTK_INCLUDES=	
@@ -420,7 +420,16 @@ LIBRARY_OBJS=	\
 
 # Default target
 all:		build_all
-build_all:	$(BUILDPYTHON) oldsharedmods sharedmods gdbhooks python-config
+build_all:	check-clean-src $(BUILDPYTHON) oldsharedmods sharedmods gdbhooks python-config
+
+# Check that the source is clean when building out of source.
+check-clean-src:
+	@if test -n "$(VPATH)" -a -f "$(srcdir)/Modules/python.o"; then \
+		echo "Error: The source directory ($(srcdir)) is not clean" ; \
+		echo "Building Python out of the source tree (in $(abs_builddir)) requires a clean source tree ($(abs_srcdir))" ; \
+		echo "Try to run: make -C \"$(srcdir)\" clean" ; \
+		exit 1; \
+	fi
 
 # Compile a binary with profile guided optimization.
 profile-opt:
@@ -447,7 +456,7 @@ build_all_generate_profile:
 
 run_profile_task:
 	: # FIXME: can't run for a cross build
-	$(LLVM_PROF_FILE) ./$(BUILDPYTHON) $(PROFILE_TASK) || true
+	$(LLVM_PROF_FILE) $(RUNSHARED) ./$(BUILDPYTHON) $(PROFILE_TASK) || true
 
 build_all_merge_profile:
 	$(LLVM_PROF_MERGER)
@@ -921,6 +930,14 @@ memtest:	all platform
 		-$(TESTPYTHON) $(TESTPROG) $(MEMTESTOPTS)
 		$(TESTPYTHON) $(TESTPROG) $(MEMTESTOPTS)
 
+# SSL tests
+.PHONY: multisslcompile multissltest
+multisslcompile: build_all
+	$(RUNSHARED) ./$(BUILDPYTHON) Tools/ssl/multissltests.py --compile-only
+
+multissltest: build_all
+	$(RUNSHARED) ./$(BUILDPYTHON) Tools/ssl/multissltests.py
+
 # Install everything
 install:	 commoninstall bininstall maninstall 
 	if test "x$(ENSUREPIP)" != "xno"  ; then \
@@ -943,7 +960,7 @@ altinstall:	commoninstall
 			$$ensurepip --root=$(DESTDIR)/ ; \
 	fi
 
-commoninstall:	 \
+commoninstall:	check-clean-src  \
 		altbininstall libinstall inclinstall libainstall \
 		sharedinstall oldsharedinstall altmaninstall \
 		
@@ -1436,10 +1453,9 @@ autoconf:
 
 # Create a tags file for vi
 tags::
-	cd $(srcdir); \
-	ctags -w Include/*.h; \
-	for i in $(SRCDIRS); do ctags -f tags -w -a $$i/*.[ch]; \
-	done; \
+	ctags -w $(srcdir)/Include/*.h
+	for i in $(SRCDIRS); do ctags -f tags -w -a $(srcdir)/$$i/*.[ch]; done
+	ctags -f tags -w -a $(srcdir)/Modules/_ctypes/*.[ch]
 	LC_ALL=C sort -o tags tags
 
 # Create a tags file for GNU Emacs
@@ -1540,7 +1556,7 @@ patchcheck:
 Python/thread.o:  $(srcdir)/Python/thread_atheos.h $(srcdir)/Python/thread_beos.h $(srcdir)/Python/thread_cthread.h $(srcdir)/Python/thread_foobar.h $(srcdir)/Python/thread_lwp.h $(srcdir)/Python/thread_nt.h $(srcdir)/Python/thread_os2.h $(srcdir)/Python/thread_pth.h $(srcdir)/Python/thread_pthread.h $(srcdir)/Python/thread_sgi.h $(srcdir)/Python/thread_solaris.h $(srcdir)/Python/thread_wince.h
 
 # Declare targets that aren't real files
-.PHONY: all build_all sharedmods oldsharedmods test quicktest memtest
+.PHONY: all build_all sharedmods check-clean-src oldsharedmods test quicktest memtest
 .PHONY: install altinstall oldsharedinstall bininstall altbininstall
 .PHONY: maninstall libinstall inclinstall libainstall sharedinstall
 .PHONY: frameworkinstall frameworkinstallframework frameworkinstallstructure
