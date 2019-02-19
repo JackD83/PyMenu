@@ -1,6 +1,9 @@
 import json, subprocess, os, copy,shutil, platform, pygame, Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
+import configparser
+
+
 
 configuration = None
 theme = json.load(open('theme/theme.json'))
@@ -40,13 +43,12 @@ def reloadConfiguration():
                 if(os.path.isdir("config/main/" + name )):       
                     entry = json.load(open("config/main/" + name + "/config.json"))
                     entry["source"] = name
-                    if("available" not in entry or entry["available"] == None or 
-                    configuration["options"]["type"] in entry["available"] or
+                    if(hasConfig(entry["system"]) or
                     configuration["options"]["showAll"] ):
 
                         appendTheme(entry)
-                        configuration["mainMenu"].append(entry)
-                       
+                        appendLinks(entry)
+                        configuration["mainMenu"].append(entry)                       
 
                         if(entry["type"] == "native"):
                             entry["data"] = []
@@ -70,7 +72,54 @@ def reloadConfiguration():
                 
 
             except Exception as ex:
-                print(str(ex))  
+                print(str(ex)) 
+
+
+def hasConfig(system):
+    itemlist =  os.listdir("links")
+    found = False                      
+    for itemName in itemlist:
+        if(itemName.lower().startswith(system.lower())):
+            found = True
+            break
+    return found
+
+def appendLinks(entry):
+    system = entry["system"]
+    itemlist =  os.listdir("links")
+    entry["emu"] = [] #clear emus
+    entry["useSelection"] = False
+  
+    for itemName in itemlist:
+        if(itemName.lower().startswith(system.lower())):
+            data = parseLink("links/" + itemName)         
+            emuEntry = {}
+            emuEntry["name"] = data["title"]
+            emuEntry["cmd"] = data["exec"]
+            emuEntry["workingDir"] = os.path.abspath(os.path.join(data["exec"], os.pardir))
+            entry["emu"].append(emuEntry)
+            if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):           
+                filter = data["selectorfilter"].split(",")
+                if("fileFilter" in entry):
+                    filter.extend(entry["fileFilter"])
+                #make unique
+                entry["fileFilter"] = list(set(filter))
+
+            if("selectordir" in data):
+                entry["useSelection"] = True
+
+
+
+
+def parseLink(linkFile):
+    f = open(linkFile, "r")
+    data = {}
+    file_as_list = f.readlines()
+    for line in file_as_list:       
+        params = line.split("=", 1)
+        data[params[0]] = params[1].rstrip()
+    return data
+
 
 def deleteMainEntry(source):
     try:

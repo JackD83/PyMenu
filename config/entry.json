@@ -25,16 +25,6 @@
     "type":"image",
     "description": "Icon used in rom selection"
 },
-{   "id":"emu",
-    "name" :"Emulators",
-    "description": "Configure multiple emulators",
-    "type":"emu"   
-},
-{   "id":"useSelection",
-    "name" :"Use Selection",
-    "type":"boolean",
-    "description": "Use the selection screen"
-},
 {   "id":"useFileFilter",
     "name" :"Use File Filter",
     "type":"boolean",
@@ -54,19 +44,6 @@
     "name" :"Preview folder",
     "type":"folder",
     "description": "Folder for preview images"
-
-}, 
-{
-    "id": "available",
-    "name": "Available",
-    "description": "Availability on system",
-    "type": "selection",
-    "options" : ["RS97","RS07","K3P"],
-    "names": [
-        "RS97",
-        "Arcade Mini (RS07)",
-        "PAP KIII Plus (K3P)"
-    ]
 },  
 {   "id":"overclock",
     "name" :"Overclock",
