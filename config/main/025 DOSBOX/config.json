@@ -1,0 +1,12 @@
+{
+    "description": "DOSBOX emulation",
+    "name": "PC",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/pc/previews",
+    "selectionPath": "/mnt/int_sd/roms/pc",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "dos"
+}

@@ -1,0 +1,12 @@
+{
+    "description": "Amstrad CPC",
+    "name": "CPC",
+    "overclock": "524",
+    "previews": null,
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "cpc"
+}

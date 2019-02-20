@@ -1,0 +1,5 @@
+title=ScummVM
+description=VM for Games
+exec=/home/retrofw/emus/scummvm/scummvm
+clock=600
+

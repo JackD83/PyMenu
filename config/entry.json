@@ -5,6 +5,12 @@
     "description": "Name of the entry"   
 },
 {
+    "id":"system",
+    "name" :"Gmenu Identifier",
+    "type":"string",
+    "description": "Gmenu2x system identifier"    
+},
+{
     "id":"description",
     "name" :"Description",
     "type":"string",

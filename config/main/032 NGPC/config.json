@@ -1,0 +1,12 @@
+{
+    "description": "Neogeo Pocket Color",
+    "name": "NGPC",
+    "overclock": "624",
+    "previews": "/mnt/int_sd/roms/ngpc/previews",
+    "selectionPath": "/mnt/int_sd/roms/ngpc",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "ngpc"
+}

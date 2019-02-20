@@ -1,0 +1,5 @@
+title=Cannonball
+description=(Requires Outrun roms)
+exec=/home/retrofw/games/cannonball/cannonball
+clock=600
+

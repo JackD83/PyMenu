@@ -1,0 +1,12 @@
+{       
+    "description": "SEGA Game Gear",   
+    "name": "GG", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/gg/previews",   
+    "selectionPath": "/mnt/int_sd/roms/gg", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": false, 
+    "useSelection": true, 
+    "system" :"sms_sdl" 
+}

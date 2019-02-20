@@ -1,0 +1,14 @@
+{   
+    "description": "ATARI 2600",    
+    "name": "A26", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/atari2600/previews", 
+  
+    "selectionPath": "/mnt/int_sd/roms/atari2600", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "system" : "atari2600"
+}
+   

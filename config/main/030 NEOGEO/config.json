@@ -1,0 +1,12 @@
+{
+    "description": "SNK NEOGEO",
+    "name": "SNK",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/neogeo/previews",
+    "selectionPath": "/mnt/int_sd/roms/neogeo",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": true,
+    "useSelection": true,
+    "system": "neogeo"
+}

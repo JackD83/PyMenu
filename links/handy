@@ -1,0 +1,7 @@
+title=Handy
+description=Atari Lynx Emulator
+exec=/home/retrofw/emus/handy/handy
+clock=600
+selectordir=/home/retrofw/roms
+selectorfilter=.lnx,.bin,.zip
+

@@ -1,0 +1,13 @@
+{
+    "description": "Wonderswan Color",
+    "legacy": false,
+    "name": "WSC",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/wsc/previews",
+    "selectionPath": "/mnt/int_sd/roms/wswanc",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "wsc"
+}

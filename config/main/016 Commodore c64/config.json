@@ -1,0 +1,12 @@
+{
+    "description": "Commodore c64",
+    "name": "C64",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/c64/previews",
+    "selectionPath": "/mnt/int_sd/roms/c64",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "vice"
+}

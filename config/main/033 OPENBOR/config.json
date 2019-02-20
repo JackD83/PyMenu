@@ -1,0 +1,12 @@
+{
+    "description": "OpenBor",
+    "name": "PAK",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/emus/openbor/previews",
+    "selectionPath": "/mnt/int_sd/emus/openbor/Paks",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "pak"
+}

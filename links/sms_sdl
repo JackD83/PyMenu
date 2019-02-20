@@ -1,0 +1,7 @@
+title=SMS Plus GX
+description=Master System/GG Emulator
+exec=/home/retrofw/emus/sms_sdl/sms_sdl
+clock=600
+selectordir=/home/retrofw/roms
+selectorfilter=.sms,.bin,.gg,.zip,.rom,.sg
+

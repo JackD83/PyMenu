@@ -88,12 +88,6 @@
         ]
     },
     {
-        "name": "RS97 Screen Fix",
-        "id": "RS97ScreenFix",
-        "description": "Use alternate rendering mode for RS97 (reboot)",
-        "type": "boolean"
-    },
-    {
         "name": "Volume control",
         "id": "volumeControl",
         "description": "Use buttons for volume control (K3P)",

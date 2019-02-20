@@ -1,0 +1,12 @@
+{    
+    "description": "Gameboy",       
+    "name": "GB", 
+    "system": "gb",
+    "overclock": "528", 
+    "previews": "/mnt/int_sd/roms/gb/previews",    
+    "selectionPath": "/mnt/int_sd/roms/gb", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true 
+}

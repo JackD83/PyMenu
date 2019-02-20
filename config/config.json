@@ -4,14 +4,13 @@
     "firstStart": false, 
     "lcd_backlight": 70, 
     "options": {
-        "RS97ScreenFix": false, 
         "allowEdit": true, 
         "displayTimeout": "off", 
         "showAll": false, 
-        "showFPS": false, 
+        "showFPS": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "pixel", 
+        "themeName": "default", 
         "type": "RS97", 
         "volumeControl": false
     }, 

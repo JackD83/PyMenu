@@ -1,0 +1,12 @@
+{
+    "description": "Gameboy Color", 
+    "name": "GBC", 
+    "overclock": "528", 
+    "previews": "/mnt/int_sd/roms/gbc/previews",   
+    "selectionPath": "/mnt/int_sd/roms/gbc", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true,
+    "system": "gbc"   
+}

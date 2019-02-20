@@ -1,0 +1,12 @@
+{
+    "description": "ColecoVision",
+    "name": "COL",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/collecovision/previews",
+    "selectionPath": "/mnt/int_sd/roms/collecovision",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "col"
+}

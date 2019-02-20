@@ -1,10 +1,6 @@
 {
-    "available": [
-        "RS97", 
-        "RS07", 
-        "K3P"
-    ], 
     "description": "Native ports to this device", 
+    "linkPath": "links/games", 
     "name": "Ports", 
     "type": "native"
 }

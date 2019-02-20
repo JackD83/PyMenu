@@ -1,0 +1,12 @@
+{
+    "description": "Wonderswan",
+    "name": "WS",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/ws/previews",
+    "selectionPath": "/mnt/int_sd/roms/wswan",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "ws"
+}

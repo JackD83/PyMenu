@@ -30,8 +30,7 @@ def reloadConfiguration():
         configuration["options"]["themeName"] = "default"
 
 
-    configuration["mainMenu"] = []
-  
+    configuration["mainMenu"] = []  
     setResolution()
 
 
@@ -43,32 +42,32 @@ def reloadConfiguration():
                 if(os.path.isdir("config/main/" + name )):       
                     entry = json.load(open("config/main/" + name + "/config.json"))
                     entry["source"] = name
-                    if(hasConfig(entry["system"]) or
-                    configuration["options"]["showAll"] ):
+
+
+                    if( configuration["options"]["showAll"] or entry["type"] == "native"):                        
+                        entry["data"] = []
+                        try:
+                            itemlist = os.listdir( entry["linkPath"])                          
+                            Common.quick_sort(itemlist) 
+                        
+                            for itemName in itemlist:                                
+                                item = createNativeItem(entry["linkPath"] + "/" + itemName)   
+                                appendTheme(item)
+                                entry["data"].append(item)
+
+                            appendTheme(entry)
+                            configuration["mainMenu"].append(entry)
+                                
+                        except Exception as ex:
+                            print("Error loading item:" + str(ex))
+                       
+
+                    elif(hasConfig(entry["system"]) or configuration["options"]["showAll"] ):
 
                         appendTheme(entry)
-                        appendLinks(entry)
+                        appendEmuLinks(entry)
                         configuration["mainMenu"].append(entry)                       
-
-                        if(entry["type"] == "native"):
-                            entry["data"] = []
-                            try:
-                                itemlist =  os.listdir("config/main/" + name + "/items")
-                                Common.quick_sort(itemlist) 
-                                for itemName in itemlist:
-                                    item = json.load(open("config/main/" + name + "/items/" + itemName))
-                                    item["source"] = itemName
-
-                                    if("available" not in item or item["available"] == None or
-                                        configuration["options"]["type"] in item["available"] or
-                                        configuration["options"]["showAll"] ):
-
-                                        appendTheme(item)
-                                        entry["data"].append(item)
-
-                                    
-                            except Exception as ex:
-                                print(str(ex))
+                       
                 
 
             except Exception as ex:
@@ -76,37 +75,66 @@ def reloadConfiguration():
 
 
 def hasConfig(system):
-    itemlist =  os.listdir("links")
-    found = False                      
-    for itemName in itemlist:
-        if(itemName.lower().startswith(system.lower())):
-            found = True
-            break
+    found = False   
+    for (dirpath, dirnames, filenames) in os.walk("links"):
+        for name in filenames:         
+            if(name.lower().startswith(system.lower() + ".") or
+            name.lower() == system.lower()):
+                found = True
+                break
+
     return found
 
-def appendLinks(entry):
+
+def createNativeItem(item):
+    data = parseLink(item)
+    
+    entry = {}
+    entry["name"] = data["title"]
+    entry["cmd"] = data["exec"]
+    entry["description"] = data["description"]
+
+    if("clock" in data):
+        entry["overclock"] = data["clock"]
+    
+    entry["workingDir"] = os.path.abspath(os.path.join(data["exec"], os.pardir))
+
+
+    if("selectordir" in data):
+        entry["selector"] = True
+        entry["selectionPath"] = data["selectordir"]
+
+        if("selectorfilter" in data):           
+            filter = data["selectorfilter"].split(",")                  
+            entry["fileFilter"] = list(set(filter))
+
+    return entry
+
+def appendEmuLinks(entry):
     system = entry["system"]
-    itemlist =  os.listdir("links")
+
     entry["emu"] = [] #clear emus
     entry["useSelection"] = False
   
-    for itemName in itemlist:
-        if(itemName.lower().startswith(system.lower())):
-            data = parseLink("links/" + itemName)         
-            emuEntry = {}
-            emuEntry["name"] = data["title"]
-            emuEntry["cmd"] = data["exec"]
-            emuEntry["workingDir"] = os.path.abspath(os.path.join(data["exec"], os.pardir))
-            entry["emu"].append(emuEntry)
-            if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):           
-                filter = data["selectorfilter"].split(",")
-                if("fileFilter" in entry):
-                    filter.extend(entry["fileFilter"])
-                #make unique
-                entry["fileFilter"] = list(set(filter))
+    for (dirpath, dirnames, filenames) in os.walk("links"):
+        for name in filenames:
+            if(name.lower().startswith(system.lower() + "." ) or
+            name.lower() == system.lower()):
+                data = parseLink(dirpath + "/" + name)         
+                emuEntry = {}
+                emuEntry["name"] = data["description"]
+                emuEntry["cmd"] = data["exec"]
+                emuEntry["workingDir"] = os.path.abspath(os.path.join(data["exec"], os.pardir))
+                entry["emu"].append(emuEntry)
+                if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):           
+                    filter = data["selectorfilter"].split(",")
+                    if("fileFilter" in entry):
+                        filter.extend(entry["fileFilter"])
+                    #make unique
+                    entry["fileFilter"] = list(set(filter))
 
-            if("selectordir" in data):
-                entry["useSelection"] = True
+                if("selectordir" in data):
+                    entry["useSelection"] = True
 
 
 
@@ -115,9 +143,12 @@ def parseLink(linkFile):
     f = open(linkFile, "r")
     data = {}
     file_as_list = f.readlines()
+
     for line in file_as_list:       
         params = line.split("=", 1)
-        data[params[0]] = params[1].rstrip()
+        if(len(params) == 2):
+            data[params[0]] = params[1].rstrip()
+ 
     return data
 
 
@@ -199,8 +230,6 @@ def saveTheme(entry):
    
 
 
-
-
 def setResolution():
     global configuration
    
@@ -245,18 +274,16 @@ def saveConfiguration():
         if(item["type"] == "native"):
             data = item["data"]
             item.pop('data', None)
-            for dataIndex, dataItem in enumerate(data):
-                if("source" not in dataItem):
-                    dataName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/items/" + str(dataIndex).zfill(3) + " " + dataItem["name"] + ".json"
-                else:
-                    dataName = "config/main/" + item["source"] + "/items/" + dataItem["source"]
-
-                if "source" in dataItem: del dataItem["source"]
-                storeConfigPart(dataName, dataItem)
-                saveTheme(dataItem)
+            for dataIndex, dataItem in enumerate(data):             
+                saveTheme(dataItem)          
 
         if(item["type"] != "lastPlayed"):
             if "source" in item: del item["source"]
+            if "emu" in item: del item["emu"]
+            if "fileFilter" in item: del item["fileFilter"]
+
+
+
             saveTheme(item)
             storeConfigPart(fileName, item)
         elif(item["type"] == "lastPlayed"):

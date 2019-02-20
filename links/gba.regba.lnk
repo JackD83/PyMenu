@@ -1,0 +1,6 @@
+title=GBA
+description=ReGBA Emulator
+exec=/home/retrofw/emus/regba/regba.dge
+selectordir=/home/retrofw/roms/gba
+selectorfilter=.zip,.gba
+clock=600

@@ -1,0 +1,12 @@
+{
+    "description": "Atari Lynx",
+    "name": "LNX",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/lynx/previews",
+    "selectionPath": "/mnt/int_sd/roms/lynx",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "lynx"
+}

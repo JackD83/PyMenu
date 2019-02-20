@@ -1,0 +1,12 @@
+{
+    "description": "Microsoft MSX",
+    "name": "MSX",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/msx/previews",
+    "selectionPath": "/mnt/int_sd/roms/msx",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "msx"
+}

@@ -1,0 +1,12 @@
+{
+    "description": "ATARI ST",
+    "name": "AST",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/atarist/previews",
+    "selectionPath": "/mnt/int_sd/roms",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "st"
+}

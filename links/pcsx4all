@@ -1,0 +1,8 @@
+title=pcsx4all
+description=PS1 Emulator
+exec=/home/retrofw/emus/pcsx4all/pcsx4all
+clock=600
+params=-iso $f
+selectordir=/home/retrofw/roms
+selectorfilter=.bin,.img,.mdf,.iso,.cue,.pbp,.cbn
+

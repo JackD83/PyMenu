@@ -1,0 +1,12 @@
+{
+    "description": "Capcom Play Sys 2",
+    "name": "CPS2",
+    "overclock": "624",
+    "previews": "/mnt/int_sd/roms/cps2/previews",
+    "selectionPath": "/mnt/int_sd/roms/cps2",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": true,
+    "useSelection": true,
+    "system": "cps2"
+}

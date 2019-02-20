@@ -1,0 +1,13 @@
+{ 
+    "description": "Gameboy Advance", 
+     "name": "GBA", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/gba/previews", 
+    "screen": "default", 
+    "selectionPath": "/mnt/int_sd/roms/gba", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "system" :"gba"    
+}
