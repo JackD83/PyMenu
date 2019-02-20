@@ -1,0 +1,5 @@
+title=quake2
+description=FPS game
+exec=/home/retrofw/games/quake2/quake2
+clock=600
+

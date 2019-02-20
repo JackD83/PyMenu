@@ -1,0 +1,6 @@
+title=Mega Drive
+description=PicoDrive Emulator
+exec=/home/retrofw/emus/picodrive/picodrive.dge
+selectordir=/home/retrofw/roms/megadrive
+selectorfilter=.zip,.smd,.iso,.bin,.md,.gen
+clock=600

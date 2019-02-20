@@ -1,0 +1,6 @@
+title=Atari 2600
+description=Dingux 2600 Emulator
+exec=/home/retrofw/emus/dingux-2600/dingux-2600.dge
+selectordir=/home/retrofw/roms/atari2600
+selectorfilter=.zip,.bin,.a26
+clock=600

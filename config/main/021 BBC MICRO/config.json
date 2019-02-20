@@ -1,0 +1,12 @@
+{
+    "description": "BCC Micro Computer",
+    "name": "BBC",
+    "overclock": "524",
+    "previews": null,
+    "selectionPath": "/mnt/int_sd/emus/beebem/roms",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "bbc"
+}

@@ -1,0 +1,6 @@
+title=Game Gear
+description=PicoDrive Emulator
+exec=/home/retrofw/emus/picodrive/picodrive.dge
+selectordir=/home/retrofw/roms/gamegear
+selectorfilter=.zip,.sms,.gg,.sg
+clock=600

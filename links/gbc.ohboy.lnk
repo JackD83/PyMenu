@@ -1,0 +1,6 @@
+title=GB/GBC
+description=OhBoy Emulator
+exec=/home/retrofw/emus/ohboy/ohboy.dge
+selectordir=/home/retrofw/roms/gbc
+selectorfilter=.zip,.gb,.gbc
+clock=600

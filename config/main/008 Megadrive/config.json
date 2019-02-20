@@ -1,0 +1,12 @@
+{   
+    "description": "SEGA Megadrive",    
+    "name": "SMD", 
+    "overclock": "600", 
+    "previews": "/mnt/int_sd/roms/megadrive/previews",   
+    "selectionPath": "/mnt/int_sd/roms/megadrive", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "system" :"megadrive"  
+}

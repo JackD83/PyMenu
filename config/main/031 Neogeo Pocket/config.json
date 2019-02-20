@@ -1,0 +1,12 @@
+{
+    "description": "NEOGEO Pocket",
+    "name": "NGP",
+    "overclock": "524",
+    "previews": "//mnt/int_sd/roms/ngp/previews",
+    "selectionPath": "/mnt/int_sd/roms/ngp",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "ngp"
+}

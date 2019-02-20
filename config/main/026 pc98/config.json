@@ -1,0 +1,12 @@
+{
+    "description": "NEC PC-98",
+    "name": "PC98",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/pc98/previews",
+    "selectionPath": "/mnt/int_sd/roms/pc98",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "PC98"
+}

@@ -1,0 +1,6 @@
+title=Master System
+description=PicoDrive Emulator
+exec=/home/retrofw/emus/picodrive/picodrive.dge
+selectordir=/home/retrofw/roms/mastersystem
+selectorfilter=.zip,.sms,.gg,.sg
+clock=600

@@ -1,0 +1,12 @@
+{      
+    "description": "Nintendo",     
+    "name": "NES", 
+    "overclock": "624", 
+    "previews": "/mnt/int_sd/roms/nes/previews",    
+    "selectionPath": "/mnt/int_sd/roms/nes", 
+    "type": "emulator", 
+    "system": "nes", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true   
+}

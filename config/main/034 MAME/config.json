@@ -1,0 +1,12 @@
+{
+    "description": "MAME Arcade EMU",
+    "name": "MAME",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/mame/previews",
+    "selectionPath": "/mnt/int_sd/roms/mame",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "mame"
+}

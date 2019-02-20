@@ -1,0 +1,12 @@
+{
+    "description": "Lucas Arts",
+    "name": "SCUMMVM",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/scummvm/previews",
+    "selectionPath": "/mnt/int_sd/roms/scummvm",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "scummvm"
+}

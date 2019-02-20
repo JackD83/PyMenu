@@ -1,0 +1,12 @@
+{   
+    "description": "NEC PC Engine",     
+    "name": "PCE", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/pce/previews",   
+    "selectionPath": "/mnt/int_sd/roms/pce", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "system" : "temper"    
+}

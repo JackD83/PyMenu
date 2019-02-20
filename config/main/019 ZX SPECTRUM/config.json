@@ -1,0 +1,12 @@
+{
+    "description": "Sinclair ZX Spectrum",
+    "name": "SZX",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/zxspectrum/previews",
+    "selectionPath": "/mnt/int_sd/roms/zxspectrum",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "SZX"
+}

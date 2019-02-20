@@ -1,0 +1,12 @@
+{
+    "description": "Commodore Amiga",
+    "name": "AMIGA",
+    "overclock": "524",
+    "previews": "//mnt/int_sd/roms/amiga/previews",
+    "selectionPath": "/mnt/int_sd/roms/amiga",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": false,
+    "system": "amiga"
+}

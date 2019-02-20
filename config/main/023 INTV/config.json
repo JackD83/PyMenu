@@ -1,0 +1,12 @@
+{
+    "description": "IntelliVision",
+    "name": "INTV",
+    "overclock": "524",
+    "previews": "/mnt/int_sd/roms/inttellivision/previews",
+    "selectionPath": "/mnt/int_sd/roms/intellevision",
+    "type": "emulator",
+    "useFileFilter": null,
+    "useGamelist": null,
+    "useSelection": true,
+    "system": "INTV"
+}

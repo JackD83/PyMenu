@@ -1,0 +1,12 @@
+{
+    "description": "SEGA Master System",    
+    "name": "SMS", 
+    "overclock": "524", 
+    "previews": "/mnt/int_sd/roms/sms/previews",  
+    "selectionPath": "/mnt/int_sd/roms/mastersystem", 
+    "type": "emulator", 
+    "useFileFilter": null, 
+    "useGamelist": null, 
+    "useSelection": true, 
+    "system":"mastersystem"   
+}

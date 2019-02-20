@@ -1,17 +1,6 @@
 {
-    "available": [
-        "RS97", 
-        "RS07", 
-        "K3P"
-    ], 
-    "cmd": null, 
     "description": "Applications", 
-    "legacy": null, 
+    "linkPath": "links/applications", 
     "name": "Apps", 
-    "overclock": null, 
-    "previews": null, 
-    "screen": null, 
-    "selectionPath": null, 
-    "type": "native", 
-    "workingDir": null
+    "type": "native"
 }

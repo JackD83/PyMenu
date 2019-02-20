@@ -1,0 +1,7 @@
+title=temper
+description=PC ENGINE emulator
+exec=/home/retrofw/emus/temper/temper
+clock=600
+selectordir=/home/retrofw/roms
+selectorfilter=.pce,.zip,.bin,.cue
+

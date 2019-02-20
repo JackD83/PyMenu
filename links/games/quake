@@ -1,0 +1,4 @@
+title=Quake
+description=FPS game
+exec=/home/retrofw/games/quake/quake
+clock=600
