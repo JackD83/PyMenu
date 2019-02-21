@@ -5,4 +5,4 @@ else
     cp /home/retrofw/autoexec.sh autoexec.backup
 fi
 
-cp autoexec.sh /mnt/int_sd
+cp autoexec.sh /mnt/home/retrofw/
