@@ -3,7 +3,7 @@
     "batteryLow": 3752, 
     "firstStart": false, 
     "lcd_backlight": 70, 
-    "linkPath" : "links",
+    "linkPath": "/home/retrofw/apps/gmenu2x/sections", 
     "options": {
         "allowEdit": true, 
         "displayTimeout": "off", 
@@ -17,5 +17,5 @@
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
-    "version": "1.0.5"
+    "version": "1.0.6-PRE"
 }
