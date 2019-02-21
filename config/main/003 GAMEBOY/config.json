@@ -1,12 +1,12 @@
-{    
-    "description": "Gameboy",       
+{
+    "description": "Gameboy", 
     "name": "GB", 
-    "system": "gb",
     "overclock": "528", 
-    "previews": "/home/retrofw/roms/gb/previews",    
-    "selectionPath": "/home/retrofw/roms/gb", 
+    "previews": "//media/mmcblk1p1/previews/gb", 
+    "selectionPath": "//media/mmcblk1p1/roms/gb", 
+    "system": "gb", 
     "type": "emulator", 
     "useFileFilter": null, 
     "useGamelist": null, 
-    "useSelection": true 
+    "useSelection": true
 }

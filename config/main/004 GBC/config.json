@@ -2,11 +2,11 @@
     "description": "Gameboy Color", 
     "name": "GBC", 
     "overclock": "528", 
-    "previews": "/home/retrofw/roms/gbc/previews",   
+    "previews": "/home/retrofw/roms/gbc/previews", 
     "selectionPath": "/home/retrofw/roms/gbc", 
+    "system": "gbc", 
     "type": "emulator", 
     "useFileFilter": null, 
     "useGamelist": null, 
-    "useSelection": true,
-    "system": "gbc"   
+    "useSelection": true
 }
