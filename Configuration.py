@@ -1,8 +1,6 @@
 import json, subprocess, os, copy,shutil, platform, pygame, Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
-import configparser
-
 
 
 configuration = None
@@ -75,8 +73,9 @@ def reloadConfiguration():
 
 
 def hasConfig(system):
+    global configuration
     found = False   
-    for (dirpath, dirnames, filenames) in os.walk("links"):
+    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:         
             if(name.lower().startswith(system.lower() + ".") or
             name.lower() == system.lower()):
@@ -111,12 +110,13 @@ def createNativeItem(item):
     return entry
 
 def appendEmuLinks(entry):
+    global configuration
     system = entry["system"]
 
     entry["emu"] = [] #clear emus
     entry["useSelection"] = False
   
-    for (dirpath, dirnames, filenames) in os.walk("links"):
+    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:
             if(name.lower().startswith(system.lower() + "." ) or
             name.lower() == system.lower()):

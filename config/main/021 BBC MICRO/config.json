@@ -3,7 +3,7 @@
     "name": "BBC",
     "overclock": "524",
     "previews": null,
-    "selectionPath": "/mnt/int_sd/emus/beebem/roms",
+    "selectionPath": "/home/retrofw/emus/beebem/roms",
     "type": "emulator",
     "useFileFilter": null,
     "useGamelist": null,
