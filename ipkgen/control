@@ -1,0 +1,11 @@
+Package: pymenu
+Version: {{VERSION}}
+Description: Menu developed for the RetroGame and RetroArcade gaming devices in python and pygame
+Replaces: pymenu
+Section: apps
+Priority: optional
+Maintainer: JackD83
+Architecture: mipsel
+Homepage: https://github.com/JackD83/PyMenu
+Depends:
+Source: https://github.com/JackD83/PyMenu
