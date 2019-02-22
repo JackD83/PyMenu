@@ -1,3 +1,2 @@
 #!/bin/sh
 sync; echo -e 'Installation finished.
-

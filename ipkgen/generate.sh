@@ -16,11 +16,15 @@ sed -i s/{{VERSION}}/$VERSION/g tmp/control/control
 mkdir -p tmp/data/home/retrofw/apps/pymenu
 cp ../*.py tmp/data/home/retrofw/apps/pymenu/
 cp ../*.sh tmp/data/home/retrofw/apps/pymenu/
+cp ../*.dge tmp/data/home/retrofw/apps/pymenu/
 cp -r ../config tmp/data/home/retrofw/apps/pymenu/
 cp -r ../images tmp/data/home/retrofw/apps/pymenu/
 cp -r ../installer tmp/data/home/retrofw/apps/pymenu/
 cp -r ../python tmp/data/home/retrofw/apps/pymenu/
 cp -r ../theme tmp/data/home/retrofw/apps/pymenu/
+
+mkdir -p tmp/data/home/retrofw/apps/gmenu2x/sections/applications/
+cp pymenu.lnk tmp/data/home/retrofw/apps/gmenu2x/sections/applications/
 
 cd tmp/control
 

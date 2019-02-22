@@ -8,7 +8,7 @@
         "allowEdit": true, 
         "displayTimeout": "off", 
         "showAll": false, 
-        "showFPS": true, 
+        "showFPS": false, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
         "themeName": "default", 
