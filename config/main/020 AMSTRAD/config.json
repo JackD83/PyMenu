@@ -3,7 +3,7 @@
     "name": "CPC",
     "overclock": "524",
     "previews": null,
-    "selectionPath": "/mnt/int_sd/roms",
+    "selectionPath": "/home/retrofw/roms",
     "type": "emulator",
     "useFileFilter": null,
     "useGamelist": null,

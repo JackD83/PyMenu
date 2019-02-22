@@ -1,8 +1,8 @@
 
 if [ -f autoexec.backup ]; then
-    cp /mnt/int_sd/autoexec.sh autoexec.overwrite
+    cp /home/retrofw/autoexec.sh autoexec.overwrite
 else
-    cp /mnt/int_sd/autoexec.sh autoexec.backup
+    cp /home/retrofw/autoexec.sh autoexec.backup
 fi
 
-cp autoexec.sh /mnt/int_sd
+cp autoexec.sh /mnt/home/retrofw/

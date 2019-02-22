@@ -183,14 +183,8 @@ class MainMenu(RenderObject.RenderObject):
             else:
                 print("reboot")
 
-    def usbMountCallback(self, key):
-        print("Rebooting after usb mount")
-        if(platform.processor() == ""):
-            subprocess.Popen(["sync"])
-            subprocess.Popen(["reboot"])
-        else:
-            print("reboot")
-            self.overlay = None
+    def usbMountCallback(self, key):      
+        self.overlay = None     
        
 
     def configCallback(self, select):

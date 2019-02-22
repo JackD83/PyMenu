@@ -1,12 +1,12 @@
-{    
-    "description": "Gameboy",       
+{
+    "description": "Gameboy", 
     "name": "GB", 
-    "system": "gb",
     "overclock": "528", 
-    "previews": "/mnt/int_sd/roms/gb/previews",    
-    "selectionPath": "/mnt/int_sd/roms/gb", 
+    "previews": "/home/retrofw/roms/snes/previes", 
+    "selectionPath": "/home/retrofw/roms/snes", 
+    "system": "gb", 
     "type": "emulator", 
     "useFileFilter": null, 
     "useGamelist": null, 
-    "useSelection": true 
+    "useSelection": true
 }

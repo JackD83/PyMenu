@@ -1,6 +1,6 @@
 {
     "description": "Applications", 
-    "linkPath": "links/applications", 
+    "linkPath": "/home/retrofw/apps/gmenu2x/sections/applications", 
     "name": "Apps", 
     "type": "native"
 }

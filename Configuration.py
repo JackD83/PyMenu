@@ -1,8 +1,6 @@
 import json, subprocess, os, copy,shutil, platform, pygame, Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
-import configparser
-
 
 
 configuration = None
@@ -75,8 +73,9 @@ def reloadConfiguration():
 
 
 def hasConfig(system):
+    global configuration
     found = False   
-    for (dirpath, dirnames, filenames) in os.walk("links"):
+    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:         
             if(name.lower().startswith(system.lower() + ".") or
             name.lower() == system.lower()):
@@ -111,12 +110,13 @@ def createNativeItem(item):
     return entry
 
 def appendEmuLinks(entry):
+    global configuration
     system = entry["system"]
 
     entry["emu"] = [] #clear emus
     entry["useSelection"] = False
   
-    for (dirpath, dirnames, filenames) in os.walk("links"):
+    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:
             if(name.lower().startswith(system.lower() + "." ) or
             name.lower() == system.lower()):
@@ -168,11 +168,11 @@ def changeThemeName(name):
         json.dump(allConfig, fp,sort_keys=True, indent=4)
 
 def appendTheme(entry):
-    typeName = configuration["options"]["type"]
+    typeName = configuration["options"]["type"].lower()
     themeName = configuration["options"]["themeName"]
     entryName = entry["name"]
 
-    
+    print("tring to load theme for: " + "theme/" + typeName + "/" + themeName + "/" + entryName + ".json")
 
     try:
         if os.path.exists("theme/" + typeName+ "/" + themeName + "/" + entryName + ".json"):

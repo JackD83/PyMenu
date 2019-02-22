@@ -6,3 +6,4 @@ __pycache__
 /python/log.txt
 config/lastPlayedData.json
 /.vscode
+/ipkgen/*.ipk

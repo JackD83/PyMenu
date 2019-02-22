@@ -1,12 +1,12 @@
-{      
-    "description": "Nintendo",     
+{
+    "description": "Nintendo", 
     "name": "NES", 
     "overclock": "624", 
-    "previews": "/mnt/int_sd/roms/nes/previews",    
-    "selectionPath": "/mnt/int_sd/roms/nes", 
-    "type": "emulator", 
+    "previews": "/home/retrofw/roms/nes/previews", 
+    "selectionPath": "/home/retrofw/roms/nes", 
     "system": "nes", 
+    "type": "emulator", 
     "useFileFilter": null, 
     "useGamelist": null, 
-    "useSelection": true   
+    "useSelection": true
 }
