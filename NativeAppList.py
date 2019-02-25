@@ -124,10 +124,15 @@ class NativeAppList(AbstractList.AbstractList):
                         pass        
                     else:
                         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
-                            if(len(self.options) == 0):
-                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
+
+                            if("linkPath" in self.options):
+                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["edit"], self.optionsCallback)
+
                             else:
-                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
+                                if(len(self.options) == 0):
+                                    self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
+                                else:
+                                    self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add", "edit", "remove"], self.optionsCallback)
                             RenderControl.setDirty()
 
         if(self.overlay is None):

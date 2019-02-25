@@ -98,6 +98,9 @@ def createNativeItem(item):
     
     entry["workingDir"] = os.path.abspath(os.path.join(data["exec"], os.pardir))
 
+    preview = os.path.splitext(entry["cmd"])[0] + ".png"
+    if(os.path.exists(preview)):
+        entry["preview"] = preview
 
     if("selectordir" in data):
         entry["selector"] = True
@@ -191,8 +194,8 @@ def appendTheme(entry):
         print(str(ex))
 
 def saveTheme(entry):
-    typeName = configuration["options"]["type"]
-    themeName = configuration["options"]["themeName"]
+    typeName = configuration["options"]["type"].lower()
+    themeName = configuration["options"]["themeName"].lower()
     entryName = entry["name"]
     try:
         theme = {}

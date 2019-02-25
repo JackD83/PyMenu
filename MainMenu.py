@@ -254,6 +254,10 @@ class MainMenu(RenderObject.RenderObject):
             options = {}
             options["background"] = current["background"]
             options["useSidebar"] = True
+
+            if("linkPath" in current):
+                options["linkPath"] = current["linkPath"]
+         
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
             if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
                 footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
