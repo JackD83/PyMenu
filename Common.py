@@ -117,9 +117,16 @@ def umountSD(ext):
     pass
 
 def mountUSB():
+    if(platform.processor() != ""):
+        return
+
+
     try:     
-        cmd = "/etc/init.d/S99recovery storage on"
-        subprocess.Popen(cmd, shell=True, stderr=subprocess.PIPE)
+        fileName = "run"  
+        file = open("/tmp/" + fileName,"w")
+        file.write("#!/bin/sh\n")
+        file.write("/etc/init.d/S99recovery storage on\n")       
+        sys.exit()
 
     except Exception as ex:
         print("mount exception " + str(ex))
