@@ -20,7 +20,7 @@ cp ../*.dge tmp/data/home/retrofw/apps/pymenu/
 cp -r ../config tmp/data/home/retrofw/apps/pymenu/
 cp -r ../images tmp/data/home/retrofw/apps/pymenu/
 cp -r ../installer tmp/data/home/retrofw/apps/pymenu/
-cp -r ../python tmp/data/home/retrofw/apps/pymenu/
+#cp -r ../python tmp/data/home/retrofw/apps/pymenu/
 cp -r ../theme tmp/data/home/retrofw/apps/pymenu/
 
 mkdir -p tmp/data/home/retrofw/apps/gmenu2x/sections/applications/
