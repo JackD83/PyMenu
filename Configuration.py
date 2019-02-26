@@ -310,16 +310,17 @@ def saveConfiguration():
             if "source" in item: del item["source"]
             if "emu" in item: del item["emu"]
             if "fileFilter" in item: del item["fileFilter"]
-            if "visible" in item: del item["visible"]
-
+          
             saveTheme(item)
-          # storeConfigPart(fileName, item)
+      
 
         elif(item["type"] == "lastPlayed"):
             dataName = "config/" + "main" + "/lastPlayed.json"
             if("data" in item): del item["data"]
             saveTheme(item)
-           # storeConfigPart(dataName, item)
+        
+
+        item.pop('visible', None)
 
     with open('config/config.json', 'w') as fp: 
         json.dump(allConfig, fp,sort_keys=True, indent=4)

@@ -6,20 +6,20 @@
     "linkPath": "/home/retrofw/apps/gmenu2x/sections", 
     "mainMenu": [
         {
-            "background": "images/backgrounds/rs97/midpath.png", 
+            "background": "images/pixel97/backgrounds/midpath.png", 
             "data": [], 
             "description": "Applications", 
-            "icon": "images/systems/apps.png", 
+            "icon": "images/pixel97/systems/apps.png", 
             "linkPath": "/home/retrofw/apps/gmenu2x/sections/applications", 
             "name": "Apps", 
             "type": "native", 
             "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/nes.png", 
+            "background": "images/pixel97/backgrounds/nes.png", 
             "description": "Nintendo", 
-            "folderIcon": "images/icons/nes.png", 
-            "icon": "images/systems/nes.png", 
+            "folderIcon": "images/pixel97/icons/nes.png", 
+            "icon": "images/pixel97/systems/nes.png", 
             "name": "NES", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/nes/previews", 
@@ -29,13 +29,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/snes.png", 
+            "background": "images/pixel97/backgrounds/snes.png", 
             "description": "Super Nintendo", 
-            "folderIcon": "images/icons/snes.png", 
-            "icon": "images/systems/snes.png", 
+            "folderIcon": "images/pixel97/icons/snes.png", 
+            "icon": "images/pixel97/systems/snes.png", 
             "name": "SNES", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/snes/previews", 
@@ -45,13 +45,13 @@
             "useFileFilter": false, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/gb.png", 
+            "background": "images/pixel97/backgrounds/gb.png", 
             "description": "Gameboy", 
-            "folderIcon": "images/icons/gb.png", 
-            "icon": "images/systems/gb.png", 
+            "folderIcon": "images/pixel97/icons/gb.png", 
+            "icon": "images/pixel97/systems/gb.png", 
             "name": "GB", 
             "overclock": "528", 
             "previews": "/home/retrofw/roms/snes/previes", 
@@ -61,13 +61,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/gbc.png", 
+            "background": "images/pixel97/backgrounds/gbc.png", 
             "description": "Gameboy Color", 
-            "folderIcon": "images/icons/gbc.png", 
-            "icon": "images/systems/gbc.png", 
+            "folderIcon": "images/pixel97/icons/gbc.png", 
+            "icon": "images/pixel97/systems/gbc.png", 
             "name": "GBC", 
             "overclock": "528", 
             "previews": "/home/retrofw/roms/gbc/previews", 
@@ -77,13 +77,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/gba.png", 
+            "background": "images/pixel97/backgrounds/gba.png", 
             "description": "Gameboy Advance", 
-            "folderIcon": "images/icons/gba.png", 
-            "icon": "images/systems/gba.png", 
+            "folderIcon": "images/pixel97/icons/gba.png", 
+            "icon": "images/pixel97/systems/gba.png", 
             "name": "GBA", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/gba/previews", 
@@ -94,13 +94,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/pokemini.png", 
+            "background": "images/pixel97/backgrounds/pokemini.png", 
             "description": "Pokemon Mini", 
-            "folderIcon": "images//icons/pokemini.png", 
-            "icon": "images/systems/pokemini.png", 
+            "folderIcon": "images/pixel97//icons/pokemini.png", 
+            "icon": "images/pixel97/systems/pokemini.png", 
             "name": "PokeMini", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/pokemini/previews", 
@@ -110,13 +110,13 @@
             "useFileFilter": null, 
             "useGamelist": false, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/sms.png", 
+            "background": "images/pixel97/backgrounds/sms.png", 
             "description": "SEGA Master System", 
-            "folderIcon": "images/icons/sms.png", 
-            "icon": "images/systems/sms.png", 
+            "folderIcon": "images/pixel97/icons/sms.png", 
+            "icon": "images/pixel97/systems/sms.png", 
             "name": "SMS", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/sms/previews", 
@@ -126,13 +126,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/megadrive.png", 
+            "background": "images/pixel97/backgrounds/megadrive.png", 
             "description": "SEGA Megadrive", 
-            "folderIcon": "images/icons/megadrive.png", 
-            "icon": "images/systems/megadrive.png", 
+            "folderIcon": "images/pixel97/icons/megadrive.png", 
+            "icon": "images/pixel97/systems/megadrive.png", 
             "name": "SMD", 
             "overclock": "600", 
             "preview": ".", 
@@ -143,13 +143,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/gg.png", 
+            "background": "images/pixel97/backgrounds/gg.png", 
             "description": "SEGA Game Gear", 
-            "folderIcon": "images/icons/gg.png", 
-            "icon": "images/systems/gg.png", 
+            "folderIcon": "images/pixel97/icons/gg.png", 
+            "icon": "images/pixel97/systems/gg.png", 
             "name": "GG", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/gg/previews", 
@@ -159,13 +159,13 @@
             "useFileFilter": null, 
             "useGamelist": false, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/pce.png", 
+            "background": "images/pixel97/backgrounds/pce.png", 
             "description": "NEC PC Engine", 
-            "folderIcon": "images/icons/pce.png", 
-            "icon": "images/systems/pce.png", 
+            "folderIcon": "images/pixel97/icons/pce.png", 
+            "icon": "images/pixel97/systems/pce.png", 
             "name": "PCE", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/pce/previews", 
@@ -175,13 +175,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/a2600.png", 
+            "background": "images/pixel97/backgrounds/a2600.png", 
             "description": "ATARI 2600", 
-            "folderIcon": "images/icons/a2600.png", 
-            "icon": "images/systems/a2600.png", 
+            "folderIcon": "images/pixel97/icons/a2600.png", 
+            "icon": "images/pixel97/systems/a2600.png", 
             "name": "A26", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/atari2600/previews", 
@@ -191,13 +191,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/a5200.png", 
+            "background": "images/pixel97/backgrounds/a5200.png", 
             "description": "Atari 5200", 
-            "folderIcon": "images/icons/a5200.png", 
-            "icon": "images/systems/a5200.png", 
+            "folderIcon": "images/pixel97/icons/a5200.png", 
+            "icon": "images/pixel97/systems/a5200.png", 
             "name": "A52", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/a5200.png", 
@@ -208,13 +208,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/a7800.png", 
+            "background": "images/pixel97/backgrounds/a7800.png", 
             "description": "ATARI 7800", 
-            "folderIcon": "images/icons/a7800.png", 
-            "icon": "images/systems/a7800.png", 
+            "folderIcon": "images/pixel97/icons/a7800.png", 
+            "icon": "images/pixel97/systems/a7800.png", 
             "name": "A78", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/atari7800/previews", 
@@ -224,13 +224,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ast.png", 
+            "background": "images/pixel97/backgrounds/ast.png", 
             "description": "ATARI ST", 
-            "folderIcon": "images/icons/ast.png", 
-            "icon": "images/systems/ast.png", 
+            "folderIcon": "images/pixel97/icons/ast.png", 
+            "icon": "images/pixel97/systems/ast.png", 
             "name": "AST", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/ast.png", 
@@ -241,13 +241,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/lynx.png", 
+            "background": "images/pixel97/backgrounds/lynx.png", 
             "description": "Atari Lynx", 
-            "folderIcon": "images/icons/lynx.png", 
-            "icon": "images/systems/lynx.png", 
+            "folderIcon": "images/pixel97/icons/lynx.png", 
+            "icon": "images/pixel97/systems/lynx.png", 
             "name": "LNX", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/lynx/previews", 
@@ -257,13 +257,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/c64.png", 
+            "background": "images/pixel97/backgrounds/c64.png", 
             "description": "Commodore c64", 
-            "folderIcon": "images/icons/c64.png", 
-            "icon": "images/systems/c64.png", 
+            "folderIcon": "images/pixel97/icons/c64.png", 
+            "icon": "images/pixel97/systems/c64.png", 
             "name": "C64", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/c64.png", 
@@ -274,13 +274,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/amiga.png", 
+            "background": "images/pixel97/backgrounds/amiga.png", 
             "description": "Commodore Amiga", 
-            "folderIcon": "images/icons/amiga.png", 
-            "icon": "images/systems/amiga.png", 
+            "folderIcon": "images/pixel97/icons/amiga.png", 
+            "icon": "images/pixel97/systems/amiga.png", 
             "name": "AMIGA", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/amiga.png", 
@@ -291,13 +291,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/scummvm.png", 
+            "background": "images/pixel97/backgrounds/scummvm.png", 
             "description": "Lucas Arts", 
-            "folderIcon": "images/icons/scummvm.png", 
-            "icon": "images/systems/scummvm.png", 
+            "folderIcon": "images/pixel97/icons/scummvm.png", 
+            "icon": "images/pixel97/systems/scummvm.png", 
             "name": "SCUMMVM", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/scummvm.png", 
@@ -308,13 +308,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/zxs.png", 
+            "background": "images/pixel97/backgrounds/zxs.png", 
             "description": "Sinclair ZX Spectrum", 
-            "folderIcon": "images/icons/zxs.png", 
-            "icon": "images/systems/zxs.png", 
+            "folderIcon": "images/pixel97/icons/zxs.png", 
+            "icon": "images/pixel97/systems/zxs.png", 
             "name": "SZX", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/zxspectrum/previews", 
@@ -324,13 +324,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/cpc.png", 
+            "background": "images/pixel97/backgrounds/cpc.png", 
             "description": "Amstrad CPC", 
-            "folderIcon": "images/icons/cpc.png", 
-            "icon": "images/systems/cpc.png", 
+            "folderIcon": "images/pixel97/icons/cpc.png", 
+            "icon": "images/pixel97/systems/cpc.png", 
             "name": "CPC", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/cpc.png", 
@@ -341,13 +341,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/bbcmicro.png", 
+            "background": "images/pixel97/backgrounds/bbcmicro.png", 
             "description": "BCC Micro Computer", 
-            "folderIcon": "images/icons/bbcmicro.png", 
-            "icon": "images/systems/bbcmicro.png", 
+            "folderIcon": "images/pixel97/icons/bbcmicro.png", 
+            "icon": "images/pixel97/systems/bbcmicro.png", 
             "name": "BBC", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/bbcmicro.png", 
@@ -358,13 +358,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/msx.png", 
+            "background": "images/pixel97/backgrounds/msx.png", 
             "description": "Microsoft MSX", 
-            "folderIcon": "None", 
-            "icon": "images/systems/msx.png", 
+            "folderIcon": "images/pixel97/icons/msx.png", 
+            "icon": "images/pixel97/systems/msx.png", 
             "name": "MSX", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/msx/previews", 
@@ -374,13 +374,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/int.png", 
+            "background": "images/pixel97/backgrounds/int.png", 
             "description": "IntelliVision", 
-            "folderIcon": "images/icons/int.png", 
-            "icon": "images/systems/int.png", 
+            "folderIcon": "images/pixel97/icons/int.png", 
+            "icon": "images/pixel97/systems/int.png", 
             "name": "INTV", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/inttellivision/previews", 
@@ -390,13 +390,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/coleco.png", 
+            "background": "images/pixel97/backgrounds/coleco.png", 
             "description": "ColecoVision", 
-            "folderIcon": "images/icons/coleco.png", 
-            "icon": "images/systems/coleco.png", 
+            "folderIcon": "images/pixel97/icons/coleco.png", 
+            "icon": "images/pixel97/systems/coleco.png", 
             "name": "COL", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/coleco.png", 
@@ -407,13 +407,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/pc.png", 
+            "background": "images/pixel97/backgrounds/pc.png", 
             "description": "DOSBOX emulation", 
-            "folderIcon": "images/icons/pc.png", 
-            "icon": "images/systems/pc.png", 
+            "folderIcon": "images/pixel97/icons/pc.png", 
+            "icon": "images/pixel97/systems/pc.png", 
             "name": "PC", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/pc/previews", 
@@ -423,7 +423,7 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
             "background": "images/pixel97/backgrounds/pc98.png", 
@@ -440,13 +440,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ws.png", 
+            "background": "images/pixel97/backgrounds/ws.png", 
             "description": "Wonderswan", 
-            "folderIcon": "images/icons/ws.png", 
-            "icon": "images/systems/ws.png", 
+            "folderIcon": "images/pixel97/icons/ws.png", 
+            "icon": "images/pixel97/systems/ws.png", 
             "name": "WS", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/ws/previews", 
@@ -456,13 +456,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/wsc.jpg", 
+            "background": "images/pixel97/backgrounds/wsc.png", 
             "description": "Wonderswan Color", 
-            "folderIcon": "images/icons/wsc.png", 
-            "icon": "images/systems/wsc.png", 
+            "folderIcon": "images/pixel97/icons/wsc.png", 
+            "icon": "images/pixel97/systems/wsc.png", 
             "legacy": false, 
             "name": "WSC", 
             "overclock": "524", 
@@ -473,13 +473,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/psx.png", 
+            "background": "images/pixel97/backgrounds/psx.png", 
             "description": "Sony Playstation", 
-            "folderIcon": "images/icons/psx.png", 
-            "icon": "images/systems/psx.png", 
+            "folderIcon": "images/pixel97/icons/psx.png", 
+            "icon": "images/pixel97/systems/psx.png", 
             "name": "PSX", 
             "overclock": "624", 
             "preview": "images/pixel97/systems/psx.png", 
@@ -490,13 +490,13 @@
             "useFileFilter": null, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/neogeo.png", 
+            "background": "images/pixel97/backgrounds/neogeo.png", 
             "description": "SNK NEOGEO", 
-            "folderIcon": "images/icons/neogeo.png", 
-            "icon": "images/systems/neogeo.png", 
+            "folderIcon": "images/pixel97/icons/neogeo.png", 
+            "icon": "images/pixel97/systems/neogeo.png", 
             "name": "SNK", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/neogeo/previews", 
@@ -506,13 +506,13 @@
             "useFileFilter": null, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ngp.png", 
+            "background": "images/pixel97/backgrounds/ngp.png", 
             "description": "NEOGEO Pocket", 
-            "folderIcon": "images/icons/ngp.png", 
-            "icon": "images/systems/ngp.png", 
+            "folderIcon": "images/pixel97/icons/ngp.png", 
+            "icon": "images/pixel97/systems/ngp.png", 
             "name": "NGP", 
             "overclock": "524", 
             "previews": "//home/retrofw/roms/ngp/previews", 
@@ -522,13 +522,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ngp.png", 
+            "background": "images/pixel97/backgrounds/ngpc.png", 
             "description": "Neogeo Pocket Color", 
-            "folderIcon": "images/icons/ngp.png", 
-            "icon": "images/systems/ngp.png", 
+            "folderIcon": "images/pixel97/icons/ngpc.png", 
+            "icon": "images/pixel97/systems/ngpc.png", 
             "name": "NGPC", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/ngpc/previews", 
@@ -538,13 +538,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/openbor.png", 
+            "background": "images/pixel97/backgrounds/openbor.png", 
             "description": "OpenBor", 
-            "folderIcon": "images/icons/openbor.png", 
-            "icon": "images/systems/openbor.png", 
+            "folderIcon": "images/pixel97/icons/openbor.png", 
+            "icon": "images/pixel97/systems/OpenBOR.png", 
             "name": "PAK", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/OpenBOR.png", 
@@ -555,13 +555,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/mame.png", 
+            "background": "images/pixel97/backgrounds/mame.png", 
             "description": "MAME Arcade EMU", 
-            "folderIcon": "images/icons/fba.png", 
-            "icon": "images/systems/mame.png", 
+            "folderIcon": "images/pixel97/icons/fba.png", 
+            "icon": "images/pixel97/systems/mame.png", 
             "name": "MAME", 
             "overclock": "524", 
             "preview": "images/pixel97/systems/mame.png", 
@@ -572,13 +572,13 @@
             "useFileFilter": null, 
             "useGamelist": null, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/fba.png", 
+            "background": "images/pixel97/backgrounds/fba.png", 
             "description": "Final Burn Alpha", 
-            "folderIcon": "images/icons/fba.png", 
-            "icon": "images/systems/fba.png", 
+            "folderIcon": "images/pixel97/icons/fba.png", 
+            "icon": "images/pixel97/systems/fba.png", 
             "name": "FBA", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/fba/previews", 
@@ -588,7 +588,7 @@
             "useFileFilter": null, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
             "background": "images/pixel97/backgrounds/cps1.png", 
@@ -604,7 +604,7 @@
             "useFileFilter": null, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
             "background": "images/pixel97/backgrounds/cps2.png", 
@@ -620,20 +620,20 @@
             "useFileFilter": null, 
             "useGamelist": true, 
             "useSelection": false, 
-            "visible": false
+            "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ports2_art_blur.jpg", 
+            "background": "images/pixel97/backgrounds/ports2_art_blur.png", 
             "data": [], 
             "description": "Native ports to this device", 
-            "icon": "images/systems/ports.png", 
+            "icon": "images/pixel97/systems/ports.png", 
             "linkPath": "/home/retrofw/apps/gmenu2x/sections/games", 
             "name": "Ports", 
             "type": "native", 
             "visible": true
         }, 
         {
-            "background": "images/backgrounds/rs97/ports_art_blur.jpg", 
+            "background": "images/pixel97/backgrounds/ports_art_blur.png", 
             "data": [
                 {
                     "background": "images/pixel97/backgrounds/nes.png", 
@@ -655,7 +655,7 @@
                 }
             ], 
             "description": "Last played games", 
-            "icon": "images/systems/auto-lastplayed.png", 
+            "icon": "images/pixel97/systems/auto-lastplayed.png", 
             "name": "Last Played", 
             "type": "lastPlayed", 
             "visible": true
