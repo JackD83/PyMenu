@@ -37,12 +37,10 @@ class MainMenu(RenderObject.RenderObject):
         
     def loadSystemImages(self):
       
-       
-
-        
+               
         self.loadSystem(self.currentIndex)
-        #self.loadSystem(self.getPrev())
-        #self.loadSystem(self.getNext())         
+        self.loadSystem(self.getPrev())
+        self.loadSystem(self.getNext())         
 
         thread = Thread(target = self.loadImagesAsync, args = ())
         thread.start()   
