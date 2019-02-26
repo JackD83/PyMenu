@@ -37,13 +37,12 @@ class MainMenu(RenderObject.RenderObject):
         
     def loadSystemImages(self):
       
-        self.systems = [None] * len(self.config["mainMenu"])
-     
-        self.systembackgrounds = [None] * len(self.config["mainMenu"])
+       
 
+        
         self.loadSystem(self.currentIndex)
-        self.loadSystem(self.getPrev())
-        self.loadSystem(self.getNext())         
+        #self.loadSystem(self.getPrev())
+        #self.loadSystem(self.getNext())         
 
         thread = Thread(target = self.loadImagesAsync, args = ())
         thread.start()   
@@ -54,13 +53,14 @@ class MainMenu(RenderObject.RenderObject):
             return
 
         entry = self.config["mainMenu"][index]
-        if os.path.exists(entry["icon"]):
+      
+     
+        if entry["visible"] and "icon" in entry and entry["icon"] != None and os.path.exists(entry["icon"]):
             self.systems[index] = Common.aspect_scale(Common.loadCachedImage( entry["icon"]), 140, 70)
         
-        if os.path.exists(entry["background"]):
+        if entry["visible"] and "background" in entry and os.path.exists(entry["background"]):
             self.systembackgrounds[index] = pygame.transform.scale(Common.loadCachedImage( entry["background"]), ( self.config["screenWidth"],self.config["screenHeight"]) )
-     
-     
+          
 
     def loadImagesAsync(self):
         for index, systemImage in enumerate(self.systems):
@@ -113,7 +113,8 @@ class MainMenu(RenderObject.RenderObject):
                     self.openOptions()
                     RenderControl.setDirty()
                 if event.key == Keys.DINGOO_BUTTON_START:
-                    if(self.selection == "band" and self.config["mainMenu"][self.currentIndex]["useSelection"] == False):          
+                    if(self.selection == "band" and "useSelection" in self.config["mainMenu"][self.currentIndex] 
+                    and self.config["mainMenu"][self.currentIndex]["useSelection"] == False):          
                         self.emulatorCallback("", Keys.DINGOO_BUTTON_START, True)
                         RenderControl.setDirty()
                     else:
@@ -150,7 +151,7 @@ class MainMenu(RenderObject.RenderObject):
         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
     
     def openOptions(self):
-        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
+        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] and self.config["mainMenu"][self.currentIndex]["type"] != "lastPlayed" ):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSettings(self):
@@ -192,16 +193,9 @@ class MainMenu(RenderObject.RenderObject):
         newThemeName = self.config["options"]["themeName"]
         if(self.themeName != self.config["options"]["themeName"]):
             print("themeChanged changed")
-            self.config["options"]["themeName"] = self.themeName
-        
+            self.config["options"]["themeName"] = self.themeName        
      
-        self.subComponent = None
-        isLastPlayed = self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed" 
-       
-
-
-        if(isLastPlayed and "showLastPlayed" in self.config["options"] and not self.config["options"]["showLastPlayed"]):
-            self.currentIndex = 0
+        self.subComponent = None     
 
         Configuration.changeThemeName(newThemeName)
 
@@ -396,10 +390,17 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()       
     
     def reload(self):
+
+        #set current on the first visible
         self.currentIndex = 0
+        self.currentIndex = self.getNext()
+        self.currentIndex = self.getPrev()
+
+        self.systems = [None] * len(self.config["mainMenu"])     
+        self.systembackgrounds = [None] * len(self.config["mainMenu"])
+
         Configuration.reloadConfiguration()
-        self.config = Configuration.getConfiguration()
-        self.loadLastPlayed()
+        self.config = Configuration.getConfiguration()     
         self.loadSystemImages()
     
     
@@ -410,7 +411,6 @@ class MainMenu(RenderObject.RenderObject):
     def emulatorCallback(self, selectedFile, key=Keys.DINGOO_BUTTON_A, direct=False):
         self.selectedFile = selectedFile
        
-
         if("emu" in self.config["mainMenu"][self.currentIndex] and selectedFile != None):
             emus = []
             for e in self.config["mainMenu"][self.currentIndex]["emu"]:
@@ -428,7 +428,7 @@ class MainMenu(RenderObject.RenderObject):
         
             elif(len(emus) == 0):
                 self.subComponent = None
-                self.overlay = ConfirmOverlay.ConfirmOverlay("Emulator not configured!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
+                self.overlay = ConfirmOverlay.ConfirmOverlay("Emu not configured!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
                 RenderControl.setDirty()
 
             return
@@ -464,17 +464,31 @@ class MainMenu(RenderObject.RenderObject):
         Configuration.saveConfiguration()
     
     
-    def getNext(self, stride=1):     
+    def getNext(self, stride=1): 
+       
         if(self.currentIndex + stride >= len(self.systems)):
-            return (self.currentIndex + stride) - len(self.systems)
+            index = (self.currentIndex + stride) - len(self.systems)                   
         else:
-            return self.currentIndex + stride
+            index = self.currentIndex + stride
+     
+        if(self.config["mainMenu"][index]["visible"] ):           
+            return index
+        else:
+            return self.getNext(stride + 1) 
 
-    def getPrev(self, stride=1):       
+    def getPrev(self, stride=1):    
+       
         if(self.currentIndex - stride < 0):
-            return len(self.systems) - int(math.fabs(self.currentIndex - stride))
+            index =  len(self.systems) - int(math.fabs(self.currentIndex - stride))
         else:
-            return self.currentIndex - stride
+            index = self.currentIndex - stride      
+
+        if(self.config["mainMenu"][index]["visible"] ):          
+            return index
+        else:         
+            return self.getPrev(stride + 1)
+
+
         
     def clearOverlay(self, res):
         self.overlay = None
@@ -500,6 +514,7 @@ class MainMenu(RenderObject.RenderObject):
             screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
         else:            
             RenderControl.setDirty()
+
 
         #previous
         if(self.systems[self.getPrev()] is not None and self.systems[self.getPrev()] is not None):
@@ -568,27 +583,7 @@ class MainMenu(RenderObject.RenderObject):
         else:
             screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
 
-    def loadLastPlayed(self):     
-        if("showLastPlayed" in self.config["options"] and self.config["options"]["showLastPlayed"] ):
-            print("loading last played games")
-            try:
-                lastPlayed = json.load(open("config/main/lastPlayed.json"))
-
-                if(os.path.exists("config/lastPlayedData.json")):
-                    lastPlayedData = json.load(open("config/lastPlayedData.json"))
-                    lastPlayed["data"] = lastPlayedData["data"]
-                else:
-                    newData = {}
-                    newData["data"] = []
-                    lastPlayed["data"] = []
-                    with open('config/lastPlayedData.json', 'w') as fp: 
-                        json.dump(newData, fp,sort_keys=True, indent=4)
-
-                Configuration.appendTheme(lastPlayed)
-                
-                self.config["mainMenu"].append(lastPlayed)        
-            except Exception as ex:
-                print("Exception: " + str(ex))
+  
 
     
     def __init__(self, screen, suspend):
@@ -597,8 +592,12 @@ class MainMenu(RenderObject.RenderObject):
         self.suspend = suspend
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
 
-        self.loadLastPlayed()
-        
+
+        self.systems = [None] * len(self.config["mainMenu"])     
+        self.systembackgrounds = [None] * len(self.config["mainMenu"])
+        self.currentIndex = self.getNext()
+        self.currentIndex = self.getPrev()
+   
       
         self.header = Header.Header(24)
 

@@ -1,6 +1,8 @@
 import json, subprocess, os, copy,shutil, platform, pygame, Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
+import traceback
+
 
 
 configuration = None
@@ -14,7 +16,7 @@ def getConfiguration():
 
     return configuration
 
-def reloadConfiguration(): 
+def reloadConfiguration():
     global configuration
     configuration = json.load(open('config/config.json'))
     if("version" not in configuration):
@@ -26,50 +28,63 @@ def reloadConfiguration():
 
     if("themeName" not in configuration["options"]):
         configuration["options"]["themeName"] = "default"
-
-
-    configuration["mainMenu"] = []  
+    
     setResolution()
+       
+    for entry in configuration["mainMenu"]:
+        try:  
+            if( entry["type"] == "native"):                        
+                entry["data"] = []
+                entry["visible"]= True
+              
+                appendTheme(entry)    
 
-
-    if os.path.exists(os.path.dirname("config/main/")):
-        fileList = os.listdir("config/main/")
-        Common.quick_sort(fileList)       
-        for name in fileList:
-            try:         
-                if(os.path.isdir("config/main/" + name )):       
-                    entry = json.load(open("config/main/" + name + "/config.json"))
-                    entry["source"] = name
-
-
-                    if( configuration["options"]["showAll"] or entry["type"] == "native"):                        
-                        entry["data"] = []
-                        try:
-                            itemlist = os.listdir( entry["linkPath"])                          
-                            Common.quick_sort(itemlist) 
-                        
-                            for itemName in itemlist:                                
-                                item = createNativeItem(entry["linkPath"] + "/" + itemName)   
-                                appendTheme(item)
-                                entry["data"].append(item)
-
-                            appendTheme(entry)
-                            configuration["mainMenu"].append(entry)
-                                
-                        except Exception as ex:
-                            print("Error loading item:" + str(ex))
-                       
-
-                    elif(hasConfig(entry["system"]) or configuration["options"]["showAll"] ):
-
-                        appendTheme(entry)
-                        appendEmuLinks(entry)
-                        configuration["mainMenu"].append(entry)                       
-                       
+                try:
+                    itemlist = os.listdir( entry["linkPath"])                          
+                    Common.quick_sort(itemlist) 
                 
+                    for itemName in itemlist:                                
+                        item = createNativeItem(entry["linkPath"] + "/" + itemName)   
+                        appendTheme(item)
+                        entry["data"].append(item)                                  
+                        
+                except Exception as ex:
+                    print("Error loading item:" + str(ex))
+                    # traceback.print_exc()
+            elif( entry["type"] == "lastPlayed"):                        
+                entry["data"] = []
+                entry["visible"]= "showLastPlayed" in configuration["options"] and configuration["options"]["showLastPlayed"]
+                appendTheme(entry)    
 
-            except Exception as ex:
-                print(str(ex)) 
+                try:  
+                    if(os.path.exists("config/lastPlayedData.json")):
+                        lastPlayedData = json.load(open("config/lastPlayedData.json"))
+                        entry["data"] = lastPlayedData["data"]
+                    else:
+                        newData = {}
+                        newData["data"] = []
+                        entry["data"] = []
+                        with open('config/lastPlayedData.json', 'w') as fp: 
+                            json.dump(newData, fp,sort_keys=True, indent=4)                             
+                        
+                except Exception as ex:
+                    print("Error loading last played")
+               
+            elif(hasConfig(entry["system"])):
+                appendTheme(entry)
+                appendEmuLinks(entry)
+                entry["visible"]= True             
+            else:
+                if(configuration["options"]["showAll"]):
+                    appendTheme(entry)
+                    entry["visible"]= True     
+                else:                    
+                    entry["visible"]= False
+                  
+            
+
+        except Exception as ex:
+            print("Error: " + str(ex)) 
 
 
 def hasConfig(system):
@@ -165,7 +180,7 @@ def deleteMainEntry(source):
 def changeThemeName(name):
     allConfig = copy.deepcopy(configuration)
     allConfig["options"]["themeName"] = name
-    del allConfig["mainMenu"]
+    
 
     with open('config/config.json', 'w') as fp: 
         json.dump(allConfig, fp,sort_keys=True, indent=4)
@@ -230,6 +245,28 @@ def saveTheme(entry):
     except Exception as ex:
         print(str(ex))
 
+def loadLastPlayed():   
+    global configuration          
+    if("showLastPlayed" in configuration["options"] and configuration["options"]["showLastPlayed"] ):
+        print("loading last played games")
+        try:
+            lastPlayed = json.load(open("config/lastPlayed.json"))
+
+            if(os.path.exists("config/lastPlayedData.json")):
+                lastPlayedData = json.load(open("config/lastPlayedData.json"))
+                lastPlayed["data"] = lastPlayedData["data"]
+            else:
+                newData = {}
+                newData["data"] = []
+                lastPlayed["data"] = []
+                with open('config/lastPlayedData.json', 'w') as fp: 
+                    json.dump(newData, fp,sort_keys=True, indent=4)
+
+            appendTheme(lastPlayed)
+            
+            configuration["mainMenu"].append(lastPlayed)        
+        except Exception as ex:
+            print("Exception: " + str(ex))
    
 
 
@@ -251,9 +288,7 @@ def setResolution():
         configuration["screenHeight"] = 240
 
 
-def saveConfiguration():
-        
-
+def saveConfiguration():        
     print("saving")
     try:
         subprocess.Popen(["sync"])
@@ -262,18 +297,9 @@ def saveConfiguration():
          
     
     allConfig = copy.deepcopy(configuration)
-    main = allConfig["mainMenu"]
-    allConfig.pop('mainMenu', None)
+    main = allConfig["mainMenu"]        
 
-    with open('config/config.json', 'w') as fp: 
-        json.dump(allConfig, fp,sort_keys=True, indent=4)
-
-    for index, item in enumerate(main):
-        if( "source" not in item):
-            fileName = "config/main/" + str(index).zfill(3) + " " +  item["name"] + "/config.json" 
-        else:
-            fileName = "config/main/" + item["source"] + "/config.json"
-
+    for index, item in enumerate(main):  
         if(item["type"] == "native"):
             data = item["data"]
             item.pop('data', None)
@@ -284,18 +310,20 @@ def saveConfiguration():
             if "source" in item: del item["source"]
             if "emu" in item: del item["emu"]
             if "fileFilter" in item: del item["fileFilter"]
-
-
+            if "visible" in item: del item["visible"]
 
             saveTheme(item)
-            storeConfigPart(fileName, item)
+          # storeConfigPart(fileName, item)
+
         elif(item["type"] == "lastPlayed"):
             dataName = "config/" + "main" + "/lastPlayed.json"
             if("data" in item): del item["data"]
             saveTheme(item)
-            storeConfigPart(dataName, item)
+           # storeConfigPart(dataName, item)
 
-       
+    with open('config/config.json', 'w') as fp: 
+        json.dump(allConfig, fp,sort_keys=True, indent=4)
+
     for l in listeners:
         l()
 
