@@ -153,8 +153,25 @@ class MainMenu(RenderObject.RenderObject):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSettings(self):
+        options = json.load(open('config/options.json'))
+        theme = None
+        for opt in options:
+            if opt["id"] == "themeName":
+                theme = opt
+
+        if(theme != None):
+            theme["values"] = []
+            theme["names"] = []
+
+            itemlist = os.listdir("theme/themes")
+            for item in itemlist:
+                if(item.endswith(".json")):
+                    theme["values"].append(item.replace(".json", ""))
+                    theme["names"].append(item.replace(".json", ""))
+
+
         self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings (PyMenu v" + str(self.config["version"]) + ")",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
-                                        Configuration.getPathData("options"), json.load(open('config/options.json')) ,self.configCallback)
+                                        Configuration.getPathData("options"), options ,self.configCallback)
         footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
         self.subComponent.setFooter(footer)
         RenderControl.setDirty()   
