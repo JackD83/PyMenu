@@ -190,12 +190,12 @@ class MainMenu(RenderObject.RenderObject):
 
         newThemeName = self.config["options"]["themeName"]
         if(self.themeName != self.config["options"]["themeName"]):
-            print("themeChanged changed")
-            self.config["options"]["themeName"] = self.themeName        
+            print("Theme changed")
+            self.config["options"]["themeName"] = newThemeName     
      
         self.subComponent = None     
 
-        Configuration.changeThemeName(newThemeName)
+        Configuration.saveOptions(self.config["options"])
 
       
         self.reload()
@@ -342,11 +342,9 @@ class MainMenu(RenderObject.RenderObject):
             "icon": "systems",
             "cmd": ".",
             "workingDir": None,  
-             "useSelection" : True,         
+            "useSelection" : True,         
             "selectionPath": ".",
-            "previews": None,
-            "legacy":False,
-            "screen":"default",
+            "previews": None,     
             "overclock":"524"
            
         }

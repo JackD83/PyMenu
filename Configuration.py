@@ -30,8 +30,11 @@ def reloadConfiguration():
     global configuration
     global currentTheme
 
-    
     configuration = json.load(open('config/config.json'))
+
+    # check for old config
+    upgradeConfig()
+
     if("version" not in configuration):
         configuration["version"] = "0"
 
@@ -150,6 +153,7 @@ def createNativeItem(item):
 
     return entry
 
+
 def appendEmuLinks(entry):
     global configuration
     system = entry["system"]
@@ -192,6 +196,10 @@ def parseLink(linkFile):
     return data
 
 
+def upgradeConfig():
+    pass
+
+
 def deleteMainEntry(source):
     try:
         shutil.rmtree("config/main/" + source)
@@ -200,9 +208,9 @@ def deleteMainEntry(source):
         print(str(ex))
 
 
-def changeThemeName(name):
-    allConfig = copy.deepcopy(configuration)
-    allConfig["options"]["themeName"] = name
+def saveOptions(options):
+    allConfig = json.load(open('config/config.json'))
+    allConfig["options"] = options
 
     with open('config/config.json', 'w') as fp:
         json.dump(allConfig, fp, sort_keys=True, indent=4)
@@ -210,16 +218,16 @@ def changeThemeName(name):
 
 def appendTheme(entry):
     global currentTheme
-  
+
     themeName = configuration["options"]["themeName"]
     entryName = entry["name"]
 
     #print("tring to load theme for: " + "/" + themeName + "/" + entryName)
 
     if(entryName in currentTheme):
-         entry.update(currentTheme[entryName])
-    else:   
-        try:    
+        entry.update(currentTheme[entryName])
+    else:
+        try:
           #  print("loaded default config for " + entryName)
             if("type" in entry):
                 # if it hast type param, its a main menu entry
@@ -231,7 +239,7 @@ def appendTheme(entry):
             print(str(ex))
 
 
-def saveTheme(entry): 
+def saveTheme(entry):
     themeName = configuration["options"]["themeName"].lower()
     entryName = entry["name"]
     try:

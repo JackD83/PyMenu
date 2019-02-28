@@ -121,13 +121,15 @@ class NativeAppList(AbstractList.AbstractList):
             if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
                     if("type" in self.options and self.options["type"] == "lastPlayed"):
-                        pass        
+                        pass                      
                     else:
                         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
 
-                            if("linkPath" in self.options):
-                                self.overlay = SelectionMenu.SelectionMenu(self.screen, ["edit"], self.optionsCallback)
-
+                            if("linkPath" in self.options ):
+                                if(len(self.entryList) == 0):
+                                    pass
+                                else:
+                                    self.overlay = SelectionMenu.SelectionMenu(self.screen, ["edit"], self.optionsCallback)
                             else:
                                 if(len(self.options) == 0):
                                     self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add"], self.optionsCallback)
