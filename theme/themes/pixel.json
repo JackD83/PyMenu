@@ -1,0 +1,529 @@
+{
+    "A26": {
+        "background": "images/pixel97/backgrounds/a2600.png", 
+        "folderIcon": "images/pixel97/icons/a2600.png", 
+        "icon": "images/pixel97/systems/a2600.png"
+    }, 
+    "A52": {
+        "background": "images/pixel97/backgrounds/a5200.png", 
+        "folderIcon": "images/pixel97/icons/a5200.png", 
+        "icon": "images/pixel97/systems/a5200.png", 
+        "preview": "images/pixel97/systems/a5200.png"
+    }, 
+    "A78": {
+        "background": "images/pixel97/backgrounds/a7800.png", 
+        "folderIcon": "images/pixel97/icons/a7800.png", 
+        "icon": "images/pixel97/systems/a7800.png"
+    }, 
+    "AMIGA": {
+        "background": "images/pixel97/backgrounds/amiga.png", 
+        "folderIcon": "images/pixel97/icons/amiga.png", 
+        "icon": "images/pixel97/systems/amiga.png", 
+        "preview": "images/pixel97/systems/amiga.png"
+    }, 
+    "AMSTRAD": {
+        "background": "images/pixel/backgrounds/cpc.png", 
+        "folderIcon": "images/pixel/icons/cpc.png", 
+        "icon": "images/pixel/systems/cpc.png", 
+        "preview": "images/pixel/systems/cpc.png"
+    }, 
+    "AST": {
+        "background": "images/pixel97/backgrounds/ast.png", 
+        "folderIcon": "images/pixel97/icons/ast.png", 
+        "icon": "images/pixel97/systems/ast.png", 
+        "preview": "images/pixel97/systems/ast.png"
+    }, 
+    "ATARI 2600": {
+        "background": "images/pixel/backgrounds/a2600.png", 
+        "folderIcon": "images/pixel/icons/a2600.png", 
+        "icon": "images/pixel/systems/a2600.png", 
+        "preview": "images/pixel/systems/a2600.png"
+    }, 
+    "ATARI 5200": {
+        "background": "images/pixel/backgrounds/a5200.png", 
+        "folderIcon": "images/pixel/icons/a5200.png", 
+        "icon": "images/pixel/systems/a5200.png", 
+        "preview": "images/pixel/systems/a5200.png"
+    }, 
+    "ATARI 7800": {
+        "background": "images/pixel/backgrounds/a7800.png", 
+        "folderIcon": "images/pixel/icons/a7800.png", 
+        "icon": "images/pixel/systems/a7800.png", 
+        "preview": "images/pixel/systems/a7800.png"
+    }, 
+    "ATARI LYNX": {
+        "background": "images/pixel/backgrounds/lynx.png", 
+        "folderIcon": "images/pixel/icons/lynx.png", 
+        "icon": "images/pixel/systems/lynx.png"
+    }, 
+    "Abbaye": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/abbaye.png"
+    }, 
+    "Apps": {
+        "background": "images/pixel97/backgrounds/midpath.png", 
+        "icon": "images/pixel97/systems/apps.png"
+    }, 
+    "Apricots": {
+        "preview": "images/pixel97/previews/apricots.png"
+    }, 
+    "Arkanoid": {
+        "preview": "images/pixel97/previews/arkanoid.png"
+    }, 
+    "BBC": {
+        "background": "images/pixel97/backgrounds/bbcmicro.png", 
+        "folderIcon": "images/pixel97/icons/bbcmicro.png", 
+        "icon": "images/pixel97/systems/bbcmicro.png", 
+        "preview": "images/pixel97/systems/bbcmicro.png"
+    }, 
+    "Bermuda": {
+        "preview": "images/pixel97/previews/bermuda.png"
+    }, 
+    "BlockOut 2": {
+        "preview": "images/pixel97/previews/blockout2.png"
+    }, 
+    "Boulder": {
+        "preview": "images/pixel97/previews/boulder.png"
+    }, 
+    "C-Dogs SDL": {
+        "preview": "images/pixel97/previews/cdogs.png"
+    }, 
+    "C64": {
+        "background": "images/pixel97/backgrounds/c64.png", 
+        "folderIcon": "images/pixel97/icons/c64.png", 
+        "icon": "images/pixel97/systems/c64.png", 
+        "preview": "images/pixel97/systems/c64.png"
+    }, 
+    "COL": {
+        "background": "images/pixel97/backgrounds/coleco.png", 
+        "folderIcon": "images/pixel97/icons/coleco.png", 
+        "icon": "images/pixel97/systems/coleco.png", 
+        "preview": "images/pixel97/systems/coleco.png"
+    }, 
+    "COLECO": {
+        "background": "images/pixel/backgrounds/coleco.png", 
+        "folderIcon": "images/pixel/icons/coleco.png", 
+        "icon": "images/pixel/systems/coleco.png", 
+        "preview": "images/pixel/systems/coleco.png"
+    }, 
+    "CPC": {
+        "background": "images/pixel97/backgrounds/cpc.png", 
+        "folderIcon": "images/pixel97/icons/cpc.png", 
+        "icon": "images/pixel97/systems/cpc.png", 
+        "preview": "images/pixel97/systems/cpc.png"
+    }, 
+    "CPS1": {
+        "background": "images/pixel97/backgrounds/cps1.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/pixel97/systems/cps1.png"
+    }, 
+    "CPS2": {
+        "background": "images/pixel97/backgrounds/cps2.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/pixel97/systems/cps2.png"
+    }, 
+    "Cannonball": {
+        "preview": "images/pixel97/previews/cannonball.png"
+    }, 
+    "CaveStory en": {
+        "preview": "images/pixel97/previews/cavestory.png"
+    }, 
+    "Chocolate Heretic": {
+        "preview": "images/pixel97/previews/hheretic.png"
+    }, 
+    "Chocolate Hexen": {
+        "preview": "images/pixel97/previews/hhexen.png"
+    }, 
+    "Chocolate doom": {
+        "preview": "images/pixel97/previews/chocolate_doom.png"
+    }, 
+    "Chocolate strife": {
+        "preview": "images/pixel97/previews/chocolate_strife.png"
+    }, 
+    "Chroma": {
+        "preview": "images/pixel97/previews/chroma.png"
+    }, 
+    "Commander": {
+        "preview": "images/pixel97/icons/commander.png"
+    }, 
+    "Commodore c64": {
+        "background": "images/pixel/backgrounds/c64.png", 
+        "folderIcon": "images/pixel/icons/c64.png", 
+        "icon": "images/pixel/systems/c64.png", 
+        "preview": "images/pixel/systems/c64.png"
+    }, 
+    "Digger": {
+        "preview": "images/pixel97/previews/digger.png"
+    }, 
+    "Dlight": {
+        "preview": "images/pixel97/previews/dlight.png"
+    }, 
+    "Drillux": {
+        "preview": "images/pixel97/previews/mrdrillux.png"
+    }, 
+    "EDuke32": {
+        "preview": "images/pixel97/previews/eduke32.png"
+    }, 
+    "FBA": {
+        "background": "images/pixel97/backgrounds/fba.png", 
+        "folderIcon": "images/pixel97/icons/fba.png", 
+        "icon": "images/pixel97/systems/fba.png"
+    }, 
+    "FCEUX": {
+        "background": "images/pixel/backgrounds/nes.png", 
+        "folderIcon": "images/pixel/icons/nes.png", 
+        "icon": "images/pixel/systems/nes.png"
+    }, 
+    "Falling time": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/fallingtime.png"
+    }, 
+    "Ffplay": {
+        "icon": ".", 
+        "preview": "images/pixel97/icons/ffplay.png"
+    }, 
+    "GAMEBOY": {
+        "background": "images/pixel/backgrounds/gbc.png", 
+        "folderIcon": "images/pixel/icons/gbc.png", 
+        "icon": "images/pixel/systems/gbc.png"
+    }, 
+    "GAMEBOY2": {
+        "background": "images/pixel/backgrounds/gb.png", 
+        "folderIcon": "images/pixel/icons/gb.png", 
+        "icon": "images/pixel/systems/gb.png"
+    }, 
+    "GB": {
+        "background": "images/pixel97/backgrounds/gb.png", 
+        "folderIcon": "images/pixel97/icons/gb.png", 
+        "icon": "images/pixel97/systems/gb.png"
+    }, 
+    "GBA": {
+        "background": "images/pixel97/backgrounds/gba.png", 
+        "folderIcon": "images/pixel97/icons/gba.png", 
+        "icon": "images/pixel97/systems/gba.png"
+    }, 
+    "GBC": {
+        "background": "images/pixel97/backgrounds/gbc.png", 
+        "folderIcon": "images/pixel97/icons/gbc.png", 
+        "icon": "images/pixel97/systems/gbc.png"
+    }, 
+    "GG": {
+        "background": "images/pixel97/backgrounds/gg.png", 
+        "folderIcon": "images/pixel97/icons/gg.png", 
+        "icon": "images/pixel97/systems/gg.png"
+    }, 
+    "GMU": {
+        "preview": "images/pixel97/icons/gmu.png"
+    }, 
+    "Game Gear": {
+        "background": "images/pixel/backgrounds/gg.png", 
+        "folderIcon": "images/pixel/icons/gg.png", 
+        "icon": "images/pixel/systems/gg.png"
+    }, 
+    "Gameboy Advance": {
+        "background": "images/pixel/backgrounds/gba.png", 
+        "folderIcon": "images/pixel/icons/gba.png", 
+        "icon": "images/pixel/systems/gba.png"
+    }, 
+    "Ganbare": {
+        "preview": "images/pixel97/previews/ganbare.png"
+    }, 
+    "Glutexto": {
+        "preview": "images/pixel97/icons/glutexto.png"
+    }, 
+    "Hex-a-hop": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/hex-a-hop.png"
+    }, 
+    "Homing": {
+        "preview": "images/pixel97/previews/homing.png"
+    }, 
+    "Hydra castle": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/hydracastle.png"
+    }, 
+    "INTV": {
+        "background": "images/pixel97/backgrounds/int.png", 
+        "folderIcon": "images/pixel97/icons/int.png", 
+        "icon": "images/pixel97/systems/int.png"
+    }, 
+    "JinYong": {
+        "preview": "images/pixel97/previews/jinyong_legend.png"
+    }, 
+    "Just4Qix": {
+        "preview": "images/pixel97/previews/just4qix.png"
+    }, 
+    "KETM": {
+        "preview": "images/pixel97/previews/ketm.png"
+    }, 
+    "King of fighters": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/kof.png"
+    }, 
+    "Kobo deluxe": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/kobo-deluxe.png"
+    }, 
+    "LNX": {
+        "background": "images/pixel97/backgrounds/lynx.png", 
+        "folderIcon": "images/pixel97/icons/lynx.png", 
+        "icon": "images/pixel97/systems/lynx.png"
+    }, 
+    "Last Played": {
+        "background": "images/pixel97/backgrounds/ports_art_blur.png", 
+        "icon": "images/pixel97/systems/auto-lastplayed.png"
+    }, 
+    "MAME": {
+        "background": "images/pixel97/backgrounds/mame.png", 
+        "folderIcon": "images/pixel97/icons/fba.png", 
+        "icon": "images/pixel97/systems/mame.png", 
+        "preview": "images/pixel97/systems/mame.png"
+    }, 
+    "MSX": {
+        "background": "images/pixel97/backgrounds/msx.png", 
+        "folderIcon": "images/pixel97/icons/msx.png", 
+        "icon": "images/pixel97/systems/msx.png"
+    }, 
+    "Master System": {
+        "background": "images/pixel/backgrounds/sms.png", 
+        "folderIcon": "images/pixel/icons/sms.png", 
+        "icon": "images/pixel/systems/sms.png"
+    }, 
+    "Meritous": {
+        "preview": "images/pixel97/previews/meritous.png"
+    }, 
+    "Mission": {
+        "preview": "images/pixel97/previews/lastmission.png"
+    }, 
+    "Mr. Drillux": {}, 
+    "NEOGEO": {
+        "background": "images/pixel/backgrounds/neogeo.png", 
+        "folderIcon": "images/pixel/icons/neogeo.png", 
+        "icon": "images/pixel/systems/neogeo.png", 
+        "preview": "images/pixel/systems/neogeo.png"
+    }, 
+    "NES": {
+        "background": "images/pixel97/backgrounds/nes.png", 
+        "folderIcon": "images/pixel97/icons/nes.png", 
+        "icon": "images/pixel97/systems/nes.png"
+    }, 
+    "NGP": {
+        "background": "images/pixel97/backgrounds/ngp.png", 
+        "folderIcon": "images/pixel97/icons/ngp.png", 
+        "icon": "images/pixel97/systems/ngp.png"
+    }, 
+    "NGPC": {
+        "background": "images/pixel97/backgrounds/ngpc.png", 
+        "folderIcon": "images/pixel97/icons/ngpc.png", 
+        "icon": "images/pixel97/systems/ngpc.png"
+    }, 
+    "Noiz2sa": {
+        "preview": "images/pixel97/previews/noiz2sa.png"
+    }, 
+    "O2xIV": {
+        "preview": "images/pixel97/icons/o2xiv.png"
+    }, 
+    "OpenJazz": {
+        "preview": "images/pixel97/previews/openjazz.png"
+    }, 
+    "OpenTitus": {
+        "preview": "images/pixel97/previews/opentitus.png"
+    }, 
+    "OpenTyrian": {
+        "preview": "images/pixel97/previews/opentyrian.png"
+    }, 
+    "Overheated": {
+        "preview": "images/pixel97/previews/overheated.png"
+    }, 
+    "PAK": {
+        "background": "images/pixel97/backgrounds/openbor.png", 
+        "folderIcon": "images/pixel97/icons/openbor.png", 
+        "icon": "images/pixel97/systems/OpenBOR.png", 
+        "preview": "images/pixel97/systems/OpenBOR.png"
+    }, 
+    "PC": {
+        "background": "images/pixel97/backgrounds/pc.png", 
+        "folderIcon": "images/pixel97/icons/pc.png", 
+        "icon": "images/pixel97/systems/pc.png"
+    }, 
+    "PC ENGINE": {
+        "background": "images/pixel/backgrounds/pce.png", 
+        "folderIcon": "images/pixel/icons/pce.png", 
+        "icon": "images/pixel/systems/pce.png", 
+        "preview": "images/pixel/systems/pce.png"
+    }, 
+    "PC98": {
+        "background": "images/pixel97/backgrounds/pc98.png", 
+        "folderIcon": "images/pixel97/icons/pc98.png", 
+        "icon": "images/pixel97/systems/pc98.png", 
+        "preview": "images/pixel97/systems/pc98.png"
+    }, 
+    "PCE": {
+        "background": "images/pixel97/backgrounds/pce.png", 
+        "folderIcon": "images/pixel97/icons/pce.png", 
+        "icon": "images/pixel97/systems/pce.png"
+    }, 
+    "PSX": {
+        "background": "images/pixel97/backgrounds/psx.png", 
+        "folderIcon": "images/pixel97/icons/psx.png", 
+        "icon": "images/pixel97/systems/psx.png", 
+        "preview": "images/pixel97/systems/psx.png"
+    }, 
+    "Pang": {
+        "preview": "images/pixel97/previews/pang.png"
+    }, 
+    "Pocket SNES": {
+        "background": "images/pixel/backgrounds/snes.png", 
+        "folderIcon": "images/pixel/icons/snes.png", 
+        "icon": "images/pixel/systems/snes.png"
+    }, 
+    "PokeMini": {
+        "background": "images/pixel97/backgrounds/pokemini.png", 
+        "folderIcon": "images/pixel97//icons/pokemini.png", 
+        "icon": "images/pixel97/systems/pokemini.png"
+    }, 
+    "Ports": {
+        "background": "images/pixel97/backgrounds/ports2_art_blur.png", 
+        "icon": "images/pixel97/systems/ports.png"
+    }, 
+    "Powermanga": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/powermanga.png"
+    }, 
+    "Prince": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/prince.png"
+    }, 
+    "Profa": {
+        "preview": "images/pixel97/previews/profadeluxe.png"
+    }, 
+    "Puzzletube": {
+        "preview": "images/pixel97/previews/puzzletube.png"
+    }, 
+    "Quake": {
+        "preview": "images/pixel97/previews/quake.png"
+    }, 
+    "Reminiscence": {
+        "preview": "images/pixel97/previews/reminiscence.png"
+    }, 
+    "Rockbot": {
+        "preview": "images/pixel97/previews/rockbot.png"
+    }, 
+    "Rott full": {
+        "preview": "images/pixel97/previews/rott.png"
+    }, 
+    "Rott sw": {
+        "preview": "images/pixel97/previews/rott.png"
+    }, 
+    "SCUMMVM": {
+        "background": "images/pixel97/backgrounds/scummvm.png", 
+        "folderIcon": "images/pixel97/icons/scummvm.png", 
+        "icon": "images/pixel97/systems/scummvm.png", 
+        "preview": "images/pixel97/systems/scummvm.png"
+    }, 
+    "SDLPAL": {
+        "preview": "images/pixel97/previews/sdlpal.png"
+    }, 
+    "SMD": {
+        "background": "images/pixel97/backgrounds/megadrive.png", 
+        "folderIcon": "images/pixel97/icons/megadrive.png", 
+        "icon": "images/pixel97/systems/megadrive.png", 
+        "preview": "."
+    }, 
+    "SMS": {
+        "background": "images/pixel97/backgrounds/sms.png", 
+        "folderIcon": "images/pixel97/icons/sms.png", 
+        "icon": "images/pixel97/systems/sms.png"
+    }, 
+    "SMW": {
+        "preview": "images/pixel97/previews/smw.png"
+    }, 
+    "SNES": {
+        "background": "images/pixel97/backgrounds/snes.png", 
+        "folderIcon": "images/pixel97/icons/snes.png", 
+        "icon": "images/pixel97/systems/snes.png"
+    }, 
+    "SNK": {
+        "background": "images/pixel97/backgrounds/neogeo.png", 
+        "folderIcon": "images/pixel97/icons/neogeo.png", 
+        "icon": "images/pixel97/systems/neogeo.png"
+    }, 
+    "SORR": {
+        "preview": "images/pixel97/previews/sorr.png"
+    }, 
+    "SZX": {
+        "background": "images/pixel97/backgrounds/zxs.png", 
+        "folderIcon": "images/pixel97/icons/zxs.png", 
+        "icon": "images/pixel97/systems/zxs.png"
+    }, 
+    "Shifty": {
+        "preview": "images/pixel97/previews/shifty.png"
+    }, 
+    "Shisen": {
+        "preview": "images/pixel97/previews/shisen.png"
+    }, 
+    "Snowman": {
+        "preview": "images/pixel97/previews/snowman.png"
+    }, 
+    "Spartak": {
+        "preview": "images/pixel97/previews/spartak.png"
+    }, 
+    "Spout": {
+        "preview": "images/pixel97/previews/spout.png"
+    }, 
+    "SuperTux": {
+        "preview": "images/pixel97/previews/supertux.png"
+    }, 
+    "Tileworld": {
+        "preview": "images/pixel97/previews/tileworld.png"
+    }, 
+    "Transball": {
+        "preview": "images/pixel97/previews/stransball2.png"
+    }, 
+    "Triple": {
+        "preview": "images/pixel97/previews/triple.png"
+    }, 
+    "WONDERSWAN": {
+        "background": "images/pixel/backgrounds/ws.png", 
+        "folderIcon": "images/pixel/icons/ws.png", 
+        "icon": "images/pixel/systems/ws.png"
+    }, 
+    "WS": {
+        "background": "images/pixel97/backgrounds/ws.png", 
+        "folderIcon": "images/pixel97/icons/ws.png", 
+        "icon": "images/pixel97/systems/ws.png"
+    }, 
+    "WSC": {
+        "background": "images/pixel97/backgrounds/wsc.png", 
+        "folderIcon": "images/pixel97/icons/wsc.png", 
+        "icon": "images/pixel97/systems/wsc.png"
+    }, 
+    "Wizznic": {
+        "preview": "images/pixel97/previews/wizznic.png"
+    }, 
+    "Wolf3D full": {
+        "preview": "images/pixel97/previews/wolf3d.png"
+    }, 
+    "Wolf3D sw": {
+        "preview": "images/pixel97/previews/wolf3d.png"
+    }, 
+    "Wonderswan Color": {
+        "background": "images/pixel/backgrounds/wsc.png", 
+        "folderIcon": "images/pixel/icons/wsc.png", 
+        "icon": "images/pixel/systems/wsc.png"
+    }, 
+    "ZX SPECTRUM": {
+        "background": "images/pixel/backgrounds/zxs.png", 
+        "folderIcon": "images/pixel/icons/zxs.png", 
+        "icon": "images/pixel/systems/zxs.png", 
+        "preview": "images/pixel/systems/zxs.png"
+    }, 
+    "Zelda": {
+        "preview": "images/pixel97/previews/zelda_roth.png"
+    }, 
+    "freeblocks": {
+        "icon": ".", 
+        "preview": "images/pixel97/previews/freeblocks.png"
+    }, 
+    "quake2": {}
+}

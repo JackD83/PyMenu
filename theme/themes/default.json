@@ -1,0 +1,417 @@
+{
+    "A26": {
+        "background": "images/backgrounds/rs97/a2600.png", 
+        "folderIcon": "images/icons/a2600.png", 
+        "icon": "images/systems/a2600.png"
+    }, 
+    "A52": {
+        "background": "images/backgrounds/rs97/a5200.png", 
+        "folderIcon": "images/icons/a5200.png", 
+        "icon": "images/systems/a5200.png"
+    }, 
+    "A78": {
+        "background": "images/backgrounds/rs97/a7800.png", 
+        "folderIcon": "images/icons/a7800.png", 
+        "icon": "images/systems/a7800.png"
+    }, 
+    "AMIGA": {
+        "background": "images/backgrounds/rs97/amiga.png", 
+        "folderIcon": "images/icons/amiga.png", 
+        "icon": "images/systems/amiga.png"
+    }, 
+    "AST": {
+        "background": "images/backgrounds/rs97/ast.png", 
+        "folderIcon": "images/icons/ast.png", 
+        "icon": "images/systems/ast.png"
+    }, 
+    "Abbaye": {
+        "icon": ".", 
+        "preview": "images/previews/abbaye.png"
+    }, 
+    "Apps": {
+        "background": "images/backgrounds/rs97/midpath.png", 
+        "icon": "images/systems/apps.png"
+    }, 
+    "Apricots": {
+        "preview": "images/previews/apricots.png"
+    }, 
+    "Arkanoid": {
+        "preview": "images/previews/arkanoid.png"
+    }, 
+    "BBC": {
+        "background": "images/backgrounds/rs97/bbcmicro.png", 
+        "folderIcon": "images/icons/bbcmicro.png", 
+        "icon": "images/systems/bbcmicro.png"
+    }, 
+    "Bermuda": {
+        "preview": "images/previews/bermuda.png"
+    }, 
+    "BlockOut 2": {
+        "preview": "images/previews/blockout2.png"
+    }, 
+    "Boulder": {
+        "preview": "images/previews/boulder.png"
+    }, 
+    "C-Dogs SDL": {
+        "preview": "images/previews/cdogs.png"
+    }, 
+    "C64": {
+        "background": "images/backgrounds/rs97/c64.png", 
+        "folderIcon": "images/icons/c64.png", 
+        "icon": "images/systems/c64.png"
+    }, 
+    "COL": {
+        "background": "images/backgrounds/rs97/coleco.png", 
+        "folderIcon": "images/icons/coleco.png", 
+        "icon": "images/systems/coleco.png"
+    }, 
+    "CPC": {
+        "background": "images/backgrounds/rs97/cpc.png", 
+        "folderIcon": "images/icons/cpc.png", 
+        "icon": "images/systems/cpc.png"
+    }, 
+    "CPS1": {
+        "background": "images/pixel97/backgrounds/cps1.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/pixel97/systems/cps1.png"
+    }, 
+    "CPS2": {
+        "background": "images/pixel97/backgrounds/cps2.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/pixel97/systems/cps2.png"
+    }, 
+    "Cannonball": {
+        "preview": "images/previews/cannonball.png"
+    }, 
+    "CaveStory en": {
+        "preview": "images/previews/cavestory.png"
+    }, 
+    "Chocolate Heretic": {
+        "preview": "images/previews/hheretic.png"
+    }, 
+    "Chocolate Hexen": {
+        "preview": "images/previews/hhexen.png"
+    }, 
+    "Chocolate doom": {
+        "preview": "images/previews/chocolate_doom.png"
+    }, 
+    "Chocolate strife": {
+        "preview": "images/previews/chocolate_strife.png"
+    }, 
+    "Chroma": {
+        "preview": "images/previews/chroma.png"
+    }, 
+    "Commander": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/commander.png"
+    }, 
+    "Digger": {
+        "preview": "images/previews/digger.png"
+    }, 
+    "Dlight": {
+        "preview": "images/previews/dlight.png"
+    }, 
+    "Drillux": {
+        "preview": "images/previews/mrdrillux.png"
+    }, 
+    "EDuke32": {
+        "preview": "images/previews/eduke32.jpg"
+    }, 
+    "FBA": {
+        "background": "images/backgrounds/rs97/fba.png", 
+        "folderIcon": "images/icons/fba.png", 
+        "icon": "images/systems/fba.png"
+    }, 
+    "Falling time": {
+        "icon": ".", 
+        "preview": "images/previews/fallingtime.png"
+    }, 
+    "Ffplay": {
+        "icon": ".", 
+        "preview": "."
+    }, 
+    "GB": {
+        "background": "images/backgrounds/rs97/gb.png", 
+        "folderIcon": "images/icons/gb.png", 
+        "icon": "images/systems/gb.png"
+    }, 
+    "GBA": {
+        "background": "images/backgrounds/rs97/gba.png", 
+        "folderIcon": "images/icons/gba.png", 
+        "icon": "images/systems/gba.png"
+    }, 
+    "GBC": {
+        "background": "images/backgrounds/rs97/gbc.png", 
+        "folderIcon": "images/icons/gbc.png", 
+        "icon": "images/systems/gbc.png"
+    }, 
+    "GG": {
+        "background": "images/backgrounds/rs97/gg.png", 
+        "folderIcon": "images/icons/gg.png", 
+        "icon": "images/systems/gg.png"
+    }, 
+    "GMU": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/gmu.png"
+    }, 
+    "Ganbare": {
+        "preview": "images/previews/ganbare.png"
+    }, 
+    "Glutexto": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/glutexto.png"
+    }, 
+    "Hex-a-hop": {
+        "icon": ".", 
+        "preview": "images/previews/hex-a-hop.png"
+    }, 
+    "Homing": {
+        "preview": "images/previews/homing.png"
+    }, 
+    "Hydra castle": {
+        "icon": ".", 
+        "preview": "images/previews/hydracastle.png"
+    }, 
+    "INTV": {
+        "background": "images/backgrounds/rs97/int.png", 
+        "folderIcon": "images/icons/int.png", 
+        "icon": "images/systems/int.png"
+    }, 
+    "JinYong": {
+        "preview": "images/previews/jinyong_legend.png"
+    }, 
+    "Just4Qix": {
+        "preview": "images/previews/just4qix.png"
+    }, 
+    "KETM": {
+        "preview": "images/previews/ketm.png"
+    }, 
+    "King of fighters": {
+        "icon": ".", 
+        "preview": "images/previews/kof.png"
+    }, 
+    "Kobo deluxe": {
+        "icon": ".", 
+        "preview": "images/previews/kobo-deluxe.png"
+    }, 
+    "LNX": {
+        "background": "images/backgrounds/rs97/lynx.png", 
+        "folderIcon": "images/icons/lynx.png", 
+        "icon": "images/systems/lynx.png"
+    }, 
+    "Last Played": {
+        "background": "images/backgrounds/rs97/ports_art_blur.jpg", 
+        "icon": "images/systems/auto-lastplayed.png"
+    }, 
+    "MAME": {
+        "background": "images/backgrounds/rs97/mame.png", 
+        "folderIcon": "images/icons/fba.png", 
+        "icon": "images/systems/mame.png"
+    }, 
+    "MSX": {
+        "background": "images/backgrounds/rs97/msx.png", 
+        "folderIcon": "None", 
+        "icon": "images/systems/msx.png"
+    }, 
+    "Meritous": {
+        "preview": "images/previews/meritous.png"
+    }, 
+    "Mission": {
+        "preview": "images/previews/lastmission.png"
+    }, 
+    "NES": {
+        "background": "images/backgrounds/rs97/nes.png", 
+        "folderIcon": "images/icons/nes.png", 
+        "icon": "images/systems/nes.png"
+    }, 
+    "NGP": {
+        "background": "images/backgrounds/rs97/ngp.png", 
+        "folderIcon": "images/icons/ngp.png", 
+        "icon": "images/systems/ngp.png"
+    }, 
+    "NGPC": {
+        "background": "images/backgrounds/rs97/ngp.png", 
+        "folderIcon": "images/icons/ngp.png", 
+        "icon": "images/systems/ngp.png"
+    }, 
+    "Noiz2sa": {
+        "preview": "images/previews/noiz2sa.png"
+    }, 
+    "O2xIV": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/o2xiv.png"
+    }, 
+    "OpenJazz": {
+        "preview": "images/previews/openjazz.png"
+    }, 
+    "OpenTitus": {
+        "preview": "images/previews/opentitus.png"
+    }, 
+    "OpenTyrian": {
+        "preview": "images/previews/opentyrian.png"
+    }, 
+    "Overheated": {
+        "preview": "images/previews/overheated.png"
+    }, 
+    "PAK": {
+        "background": "images/backgrounds/rs97/openbor.png", 
+        "folderIcon": "images/icons/openbor.png", 
+        "icon": "images/systems/openbor.png"
+    }, 
+    "PC": {
+        "background": "images/backgrounds/rs97/pc.png", 
+        "folderIcon": "images/icons/pc.png", 
+        "icon": "images/systems/pc.png"
+    }, 
+    "PC98": {
+        "background": "images/pixel97/backgrounds/pc98.png", 
+        "folderIcon": "images/pixel97/icons/pc98.png", 
+        "icon": "images/pixel97/systems/pc98.png", 
+        "preview": "images/pixel97/systems/pc98.png"
+    }, 
+    "PCE": {
+        "background": "images/backgrounds/rs97/pce.png", 
+        "folderIcon": "images/icons/pce.png", 
+        "icon": "images/systems/pce.png"
+    }, 
+    "PSX": {
+        "background": "images/backgrounds/rs97/psx.png", 
+        "folderIcon": "images/icons/psx.png", 
+        "icon": "images/systems/psx.png"
+    }, 
+    "Pang": {
+        "preview": "images/previews/pang.png"
+    }, 
+    "PokeMini": {
+        "background": "images/backgrounds/rs97/pokemini.png", 
+        "folderIcon": "images//icons/pokemini.png", 
+        "icon": "images/systems/pokemini.png"
+    }, 
+    "Pokemini": {
+        "background": "images/backgrounds/rs97/pokemini.png", 
+        "folderIcon": "images//icons/pokemini.png", 
+        "icon": "images/systems/pokemini.png"
+    }, 
+    "Ports": {
+        "background": "images/backgrounds/rs97/ports2_art_blur.jpg", 
+        "icon": "images/systems/ports.png"
+    }, 
+    "Powermanga": {
+        "icon": ".", 
+        "preview": "images/previews/powermanga.png"
+    }, 
+    "Prince": {
+        "icon": ".", 
+        "preview": "images/previews/prince.png"
+    }, 
+    "Profa": {
+        "preview": "images/previews/profadeluxe.png"
+    }, 
+    "Puzzletube": {
+        "preview": "images/previews/puzzletube.png"
+    }, 
+    "Quake": {
+        "preview": "images/previews/quake.png"
+    }, 
+    "Reminiscence": {
+        "preview": "images/previews/reminiscence.png"
+    }, 
+    "Rockbot": {
+        "preview": "images/previews/rockbot.png"
+    }, 
+    "Rott full": {
+        "preview": "images/previews/rott.png"
+    }, 
+    "Rott sw": {
+        "preview": "images/previews/rott.png"
+    }, 
+    "SCUMMVM": {
+        "background": "images/backgrounds/rs97/scummvm.png", 
+        "folderIcon": "images/icons/scummvm.png", 
+        "icon": "images/systems/scummvm.png"
+    }, 
+    "SDLPAL": {
+        "preview": "images/previews/sdlpal.png"
+    }, 
+    "SMD": {
+        "background": "images/backgrounds/rs97/megadrive.png", 
+        "folderIcon": "images/icons/megadrive.png", 
+        "icon": "images/systems/megadrive.png", 
+        "preview": "."
+    }, 
+    "SMS": {
+        "background": "images/backgrounds/rs97/sms.png", 
+        "folderIcon": "images/icons/sms.png", 
+        "icon": "images/systems/sms.png"
+    }, 
+    "SMW": {
+        "preview": "images/previews/smw.png"
+    }, 
+    "SNES": {
+        "background": "images/backgrounds/rs97/snes.png", 
+        "folderIcon": "images/icons/snes.png", 
+        "icon": "images/systems/snes.png"
+    }, 
+    "SNK": {
+        "background": "images/backgrounds/rs97/neogeo.png", 
+        "folderIcon": "images/icons/neogeo.png", 
+        "icon": "images/systems/neogeo.png"
+    }, 
+    "SORR": {
+        "preview": "images/previews/sorr.png"
+    }, 
+    "SZX": {
+        "background": "images/backgrounds/rs97/zxs.png", 
+        "folderIcon": "images/icons/zxs.png", 
+        "icon": "images/systems/zxs.png"
+    }, 
+    "Shifty": {
+        "preview": "images/previews/shifty.png"
+    }, 
+    "Shisen": {
+        "preview": "images/previews/shisen.png"
+    }, 
+    "Snowman": {
+        "preview": "images/previews/snowman.png"
+    }, 
+    "Spartak": {
+        "preview": "images/previews/spartak.png"
+    }, 
+    "Spout": {
+        "preview": "images/previews/spout.png"
+    }, 
+    "SuperTux": {
+        "preview": "images/previews/supertux.png"
+    }, 
+    "Tileworld": {
+        "preview": "images/previews/tileworld.png"
+    }, 
+    "Transball": {
+        "preview": "images/previews/stransball2.png"
+    }, 
+    "Triple": {
+        "preview": "images/previews/triple.png"
+    }, 
+    "WS": {
+        "background": "images/backgrounds/rs97/ws.png", 
+        "folderIcon": "images/icons/ws.png", 
+        "icon": "images/systems/ws.png"
+    }, 
+    "WSC": {
+        "background": "images/backgrounds/rs97/wsc.jpg", 
+        "folderIcon": "images/icons/wsc.png", 
+        "icon": "images/systems/wsc.png"
+    }, 
+    "Wizznic": {
+        "preview": "images/previews/wizznic.png"
+    }, 
+    "Wolf3D full": {
+        "preview": "images/previews/wolf3d.png"
+    }, 
+    "Wolf3D sw": {
+        "preview": "images/previews/wolf3d.png"
+    }, 
+    "Zelda": {
+        "preview": "images/previews/zelda_roth.png"
+    }, 
+    "freeblocks": {
+        "icon": ".", 
+        "preview": "images/previews/freeblocks.png"
+    }
+}

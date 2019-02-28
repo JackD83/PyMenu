@@ -1,20 +1,4 @@
-[
-    {
-        "name": "Device Type",
-        "id": "type",
-        "description": "Type of the device (reboot)",
-        "type": "list",
-        "values": [
-            "RS97",
-            "RS07",
-            "K3P"
-        ],
-        "names": [
-            "RS97",
-            "Arcade Mini (RS07)",
-            "PAP KIII Plus (K3P)"
-        ]
-    },
+[  
     {
         "name": "Display Timeout",
         "id": "displayTimeout",
