@@ -197,15 +197,52 @@ def parseLink(linkFile):
 
 
 def upgradeConfig():
-    pass
+    global configuration
+
+    if os.path.exists('config/config.json.old'):
+        print("Importing old config")
+        oldConf = json.load(open('config/config.json.old'))
+
+        main = oldConf["mainMenu"]
+        del oldConf["mainMenu"]
+        del oldConf["version"]
+        del oldConf["type"]
+
+        for oldEntry in main:
+            for newEntry in configuration["mainMenu"]:
+                if(oldEntry["name"] == newEntry["name"]):
+                    print("Updating " + newEntry["name"])
+                    newEntry.update(oldEntry)
 
 
-def deleteMainEntry(source):
-    try:
-        shutil.rmtree("config/main/" + source)
+        configuration.update(oldConf)
+        os.remove('config/config.json.old')
 
-    except Exception as ex:
-        print(str(ex))
+    ##update themes
+    itemlist = os.listdir("theme/themes")  
+    for oldName in itemlist:
+        if(oldName.endswith(".json.old")):
+            print("found old theme " + oldName)
+            newName = oldName.replace(".old", "")
+            
+            if(os.path.exists("theme/themes/" + newName)):
+                try:
+                    oldTheme = json.load(open("theme/themes/" + oldName))
+                    newTheme = json.load(open("theme/themes/" + newName))
+                    newTheme.update(oldTheme)
+
+                    with open("theme/themes/" + newName, 'w') as fp:
+                        json.dump(newTheme, fp, sort_keys=True, indent=4)
+
+                    os.remove("theme/themes/" + oldName)
+
+                except Exception as ex:
+                    print("Error updating theme: " + str(ex))
+
+            else:
+                print("Keeping theme file " + newName)
+                os.rename("theme/themes/" + oldName, "theme/themes/" + newName)
+
 
 
 def saveOptions(options):

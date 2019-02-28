@@ -9,7 +9,7 @@ cp debian-binary tmp
 cp conffiles tmp/control/
 cp control tmp/control/
 #cp postinst tmp/control/
-#cp preinst tmp/control/
+cp preinst tmp/control/
 
 sed -i s/{{VERSION}}/$VERSION/g tmp/control/control
 

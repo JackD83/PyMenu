@@ -326,8 +326,7 @@ class MainMenu(RenderObject.RenderObject):
         if(res == 1 and len(self.config["mainMenu"])  > 1):
             
             #todo: remove config file and folder
-            if("source" in self.config["mainMenu"][self.currentIndex]):
-                Configuration.deleteMainEntry(self.config["mainMenu"][self.currentIndex]["source"])
+            if("source" in self.config["mainMenu"][self.currentIndex]):       
                 del self.config["mainMenu"][self.currentIndex]
 
             Configuration.saveConfiguration()
