@@ -2,3 +2,4 @@
 sync; echo -e 'Installing PyMenu..';
 for filename in /home/retrofw/apps/pymenu/theme/themes/*.json; do mv "$filename" "$filename.old"; done;
 mv /home/retrofw/apps/pymenu/config/config.json /home/retrofw/apps/pymenu/config/config.json.old
+exit 0
