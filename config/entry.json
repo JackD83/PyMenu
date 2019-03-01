@@ -55,6 +55,6 @@
     "name" :"Overclock",
     "type":"list",
     "description": "Clockspeed for this entry",
-    "values": ["528", "552", "576","600", "624"],
-    "names": ["528mhz", "552mhz", "576mhz","600mhz", "624mhz"]
+    "values": ["528", "552", "576","600", "624", "642"],
+    "names": ["528mhz", "552mhz", "576mhz","600mhz", "624mhz", "642mhz (!)"]
 }]
