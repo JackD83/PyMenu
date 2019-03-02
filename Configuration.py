@@ -114,13 +114,16 @@ def reloadConfiguration():
 
 def hasConfig(system):
     global configuration
+
+    systems = system.split(",")
     found = False
     for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:
-            if(name.lower().startswith(system.lower() + ".") or
-               name.lower() == system.lower()):
-                found = True
-                break
+            for system in systems:
+                if(name.lower().startswith(system.strip().lower() + ".") or
+                name.lower() == system.strip().lower()):
+                    found = True
+                    break
 
     return found
 
@@ -156,31 +159,32 @@ def createNativeItem(item):
 
 def appendEmuLinks(entry):
     global configuration
-    system = entry["system"]
+    systems = entry["system"].split(",")
 
     entry["emu"] = []  # clear emus
     entry["useSelection"] = False
 
     for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:
-            if(name.lower().startswith(system.lower() + ".") or
-               name.lower() == system.lower()):
-                data = parseLink(dirpath + "/" + name)
-                emuEntry = {}
-                emuEntry["name"] = data["description"]
-                emuEntry["cmd"] = data["exec"]
-                emuEntry["workingDir"] = os.path.abspath(
-                    os.path.join(data["exec"], os.pardir))
-                entry["emu"].append(emuEntry)
-                if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
-                    filter = data["selectorfilter"].split(",")
-                    if("fileFilter" in entry):
-                        filter.extend(entry["fileFilter"])
-                    # make unique
-                    entry["fileFilter"] = list(set(filter))
+            for system in systems:
+                if(name.lower().startswith(system.strip().lower() + ".") or
+                name.lower() == system.strip().lower()):
+                    data = parseLink(dirpath + "/" + name)
+                    emuEntry = {}
+                    emuEntry["name"] = data["title"]
+                    emuEntry["cmd"] = data["exec"]
+                    emuEntry["workingDir"] = os.path.abspath(
+                        os.path.join(data["exec"], os.pardir))
+                    entry["emu"].append(emuEntry)
+                    if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
+                        filter = data["selectorfilter"].split(",")
+                        if("fileFilter" in entry):
+                            filter.extend(entry["fileFilter"])
+                        # make unique
+                        entry["fileFilter"] = list(set(filter))
 
-                if("selectordir" in data):
-                    entry["useSelection"] = True
+                    if("selectordir" in data):
+                        entry["useSelection"] = True
 
 
 def parseLink(linkFile):
@@ -212,7 +216,7 @@ def upgradeConfig():
             for newEntry in configuration["mainMenu"]:
                 if(oldEntry["name"] == newEntry["name"]):
                     if "system" in oldEntry: del oldEntry["system"]
-                        
+
                     print("Updating " + newEntry["name"])
                     newEntry.update(oldEntry)
 
