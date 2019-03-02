@@ -211,6 +211,8 @@ def upgradeConfig():
         for oldEntry in main:
             for newEntry in configuration["mainMenu"]:
                 if(oldEntry["name"] == newEntry["name"]):
+                    if "system" in oldEntry: del oldEntry["system"]
+                        
                     print("Updating " + newEntry["name"])
                     newEntry.update(oldEntry)
 
