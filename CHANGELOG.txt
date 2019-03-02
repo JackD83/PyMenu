@@ -35,7 +35,7 @@ Version 1.0.5
 - separated configuration and theme
 - added pixel and default theme (default is missing some images)
 
-Version 1.0.6
+Version 1.5.0
 - removed support for Arcade Mini and K3P (for now)
 - added support for RetroFW 1.1 and later
 - made installable ipk package
@@ -44,4 +44,3 @@ Version 1.0.6
 - moved themes to single file per theme
 - implemented linking to gmenu2x, only installed emulators will show in PyMenu
 - new themes are automatically detected and added to the config menu
-- 

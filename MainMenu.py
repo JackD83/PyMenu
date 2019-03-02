@@ -146,7 +146,7 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openPowerMenu(self):
-        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB"], self.contextMenuCallback)
+        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] and self.config["mainMenu"][self.currentIndex]["type"] != "lastPlayed" ):
@@ -198,6 +198,10 @@ class MainMenu(RenderObject.RenderObject):
                 subprocess.Popen(["reboot"])
             else:
                 print("reboot")
+
+        if(text == "run Gmenu2x"):
+            print("Running gmenu 2x")
+            Common.gmenu2x()
 
     def usbMountCallback(self, key):      
         self.overlay = None     

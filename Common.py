@@ -131,6 +131,19 @@ def mountUSB():
     except Exception as ex:
         print("mount exception " + str(ex))
 
+def gmenu2x():
+    try:     
+        fileName = "run"  
+        file = open("/tmp/" + fileName,"w")
+        file.write("#!/bin/sh\n")
+        file.write("cd /home/retrofw/apps/gmenu2x\n")     
+        file.write("./gmenu2x\n")     
+
+        sys.exit()
+
+    except Exception as ex:
+        print("mount exception " + str(ex))
+
 def blitMultilineText(surface, text, pos, font, color=pygame.Color('black')):
     words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
     space = font.size(' ')[0]  # The width of a space.
