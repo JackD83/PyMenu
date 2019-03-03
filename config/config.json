@@ -53,7 +53,7 @@
             "overclock": "528", 
             "previews": "/home/retrofw/roms/gbc/previews", 
             "selectionPath": "/home/retrofw/roms/gbc", 
-            "system": "gbc", 
+            "system": "ohboy,gambatte", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
