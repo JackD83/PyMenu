@@ -33,7 +33,7 @@
             "type": "emulator", 
             "useFileFilter": false, 
             "useGamelist": true, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Gameboy", 
@@ -41,11 +41,11 @@
             "overclock": "528", 
             "previews": "/home/retrofw/roms/snes/previes", 
             "selectionPath": "/home/retrofw/roms/snes", 
-            "system": "gb", 
+            "system": "ohboy,gambatte", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Gameboy Color", 
@@ -57,7 +57,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Gameboy Advance", 
@@ -294,7 +294,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/collecovision/previews", 
             "selectionPath": "/home/retrofw/roms/collecovision", 
-            "system": "col", 
+            "system": "colem", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
