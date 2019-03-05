@@ -1,0 +1,8 @@
+[{   "id":"background",
+    "name" :"Background Image",
+    "type":"image"      
+},     
+{   "id":"icon",
+    "name" :"Icon",
+    "type":"image"      
+}]

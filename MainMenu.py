@@ -316,8 +316,12 @@ class MainMenu(RenderObject.RenderObject):
             conf = None
             if(self.config["mainMenu"][self.currentIndex]["type"] == "emulator"):              
                 conf = json.load(open('config/entry.json'))
-            else:               
+            elif(self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed"):
+                conf = json.load(open('config/lastPlayedOptions.json'))
+            else: 
                 conf = json.load(open('config/native.json'))
+                
+                     
 
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
                                         self.config["mainMenu"][self.currentIndex] ,conf ,self.addEditCallback)
