@@ -32,8 +32,7 @@ def reloadConfiguration():
 
     configuration = json.load(open('config/config.json'))
 
-    # check for old config
-    upgradeConfig()
+   
 
     if("version" not in configuration):
         configuration["version"] = "0"
@@ -110,6 +109,8 @@ def reloadConfiguration():
 
         except Exception as ex:
             print("Error: " + str(ex))
+    # check for old config
+    upgradeConfig()
 
 
 def hasConfig(system):
@@ -216,6 +217,8 @@ def parseLink(linkFile):
 def upgradeConfig():
     global configuration
 
+    hasOldConfig = False
+
     if os.path.exists('config/config.json.old'):
         print("Importing old config")
         oldConf = json.load(open('config/config.json.old'))
@@ -232,10 +235,15 @@ def upgradeConfig():
 
                     print("Updating " + newEntry["name"])
                     newEntry.update(oldEntry)
+                    hasOldConfig = True
 
-
+        configuration["options"].update(oldConf["options"])
+        saveOptions(configuration["options"])
         configuration.update(oldConf)
+        
         os.remove('config/config.json.old')
+        reloadConfiguration()
+        return
 
     ##update themes
     itemlist = os.listdir("theme/themes")  
@@ -249,6 +257,7 @@ def upgradeConfig():
                     oldTheme = json.load(open("theme/themes/" + oldName))
                     newTheme = json.load(open("theme/themes/" + newName))
                     newTheme.update(oldTheme)
+                    hasOldConfig = True
 
                     with open("theme/themes/" + newName, 'w') as fp:
                         json.dump(newTheme, fp, sort_keys=True, indent=4)
@@ -261,7 +270,9 @@ def upgradeConfig():
             else:
                 print("Keeping theme file " + newName)
                 os.rename("theme/themes/" + oldName, "theme/themes/" + newName)
-
+    if (hasOldConfig):            
+        saveConfiguration()
+        reloadConfiguration()
 
 
 def saveOptions(options):
@@ -372,6 +383,7 @@ def setResolution():
 
 
 def saveConfiguration():
+    global configuration
     print("saving")
     try:
         subprocess.Popen(["sync"])
@@ -383,7 +395,7 @@ def saveConfiguration():
 
     for index, item in enumerate(main):
         if(item["type"] == "native"):
-            data = item["data"]
+            data = item["data"] if "date" in item else []
             item.pop('data', None)
             for dataIndex, dataItem in enumerate(data):
                 saveTheme(dataItem)
