@@ -1,5 +1,11 @@
 #!/bin/sh
 sync; echo -e 'Installing PyMenu..';
-for filename in /home/retrofw/apps/pymenu/theme/themes/*.json; do mv "$filename" "$filename.old"; done;
-mv /home/retrofw/apps/pymenu/config/config.json /home/retrofw/apps/pymenu/config/config.json.old
+if [ -f /home/retrofw/apps/pymenu/config/config.json.old ]; then
+    echo -e 'Old backup config found';
+else
+    echo -e 'Creating config backup';
+    for filename in /home/retrofw/apps/pymenu/theme/themes/*.json; do mv "$filename" "$filename.old"; done;
+    mv /home/retrofw/apps/pymenu/config/config.json /home/retrofw/apps/pymenu/config/config.json.old
+fi
+
 exit 0
