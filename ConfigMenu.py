@@ -109,10 +109,7 @@ class ConfigMenu(AbstractList.AbstractList):
     def selectionListCallback(self, data):
         if(data != None):
             self.optionTarget[self.entryList[self.currentIndex]["id"]] = data
-
         
-        print(data)
-
         self.subComponent = None
         RenderControl.setDirty() 
 

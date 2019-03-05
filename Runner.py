@@ -12,7 +12,7 @@ def runEmu(config, rom):
 
 
     if(cmd == None or not os.path.isfile(cmd)):
-        print("cmd needs to be set to an existing executable")
+        print("cmd needs to be set to an existing executable")       
         return
     
     print("Platform is: '" + platform.processor() + "'")
@@ -28,8 +28,7 @@ def runEmu(config, rom):
 def runEmuMIPS(name, cmd, workdir, config, rom):
     name =  config["name"]
     cmd =  config["cmd"] if "cmd" in config else None
-    workdir = config["workingDir"] if "workingDir" in config else None
-    legacy = config["legacy"] if "legacy" in config else None
+    workdir = config["workingDir"] if "workingDir" in config else None 
     overclock = config["overclock"] if "overclock" in config else None
     params = config["params"] if "params" in config else None
 
@@ -42,43 +41,21 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
         except Exception as ex:
             pass
 
-    fileName = "run"
-    if(legacy == "True"):
-        fileName ="legacyRun"
-
+    fileName = "run"   
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
-
-    if(legacy == "True"):
-        file.write("export HOME=/mnt/ext_sd/home/\n")
-
-
     file.write("cd \"" + workdir + "\"\n")
 
     if(params != None):
-        file.write(cmd + " \"" + params.replace("$f", rom) + "\"\n")
+        file.write(cmd + " " + params.replace("$f","\""+  rom + "\"") + "\n")
     else:
-        file.write(cmd + " \"" + rom + "\"\n")
-
-   
-    
+        file.write(cmd + " \"" + rom + "\"\n")     
 
     file.close() 
     
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
-
-
-    if(legacy == "True"):
-        file = open("/tmp/run","w")
-        file.write("#!/bin/sh\n")
-        file.write("mount --bind /mnt/ext_sd/ /opt/legacy/mnt/ext_sd/\n")
-        file.write("mount --bind /home/retrofw/ /opt/legacy/home/retrofw/\n")       
-        file.write("chroot /opt/legacy /tmp/legacyRun\n")
-        file.close()
-        st = os.stat('/tmp/run')
-        os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
-
+   
     sys.exit()
    
 
@@ -96,7 +73,7 @@ def runNative(config):
     cmd =  config["cmd"] if "cmd" in config else None
   
     if(cmd == None or not os.path.isfile(cmd)):
-        print("cmd needs to be set to an existing executable")
+        print("cmd needs to be set to an existing executable")      
         return
     
     print("Platform is: " + platform.processor())
@@ -108,10 +85,10 @@ def runNative(config):
 
 def runNativeMIPS(cmd, config):  
     cmd =  config["cmd"] if "cmd" in config else None
-    screen = config["screen"] if "screen" in config else None
-    legacy = config["legacy"] if "legacy" in config else None
+    screen = config["screen"] if "screen" in config else None  
     overclock = config["overclock"] if "overclock" in config else None
     selection = config["selection"] if "selection" in config else ""
+    params = config["params"] if "params" in config else None
 
     if(overclock != None):
         try:
@@ -121,35 +98,24 @@ def runNativeMIPS(cmd, config):
 
 
     fileName = "run"
-    if(legacy == "True"):
-        fileName ="legacyRun"
 
     file = open("/tmp/" + fileName,"w")
-    file.write("#!/bin/sh\n")
-
-    if(legacy == "True"):
-        file.write("export HOME=/mnt/ext_sd/home/\n")
-
-    file.write("echo 0 > /proc/jz/lcd_a320\n") 
+    file.write("#!/bin/sh\n")  
 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")
-    file.write("\"" + cmd  + "\" \"" + selection + "\"\n")
-   
+
+    if(params != None):
+        file.write(cmd + " " + params.replace("$f","\""+  selection + "\"") + "\n")
+    else:
+        file.write("\"" + cmd  + "\" \"" + selection + "\"\n")     
+
+  
 
     file.close() 
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
-
-    if(legacy == "True"):
-        file = open("/tmp/run","w")
-        file.write("#!/bin/sh\n")
-        file.write("mount --bind /mnt/ext_sd/ /opt/legacy/mnt/ext_sd/\n")
-        file.write("mount --bind /home/retrofw/ /opt/legacy/home/retrofw/\n")    
-        file.write("chroot /opt/legacy /tmp/legacyRun\n")
-        file.close()
-        st = os.stat('/tmp/run')
-        os.chmod('/tmp/run', st.st_mode | stat.S_IEXEC)
+   
     sys.exit()
 
     

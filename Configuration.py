@@ -196,9 +196,8 @@ def appendEmuLinks(entry):
                         entry["fileFilter"] = list(set(filter))
 
                     if("selectordir" in data):
-                        entry["useSelection"] = True
-                    
-                    print("data is " + str(entry))
+                        entry["useSelection"] = True                   
+                  
 
 
 def parseLink(linkFile):
