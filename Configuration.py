@@ -26,7 +26,7 @@ def getConfiguration():
     return configuration
 
 
-def reloadConfiguration():
+def reloadConfiguration(upgrade=True):
     global configuration
     global currentTheme
 
@@ -110,7 +110,8 @@ def reloadConfiguration():
         except Exception as ex:
             print("Error: " + str(ex))
     # check for old config
-    upgradeConfig()
+    if(upgrade):
+        upgradeConfig()
 
 
 def hasConfig(system):
@@ -228,22 +229,29 @@ def upgradeConfig():
         del oldConf["version"]
         del oldConf["type"]
 
+
+        configuration["options"].update(oldConf["options"])
+        saveOptions(configuration["options"])
+       
+        reloadConfiguration(False)
+
+
         for oldEntry in main:
             for newEntry in configuration["mainMenu"]:
                 if(oldEntry["name"] == newEntry["name"]):
                     if "system" in oldEntry: del oldEntry["system"]
 
                     print("Updating " + newEntry["name"])
+                   
+
                     newEntry.update(oldEntry)
+
                     hasOldConfig = True
 
-        configuration["options"].update(oldConf["options"])
-        saveOptions(configuration["options"])
-        configuration.update(oldConf)
         
+        configuration.update(oldConf)
         os.remove('config/config.json.old')
-        reloadConfiguration()
-        return
+    
 
     ##update themes
     itemlist = os.listdir("theme/themes")  
@@ -272,7 +280,7 @@ def upgradeConfig():
                 os.rename("theme/themes/" + oldName, "theme/themes/" + newName)
     if (hasOldConfig):            
         saveConfiguration()
-        reloadConfiguration()
+        reloadConfiguration(False)
 
 
 def saveOptions(options):
