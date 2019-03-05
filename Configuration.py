@@ -134,7 +134,11 @@ def createNativeItem(item):
     entry = {}
     entry["name"] = data["title"]
     entry["cmd"] = data["exec"]
+   
     entry["description"] = data["description"]
+
+    if("params" in data):
+        entry["params"] = data["params"]
 
     if("clock" in data):
         entry["overclock"] = data["clock"]
@@ -170,11 +174,19 @@ def appendEmuLinks(entry):
                 if(name.lower().startswith(system.strip().lower() + ".") or
                 name.lower() == system.strip().lower()):
                     data = parseLink(dirpath + "/" + name)
+
+                  
+
                     emuEntry = {}
                     emuEntry["name"] = data["title"]
                     emuEntry["cmd"] = data["exec"]
+
+                    if("params" in data):
+                        emuEntry["params"] = data["params"]
+
                     emuEntry["workingDir"] = os.path.abspath(
                         os.path.join(data["exec"], os.pardir))
+
                     entry["emu"].append(emuEntry)
                     if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
                         filter = data["selectorfilter"].split(",")
@@ -185,6 +197,8 @@ def appendEmuLinks(entry):
 
                     if("selectordir" in data):
                         entry["useSelection"] = True
+                    
+                    print("data is " + str(entry))
 
 
 def parseLink(linkFile):

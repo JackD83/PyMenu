@@ -149,7 +149,12 @@ class MainMenu(RenderObject.RenderObject):
         self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
-        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] and self.config["mainMenu"][self.currentIndex]["type"] != "lastPlayed" ):
+        if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  
+        and self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed"):
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry"], self.optionsCallback)
+
+
+        elif("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  ):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["add new entry", "edit entry", "remove entry"], self.optionsCallback)
 
     def openSettings(self):
@@ -469,6 +474,7 @@ class MainMenu(RenderObject.RenderObject):
                 data = copy.deepcopy(self.config["mainMenu"][self.currentIndex])
                 data["cmd"] = data["emu"][index]["cmd"]
                 data["workingDir"] = data["emu"][index]["workingDir"]
+                if "params" in data["emu"][index]: data["params"] = data["emu"][index]["params"]
                 Runner.runEmu(data, self.selectedFile)
      
             print(str(selection) + " " + str(index) + " " + str(data["emu"][index]))

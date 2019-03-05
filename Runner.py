@@ -10,6 +10,7 @@ def runEmu(config, rom):
     workdir = config["workingDir"] if "workingDir" in config else None
     cmd =  config["cmd"] if "workingDir" in config else None
 
+
     if(cmd == None or not os.path.isfile(cmd)):
         print("cmd needs to be set to an existing executable")
         return
@@ -27,10 +28,10 @@ def runEmu(config, rom):
 def runEmuMIPS(name, cmd, workdir, config, rom):
     name =  config["name"]
     cmd =  config["cmd"] if "cmd" in config else None
-    workdir = config["workingDir"] if "workingDir" in config else None  
-    screen = config["screen"] if "screen" in config else None
+    workdir = config["workingDir"] if "workingDir" in config else None
     legacy = config["legacy"] if "legacy" in config else None
     overclock = config["overclock"] if "overclock" in config else None
+    params = config["params"] if "params" in config else None
 
     if(workdir == None and not cmd == None):    
         workdir = os.path.abspath(os.path.join(cmd, os.pardir))
@@ -50,11 +51,14 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     if(legacy == "True"):
         file.write("export HOME=/mnt/ext_sd/home/\n")
-    
-    file.write("echo 0 > /proc/jz/lcd_a320\n")   
+
 
     file.write("cd \"" + workdir + "\"\n")
-    file.write(cmd + " \"" + rom + "\"\n")
+
+    if(params != None):
+        file.write(cmd + " \"" + params.replace("$f", rom) + "\"\n")
+    else:
+        file.write(cmd + " \"" + rom + "\"\n")
 
    
     
