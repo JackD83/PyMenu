@@ -317,7 +317,7 @@ class MainMenu(RenderObject.RenderObject):
             if(self.config["mainMenu"][self.currentIndex]["type"] == "emulator"):              
                 conf = json.load(open('config/entry.json'))
             elif(self.config["mainMenu"][self.currentIndex]["type"] == "lastPlayed"):
-                conf = json.load(open('config/lastPlayedOptions.json'))
+                conf = json.load(open('config/optionsLastPlayed.json'))
             else: 
                 conf = json.load(open('config/native.json'))
                 
