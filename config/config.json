@@ -358,7 +358,7 @@
             "system": "pcsx4all", 
             "type": "emulator", 
             "useFileFilter": null, 
-            "useGamelist": true, 
+            "useGamelist": false, 
             "useSelection": false
         }, 
         {

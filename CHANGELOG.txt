@@ -44,3 +44,10 @@ Version 1.5.0
 - moved themes to single file per theme
 - implemented linking to gmenu2x, only installed emulators will show in PyMenu
 - new themes are automatically detected and added to the config menu
+
+Version 1.5.1 
+- fixed update from older version resetts config
+- added missing "param" config from gmenu, fixes pcsx4all not launching roms
+- fixed editing of last played theme
+- fixed sound issue if booting directly to PyMenu
+
