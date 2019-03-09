@@ -51,3 +51,11 @@ Version 1.5.1
 - fixed editing of last played theme
 - fixed sound issue if booting directly to PyMenu
 
+version 1.5.2
+- added better settings for arcade systems
+- added correct mame4all system string
+- fixed sound volume
+- added fw check on install, should prevent enyone to install on non-supported RetroFW (1.0)
+- fixed deleting of entries in main menu
+
+
