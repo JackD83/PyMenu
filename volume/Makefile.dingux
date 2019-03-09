@@ -1,0 +1,27 @@
+INCLUDEPATH := /usr/lib
+INCLUDES := -I$(INCLUDEPATH) -I$(INCLUDEPATH)/SDL
+
+ARCH	:= mipsel-linux-
+CC		:= $(ARCH)gcc
+CXX = $(ARCH)g++
+CFLAGS  := -O2 -Wall $(INCLUDES) 
+LDFLAGS := -O2 -Wall -lSDL_gfx -lSDL_image
+CXXFLAGS += $(CFLAGS)
+
+TARGET	:= setVolume
+VERSION	=	1.0
+
+OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
+HEADERS = $(wildcard *.h)
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+.PRECIOUS: $(TARGET) $(OBJECTS)
+
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
+
+clean:
+	-rm -f *.o
+	-rm -f $(TARGET)

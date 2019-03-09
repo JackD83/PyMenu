@@ -354,14 +354,14 @@ class MainMenu(RenderObject.RenderObject):
     def deleteCallback(self, res):
         self.overlay = None
         if(res == 1 and len(self.config["mainMenu"])  > 1):
-            
-            #todo: remove config file and folder
-            if("source" in self.config["mainMenu"][self.currentIndex]):       
-                del self.config["mainMenu"][self.currentIndex]
+     
+            del self.config["mainMenu"][self.currentIndex]
 
             Configuration.saveConfiguration()
+            Configuration.reloadConfiguration()
             self.currentIndex = 0
-            self.loadSystemImages()
+
+            self.reload()
     
     def getEmptyEmulatorData(self):
         emptyEntry = {

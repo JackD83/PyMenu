@@ -7,3 +7,5 @@ __pycache__
 config/lastPlayedData.json
 /.vscode
 /ipkgen/*.ipk
+/volume/setVolume
+/volume/setVolume.o
