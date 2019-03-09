@@ -1,5 +1,11 @@
 #!/bin/sh
 sync; echo -e 'Installing PyMenu..';
+if [ ! -d /usr/lib/python2.7/site-packages/pygame/ ]; then
+    echo -e 'PyMenu requires at leaset RetroFW 1.1 !';
+    exit 1
+fi
+
+
 if [ -f /home/retrofw/apps/pymenu/config/config.json.old ]; then
     echo -e 'Old backup config found';
 else

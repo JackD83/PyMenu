@@ -121,7 +121,7 @@ int main(int argc, char* argv[])
   if (argc == 2)
   {
     printf("New Volume is %s\n", argv[1]);
-    vol = atoi(argv[1]) / 6;
+    vol = atoi(argv[1]);
 
     if (vol >= 255)
     {

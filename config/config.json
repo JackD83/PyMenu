@@ -367,7 +367,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/neogeo/previews", 
             "selectionPath": "/home/retrofw/roms/neogeo", 
-            "system": "neogeo", 
+            "system": "fba-a320,fba-sdl", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -412,13 +412,13 @@
         {
             "description": "MAME Arcade EMU", 
             "name": "MAME", 
-            "overclock": "524", 
+            "overclock": "624", 
             "previews": "/home/retrofw/roms/mame/previews", 
             "selectionPath": "/home/retrofw/roms/mame", 
-            "system": "mame", 
+            "system": "mame4all", 
             "type": "emulator", 
             "useFileFilter": null, 
-            "useGamelist": null, 
+            "useGamelist": true, 
             "useSelection": false
         }, 
         {
@@ -427,7 +427,7 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/fba/previews", 
             "selectionPath": "/home/retrofw/roms/cps1", 
-            "system": "fbasdl,fba-a320", 
+            "system": "fba-a320,fba-sdl", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -439,7 +439,7 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps1/previews", 
             "selectionPath": "/home/retrofw/roms/cps1", 
-            "system": "cps1", 
+            "system": "fba-a320,fba-sdl", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -451,7 +451,7 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps2/previews", 
             "selectionPath": "/home/retrofw/roms/cps2", 
-            "system": "cps2", 
+            "system": "fba-a320,fba-sdl", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -483,5 +483,5 @@
     "screenHeight": 240, 
     "screenWidth": 320, 
     "type": "RS97", 
-    "version": "1.5.1"
+    "version": "1.5.2"
 }
