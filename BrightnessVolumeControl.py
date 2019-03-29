@@ -161,8 +161,11 @@ class BrightnessVolume(RenderObject.RenderObject):
             
             os.system('./setVolume ' + str(self.getCurrentVolume()))
         else:
+
             os.system("killall setVolume")
-            os.system('./setVolume 255')
+
+            print("Setting volume to " + str(self.config["options"]["defaultVolume"]))
+            os.system('./setVolume ' + str(self.config["options"]["defaultVolume"]))
 
     def __init__(self):
         if("lcd_backlight" in self.config and self.config["lcd_backlight"] in self.BRIGHTNESS_LEVELS):

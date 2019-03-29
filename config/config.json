@@ -473,6 +473,7 @@
     ], 
     "options": {
         "allowEdit": true, 
+        "defaultVolume": 250, 
         "displayTimeout": "off", 
         "showAll": false, 
         "showFPS": false, 

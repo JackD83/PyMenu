@@ -229,10 +229,12 @@ def upgradeConfig():
         del oldConf["version"]
         del oldConf["type"]
 
-
         configuration["options"].update(oldConf["options"])
         saveOptions(configuration["options"])
-       
+
+        #remove from old config
+        del oldConf["options"]
+
         reloadConfiguration(False)
 
 
@@ -247,7 +249,6 @@ def upgradeConfig():
                     newEntry.update(oldEntry)
 
                     hasOldConfig = True
-
         
         configuration.update(oldConf)
         os.remove('config/config.json.old')
