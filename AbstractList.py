@@ -286,7 +286,8 @@ class AbstractList(RenderObject.RenderObject):
     def up(self, count=1):
         self.currentIndex -= count
         if(self.currentIndex  < 0):
-            self.currentIndex = 0
+            self.currentIndex = len(self.entryList) - 1
+            self.currentWrap = len(self.entryList) - self.maxListEntries 
         
         if(self.currentIndex  <= self.currentWrap):
             self.currentWrap -= count
@@ -297,7 +298,8 @@ class AbstractList(RenderObject.RenderObject):
     def down(self, count=1):
         self.currentIndex += count
         if(self.currentIndex > len(self.entryList) - 1 ):
-            self.currentIndex = len(self.entryList) - 1
+            self.currentIndex = 0
+            self.currentWrap = 0
 
         if(self.currentIndex >= self.maxListEntries + self.currentWrap):
             self.currentWrap += count
