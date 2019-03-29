@@ -116,8 +116,6 @@ class AbstractList(RenderObject.RenderObject):
                 animPath = animPath2
            
             if(animPath != None and self.renderAnim ):
-                
-                
                 if(self.anim == None):
                     self.anim = Animation.Animation(animPath, (128,128))             
 

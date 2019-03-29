@@ -118,9 +118,10 @@ class FileChooser(AbstractList.AbstractList):
         for event in events:    
             if event.type == pygame.KEYDOWN:                        
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
-                    if(("limitSelection" in self.options 
+                    if (( ("limitSelection" in self.options 
                         and self.options["limitSelection"] )
-                        and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath)):
+                        and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath)  )
+                        or ("hideFolders" in self.options and self.options["hideFolders"]) ):
                         pass
                     else:
                         self.moveFolderUp()
@@ -158,9 +159,10 @@ class FileChooser(AbstractList.AbstractList):
             self.entryList = []
 
              ##append ..
-            if(("limitSelection" in self.options 
+            if(( ("limitSelection" in self.options 
                 and self.options["limitSelection"] )
-                and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath)):
+                and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath))
+                or ("hideFolders" in self.options and self.options["hideFolders"]) ):
                 pass
                 ##dont add ..
             else:
@@ -175,8 +177,10 @@ class FileChooser(AbstractList.AbstractList):
             Common.quick_sort(self.fileList)
           
             try:
+                hideFolders  = self.options["hideFolders"] if "hideFolders" in self.options else False
+
                 for f in self.fileList:                   
-                    if(os.path.isdir(self.currentPath + "/" + f)):
+                    if(os.path.isdir(self.currentPath + "/" + f) and not hideFolders ):
                         entry = {}
                         entry["name"] = f
                         entry["isFolder"] = True

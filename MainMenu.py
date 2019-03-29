@@ -265,6 +265,9 @@ class MainMenu(RenderObject.RenderObject):
             if("limitSelection" in current):
                 options["limitSelection"] = current["limitSelection"]
             
+            if("hideFolders" in current):
+                options["hideFolders"] = current["hideFolders"]
+            
             options["selectionPath"] = current["selectionPath"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)

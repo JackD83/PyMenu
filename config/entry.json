@@ -51,6 +51,11 @@
     "type":"boolean",
     "description": "Limit selection to sub-folders"
 },
+{   "id":"hideFolders",
+    "name" :"Hide subfolders",
+    "type":"boolean",
+    "description": "Hide sub-folders (like previews) in selection"
+},
 {   "id":"previews",
     "name" :"Preview folder",
     "type":"folder",
