@@ -403,7 +403,7 @@ def saveConfiguration():
 
     for index, item in enumerate(main):
         if(item["type"] == "native"):
-            data = item["data"] if "date" in item else []
+            data = item["data"] if "data" in item else []
             item.pop('data', None)
             for dataIndex, dataItem in enumerate(data):
                 saveTheme(dataItem)
