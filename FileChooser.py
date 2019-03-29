@@ -118,8 +118,13 @@ class FileChooser(AbstractList.AbstractList):
         for event in events:    
             if event.type == pygame.KEYDOWN:                        
                 if event.key == Keys.DINGOO_BUTTON_LEFT:
-                    self.moveFolderUp()
-                    RenderControl.setDirty()
+                    if(("limitSelection" in self.options 
+                        and self.options["limitSelection"] )
+                        and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath)):
+                        pass
+                    else:
+                        self.moveFolderUp()
+                        RenderControl.setDirty()
             if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_START:
                     if(self.selectFolder):
@@ -151,11 +156,19 @@ class FileChooser(AbstractList.AbstractList):
 
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
-            entry = {}
-            entry["name"] = ".."
-            entry["isFolder"] = True
-            entry["text"] = self.entryFont.render("..", True, self.textColor)
-            self.entryList.append(entry)
+
+             ##append ..
+            if(("limitSelection" in self.options 
+                and self.options["limitSelection"] )
+                and os.path.normpath(self.options["selectionPath"]) == os.path.normpath(self.currentPath)):
+                pass
+                ##dont add ..
+            else:
+                entry = {}
+                entry["name"] = ".."
+                entry["isFolder"] = True
+                entry["text"] = self.entryFont.render("..", True, self.textColor)
+                self.entryList.append(entry)
 
             self.fileList = os.listdir(os.path.normpath(self.currentPath))
       

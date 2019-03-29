@@ -261,6 +261,11 @@ class MainMenu(RenderObject.RenderObject):
 
             if("useFileFilter" in current):
                 options["useFileFilter"] = current["useFileFilter"]
+            
+            if("limitSelection" in current):
+                options["limitSelection"] = current["limitSelection"]
+            
+            options["selectionPath"] = current["selectionPath"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"),("theme/start_button.png", "Open with"), ("theme/a_button.png", "select")], (255,255,255)) 

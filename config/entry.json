@@ -46,6 +46,11 @@
     "type":"folder",
     "description": "Folder where the roms are"
 },
+{   "id":"limitSelection",
+    "name" :"Limit Selection",
+    "type":"boolean",
+    "description": "Limit selection to sub-folders"
+},
 {   "id":"previews",
     "name" :"Preview folder",
     "type":"folder",

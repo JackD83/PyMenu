@@ -25,10 +25,11 @@
         }, 
         {
             "description": "Super Nintendo", 
+            "limitSelection": true, 
             "name": "SNES", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/snes/previews", 
-            "selectionPath": "/home/retrofw/roms/snes", 
+            "selectionPath": "C:\\home\\retrofw/apps", 
             "system": "snes", 
             "type": "emulator", 
             "useFileFilter": false, 
@@ -359,7 +360,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": false, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "SNK NEOGEO", 
@@ -371,7 +372,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "NEOGEO Pocket", 
@@ -431,7 +432,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Capcom Play Sys 1", 
@@ -443,7 +444,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Capcom Play Sys 2", 
@@ -455,7 +456,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Native ports to this device", 
