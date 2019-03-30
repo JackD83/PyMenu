@@ -6,7 +6,6 @@ from operator import itemgetter
 class AbstractList(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
     theme = Configuration.getTheme()
-    pygame.font.init()
     entryList = []
     background = None
     selection = None

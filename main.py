@@ -14,15 +14,15 @@ def except_hook(exctype, value, traceback):
     
 sys.excepthook = except_hook
 
-import pygame, MainMenu, Configuration, RenderControl, TaskHandler,subprocess
-import platform, Suspend, BrightnessVolumeControl
-import time, os
+import pygame, MainMenu, Configuration, RenderControl, TaskHandler
+import Suspend, BrightnessVolumeControl
+import time
 
 from pygame.locals import *
 
 textFont = pygame.font.Font('theme/NotoSans-Regular.ttf', 10)
 
-
+print("PyGame Init")
 pygame.init()
 pygame.font.init()
 pygame.mouse.set_visible(False)
