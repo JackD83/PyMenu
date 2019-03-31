@@ -385,12 +385,6 @@ def setResolution():
         configuration["screenWidth"] = 480
         configuration["screenHeight"] = 272
 
-    # windows platform or mac
-    if(platform.processor() != ""):
-        configuration["screenWidth"] = 320
-        configuration["screenHeight"] = 240
-
-
 def saveConfiguration():
     global configuration
     print("saving")
@@ -432,8 +426,14 @@ def saveConfiguration():
 
     saveThemeFile()
 
+    try:
+        subprocess.Popen(["sync"])
+    except Exception:
+        pass
+
     for l in listeners:
         l()
+
 
     print("Save finished")
 
