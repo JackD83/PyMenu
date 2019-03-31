@@ -18,12 +18,33 @@ types = ["RS97", "RS07", "K3P"]
 
 currentTheme = {}
 
+links = {}
+
 
 def getConfiguration():
     if(configuration == None):
         reloadConfiguration()
 
     return configuration
+
+def initLinks():
+    global configuration
+    global links
+
+    if(len(links) != 0):
+        return
+
+    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
+        for name in filenames:
+            linkName = os.path.splitext(name)[0].lower()
+           
+            if(linkName.find(".") != -1):
+                linkName = linkName[0:linkName.find(".")]
+
+            if(linkName not in links):
+                links[linkName] = []
+
+            links[linkName].append(dirpath + "/" + name)
 
 
 def reloadConfiguration(upgrade=True):
@@ -32,7 +53,7 @@ def reloadConfiguration(upgrade=True):
 
     configuration = json.load(open('config/config.json'))
 
-   
+    initLinks()
 
     if("version" not in configuration):
         configuration["version"] = "0"
@@ -118,16 +139,13 @@ def hasConfig(system):
     global configuration
 
     systems = system.split(",")
-    found = False
-    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
-        for name in filenames:
-            for system in systems:
-                if(name.lower().startswith(system.strip().lower() + ".") or
-                name.lower() == system.strip().lower()):
-                    found = True
-                    break
 
-    return found
+    for system in systems:
+        if(system.lower() in links):
+            return True
+                
+
+    return False
 
 
 def createNativeItem(item):
@@ -170,35 +188,32 @@ def appendEmuLinks(entry):
     entry["emu"] = []  # clear emus
     entry["useSelection"] = False
 
-    for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
-        for name in filenames:
-            for system in systems:
-                if(name.lower().startswith(system.strip().lower() + ".") or
-                name.lower() == system.strip().lower()):
-                    data = parseLink(dirpath + "/" + name)
+ 
+    for system in systems:
+        if(system.lower() in links):
+            for lnk in links[system.lower()]:
+                data = parseLink(lnk)
 
-                  
+                emuEntry = {}
+                emuEntry["name"] = data["title"]
+                emuEntry["cmd"] = data["exec"]
 
-                    emuEntry = {}
-                    emuEntry["name"] = data["title"]
-                    emuEntry["cmd"] = data["exec"]
+                if("params" in data):
+                    emuEntry["params"] = data["params"]
 
-                    if("params" in data):
-                        emuEntry["params"] = data["params"]
+                emuEntry["workingDir"] = os.path.abspath(
+                    os.path.join(data["exec"], os.pardir))
 
-                    emuEntry["workingDir"] = os.path.abspath(
-                        os.path.join(data["exec"], os.pardir))
+                entry["emu"].append(emuEntry)
+                if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
+                    filter = data["selectorfilter"].split(",")
+                    if("fileFilter" in entry):
+                        filter.extend(entry["fileFilter"])
+                    # make unique
+                    entry["fileFilter"] = list(set(filter))
 
-                    entry["emu"].append(emuEntry)
-                    if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
-                        filter = data["selectorfilter"].split(",")
-                        if("fileFilter" in entry):
-                            filter.extend(entry["fileFilter"])
-                        # make unique
-                        entry["fileFilter"] = list(set(filter))
-
-                    if("selectordir" in data):
-                        entry["useSelection"] = True                   
+                if("selectordir" in data):
+                    entry["useSelection"] = True                   
                   
 
 
