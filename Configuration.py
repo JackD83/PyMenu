@@ -205,7 +205,7 @@ def appendEmuLinks(entry):
                     os.path.join(data["exec"], os.pardir))
 
                 entry["emu"].append(emuEntry)
-                if("selectorfilter" in data and "useFileFilter" in entry and entry["useFileFilter"]):
+                if("selectorfilter" in data):
                     filter = data["selectorfilter"].split(",")
                     if("fileFilter" in entry):
                         filter.extend(entry["fileFilter"])
