@@ -242,6 +242,9 @@ class NativeAppList(AbstractList.AbstractList):
                 self.previewPath = self.currentSelection["preview"]
                 self.preview_final = self.previewPath
 
-            RenderControl.setDirty()           
+            RenderControl.setDirty()     
+
+        AbstractList.AbstractList.updatePreview(self)
+        self.onChange()      
       
       

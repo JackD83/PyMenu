@@ -102,6 +102,7 @@ class AbstractList(RenderObject.RenderObject):
         if(self.useSidebar):           
             xOffset = (128) / 2
             yOffset = (128) / 2
+        
 
         if(self.preview_final != None):
 
@@ -216,15 +217,18 @@ class AbstractList(RenderObject.RenderObject):
                     RenderControl.setDirty()
             if event.type == pygame.KEYUP:
                 self.keyDown = False              
-                self.preview_final = self.previewPath
+                self.updatePreview()
 
-                self.anim = None
-                self.image = None
-                
-                self.renderAnim = False
-                TaskHandler.removePeriodicTask(self.animTask)
-                self.animTask = TaskHandler.addPeriodicTask(1000, self.onShowAnim, 1000)
-                RenderControl.setDirty()
+    def updatePreview(self):
+        self.preview_final = self.previewPath
+
+        self.anim = None
+        self.image = None
+        
+        self.renderAnim = False
+        TaskHandler.removePeriodicTask(self.animTask)
+        self.animTask = TaskHandler.addPeriodicTask(1000, self.onShowAnim, 1000)
+        RenderControl.setDirty()
 
     def onShowAnim(self):
         self.renderAnim = True

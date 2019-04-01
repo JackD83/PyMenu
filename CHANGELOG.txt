@@ -67,3 +67,7 @@ Version 1.5.3
 - added default volume to configuration
 - improved loading time of PyMenu
 
+Version 1.5.4
+- fixed previews not showing for first element
+
+

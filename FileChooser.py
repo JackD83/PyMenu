@@ -52,7 +52,7 @@ class FileChooser(AbstractList.AbstractList):
             self.currentIndex = 0
             self.initList()
         
-        print("new current path is", self.currentPath)
+        
     
     def setOverlay(self, overlay):
         self.overlay = overlay
@@ -320,4 +320,10 @@ class FileChooser(AbstractList.AbstractList):
 
         if(initialPath == None or initialPath == "/"):
             self.moveFolderUp()
+
+        AbstractList.AbstractList.updatePreview(self)
+        self.onChange()
+
+        
+        
       
