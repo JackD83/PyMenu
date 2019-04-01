@@ -33,7 +33,7 @@
             "selectionPath": "C:\\home\\retrofw/apps", 
             "system": "snes", 
             "type": "emulator", 
-            "useFileFilter": true, 
+            "useFileFilter": false, 
             "useGamelist": false, 
             "useSelection": true
         }, 
