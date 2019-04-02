@@ -208,8 +208,10 @@ class FileChooser(AbstractList.AbstractList):
             self.setSelection(0)
         
 
-        self.onChange()
         self.listReady = True
+        self.onChange()
+        AbstractList.AbstractList.updatePreview(self)
+        
         RenderControl.setDirty()
 
         
@@ -321,7 +323,7 @@ class FileChooser(AbstractList.AbstractList):
         if(initialPath == None or initialPath == "/"):
             self.moveFolderUp()
 
-        AbstractList.AbstractList.updatePreview(self)
+       
         self.onChange()
 
         
