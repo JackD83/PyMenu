@@ -158,6 +158,9 @@ class FileChooser(AbstractList.AbstractList):
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
 
+            folderList = []
+            fileList = []
+
              ##append ..
             if(( ("limitSelection" in self.options 
                 and self.options["limitSelection"] )
@@ -174,7 +177,8 @@ class FileChooser(AbstractList.AbstractList):
 
             self.fileList = os.listdir(os.path.normpath(self.currentPath))
       
-            Common.quick_sort(self.fileList)
+            #Common.quick_sort(self.fileList)
+           
           
             try:
                 hideFolders  = self.options["hideFolders"] if "hideFolders" in self.options else False
@@ -185,14 +189,19 @@ class FileChooser(AbstractList.AbstractList):
                         entry["name"] = f
                         entry["isFolder"] = True
                         entry["text"] = None
-                        self.entryList.append(entry)
-                for f in self.fileList:                   
-                    if(not os.path.isdir(self.currentPath + "/" + f) and not self.selectFolder and self.filterFile(f)):
+                        folderList.append(entry)
+                    elif ( not self.selectFolder and self.filterFile(f)):
                         entry = {}
                         entry["name"] = f
                         entry["isFolder"] = False
                         entry["text"] = None
-                        self.entryList.append(entry)
+                        fileList.append(entry)
+                
+                Common.quick_sort(folderList)
+                Common.quick_sort(fileList)
+
+                self.entryList = self.entryList + folderList + fileList
+                
             except Exception as ex:
                 pass    
 
