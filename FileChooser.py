@@ -5,6 +5,8 @@ import pygame, sys, ResumeHandler, ntpath
 from threading import Thread
 from operator import itemgetter
 from time import sleep
+sys.path.insert(0, "scandir")
+import scandir
 
 class FileChooser(AbstractList.AbstractList):
    
@@ -154,6 +156,10 @@ class FileChooser(AbstractList.AbstractList):
         if("useGamelist" in self.options and self.options["useGamelist"] == True):
             Common.loadGameList()
 
+        selectFileAfterLoad = None
+        if(os.path.isfile(self.initialPath)):
+            selectFileAfterLoad = ntpath.basename(self.initialPath)
+            
 
         if(os.path.isdir(self.currentPath) and os.path.exists(self.currentPath)):
             self.entryList = []
@@ -175,24 +181,22 @@ class FileChooser(AbstractList.AbstractList):
                 entry["text"] = self.entryFont.render("..", True, self.textColor)
                 self.entryList.append(entry)
 
-            self.fileList = os.listdir(os.path.normpath(self.currentPath))
-      
-            #Common.quick_sort(self.fileList)
-           
-          
+            scan = scandir.scandir(os.path.normpath(self.currentPath))
+        
             try:
                 hideFolders  = self.options["hideFolders"] if "hideFolders" in self.options else False
 
-                for f in self.fileList:                   
-                    if(os.path.isdir(self.currentPath + "/" + f) and not hideFolders ):
+                for f in scan:  
+                           
+                    if(f.is_dir() and not hideFolders ):
                         entry = {}
-                        entry["name"] = f
+                        entry["name"] = f.name
                         entry["isFolder"] = True
                         entry["text"] = None
                         folderList.append(entry)
-                    elif ( not self.selectFolder and self.filterFile(f)):
+                    elif ( not self.selectFolder and self.filterFile(f.name)):
                         entry = {}
-                        entry["name"] = f
+                        entry["name"] = f.name
                         entry["isFolder"] = False
                         entry["text"] = None
                         fileList.append(entry)
@@ -208,6 +212,10 @@ class FileChooser(AbstractList.AbstractList):
         if(not self.reset == None):
             for entry in self.entryList:
                 if(entry["name"] == self.reset):
+                    self.setSelection(self.entryList.index(entry))
+        elif(selectFileAfterLoad != None):
+            for entry in self.entryList:
+                if(entry["name"] == selectFileAfterLoad):
                     self.setSelection(self.entryList.index(entry))
 
         elif(self.res != None and self.res["line"] != None):           
@@ -319,15 +327,7 @@ class FileChooser(AbstractList.AbstractList):
             self.initialPath = self.res["path"]
 
         self.initList()
-  
-        if(self.res != None and self.res["line"] != None):           
-            self.setInitialSelection(self.res["line"])
-        else:            
-            if(os.path.isfile(initialPath) and self.fileList is not None):
-                name = ntpath.basename(initialPath)
-                index = self.fileList.index(name)
-                if(index != -1):
-                    self.setInitialSelection(index + 1)      
+     
 
         if(initialPath == None or initialPath == "/"):
             self.moveFolderUp()

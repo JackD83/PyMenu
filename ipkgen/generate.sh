@@ -18,6 +18,7 @@ cp ../*.py tmp/data/home/retrofw/apps/pymenu/
 cp ../*.sh tmp/data/home/retrofw/apps/pymenu/
 cp ../*.dge tmp/data/home/retrofw/apps/pymenu/
 cp ../*.png tmp/data/home/retrofw/apps/pymenu/
+cp -r ../scandir tmp/data/home/retrofw/apps/pymenu/
 cp -r ../config tmp/data/home/retrofw/apps/pymenu/
 rm tmp/data/home/retrofw/apps/pymenu/config/lastPlayedData.json 2> /dev/null
 
