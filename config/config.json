@@ -164,7 +164,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/atari7800/previews", 
             "selectionPath": "/home/retrofw/roms/atari7800", 
-            "system": "atari7800", 
+            "system": "prosystem-od", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -236,7 +236,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/zxspectrum/previews", 
             "selectionPath": "/home/retrofw/roms/zxspectrum", 
-            "system": "SZX", 
+            "system": "speccy", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -284,7 +284,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/inttellivision/previews", 
             "selectionPath": "/home/retrofw/roms/intellevision", 
-            "system": "INTV", 
+            "system": "jzintv", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -486,5 +486,5 @@
     "screenHeight": 240, 
     "screenWidth": 320, 
     "type": "RS97", 
-    "version": "1.5.4"
+    "version": "1.5.5"
 }
