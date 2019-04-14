@@ -71,3 +71,8 @@ Version 1.5.4
 - fixed previews not showing for first element
 - fixed file filter was only used after reboot
 
+Version 1.5.5
+- improved loading time of folders ~10x
+- fixed previews not showing for first element again
+- added latest emulators: jzIntv, Pokémini, ProSystem-OD, Speccy 
+
