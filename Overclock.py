@@ -1,7 +1,7 @@
 import mmap, os
 
 def setClock(newClock):
-    try
+    try:
         os.system('./setCPU ' + str(newClock))
     except Exception as ex:
         print("Error setting clockspeed: " + str(ex))
