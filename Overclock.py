@@ -1,6 +1,12 @@
 import mmap, os
 
 def setClock(newClock):
+    try
+        os.system('./setCPU ' + str(newClock))
+    except Exception as ex:
+        print("Error setting clockspeed: " + str(ex))
+
+def setClockPython(newClock):
     with open("/dev/mem", os.O_RDWR) as f:
         CPPCR = (0x10 >> 2)
 

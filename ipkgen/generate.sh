@@ -27,6 +27,7 @@ cp -r ../installer tmp/data/home/retrofw/apps/pymenu/
 #cp -r ../python tmp/data/home/retrofw/apps/pymenu/
 cp -r ../theme tmp/data/home/retrofw/apps/pymenu/
 cp ../setVolume tmp/data/home/retrofw/apps/pymenu/
+cp ../setCPU tmp/data/home/retrofw/apps/pymenu/
 
 mkdir -p tmp/data/home/retrofw/apps/gmenu2x/sections/applications/
 cp pymenu.lnk tmp/data/home/retrofw/apps/gmenu2x/sections/applications/
