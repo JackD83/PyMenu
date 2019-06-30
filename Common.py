@@ -2,6 +2,8 @@
 import pygame, sys, Configuration
 import os, subprocess, platform
 from threading import Thread
+import json
+import copy
 
 
 CLOCKSPEED = 628 #default clockspeed
@@ -178,3 +180,142 @@ def quick_sort(items):
                 quick_sort(smaller_items)
                 quick_sort(larger_items)
                 items[:] = smaller_items + [items[pivot_index]] + larger_items
+
+def addToCustomList(config, rom, dataName, limitEntries = True):
+    data = getDataEntry(config, rom)
+
+    try:
+        listData = json.load(open("config/" + dataName + ".json"))
+    
+        last = listContains(listData, data)
+        if(   last != None ):            
+            listData["data"].remove(last)          
+
+
+        listData["data"].insert(0, data)
+        if(limitEntries):
+            listData["data"] = listData["data"][0:20]
+
+        with open("config/" +  dataName + ".json", 'w') as fp: 
+            json.dump(listData, fp,sort_keys=True, indent=4)
+
+        
+    except Exception as ex:
+        print("Exception " + str(ex))       
+
+def getDataEntry(config, rom):
+    data = copy.deepcopy(config)
+
+    if(not rom == None):        
+        filename_w_ext = os.path.basename(rom)
+        filename, file_extension = os.path.splitext(filename_w_ext)
+
+        if("fileFilter" in config):
+            if any(file_extension in s for s in config["fileFilter"]):
+                data["name"] = filename
+            else:
+                data["name"] = filename_w_ext
+        else:
+            data["name"] = filename_w_ext
+
+        if("gameListName" in data):
+            data["name"] = data["gameListName"]
+            
+        elif("useGamelist" in config and config["useGamelist"] == True):
+            data["name"] = getGameName(filename_w_ext)
+            data["gameListName"] = data["name"]
+           
+        data["rom"] = rom
+        data["type"] = "emulator"
+
+        if(not "preview" in data):
+            data["preview"] = ""
+
+        if("previews" in config and not config["previews"] == None):
+             data["preview"] = str(config["previews"]) + "/" + str(filename) + ".png"
+
+    else:
+        data["type"] = "native"   
+
+        
+    return data
+
+def listContains(list, data):
+    for last in list["data"]:
+        if( (data["type"] == "emulator" and last["type"] == "emulator" and last["rom"] == data["rom"]) or (data["type"] == "native" and last["type"] == "native" and last["cmd"] == data["cmd"]) ):   
+     
+            return last
+          
+    return None
+
+def isFavourite(config, rom):
+    conf = Configuration.getConfiguration()
+    for entry in conf["mainMenu"]:
+        if(entry["type"] == "favourites"):
+            res = listContains(entry, getDataEntry(config,rom))
+            if(res != None):
+                return True
+    
+    return False
+
+
+def addFavourite(config, rom):
+    addToCustomList(config,rom, "favourites", False)
+    
+    #add to main menu favourites entry directly
+    conf = Configuration.getConfiguration()
+    for entry in conf["mainMenu"]:
+        if(entry["type"] == "favourites"):
+            newData = getDataEntry(config,rom)
+            res = listContains(entry,newData)
+            if(   res != None ):            
+                entry["data"].remove(res)          
+
+            entry["data"].insert(0, newData)
+
+
+def removeFavourite(config, rom):
+    dataName = "favourites"
+    data = getDataEntry(config, rom)
+
+    try:
+        listData = json.load(open("config/" + dataName + ".json"))
+    
+        last = listContains(listData, data)
+        if(   last != None ):            
+            listData["data"].remove(last)          
+
+        with open("config/" +  dataName + ".json", 'w') as fp: 
+            json.dump(listData, fp,sort_keys=True, indent=4)
+
+        
+    except Exception as ex:
+        print("Exception " + str(ex)) 
+
+    #remove from  main menu favourites entry directly
+    conf = Configuration.getConfiguration()
+    for entry in conf["mainMenu"]:
+        if(entry["type"] == "favourites"):
+            
+            res = listContains(entry,data)
+            if( res != None ):            
+                entry["data"].remove(res) 
+
+def removeFavouriteData(data):
+    dataName = "favourites"
+  
+    try:
+        listData = json.load(open("config/" + dataName + ".json"))
+    
+        last = listContains(listData, data)
+        if(   last != None ):            
+            listData["data"].remove(last)          
+
+        with open("config/" +  dataName + ".json", 'w') as fp: 
+            json.dump(listData, fp,sort_keys=True, indent=4)
+
+        
+    except Exception as ex:
+        print("Exception " + str(ex)) 
+
+     

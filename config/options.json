@@ -45,6 +45,13 @@
         "description": "Shows a main menu entry with last played games",
         "type": "boolean"
     },
+    
+    {
+        "name": "Show Favourites",
+        "id": "showFavourites",
+        "description": "Shows a main menu entry with favourit games",
+        "type": "boolean"
+    },
     {
         "name": "Show FPS",
         "id": "showFPS",

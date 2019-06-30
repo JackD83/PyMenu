@@ -121,7 +121,10 @@ class NativeAppList(AbstractList.AbstractList):
             if event.type == pygame.KEYDOWN:  
                 if event.key == Keys.DINGOO_BUTTON_SELECT:
                     if("type" in self.options and self.options["type"] == "lastPlayed"):
-                        pass                      
+                        pass   
+                    elif("type" in self.options and self.options["type"] == "favourites"):
+                        self.showFavouriteOverlay() 
+                        RenderControl.setDirty()              
                     else:
                         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
 
@@ -139,6 +142,22 @@ class NativeAppList(AbstractList.AbstractList):
 
         if(self.overlay is None):
             AbstractList.AbstractList.handleEvents(self, events)
+
+    def showFavouriteOverlay(self):
+        opt = ["Remove from favourites"]
+        self.overlay = SelectionMenu.SelectionMenu(self.screen,opt, self.favouriteCallback, width=180)
+      
+    
+    def favouriteCallback(self, index, res):
+    
+        if(res == "Remove from favourites"):
+            Common.removeFavouriteData(self.currentSelection )
+            self.data.remove(self.currentSelection)      
+            self.initList()
+            self.setSelection(self.currentIndex)
+
+        self.overlay = None
+        self.onChange()
 
    
     def initList(self):    
@@ -234,7 +253,7 @@ class NativeAppList(AbstractList.AbstractList):
 
         res = ResumeHandler.getResumeFile()
 
-        if(res != None and res["line"] != None and ("type" in options and options["type"] != "lastPlayed")): 
+        if(res != None and res["line"] != None and ("type" in options and options["type"] != "lastPlayed" and options["type"] != "favourites")): 
             self.setSelection(res["line"])
             self.onChange()
 

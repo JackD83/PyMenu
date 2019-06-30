@@ -117,12 +117,16 @@ class SelectionMenu(RenderObject.RenderObject):
         
 
     
-    def __init__(self, screen, options, callback):
+    def __init__(self, screen, options, callback, width=150):
         print("Opened Options menu ", options)
         self.options = options
         self.callback = callback
+        self.width = width
+
         self.selection = pygame.Surface((self.width,self.optionHeight),pygame.SRCALPHA)
         self.selection.fill((55,55,55, 120))
+
+     
 
         self.init()
         self.initOptionText()

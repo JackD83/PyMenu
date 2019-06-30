@@ -5,6 +5,7 @@ __pycache__
 /installer/log.txt
 /python/log.txt
 config/lastPlayedData.json
+config/favourites.json
 /.vscode
 /ipkgen/*.ipk
 /volume/setVolume

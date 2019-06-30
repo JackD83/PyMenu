@@ -241,6 +241,7 @@ class MainMenu(RenderObject.RenderObject):
 
             print("Opening emulator file selection")
             options = {}
+            options["entry"] = self.config["mainMenu"][self.currentIndex]
             options["textColor"] = (55,55,55)
             options["background"] = current["background"]
             options["useSidebar"] = True
@@ -290,13 +291,13 @@ class MainMenu(RenderObject.RenderObject):
             else:
                 footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)
-        if(current["type"] == "lastPlayed"):
-            print("Opening native selection")
+        if(current["type"] == "lastPlayed" or current["type"] == "favourites"):
+            print("Opening customList selection")
             options = {}
             options["background"] = current["background"]
             options["useSidebar"] = True
-            options["type"] = "lastPlayed"
-            self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.lastPlayedCallback)        
+            options["type"] = current["type"]
+            self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.customListCallback)        
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)  
 
@@ -305,7 +306,7 @@ class MainMenu(RenderObject.RenderObject):
         if(selection != None):
             Runner.runNative(selection)
 
-    def lastPlayedCallback(self, selection):
+    def customListCallback(self, selection):
         self.subComponent = None
         if(selection != None):
             if(selection["type"] == "native"):

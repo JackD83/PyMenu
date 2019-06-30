@@ -219,6 +219,8 @@ class AbstractList(RenderObject.RenderObject):
                 self.keyDown = False              
                 self.updatePreview()
 
+               
+
     def updatePreview(self):
         self.preview_final = self.previewPath
 

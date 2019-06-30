@@ -470,6 +470,13 @@
             "linkPath": null, 
             "name": "Last Played", 
             "type": "lastPlayed"
+        }, 
+        {
+            "data": [], 
+            "description": "Favourit games", 
+            "linkPath": null, 
+            "name": "Favourites", 
+            "type": "favourites"
         }
     ], 
     "options": {
@@ -478,6 +485,7 @@
         "displayTimeout": "off", 
         "showAll": false, 
         "showFPS": false, 
+        "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
         "themeName": "pixel", 
@@ -486,5 +494,5 @@
     "screenHeight": 240, 
     "screenWidth": 320, 
     "type": "RS97", 
-    "version": "1.5.6"
+    "version": "1.5.7"
 }

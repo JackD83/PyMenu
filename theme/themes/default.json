@@ -125,6 +125,11 @@
         "icon": ".", 
         "preview": "images/previews/fallingtime.png"
     }, 
+    "Favourites": {
+        "background": "images/pixel97/backgrounds/favourites_art_blur.png", 
+        "folderIcon": "theme/defaultFolderIcon.png", 
+        "icon": "images/pixel97/systems/favourites.png"
+    }, 
     "Ffplay": {
         "icon": ".", 
         "preview": "."
@@ -306,6 +311,7 @@
     "Puzzletube": {
         "preview": "images/previews/puzzletube.png"
     }, 
+    "PyMenu": {}, 
     "Quake": {
         "preview": "images/previews/quake.png"
     }, 

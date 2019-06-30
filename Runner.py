@@ -4,7 +4,7 @@ import sys, os, stat, Overclock
 
 def runEmu(config, rom):
     ResumeHandler.storeResume()
-    addToLastPlayed(config, rom)
+    Common.addToCustomList(config, rom, "lastPlayedData")
 
     name =  config["name"]
     workdir = config["workingDir"] if "workingDir" in config else None
@@ -72,7 +72,7 @@ def runEmuHost(name, cmd, workdir, config, rom):
 
 def runNative(config):
     ResumeHandler.storeResume()
-    addToLastPlayed(config, None)
+    Common.addToCustomList(config, None, "lastPlayedData")
     cmd =  config["cmd"] if "cmd" in config else None
   
     if(cmd == None or not os.path.isfile(cmd)):
@@ -131,72 +131,6 @@ def runNativeHost(cmd, config):
     except Exception as ex:
         print(str(ex))
 
-def addToLastPlayed(config, rom):
-    data = copy.deepcopy(config)
-
-    if(not rom == None):        
-        filename_w_ext = os.path.basename(rom)
-        filename, file_extension = os.path.splitext(filename_w_ext)
-
-        if("fileFilter" in config):
-            if any(file_extension in s for s in config["fileFilter"]):
-                data["name"] = filename
-            else:
-                data["name"] = filename_w_ext
-        else:
-            data["name"] = filename_w_ext
-
-        if("gameListName" in data):
-            data["name"] = data["gameListName"]
-            
-        elif("useGamelist" in config and config["useGamelist"] == True):
-            data["name"] = Common.getGameName(filename_w_ext)
-            data["gameListName"] = data["name"]
-           
-        
-        
-
-        data["rom"] = rom
-        data["type"] = "emulator"
-
-        if(not "preview" in data):
-            data["preview"] = ""
-
-        if("previews" in config and not config["previews"] == None):
-             data["preview"] = str(config["previews"]) + "/" + str(filename) + ".png"
-
-        
-
-    else:
-        data["type"] = "native"   
-
-
-    try:
-        lastPlayed = json.load(open("config/lastPlayedData.json"))
-       
-
-        last = wasLastPlayed(lastPlayed, data)
-        if(   last != None ):            
-            lastPlayed["data"].remove(last)          
-
-
-        lastPlayed["data"].insert(0, data)
-        lastPlayed["data"] = lastPlayed["data"][0:20]
-
-        with open('config/lastPlayedData.json', 'w') as fp: 
-            json.dump(lastPlayed, fp,sort_keys=True, indent=4)
-
-        
-    except Exception as ex:
-        print("Exception " + str(ex))        
-
-def wasLastPlayed(lastPlayed, data):
-    for last in lastPlayed["data"]:
-        if( (data["type"] == "emulator" and last["type"] == "emulator" and last["rom"] == data["rom"]) or (data["type"] == "native" and last["type"] == "native" and last["cmd"] == data["cmd"]) ):   
-     
-            return last
-          
-    return None
 
 
     

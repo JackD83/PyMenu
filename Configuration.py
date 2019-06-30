@@ -112,6 +112,25 @@ def reloadConfiguration(upgrade=True):
                         entry["data"] = []
                         with open('config/lastPlayedData.json', 'w') as fp:
                             json.dump(newData, fp, sort_keys=True, indent=4)
+                except Exception as ex:
+                    print("Error loading last played")
+
+            elif(entry["type"] == "favourites"):
+                entry["data"] = []
+                entry["visible"] = "showFavourites" in configuration["options"] and configuration["options"]["showFavourites"]
+                appendTheme(entry)
+
+                try:
+                    if(os.path.exists("config/favourites.json")):
+                        favouriteData = json.load(
+                            open("config/favourites.json"))
+                        entry["data"] = favouriteData["data"]
+                    else:
+                        newData = {}
+                        newData["data"] = []
+                        entry["data"] = []
+                        with open('config/favourites.json', 'w') as fp:
+                            json.dump(newData, fp, sort_keys=True, indent=4)
 
                 except Exception as ex:
                     print("Error loading last played")

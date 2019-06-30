@@ -7,6 +7,7 @@ from operator import itemgetter
 from time import sleep
 sys.path.insert(0, "scandir")
 import scandir
+import SelectionMenu
 
 class FileChooser(AbstractList.AbstractList):
    
@@ -141,9 +142,37 @@ class FileChooser(AbstractList.AbstractList):
                         return
                     else:
                         self.onSelect(Keys.DINGOO_BUTTON_START)
+                elif (event.key == Keys.DINGOO_BUTTON_SELECT and "showFavourites" in self.config["options"] 
+                and self.config["options"]["showFavourites"] and not self.entryList[self.currentIndex]["isFolder"]):
+                   self.showFavouriteOverlay()
                
 
         AbstractList.AbstractList.handleEvents(self, events)
+
+    def showFavouriteOverlay(self):
+        selected = os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
+        isFav = Common.isFavourite(self.options["entry"],selected)
+
+        if(isFav):
+            opt = ["Remove from favourites"]
+        else:
+            opt = ["Add to favourites"]
+        
+        overlay = SelectionMenu.SelectionMenu(self.screen,opt, self.favouriteCallback, width=180)
+        self.setOverlay(overlay)
+    
+    def favouriteCallback(self, index, res):
+        selected = os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
+
+        if(res == "Add to favourites"):
+            Common.addFavourite(self.options["entry"],selected )
+        elif(res == "Remove from favourites"):
+            Common.removeFavourite(self.options["entry"],selected )
+
+
+
+        self.setOverlay(None)
+       
    
     def initList(self):
         self.listReady = False  
