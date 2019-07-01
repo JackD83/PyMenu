@@ -8,6 +8,8 @@ from time import sleep
 sys.path.insert(0, "scandir")
 import scandir
 import SelectionMenu
+import json
+import copy
 
 class FileChooser(AbstractList.AbstractList):
    
@@ -161,17 +163,51 @@ class FileChooser(AbstractList.AbstractList):
         overlay = SelectionMenu.SelectionMenu(self.screen,opt, self.favouriteCallback, width=180)
         self.setOverlay(overlay)
     
+     
+
     def favouriteCallback(self, index, res):
+       
+        self.setOverlay(None)
         selected = os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
 
         if(res == "Add to favourites"):
-            Common.addFavourite(self.options["entry"],selected )
+            if("emu" in self.options["entry"]):
+                emus = []
+                for e in self.options["entry"]["emu"]:
+                    emus.append(e["name"])
+
+
+                if(len(emus) == 1):
+                    self.emuSelectionCallback(0, emus[0])
+
+                elif(len(emus) > 0):
+                    overlay = SelectionMenu.SelectionMenu(self.screen, emus, self.emuSelectionCallback)
+                    self.setOverlay(overlay)
+                    RenderControl.setDirty()
+
+           
         elif(res == "Remove from favourites"):
             Common.removeFavourite(self.options["entry"],selected )
 
 
 
-        self.setOverlay(None)
+      
+
+    def emuSelectionCallback(self, index, selection):
+        self.overlay = None
+
+        if(index != -1):
+            selected = os.path.normpath(self.currentPath + "/" + self.entryList[self.currentIndex]["name"])
+
+            if(selected != None):
+                data = copy.deepcopy(self.options["entry"])
+                data["cmd"] = data["emu"][index]["cmd"]
+                data["workingDir"] = data["emu"][index]["workingDir"]
+                if "params" in data["emu"][index]: data["params"] = data["emu"][index]["params"]
+            
+                Common.addFavourite(data,selected )
+     
+            
        
    
     def initList(self):

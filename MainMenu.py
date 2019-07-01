@@ -308,6 +308,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def customListCallback(self, selection):
         self.subComponent = None
+        print(json.dumps(selection, indent=2))
         if(selection != None):
             if(selection["type"] == "native"):
                 Runner.runNative(selection)
