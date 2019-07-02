@@ -21,7 +21,7 @@ cp ../*.png tmp/data/home/retrofw/apps/pymenu/
 cp -r ../scandir tmp/data/home/retrofw/apps/pymenu/
 cp -r ../config tmp/data/home/retrofw/apps/pymenu/
 rm tmp/data/home/retrofw/apps/pymenu/config/lastPlayedData.json 2> /dev/null
-rm tmp/data/home/retrofw/apps/pymenu/config/fafourites.json 2> /dev/null
+rm tmp/data/home/retrofw/apps/pymenu/config/favourites.json 2> /dev/null
 
 
 cp -r ../images tmp/data/home/retrofw/apps/pymenu/
