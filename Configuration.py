@@ -88,10 +88,14 @@ def reloadConfiguration(upgrade=True):
                     Common.quick_sort(itemlist)
 
                     for itemName in itemlist:
-                        item = createNativeItem(
-                            entry["linkPath"] + "/" + itemName)
-                        appendTheme(item)
-                        entry["data"].append(item)
+                        try:
+                            item = createNativeItem(
+                                entry["linkPath"] + "/" + itemName)
+                            
+                            appendTheme(item)
+                            entry["data"].append(item)
+                        except Exception as e:
+                            print("could not load native item " + str(entry["linkPath"] + "/" + itemName)+ " " + str(e))
 
                 except Exception as ex:
                     print("Error loading item:" + str(ex))
@@ -174,7 +178,10 @@ def createNativeItem(item):
     entry["name"] = data["title"]
     entry["cmd"] = data["exec"]
    
-    entry["description"] = data["description"]
+    if("description" in data):
+        entry["description"] = data["description"]
+    else:
+        entry["description"] = data["title"]
 
     if("params" in data):
         entry["params"] = data["params"]
