@@ -1,8 +1,21 @@
 import subprocess, ResumeHandler
-import platform,copy, json, Common
+import platform,copy, json, Common, InfoOverlay
 import sys, os, stat, Overclock
+import TaskHandler
+
+
+
+def setMainMenu(MainMenu):
+    global main
+    main = MainMenu
+
+
 
 def runEmu(config, rom):
+    
+    print("Adding task")
+   
+
     ResumeHandler.storeResume()
     Common.addToCustomList(config, rom, "lastPlayedData")
 
@@ -58,16 +71,21 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
+
+    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
    
-    sys.exit()
+    TaskHandler.addPeriodicTask(0,  sys.exit , delay=10)   
    
 
 def runEmuHost(name, cmd, workdir, config, rom):  
     print("run emu " + cmd + " " + name + " with file " + rom + " cwd " +workdir)
+    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
     try:
         subprocess.Popen([cmd, rom ], cwd=workdir)
     except Exception as ex:
         print(str(ex))
+        
+    main.setOverlay(None)
     
 
 def runNative(config):
@@ -119,17 +137,20 @@ def runNativeMIPS(cmd, config):
     file.close() 
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
-   
-    sys.exit()
 
+    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+   
+    TaskHandler.addPeriodicTask(0,  sys.exit , delay=10)
     
 
 def runNativeHost(cmd, config):
     selection = overclock = config["selection"] if "selection" in config else ""   
+    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
     try:
         subprocess.Popen([cmd, selection])
     except Exception as ex:
         print(str(ex))
+    main.setOverlay(None)
 
 
 

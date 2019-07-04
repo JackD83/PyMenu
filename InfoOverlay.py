@@ -15,7 +15,8 @@ class InfoOverlay(RenderObject.RenderObject):
         for event in events:    
             if event.type == pygame.KEYDOWN:
                 if event.key == Keys.DINGOO_BUTTON_B or event.key == Keys.DINGOO_BUTTON_A:
-                    self.callback(1)
+                    if(self.callback != None):
+                        self.callback(1)
                     RenderControl.setDirty()
 
     

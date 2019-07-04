@@ -17,6 +17,7 @@ class MainMenu(RenderObject.RenderObject):
     powerFinal = None   
 
     themeName = config["options"]["themeName"]
+    
 
    
     header = None
@@ -44,6 +45,10 @@ class MainMenu(RenderObject.RenderObject):
 
         thread = Thread(target = self.loadImagesAsync, args = ())
         thread.start()   
+    
+    def setOverlay(self, overlay):
+        self.overlay = overlay
+        RenderControl.setDirty()
 
     
     def loadSystem(self, index):
@@ -628,6 +633,7 @@ class MainMenu(RenderObject.RenderObject):
         self.suspend = suspend
         self.banderole = pygame.Surface((self.config["screenWidth"],80),pygame.SRCALPHA)
 
+        Runner.setMainMenu(self)
 
         self.systems = [None] * len(self.config["mainMenu"])     
         self.systembackgrounds = [None] * len(self.config["mainMenu"])
