@@ -1,6 +1,6 @@
 import RenderObject, Configuration, SelectionMenu, FileChooser, Runner, Header, TextInput, ConfigMenu
 import Footer, Keys, RenderControl, InfoOverlay, Common, NativeAppList,TaskHandler, ConfirmOverlay
-import os, ResumeHandler, Suspend
+import os, ResumeHandler, Suspend, IPKManager
 import json, time, math, copy
 import pygame, sys, subprocess,platform
 from pprint import pprint
@@ -211,7 +211,14 @@ class MainMenu(RenderObject.RenderObject):
 
         if(text == "run Gmenu2x"):
             print("Running gmenu 2x")
-            Common.gmenu2x()
+            #Common.gmenu2x()
+
+            self.subComponent = IPKManager.IPKManager(self.screen, self.ipkCallback)
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options")], (255,255,255)) 
+            self.subComponent.setFooter(footer)
+
+    def ipkCallback(self, res):
+        self.subComponent = None
 
     def usbMountCallback(self, key):      
         self.overlay = None     
