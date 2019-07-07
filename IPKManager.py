@@ -12,8 +12,8 @@ class IPKManager(NativeAppList.NativeAppList):
         data = []
 
         try:
-            #out = subprocess.check_output(["opkg" , "list"], shell=True)
-            out = subprocess.check_output(["dir"], shell=True)
+            out = subprocess.check_output(["opkg" , "list-installed"], shell=False)
+            #out = subprocess.check_output(["dir"], shell=True)
             for line in out.splitlines():
                 data.append(
                     {
@@ -50,6 +50,7 @@ class IPKManager(NativeAppList.NativeAppList):
         if(self.overlay is None):
             NativeAppList.NativeAppList.handleEvents(self, events)
 
+    
     def optionsCallback(self, index, selection):
         self.overlay = None
         RenderControl.setDirty()
@@ -57,7 +58,19 @@ class IPKManager(NativeAppList.NativeAppList):
         if(selection == "install new"):
             self.installIPK()
         elif(selection == "uninstall"):
-            pass
+            selName = self.entryList[self.currentIndex]["name"]
+            name = selName.split(" - ")[0]
+            self.cmd = [ "opkg","remove", name]
+
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really uninstall?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.uninstallCallback)
+            RenderControl.setDirty()
+
+
+    def uninstallCallback(self, res):
+        self.overlay = None
+        if(res == 1):
+            self.subComponent = ProgramExecuter.ProgramExecuter(self.screen, "Uninstalling IPK", self.cmd, self.executerCallback)
+            self.subComponent.setFooter(None)
 
     def installIPK(self):
         
@@ -82,15 +95,20 @@ class IPKManager(NativeAppList.NativeAppList):
     def installIPKCallback(self, selection, key=Keys.DINGOO_BUTTON_A, direct=False):
         if(selection != None):
             #cmd = "opkg install " + selection
-            cmd = [ "ping","localhost"]
+            cmd = [ "opkg","install", selection ,"--force-reinstall"]
+            #cmd = [ "ping","localhost"]
 
             self.subComponent = ProgramExecuter.ProgramExecuter(self.screen, "Installing IPK", cmd, self.executerCallback)
+            self.subComponent.setFooter(None)
 
         else:
             self.subComponent = None
 
     def executerCallback(self):
         self.subComponent = None
+        self.data = self.loadPackages()
+        self.initList()
+        self.onChange()
 
 
     def __init__(self, screen, callback):        

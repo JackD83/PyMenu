@@ -151,7 +151,7 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openPowerMenu(self):
-        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "run Gmenu2x"], self.contextMenuCallback)
+        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "IPK Manager",  "run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  
@@ -211,14 +211,19 @@ class MainMenu(RenderObject.RenderObject):
 
         if(text == "run Gmenu2x"):
             print("Running gmenu 2x")
-            #Common.gmenu2x()
+            Common.gmenu2x()
 
+        if(text == "IPK Manager"):
             self.subComponent = IPKManager.IPKManager(self.screen, self.ipkCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options")], (255,255,255)) 
             self.subComponent.setFooter(footer)
 
     def ipkCallback(self, res):
         self.subComponent = None
+        Configuration.reloadConfiguration()
+        self.currentIndex = 0
+
+        self.reload()
 
     def usbMountCallback(self, key):      
         self.overlay = None     

@@ -45,6 +45,8 @@ class AbstractList(RenderObject.RenderObject):
     currentIndex = 0
     currentWrap = 0
 
+    wrapArround = True
+
     def render(self, screen):
         if(self.waitCopy is None):
             self.waitCopy = self.waitSymbol.convert_alpha().copy()
@@ -69,7 +71,8 @@ class AbstractList(RenderObject.RenderObject):
 
 
         self.renderPreview(screen)
-        self.footer.render(screen)
+        if(self.footer != None):
+            self.footer.render(screen)
     
     def renderScrollbar(self, screen):
         shouldBe = self.listEntryHeight * (len(self.entryList) - self.maxListEntries)
@@ -171,8 +174,7 @@ class AbstractList(RenderObject.RenderObject):
         if(len(self.entryList) == 0):
             self.currentIndex = -1
             return
-        
-
+    
         offset = self.listEntryHeight * (self.currentIndex - self.currentWrap) + self.headerHeight
         screen.blit(self.selection, (self.sidebarWidth,offset))
 
@@ -288,9 +290,12 @@ class AbstractList(RenderObject.RenderObject):
         
     def up(self, count=1):
         self.currentIndex -= count
-        if(self.currentIndex  < 0):
+        if(self.currentIndex  < 0 and self.wrapArround):
             self.currentIndex = len(self.entryList) - 1
             self.currentWrap = len(self.entryList) - self.maxListEntries 
+        elif(self.currentIndex  < 0):
+            self.currentIndex = 0
+        
         
         if(self.currentIndex  <= self.currentWrap):
             self.currentWrap -= count
@@ -300,7 +305,7 @@ class AbstractList(RenderObject.RenderObject):
     
     def down(self, count=1):
         self.currentIndex += count
-        if(self.currentIndex > len(self.entryList) - 1 ):
+        if(self.currentIndex > len(self.entryList) - 1 and self.wrapArround):
             self.currentIndex = 0
             self.currentWrap = 0
 
@@ -404,6 +409,9 @@ class AbstractList(RenderObject.RenderObject):
         self.listEntryHeight = int(self.listHeight / self.maxListEntries)
 
     def updateFooterPos(self, start, target, current, finished):
+        if(self.footer == None):
+            return
+
         if(not finished):
             self.footer.setYPosition(current)
         else:

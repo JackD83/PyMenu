@@ -74,7 +74,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
    
-    TaskHandler.addPeriodicTask(0,  sys.exit , delay=10)   
+    TaskHandler.addPeriodicTask(0,  sys.exit , delay=100)   
    
 
 def runEmuHost(name, cmd, workdir, config, rom):  
@@ -140,7 +140,7 @@ def runNativeMIPS(cmd, config):
 
     main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
    
-    TaskHandler.addPeriodicTask(0,  sys.exit , delay=10)
+    TaskHandler.addPeriodicTask(0,  sys.exit , delay=100)
     
 
 def runNativeHost(cmd, config):

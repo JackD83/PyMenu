@@ -31,10 +31,11 @@ class NativeAppList(AbstractList.AbstractList):
             self.overlay.render(screen)
           
  
-    def renderEntry(self, screen, index, xOffset, yOffset):       
-        text = self.entryList[index]["text"]
-        yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
-        screen.blit(text, (4 + xOffset, yOffset + yTextOffset + 1))
+    def renderEntry(self, screen, index, xOffset, yOffset):
+        if(index < len(self.entryList)):
+            text = self.entryList[index]["text"]
+            yTextOffset = (self.listEntryHeight -  text.get_height()) / 2
+            screen.blit(text, (4 + xOffset, yOffset + yTextOffset + 1))
   
 
     def onSelect(self):
