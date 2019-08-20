@@ -53,7 +53,7 @@ class ProgramExecuter(NativeAppList.NativeAppList):
 
     def runCMD(self, cmd):
         os.environ['PYTHONUNBUFFERED'] = "1"
-        self.proc = subprocess.Popen(cmd, shell=False, stdout=subprocess.PIPE,stderr = subprocess.STDOUT,universal_newlines = True)
+        self.proc = subprocess.Popen(cmd, shell=True, bufsize=1, stdout=subprocess.PIPE,stderr = subprocess.STDOUT,universal_newlines = True)
 
         thread = Thread(target = self.updateList, args = ())
         thread.start()
