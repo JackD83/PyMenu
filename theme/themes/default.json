@@ -71,14 +71,14 @@
         "icon": "images/systems/cpc.png"
     }, 
     "CPS1": {
-        "background": "images/pixel97/backgrounds/cps1.png", 
+        "background": "images/backgrounds/rs97/arcades.png", 
         "folderIcon": "images/pixel97/icons/fba1.png", 
-        "icon": "images/pixel97/systems/cps1.png"
+        "icon": "images/systems/cps1.png"
     }, 
     "CPS2": {
-        "background": "images/pixel97/backgrounds/cps2.png", 
+        "background": "images/backgrounds/rs97/arcades2.png", 
         "folderIcon": "images/pixel97/icons/fba1.png", 
-        "icon": "images/pixel97/systems/cps2.png"
+        "icon": "images/systems/cps2.png"
     }, 
     "Cannonball": {
         "preview": "images/previews/cannonball.png"
@@ -126,7 +126,7 @@
         "preview": "images/previews/fallingtime.png"
     }, 
     "Favourites": {
-        "background": "images/pixel97/backgrounds/favourites_art_blur.png", 
+        "background": "images/backgrounds/rs97/lastPlayed2.png", 
         "folderIcon": "theme/defaultFolderIcon.png", 
         "icon": "images/pixel97/systems/favourites.png"
     }, 
@@ -202,7 +202,7 @@
         "icon": "images/systems/lynx.png"
     }, 
     "Last Played": {
-        "background": "images/backgrounds/rs97/ports_art_blur.jpg", 
+        "background": "images/backgrounds/rs97/favourites.png", 
         "icon": "images/systems/auto-lastplayed.png"
     }, 
     "MAME": {

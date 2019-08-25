@@ -437,6 +437,8 @@
         }, 
         {
             "description": "Capcom Play Sys 1", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "CPS1", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps1/previews", 
@@ -449,6 +451,8 @@
         }, 
         {
             "description": "Capcom Play Sys 2", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "CPS2", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps2/previews", 
@@ -472,7 +476,80 @@
             "type": "lastPlayed"
         }, 
         {
-            "data": [], 
+            "data": [
+                {
+                    "background": "images/pixel97/backgrounds/snes.png", 
+                    "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
+                    "description": "Super Nintendo", 
+                    "emu": [
+                        {
+                            "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
+                            "name": "SNES", 
+                            "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
+                        }
+                    ], 
+                    "fileFilter": [
+                        ".sfc", 
+                        ".swc", 
+                        ".smc", 
+                        ".zip"
+                    ], 
+                    "folderIcon": "images/pixel97/icons/snes.png", 
+                    "hideFolders": null, 
+                    "icon": "images/pixel97/systems/snes.png", 
+                    "limitSelection": false, 
+                    "name": "pymenu.lnk", 
+                    "overclock": "624", 
+                    "preview": "/home/retrofw/roms/snes/previews/pymenu.png", 
+                    "previews": "/home/retrofw/roms/snes/previews", 
+                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\pymenu.lnk", 
+                    "selectionPath": "/home/retrofw/roms/snes", 
+                    "system": "snes", 
+                    "type": "emulator", 
+                    "useFileFilter": false, 
+                    "useGamelist": false, 
+                    "useSelection": true, 
+                    "visible": true, 
+                    "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
+                }, 
+                {
+                    "background": "images/pixel97/backgrounds/gb.png", 
+                    "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
+                    "description": "Gameboy", 
+                    "emu": [
+                        {
+                            "cmd": "/home/retrofw/emus/ohboy/ohboy.dge", 
+                            "name": "OhBoy", 
+                            "workingDir": "C:\\home\\retrofw\\emus\\ohboy"
+                        }, 
+                        {
+                            "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
+                            "name": "Gambatte", 
+                            "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
+                        }
+                    ], 
+                    "fileFilter": [
+                        ".gbc", 
+                        ".gb", 
+                        ".zip"
+                    ], 
+                    "folderIcon": "images/pixel97/icons/gb.png", 
+                    "icon": "images/pixel97/systems/gb.png", 
+                    "name": "commander.lnk", 
+                    "overclock": "528", 
+                    "preview": "/home/retrofw/roms/snes/previews/commander.png", 
+                    "previews": "/home/retrofw/roms/snes/previews", 
+                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\commander.lnk", 
+                    "selectionPath": "/home/retrofw/roms/gb", 
+                    "system": "ohboy,gambatte", 
+                    "type": "emulator", 
+                    "useFileFilter": null, 
+                    "useGamelist": null, 
+                    "useSelection": true, 
+                    "visible": true, 
+                    "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
+                }
+            ], 
             "description": "Favourit games", 
             "linkPath": null, 
             "name": "Favourites", 
@@ -488,7 +565,7 @@
         "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "pixel", 
+        "themeName": "default", 
         "volumeControl": false
     }, 
     "screenHeight": 240, 

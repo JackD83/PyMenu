@@ -15,11 +15,12 @@ class IPKManager(NativeAppList.NativeAppList):
             out = subprocess.check_output(["opkg" , "list-installed"], shell=False)
             #out = subprocess.check_output(["dir"], shell=True)
             for line in out.splitlines():
-                data.append(
-                    {
-                    "name": line
-                    }
-                )
+                if(not line.lower().startswith("pymenu")):
+                    data.append(
+                        {
+                        "name": line
+                        }
+                    )
 
         except Exception as e:
             pass
@@ -93,6 +94,14 @@ class IPKManager(NativeAppList.NativeAppList):
 
     
     def installIPKCallback(self, selection, key=Keys.DINGOO_BUTTON_A, direct=False):
+        print(selection)
+        if( selection.lower().find("pymenu-") != -1):
+            self.subComponent = None
+            self.overlay = ConfirmOverlay.ConfirmOverlay("Install with Gmenu", (255,255,255),  [("theme/b_button.png", "back")], self.pyMenuSelectedCallback)
+
+            RenderControl.setDirty()
+            return
+
         if(selection != None):
             #cmd = "opkg install " + selection
             cmd = [ "opkg","install", selection ,"--force-reinstall"]
@@ -103,6 +112,9 @@ class IPKManager(NativeAppList.NativeAppList):
 
         else:
             self.subComponent = None
+
+    def pyMenuSelectedCallback(self, selcted):
+        self.overlay = None
 
     def executerCallback(self):
         self.subComponent = None
