@@ -2,6 +2,7 @@ import subprocess, ResumeHandler
 import platform,copy, json, Common, InfoOverlay
 import sys, os, stat, Overclock
 import TaskHandler
+import Configuration
 
 
 
@@ -48,7 +49,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     if(workdir == None and not cmd == None):    
         workdir = os.path.abspath(os.path.join(cmd, os.pardir))
 
-    if(overclock != None):
+    if(overclock != None and not Configuration.isRG350()):
         try:
            Overclock.setClock(overclock)
         except Exception as ex:
@@ -57,7 +58,9 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     fileName = "run"   
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
-    file.write("export HOME=/home/retrofw\n")
+
+    if(not Configuration.isRG350()):
+        file.write("export HOME=/home/retrofw\n")
 
    
     file.write("cd \"" + workdir + "\"\n")
@@ -122,7 +125,9 @@ def runNativeMIPS(cmd, config):
 
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
-    file.write("export HOME=/home/retrofw\n")  
+    
+    if(not Configuration.isRG350()):
+        file.write("export HOME=/home/retrofw\n")  
 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")

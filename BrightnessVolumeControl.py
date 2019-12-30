@@ -134,6 +134,9 @@ class BrightnessVolume(RenderObject.RenderObject):
        
 
     def setBrightness(self, level, store=True):
+        if(Configuration.isRG350()):
+            return
+
         print("Setting brightness " + str(level))
         
         os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
@@ -154,6 +157,9 @@ class BrightnessVolume(RenderObject.RenderObject):
             return 0; 
 
     def initVolume(self):
+        if(Configuration.isRG350()):
+            return
+        
         if("volumeControl" in self.config["options"] and self.config["options"]["volumeControl"]):
             print("Using volume deamon")
        

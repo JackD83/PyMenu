@@ -15,4 +15,10 @@
     "name" :"Links Folder",
     "type":"folder",
     "description": "Path to gmenu links"
+},
+{
+    "id":"category",
+    "name" :"Category",
+    "type":"string",
+    "description": "Gmenu Category"       
 }]

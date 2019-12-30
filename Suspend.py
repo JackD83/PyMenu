@@ -30,12 +30,18 @@ class Suspend():
             pass
       
 
-    def disableScreen(self):       
+    def disableScreen(self):   
+        if(Configuration.isRG350()):
+            return
+
         os.system('echo 0 > /proc/jz/lcd_backlight')
         self.displayDark = True
         TaskHandler.removePeriodicTask(self.brightnessTaskId)
 
     def restoreScreen(self):
+        if(Configuration.isRG350()):
+            return
+
         if(self.displayDark):
             if("lcd_backlight" not in self.config):
                 self.config["lcd_backlight"] = 30

@@ -9,16 +9,18 @@ import Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
 import traceback
+import OPK
 
 
 configuration = None
 theme = json.load(open('theme/theme.json'))
 listeners = []
-types = ["RS97", "RS07", "K3P"]
+types = ["RS97", "RS07", "K3P", "RG350"]
 
 currentTheme = {}
 
 links = {}
+opks = {}
 
 
 def getConfiguration():
@@ -26,6 +28,53 @@ def getConfiguration():
         reloadConfiguration()
 
     return configuration
+
+def initOPK():
+    global configuration
+    global opks
+
+
+    if(len(opks) != 0):
+        return
+
+    opks["names"] = {}
+    opks["categories"] = {}
+
+    for (dirpath, dirnames, filenames) in os.walk("/media/data/apps"):
+        for name in filenames:
+            opkName = os.path.splitext(name)[0].lower()
+           
+            if(opkName.find(".") != -1):
+                opkName = opkName[0:opkName.find(".")]
+
+            meta = OPK.read_metadata(dirpath + "/" + name)
+
+            for desktop in meta:
+                try:
+                    entry = {}
+                    entry["name"] = meta[desktop]["Desktop Entry"]["Name"].lower()
+                    entry["meta"] = desktop
+                    entry["data"] = meta[desktop]["Desktop Entry"]
+                    entry["opk"] = dirpath + "/" + name
+                    entry["opkName"] = opkName
+
+                    opks["names"][entry["name"]] = entry
+                 
+                    
+                    split =  entry["data"]["Categories"].split(";")
+                    for cat in split:
+                        if(cat not in opks["categories"]):
+                            opks["categories"][cat] = []
+                            print("created OPK category " + cat)
+                        
+                        opks["categories"][cat].append(entry)
+
+
+                except Exception as ex:
+                    print("Could not load OPK " + str(ex))
+    
+
+
 
 def initLinks():
     global configuration
@@ -44,6 +93,8 @@ def initLinks():
             if(linkName not in links):
                 links[linkName] = []
 
+            print("added link: " + linkName)
+
             links[linkName].append(dirpath + "/" + name)
 
 
@@ -54,6 +105,7 @@ def reloadConfiguration(upgrade=True):
     configuration = json.load(open('config/config.json'))
 
     initLinks()
+    initOPK()
 
     if("version" not in configuration):
         configuration["version"] = "0"
@@ -83,6 +135,7 @@ def reloadConfiguration(upgrade=True):
 
                 appendTheme(entry)
 
+                #try link path
                 try:
                     itemlist = os.listdir(entry["linkPath"])
                     Common.quick_sort(itemlist)
@@ -100,6 +153,32 @@ def reloadConfiguration(upgrade=True):
                 except Exception as ex:
                     print("Error loading item:" + str(ex))
                     # traceback.print_exc()
+
+                #try opk items
+                try:
+                    if("category" in entry and entry["category"] in opks["categories"] ):
+                        cat = opks["categories"] [entry["category"]]
+                        print("Checking category: " + entry["category"])
+
+                        for opkEntry in cat:
+                            try:
+                                item = createNativeOPKItem(opkEntry)
+                                
+                                appendTheme(item)
+                                entry["data"].append(item)
+
+
+                            except Exception as e:
+                                print("could not load native opk item " + str(entry["linkPath"] + "/" + itemName)+ " " + str(e))
+
+                except Exception as ex:
+                    print("Error loading native item:" + str(ex))
+                    # traceback.print_exc()
+
+
+
+
+
             elif(entry["type"] == "lastPlayed"):
                 entry["data"] = []
                 entry["visible"] = "showLastPlayed" in configuration["options"] and configuration["options"]["showLastPlayed"]
@@ -152,10 +231,14 @@ def reloadConfiguration(upgrade=True):
                     entry["visible"] = False
 
         except Exception as ex:
-            print("Error: " + str(ex))
+            print("Error occoured: " + str(ex))
+            print(traceback.format_exc())
+
     # check for old config
     if(upgrade):
         upgradeConfig()
+
+   # print( json.dumps( configuration, sort_keys=True, indent=4))
 
 
 def hasConfig(system):
@@ -164,8 +247,9 @@ def hasConfig(system):
     systems = system.split(",")
 
     for system in systems:
-        if(system.lower() in links):
+        if(system.lower() in links or system.lower() in opks["names"]):
             return True
+        
                 
 
     return False
@@ -206,9 +290,48 @@ def createNativeItem(item):
 
     return entry
 
+def createNativeOPKItem(opk):
+    data = opk["data"]
+    
+
+    entry = {}
+    entry["name"] = data["Name"]
+    entry["cmd"] = "/usr/bin/opkrun"
+    entry["params"] = "\"" + opk["opk"] + "\" $f"
+
+          
+    dir = getSelectorDir(opk["opkName"])
+
+    if("MimeType" in data or dir != None or  "%f" in data["Exec"]):
+        entry["selector"] = True
+        entry["selectionPath"] = dir
+
+
+    entry["workingDir"] = os.path.abspath(
+                os.path.join(opk["opk"], os.pardir))
+   
+    if("Comment" in data):
+        entry["description"] = data["Comment"]
+    else:
+        entry["description"] = data["Name"]
+
+    if("params" in data):
+        entry["params"] = data["params"]
+
+    if("clock" in data):
+        entry["overclock"] = data["clock"]
+
+    #icon
+    #print(opk["opk"])
+    #OPK.extract_file(opk["opk"],"/" +  data["Icon"] + ".png")
+
+
+    return entry
+
 
 def appendEmuLinks(entry):
     global configuration
+    global opks
     systems = entry["system"].split(",")
 
     entry["emu"] = []  # clear emus
@@ -216,31 +339,70 @@ def appendEmuLinks(entry):
 
  
     for system in systems:
+
+        ##try gmenu link files
         if(system.lower() in links):
             for lnk in links[system.lower()]:
-                data = parseLink(lnk)
+                try:
+                    data = parseLink(lnk)
 
-                emuEntry = {}
-                emuEntry["name"] = data["title"]
-                emuEntry["cmd"] = data["exec"]
+                    emuEntry = {}
+                    emuEntry["name"] = data["title"]
+                    emuEntry["cmd"] = data["exec"]
 
-                if("params" in data):
-                    emuEntry["params"] = data["params"]
+                    if("params" in data):
+                        emuEntry["params"] = data["params"]
 
-                emuEntry["workingDir"] = os.path.abspath(
-                    os.path.join(data["exec"], os.pardir))
+                    emuEntry["workingDir"] = os.path.abspath(
+                        os.path.join(data["exec"], os.pardir))
 
-                entry["emu"].append(emuEntry)
-                if("selectorfilter" in data):
-                    filter = data["selectorfilter"].split(",")
-                    if("fileFilter" in entry):
-                        filter.extend(entry["fileFilter"])
-                    # make unique
-                    entry["fileFilter"] = list(set(filter))
+                    entry["emu"].append(emuEntry)
+                    if("selectorfilter" in data):
+                        filter = data["selectorfilter"].split(",")
+                        if("fileFilter" in entry):
+                            filter.extend(entry["fileFilter"])
+                        # make unique
+                        entry["fileFilter"] = list(set(filter))
 
-                if("selectordir" in data):
-                    entry["useSelection"] = True                   
-                  
+                    if("selectordir" in data):
+                        entry["useSelection"] = True
+
+                except Exception as ex:
+                    print("Error loading emu link " + str(lnk))        
+
+        ##try opk entries
+
+        
+     
+        if(system.lower() in opks["names"]):
+            data = opks["names"][system.lower()]
+
+            emuEntry = {}
+            emuEntry["name"] = data["name"]
+            emuEntry["cmd"] = "/usr/bin/opkrun"
+            emuEntry["params"] = "\"" + data["opk"] + "\" $f"
+
+            if("MimeType" in data["data"] or 
+            getSelectorDir(data["opkName"]) != None or
+             "%f" in data["data"]["Exec"]):
+                entry["useSelection"] = True
+
+
+            emuEntry["workingDir"] = os.path.abspath(
+                os.path.join(data["opk"], os.pardir))
+
+            entry["emu"].append(emuEntry)      
+
+
+def getSelectorDir(name):
+    global links
+    if(name in links):
+        print("using link: " + str(links[name]))
+        data = parseLink(links[name][0])
+        if("selectordir" in data):
+            return data["selectordir"]
+    
+    return None
 
 
 def parseLink(linkFile):
@@ -417,9 +579,10 @@ def loadLastPlayed():
 def setResolution():
     global configuration
 
-    if(isRS97()):
+    if(isRS97() or isRG350()):
         configuration["screenWidth"] = 320
         configuration["screenHeight"] = 240
+
 
     #RS07 & K3P
     else:
@@ -484,7 +647,7 @@ def storeConfigPart(fileName, item):
         try:
             os.makedirs(os.path.dirname(fileName))
         except OSError as exc:  # Guard against race condition
-            if exc.errno != errno.EEXIST:
+            if exc.errno != errno.EXIST:
                 raise
 
     with open(fileName, 'w') as fp:
@@ -501,6 +664,9 @@ def toColor(input):
 
 def isRS97():
     return "type" in configuration and configuration["type"] == "RS97"
+
+def isRG350():
+    return "type" in configuration and configuration["type"] == "RG350"
 
 
 def addConfigChangedCallback(listener):

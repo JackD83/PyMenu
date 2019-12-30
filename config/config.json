@@ -1,49 +1,54 @@
 {
-    "batteryHigh": 4500, 
-    "batteryLow": 3752, 
+    "batteryHigh": 3900000, 
+    "batteryLow": 3300000, 
     "firstStart": false, 
     "lcd_backlight": 70, 
-    "linkPath": "/home/retrofw/apps/gmenu2x/sections", 
+    "linkPath": "/media/data/local/home/.gmenu2x/sections", 
     "mainMenu": [
         {
+            "category": "applications", 
             "description": "Applications", 
-            "linkPath": "/home/retrofw/apps/gmenu2x/sections/applications", 
+            "linkPath": "/media/data/local/home/.gmenu2x/sections/applications", 
             "name": "Apps", 
             "type": "native"
         }, 
         {
             "description": "Nintendo", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "NES", 
             "overclock": "624", 
-            "previews": "/home/retrofw/roms/nes/previews", 
-            "selectionPath": "/home/retrofw/roms/nes", 
-            "system": "nes,03fc", 
+            "previews": "//media/sdcard/previews/snes", 
+            "selectionPath": "//media/sdcard/roms/snes", 
+            "system": "fceux", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Super Nintendo", 
             "hideFolders": null, 
-            "limitSelection": false, 
+            "limitSelection": true, 
             "name": "SNES", 
             "overclock": "624", 
-            "previews": "/home/retrofw/roms/snes/previews", 
-            "selectionPath": "/home/retrofw/roms/snes", 
-            "system": "snes,04sfc", 
+            "previews": "//media/sdcard/previews/snes", 
+            "selectionPath": "//media/sdcard/roms/snes", 
+            "system": "Pocketsnes", 
             "type": "emulator", 
-            "useFileFilter": false, 
+            "useFileFilter": true, 
             "useGamelist": false, 
             "useSelection": true
         }, 
         {
             "description": "Gameboy", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "GB", 
             "overclock": "528", 
-            "previews": "/home/retrofw/roms/snes/previews", 
-            "selectionPath": "/home/retrofw/roms/gb", 
-            "system": "ohboy,gambatte,01gb", 
+            "previews": "//media/sdcard/previews/gb", 
+            "selectionPath": "//media/sdcard/roms/gb", 
+            "system": "gambatte", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -51,11 +56,13 @@
         }, 
         {
             "description": "Gameboy Color", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "GBC", 
             "overclock": "528", 
-            "previews": "/home/retrofw/roms/gbc/previews", 
-            "selectionPath": "/home/retrofw/roms/gbc", 
-            "system": "ohboy,gambatte", 
+            "previews": "//media/sdcard/previews/gbc", 
+            "selectionPath": "//media/sdcard/roms/gbc", 
+            "system": "gambatte", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -63,16 +70,18 @@
         }, 
         {
             "description": "Gameboy Advance", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "GBA", 
             "overclock": "624", 
-            "previews": "/home/retrofw/roms/gba/previews", 
+            "previews": "///media/sdcard/previews/gba", 
             "screen": "default", 
-            "selectionPath": "/home/retrofw/roms/gba", 
-            "system": "gba,02gba,Zgpsp", 
+            "selectionPath": "//media/sdcard/roms/gba", 
+            "system": "regba", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Pokemon Mini", 
@@ -88,27 +97,31 @@
         }, 
         {
             "description": "SEGA Master System", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "SMS", 
             "overclock": "524", 
-            "previews": "/home/retrofw/roms/sms/previews", 
-            "selectionPath": "/home/retrofw/roms/mastersystem", 
-            "system": "mastersystem,06ms", 
+            "previews": "//media/sdcard/previews/sms", 
+            "selectionPath": "//media/sdcard/roms/mastersystem/(1) Licensed", 
+            "system": "picodrive", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "SEGA Megadrive", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "SMD", 
             "overclock": "600", 
-            "previews": "/home/retrofw/roms/megadrive/previews", 
-            "selectionPath": "/home/retrofw/roms/megadrive", 
-            "system": "megadrive,07md", 
+            "previews": "//media/sdcard/previews/genesis", 
+            "selectionPath": "//media/sdcard/roms/genesis/(1) Sega Genesis", 
+            "system": "Genesis Plus GX,picodrive", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "SEGA Game Gear", 
@@ -124,15 +137,17 @@
         }, 
         {
             "description": "NEC PC Engine", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "PCE", 
             "overclock": "524", 
-            "previews": "/home/retrofw/roms/pce/previews", 
-            "selectionPath": "/home/retrofw/roms/pce", 
+            "previews": "//media/sdcard/previews/pce", 
+            "selectionPath": "//media/sdcard/roms/PCE", 
             "system": "temper,08pce", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "ATARI 2600", 
@@ -212,7 +227,7 @@
             "overclock": "524", 
             "previews": "//home/retrofw/roms/amiga/previews", 
             "selectionPath": "/home/retrofw/roms/amiga", 
-            "system": "amiga", 
+            "system": "UAE4ALL", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -308,11 +323,11 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/pc/previews", 
             "selectionPath": "/home/retrofw/roms/pc", 
-            "system": "dos", 
+            "system": "DosBox", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "NEC PC-98", 
@@ -336,7 +351,7 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Wonderswan Color", 
@@ -349,14 +364,16 @@
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": false
+            "useSelection": true
         }, 
         {
             "description": "Sony Playstation", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "PSX", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/psx/previews", 
-            "selectionPath": "/home/retrofw/roms/psx", 
+            "selectionPath": "//media/sdcard/roms/psx", 
             "system": "pcsx4all,09ps", 
             "type": "emulator", 
             "useFileFilter": null, 
@@ -381,11 +398,11 @@
             "overclock": "524", 
             "previews": "//home/retrofw/roms/ngp/previews", 
             "selectionPath": "/home/retrofw/roms/ngp", 
-            "system": "race-od,ngp", 
+            "system": "race", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": true
+            "useSelection": false
         }, 
         {
             "description": "Neogeo Pocket Color", 
@@ -393,11 +410,11 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/ngpc/previews", 
             "selectionPath": "/home/retrofw/roms/ngpc", 
-            "system": "race-od,ngp", 
+            "system": "race", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
-            "useSelection": true
+            "useSelection": false
         }, 
         {
             "description": "OpenBor", 
@@ -413,11 +430,13 @@
         }, 
         {
             "description": "MAME Arcade EMU", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "MAME", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/mame/previews", 
-            "selectionPath": "/home/retrofw/roms/mame", 
-            "system": "mame4all", 
+            "selectionPath": "//media/sdcard/roms/fba/Arcade Classics", 
+            "system": "mame4all,xmame", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -425,15 +444,17 @@
         }, 
         {
             "description": "Final Burn Alpha", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "FBA", 
             "overclock": "624", 
-            "previews": "/home/retrofw/roms/fba/previews", 
-            "selectionPath": "/home/retrofw/roms/cps1", 
-            "system": "fba-a320,FBA A320,fba-sdl,fbasdl,10fba", 
+            "previews": "//media/sdcard/previews/Final Burn Alpha", 
+            "selectionPath": "//media/sdcard/roms/fba", 
+            "system": "fba", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": true
+            "useSelection": false
         }, 
         {
             "description": "Capcom Play Sys 1", 
@@ -443,11 +464,11 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps1/previews", 
             "selectionPath": "/home/retrofw/roms/cps1", 
-            "system": "fba-a320,FBA A320,fba-sdl,fbasdl,10fba", 
+            "system": "fba", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": true
+            "useSelection": false
         }, 
         {
             "description": "Capcom Play Sys 2", 
@@ -457,15 +478,16 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/cps2/previews", 
             "selectionPath": "/home/retrofw/roms/cps2", 
-            "system": "fba-a320,FBA A320,fba-sdl,fbasdl,10fba", 
+            "system": "fba", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
-            "useSelection": true
+            "useSelection": false
         }, 
         {
+            "category": "games", 
             "description": "Native ports to this device", 
-            "linkPath": "/home/retrofw/apps/gmenu2x/sections/games", 
+            "linkPath": "/media/data/local/home/.gmenu2x/sections/games", 
             "name": "Ports", 
             "type": "native"
         }, 
@@ -478,76 +500,35 @@
         {
             "data": [
                 {
-                    "background": "images/pixel97/backgrounds/snes.png", 
-                    "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
-                    "description": "Super Nintendo", 
+                    "background": "images/pixel97/backgrounds/psx.png", 
+                    "cmd": "/usr/bin/opkrun", 
+                    "description": "Sony Playstation", 
                     "emu": [
                         {
-                            "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
-                            "name": "SNES", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
+                            "cmd": "/usr/bin/opkrun", 
+                            "name": "pcsx4all", 
+                            "params": "/media/data/apps/pcsx4all_sauce_20191022.opk $f", 
+                            "workingDir": "/media/data/apps"
                         }
                     ], 
-                    "fileFilter": [
-                        ".sfc", 
-                        ".swc", 
-                        ".smc", 
-                        ".zip"
-                    ], 
-                    "folderIcon": "images/pixel97/icons/snes.png", 
+                    "folderIcon": "images/pixel97/icons/psx.png", 
                     "hideFolders": null, 
-                    "icon": "images/pixel97/systems/snes.png", 
-                    "limitSelection": false, 
-                    "name": "pymenu.lnk", 
+                    "icon": "images/pixel97/systems/psx.png", 
+                    "limitSelection": null, 
+                    "name": "Silent Hill (USA) (v1.1).bin", 
                     "overclock": "624", 
-                    "preview": "/home/retrofw/roms/snes/previews/pymenu.png", 
-                    "previews": "/home/retrofw/roms/snes/previews", 
-                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\pymenu.lnk", 
-                    "selectionPath": "/home/retrofw/roms/snes", 
-                    "system": "snes", 
+                    "params": "/media/data/apps/pcsx4all_sauce_20191022.opk $f", 
+                    "preview": "/home/retrofw/roms/psx/previews/Silent Hill (USA) (v1.1).png", 
+                    "previews": "/home/retrofw/roms/psx/previews", 
+                    "rom": "//media/sdcard/roms/psx/Silent Hill (USA) (v1.1)/Silent Hill (USA) (v1.1).bin", 
+                    "selectionPath": "//media/sdcard/roms/psx", 
+                    "system": "pcsx4all,09ps", 
                     "type": "emulator", 
-                    "useFileFilter": false, 
+                    "useFileFilter": null, 
                     "useGamelist": false, 
                     "useSelection": true, 
                     "visible": true, 
-                    "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
-                }, 
-                {
-                    "background": "images/pixel97/backgrounds/gb.png", 
-                    "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
-                    "description": "Gameboy", 
-                    "emu": [
-                        {
-                            "cmd": "/home/retrofw/emus/ohboy/ohboy.dge", 
-                            "name": "OhBoy", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\ohboy"
-                        }, 
-                        {
-                            "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
-                            "name": "Gambatte", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
-                        }
-                    ], 
-                    "fileFilter": [
-                        ".gbc", 
-                        ".gb", 
-                        ".zip"
-                    ], 
-                    "folderIcon": "images/pixel97/icons/gb.png", 
-                    "icon": "images/pixel97/systems/gb.png", 
-                    "name": "commander.lnk", 
-                    "overclock": "528", 
-                    "preview": "/home/retrofw/roms/snes/previews/commander.png", 
-                    "previews": "/home/retrofw/roms/snes/previews", 
-                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\commander.lnk", 
-                    "selectionPath": "/home/retrofw/roms/gb", 
-                    "system": "ohboy,gambatte", 
-                    "type": "emulator", 
-                    "useFileFilter": null, 
-                    "useGamelist": null, 
-                    "useSelection": true, 
-                    "visible": true, 
-                    "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
+                    "workingDir": "/media/data/apps"
                 }
             ], 
             "description": "Favourit games", 
@@ -560,16 +541,4 @@
         "allowEdit": true, 
         "defaultVolume": 250, 
         "displayTimeout": "off", 
-        "showAll": false, 
-        "showFPS": false, 
-        "showFavourites": true, 
-        "showLastPlayed": true, 
-        "suspendTimeout": "off", 
-        "themeName": "default", 
-        "volumeControl": false
-    }, 
-    "screenHeight": 240, 
-    "screenWidth": 320, 
-    "type": "RS97", 
-    "version": "1.5.7"
-}
+        "showAll":

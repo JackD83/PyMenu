@@ -95,8 +95,18 @@ class Header():
         self.updateHeader()      
 
         try:
-            self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
-            self.battery = open("/proc/jz/battery", "r")           
+
+            if(not Configuration.isRG350()):
+                self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
+            
+            if(Configuration.isRG350()):
+                self.battery = open("/sys/class/power_supply/battery/voltage_now", "r")
+            else:
+                self.battery = open("/proc/jz/battery", "r")    
+
+
+
+               
          
             self.updateBattery()
         except Exception as ex:

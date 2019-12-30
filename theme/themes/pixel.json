@@ -155,6 +155,7 @@
     "Digger": {
         "preview": "images/pixel97/previews/digger.png"
     }, 
+    "Dissolution of Eternity": {}, 
     "Dlight": {
         "preview": "images/pixel97/previews/dlight.png"
     }, 
@@ -174,6 +175,8 @@
         "folderIcon": "images/pixel/icons/nes.png", 
         "icon": "images/pixel/systems/nes.png"
     }, 
+    "FFplay": {}, 
+    "FFplay-sub": {}, 
     "Falling time": {
         "icon": ".", 
         "preview": "images/pixel97/previews/fallingtime.png"
@@ -236,6 +239,8 @@
     "Glutexto": {
         "preview": "images/pixel97/icons/glutexto.png"
     }, 
+    "Gmu": {}, 
+    "HWTest": {}, 
     "Hex-a-hop": {
         "icon": ".", 
         "preview": "images/pixel97/previews/hex-a-hop.png"
@@ -252,6 +257,7 @@
         "folderIcon": "images/pixel97/icons/int.png", 
         "icon": "images/pixel97/systems/int.png"
     }, 
+    "Input tester": {}, 
     "JinYong": {
         "preview": "images/pixel97/previews/jinyong_legend.png"
     }, 
@@ -328,6 +334,8 @@
     "O2xIV": {
         "preview": "images/pixel97/icons/o2xiv.png"
     }, 
+    "OS Update": {}, 
+    "OnDemandMode": {}, 
     "OpenJazz": {
         "preview": "images/pixel97/previews/openjazz.png"
     }, 
@@ -377,6 +385,7 @@
     "Pang": {
         "preview": "images/pixel97/previews/pang.png"
     }, 
+    "PerformanceMode": {}, 
     "Pocket SNES": {
         "background": "images/pixel/backgrounds/snes.png", 
         "folderIcon": "images/pixel/icons/snes.png", 
@@ -395,6 +404,7 @@
         "icon": ".", 
         "preview": "images/pixel97/previews/powermanga.png"
     }, 
+    "PowersaveMode": {}, 
     "Prince": {
         "icon": ".", 
         "preview": "images/pixel97/previews/prince.png"
@@ -405,10 +415,13 @@
     "Puzzletube": {
         "preview": "images/pixel97/previews/puzzletube.png"
     }, 
-    "PyMenu": {}, 
+    "PyMenu": {
+        "preview": "/media/home/PyMenu/pymenu.png"
+    }, 
     "Quake": {
         "preview": "images/pixel97/previews/quake.png"
     }, 
+    "Quake3": {}, 
     "Reminiscence": {
         "preview": "images/pixel97/previews/reminiscence.png"
     }, 
@@ -462,6 +475,7 @@
         "folderIcon": "images/pixel97/icons/zxs.png", 
         "icon": "images/pixel97/systems/zxs.png"
     }, 
+    "Scourge of Armagon": {}, 
     "Shifty": {
         "preview": "images/pixel97/previews/shifty.png"
     }, 
@@ -531,5 +545,6 @@
         "icon": ".", 
         "preview": "images/pixel97/previews/freeblocks.png"
     }, 
+    "glutexto": {}, 
     "quake2": {}
 }

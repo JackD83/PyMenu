@@ -1,24 +1,41 @@
 #!/bin/sh
 
-export SDL_AUDIODRIVER=dsp
-export SDL_NOMOUSE=1
-export HOME=/home/retrofw
+#export SDL_AUDIODRIVER=dsp
+#export SDL_NOMOUSE=1
+#export HOME=/home/retrofw
 #export LD_LIBRARY_PATH=$PWD/python/usr/lib:$LD_LIBRARY_PATH
 #export PATH=$PWD/python/usr/bin:$PATH
 
 #store device menu runs from
-ln -sf $(mount | grep retrofw | cut -f 1 -d ' ') /tmp/.int_sd
+#ln -sf $(mount | grep retrofw | cut -f 1 -d ' ') /tmp/.int_sd
+
+
+export HOME=`cat /etc/passwd |head -1 |cut -d':' -f 6`
+
+
+
 
 FILE="/tmp/run"
 while true
 do
 	if [ -f $FILE ]; then
 		echo "File $FILE exists"
-		sh $FILE > /dev/ttyS1 2> /dev/ttyS1
+		sh $FILE 
+		#> /dev/ttyS1 2> /dev/ttyS1
 		rm $FILE
 	else
+		# Restore the framebuffer to a working state
+		/usr/sbin/unlockvt > /dev/null
+
+		# Reset the console
+		/usr/bin/reset
+
+		# Disactivate the console on framebuffer
+		echo 0 > /sys/devices/virtual/vtconsole/vtcon1/bind
+
 		echo "starting PyMenu"
-		sh ./pymenu.sh > /dev/ttyS1 2> /dev/ttyS1
+		sh ./pymenu.sh 
+		#> /dev/ttyS1 2> /dev/ttyS1
 		
 	fi
 	sleep 1

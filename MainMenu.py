@@ -151,7 +151,10 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openPowerMenu(self):
-        self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "IPK Manager",  "run Gmenu2x"], self.contextMenuCallback)
+        if(Configuration.isRG350()):
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
+        else:
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "IPK Manager",  "run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  
@@ -347,7 +350,13 @@ class MainMenu(RenderObject.RenderObject):
                 conf = json.load(open('config/optionsLastPlayed.json'))
             else: 
                 conf = json.load(open('config/native.json'))
-                
+
+            #rg350 does not support individual overclocking, remove option
+            if(Configuration.isRG350()):
+                for opt in conf:
+                    if(opt["id"] == "overclock" ):
+                        conf.remove(opt)
+                        break
                      
 
             self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
@@ -518,6 +527,8 @@ class MainMenu(RenderObject.RenderObject):
     
     
     def getNext(self, stride=1): 
+
+      
        
         if(self.currentIndex + stride >= len(self.systems)):
             index = (self.currentIndex + stride) - len(self.systems)                   
@@ -582,7 +593,7 @@ class MainMenu(RenderObject.RenderObject):
             RenderControl.setDirty() 
 
         #transition next
-        if(self.inTransition and self.transitionOffset != 0 and not Configuration.isRS97()):
+        if(self.inTransition and self.transitionOffset != 0 and not Configuration.isRS97() and not Configuration.isRG350()):
             index = 0  
             offset = 0
             if(self.transitionOffset > 0):
