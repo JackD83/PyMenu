@@ -40,38 +40,42 @@ def initOPK():
     opks["names"] = {}
     opks["categories"] = {}
 
-    for (dirpath, dirnames, filenames) in os.walk("/media/data/apps"):
+    for (dirpath, dirnames, filenames) in os.walk(str(configuration["opkPath"])):
         for name in filenames:
             opkName = os.path.splitext(name)[0].lower()
            
             if(opkName.find(".") != -1):
                 opkName = opkName[0:opkName.find(".")]
+           
+           
+            try:
+                meta = OPK.read_metadata(dirpath + "/" + name)
 
-            meta = OPK.read_metadata(dirpath + "/" + name)
+                for desktop in meta:
+                    try:
+                        entry = {}
+                        entry["name"] = meta[desktop]["Desktop Entry"]["Name"].lower()
+                        entry["meta"] = desktop
+                        entry["data"] = meta[desktop]["Desktop Entry"]
+                        entry["opk"] = dirpath + "/" + name
+                        entry["opkName"] = opkName
 
-            for desktop in meta:
-                try:
-                    entry = {}
-                    entry["name"] = meta[desktop]["Desktop Entry"]["Name"].lower()
-                    entry["meta"] = desktop
-                    entry["data"] = meta[desktop]["Desktop Entry"]
-                    entry["opk"] = dirpath + "/" + name
-                    entry["opkName"] = opkName
-
-                    opks["names"][entry["name"]] = entry
-                 
+                        opks["names"][entry["name"]] = entry
                     
-                    split =  entry["data"]["Categories"].split(";")
-                    for cat in split:
-                        if(cat not in opks["categories"]):
-                            opks["categories"][cat] = []
-                            print("created OPK category " + cat)
                         
-                        opks["categories"][cat].append(entry)
+                        split =  entry["data"]["Categories"].split(";")
+                        for cat in split:
+                            if(cat not in opks["categories"]):
+                                opks["categories"][cat] = []
+                                print("created OPK category " + cat)
+                            
+                            opks["categories"][cat].append(entry)
 
 
-                except Exception as ex:
-                    print("Could not load OPK " + str(ex))
+                    except Exception as ex:
+                        print("Could not load OPK " + str(ex))
+            except Exception as ex:
+                print("Could not load OPK " + str(ex))
     
 
 

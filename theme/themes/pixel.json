@@ -122,6 +122,7 @@
         "folderIcon": "images/pixel97/icons/fba1.png", 
         "icon": "images/pixel97/systems/cps2.png"
     }, 
+    "CTF": {}, 
     "Cannonball": {
         "preview": "images/pixel97/previews/cannonball.png"
     }, 
@@ -240,6 +241,7 @@
         "preview": "images/pixel97/icons/glutexto.png"
     }, 
     "Gmu": {}, 
+    "Ground Zero": {}, 
     "HWTest": {}, 
     "Hex-a-hop": {
         "icon": ".", 
@@ -421,6 +423,7 @@
     "Quake": {
         "preview": "images/pixel97/previews/quake.png"
     }, 
+    "Quake 2": {}, 
     "Quake3": {}, 
     "Reminiscence": {
         "preview": "images/pixel97/previews/reminiscence.png"
@@ -494,6 +497,7 @@
     "SuperTux": {
         "preview": "images/pixel97/previews/supertux.png"
     }, 
+    "The Reckoning": {}, 
     "Tileworld": {
         "preview": "images/pixel97/previews/tileworld.png"
     }, 

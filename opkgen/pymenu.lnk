@@ -1,0 +1,4 @@
+title=PyMenu
+description=Menu written in Python
+exec=/media/data/pymenu/pymenu.dge
+clock=600

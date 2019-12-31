@@ -1,0 +1,17 @@
+#!/bin/sh
+sync;
+
+echo -e 'Installing PyMenu';
+
+if [ -f /media/data/pymenu/config/config.json.old ]; then
+    echo -e 'Old backup config found';
+else
+    echo -e 'Creating config backup';
+    for filename in /media/data/pymenu/theme/themes/*.json; do mv "$filename" "$filename.old"; done;
+    mv /media/data/pymenu/config/config.json /media/data/pymenu/config/config.json.old
+fi
+
+cp -r pymenu /media/data
+cp pymenu.lnk /media/data/local/home/.gmenu2x/sections/applications
+
+exit 0

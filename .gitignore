@@ -10,3 +10,4 @@ config/favourites.json
 /ipkgen/*.ipk
 /volume/setVolume
 /volume/setVolume.o
+/opkgen/*.opk
