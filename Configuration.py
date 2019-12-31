@@ -9,7 +9,8 @@ import Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
 import traceback
-import OPK
+
+
 
 
 configuration = None
@@ -21,6 +22,9 @@ currentTheme = {}
 
 links = {}
 opks = {}
+opks["names"] = {}
+opks["categories"] = {}
+
 
 
 def getConfiguration():
@@ -33,12 +37,13 @@ def initOPK():
     global configuration
     global opks
 
+    import OPK
+
 
     if(len(opks) != 0):
         return
 
-    opks["names"] = {}
-    opks["categories"] = {}
+   
 
     for (dirpath, dirnames, filenames) in os.walk(str(configuration["opkPath"])):
         for name in filenames:
@@ -109,7 +114,8 @@ def reloadConfiguration(upgrade=True):
     configuration = json.load(open('config/config.json'))
 
     initLinks()
-    initOPK()
+    if(isRG350()):
+        initOPK()
 
     if("version" not in configuration):
         configuration["version"] = "0"
