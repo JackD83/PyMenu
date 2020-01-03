@@ -51,7 +51,7 @@ class Header():
             self.usbDevice.seek(0)
             first_line = self.usbDevice.readline().strip()         
 
-            if(first_line == "usb"):
+            if(first_line == "usb" or first_line == "1"):
                 return True      
         except Exception as ex:
             print(str(ex))
@@ -101,6 +101,7 @@ class Header():
             
             if(Configuration.isRG350()):
                 self.battery = open("/sys/class/power_supply/battery/voltage_now", "r")
+                self.usbDevice = open("/sys/devices/platform/gpio-charger.1/power_supply/usb/online", "r")
             else:
                 self.battery = open("/proc/jz/battery", "r")    
 
