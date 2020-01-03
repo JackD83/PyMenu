@@ -37,11 +37,14 @@ def initOPK():
     global configuration
     global opks
 
-    import OPK
-
-
-    if(len(opks) != 0):
+    try:
+        import OPK
+    except Exception as ex:
+        print("libopk is not available")
         return
+
+    opks["names"] = {}
+    opks["categories"] = {}
 
    
 
@@ -56,6 +59,9 @@ def initOPK():
             try:
                 meta = OPK.read_metadata(dirpath + "/" + name)
 
+                if not os.path.exists("/tmp/iconCache"):
+                    os.makedirs("/tmp/iconCache")
+
                 for desktop in meta:
                     try:
                         entry = {}
@@ -63,11 +69,21 @@ def initOPK():
                         entry["meta"] = desktop
                         entry["data"] = meta[desktop]["Desktop Entry"]
                         entry["opk"] = dirpath + "/" + name
-                        entry["opkName"] = opkName
+                        entry["opkName"] = opkName    
+                        entry["icon"] = "/tmp/iconCache/" + opkName + ".png"                    
 
                         opks["names"][entry["name"]] = entry
-                    
-                        
+
+                        try:
+                            icon = OPK.extract_file(entry["opk"], meta[desktop]["Desktop Entry"]["Icon"] + ".png")
+                            iconFile = open("/tmp/iconCache/" + opkName + ".png", "wb")
+                            iconFile.write(icon.getvalue())
+                            iconFile.close()
+                            
+                        except Exception as ex:
+                            print("Could not load OPK Icon " + str(ex))
+                                                
+
                         split =  entry["data"]["Categories"].split(";")
                         for cat in split:
                             if(cat not in opks["categories"]):
@@ -290,6 +306,7 @@ def createNativeItem(item):
     if(os.path.exists(preview)):
         entry["preview"] = preview
 
+    
     if("selectordir" in data):
         entry["selector"] = True
         entry["selectionPath"] = data["selectordir"]
@@ -330,6 +347,9 @@ def createNativeOPKItem(opk):
 
     if("clock" in data):
         entry["overclock"] = data["clock"]
+
+
+    entry["preview"] = opk["icon"]
 
     #icon
     #print(opk["opk"])
