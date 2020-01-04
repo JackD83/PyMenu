@@ -19,6 +19,7 @@ class Suspend():
             self.addBrignessTask()
     
     def configUpdated(self):
+        self.config = Configuration.getConfiguration()
         self.addSuspendTask()
         self.addBrignessTask()
 
