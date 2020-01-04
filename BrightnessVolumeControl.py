@@ -139,7 +139,7 @@ class BrightnessVolume(RenderObject.RenderObject):
 
         print("Setting brightness " + str(level))
         
-        os.system('echo ' + str(level)  +  ' > /proc/jz/lcd_backlight')
+        os.system('echo ' + str(level)  +  ' > /proc/jz/backlight')
         
         if(store):
             self.config["lcd_backlight"] = level

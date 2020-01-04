@@ -26,7 +26,7 @@ class Suspend():
         try:
             subprocess.Popen(["poweroff"])
             TaskHandler.removePeriodicTask(self.suspendTaskId)
-        except expression as identifier:
+        except Exception as identifier:
             pass
       
 
@@ -34,7 +34,7 @@ class Suspend():
         if(Configuration.isRG350()):
             return
 
-        os.system('echo 0 > /proc/jz/lcd_backlight')
+        os.system('echo 0 > /proc/jz/backlight')
         self.displayDark = True
         TaskHandler.removePeriodicTask(self.brightnessTaskId)
 
@@ -49,7 +49,7 @@ class Suspend():
 
             backlight = self.config["lcd_backlight"] 
             
-            os.system('echo ' + str(backlight) + ' > /proc/jz/lcd_backlight')
+            os.system('echo ' + str(backlight) + ' > /proc/jz/backlight')
             self.displayDark = False
 
     def disableSuspend(self):
@@ -71,6 +71,7 @@ class Suspend():
         displayTimeout = self.config["options"]["displayTimeout"]
         if(displayTimeout == "off"):
             return
+
 
         self.brightnessTaskId = TaskHandler.addPeriodicTask(0, self.disableScreen,  float(displayTimeout) * 1000)
 

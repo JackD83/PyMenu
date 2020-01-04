@@ -246,8 +246,8 @@ class MainMenu(RenderObject.RenderObject):
 
         Configuration.saveOptions(self.config["options"])
 
-      
         self.reload()
+        self.suspend.configUpdated()
         RenderControl.setDirty()
 
     def openSelection(self, current):
