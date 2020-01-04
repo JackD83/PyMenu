@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import sys, Common, traceback
+import sys, Common, traceback, os
 
 # catch global exception and try to enable usb
 def except_hook(exctype, value, traceback):
@@ -35,7 +35,13 @@ def init():
     lastRenderTime = 1
     
     Common.mountSD(True)
-  
+
+    try:
+        if(not Configuration.isRG350()):
+            os.system('/usr/bin/retrofw network on')
+    except Exception as ex:
+        pass
+    
     realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
     screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))
     
