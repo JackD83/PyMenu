@@ -23,6 +23,7 @@ cp -r ../config tmp/data/home/retrofw/apps/pymenu/
 rm tmp/data/home/retrofw/apps/pymenu/config/lastPlayedData.json 2> /dev/null
 rm tmp/data/home/retrofw/apps/pymenu/config/favourites.json 2> /dev/null
 rm tmp/data/home/retrofw/apps/pymenu/config/config.json 2> /dev/null
+rm tmp/data/home/retrofw/apps/pymenu/config/config_RG350.json 2> /dev/null
 mv tmp/data/home/retrofw/apps/pymenu/config/config_RS97.json tmp/data/home/retrofw/apps/pymenu/config/config.json
 
 
@@ -44,7 +45,7 @@ cd ../data
 tar -czvf ../data.tar.gz --owner=0 --group=0 *
 
 cd ..
-ar rv ../pymenu-$VERSION.ipk control.tar.gz data.tar.gz debian-binary
+ar rv ../pymenu-$VERSION-RetroFW.ipk control.tar.gz data.tar.gz debian-binary
 
 cd .. 
 rm -rf tmp

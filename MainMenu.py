@@ -154,7 +154,7 @@ class MainMenu(RenderObject.RenderObject):
         if(Configuration.isRG350()):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
         else:
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "IPK Manager",  "run Gmenu2x"], self.contextMenuCallback)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "Start Network", "Run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  
@@ -212,9 +212,12 @@ class MainMenu(RenderObject.RenderObject):
             else:
                 print("reboot")
 
-        if(text == "run Gmenu2x"):
+        if(text == "Run Gmenu2x"):
             print("Running gmenu 2x")
             Common.gmenu2x()
+
+        if(text == "Start Network"):
+            Common.startNetwork()
 
         if(text == "IPK Manager"):
             self.subComponent = IPKManager.IPKManager(self.screen, self.ipkCallback)

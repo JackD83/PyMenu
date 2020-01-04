@@ -1,4 +1,5 @@
 title=PyMenu
 description=Menu written in Python
 exec=/media/data/pymenu/pymenu.dge
+icon=/media/data/pymenu/pymenu.png
 clock=600

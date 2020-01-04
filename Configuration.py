@@ -25,7 +25,8 @@ opks = {}
 opks["names"] = {}
 opks["categories"] = {}
 
-
+if not os.path.exists("/tmp/iconCache"):
+    os.makedirs("/tmp/iconCache")
 
 def getConfiguration():
     if(configuration == None):
@@ -59,8 +60,7 @@ def initOPK():
             try:
                 meta = OPK.read_metadata(dirpath + "/" + name)
 
-                if not os.path.exists("/tmp/iconCache"):
-                    os.makedirs("/tmp/iconCache")
+                
 
                 for desktop in meta:
                     try:
@@ -70,19 +70,9 @@ def initOPK():
                         entry["data"] = meta[desktop]["Desktop Entry"]
                         entry["opk"] = dirpath + "/" + name
                         entry["opkName"] = opkName    
-                        entry["icon"] = "/tmp/iconCache/" + opkName + ".png"                    
+                        entry["icon"] = entry["opk"] + "#" + meta[desktop]["Desktop Entry"]["Icon"] + ".png"        
 
                         opks["names"][entry["name"]] = entry
-
-                        try:
-                            icon = OPK.extract_file(entry["opk"], meta[desktop]["Desktop Entry"]["Icon"] + ".png")
-                            iconFile = open("/tmp/iconCache/" + opkName + ".png", "wb")
-                            iconFile.write(icon.getvalue())
-                            iconFile.close()
-                            
-                        except Exception as ex:
-                            print("Could not load OPK Icon " + str(ex))
-                                                
 
                         split =  entry["data"]["Categories"].split(";")
                         for cat in split:
@@ -305,6 +295,9 @@ def createNativeItem(item):
     preview = os.path.splitext(entry["cmd"])[0] + ".png"
     if(os.path.exists(preview)):
         entry["preview"] = preview
+    
+    if("icon" in data):
+        entry["preview"] = data["icon"]
 
     
     if("selectordir" in data):

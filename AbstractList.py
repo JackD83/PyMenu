@@ -126,7 +126,7 @@ class AbstractList(RenderObject.RenderObject):
                     self.anim.render(screen,(5,56) )
                     RenderControl.setDirty()
 
-            elif(os.path.exists(self.preview_final) and os.path.isfile(self.preview_final)):
+            elif((os.path.exists(self.preview_final) and os.path.isfile(self.preview_final)) or "opk#" in self.preview_final.lower()):
                
                 if(self.image == None):
                     self.image = Common.loadImage(self.preview_final)              

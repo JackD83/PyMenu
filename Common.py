@@ -10,7 +10,14 @@ CLOCKSPEED = 628 #default clockspeed
 imageCache = {}
 gameList = {}
 isLoaded = False
+hasLibopk = False
 
+try:
+    import OPK as opk
+    hasLibopk = True
+except Exception:
+    print("OPK icons not supported")
+           
 
 def loadGameListAsync():
     thread = Thread(target = loadGameList, args = ())
@@ -57,6 +64,30 @@ def getGameName(romName):
 
 
 def loadImage(path): 
+
+    if(path != None and "opk#" in path.lower()):
+        if(not hasLibopk):
+            print("OPK icon not available")
+            return  pygame.Surface((1,1),pygame.SRCALPHA)
+
+        try:
+            splitPath = path.split("#")
+
+            try:
+                icon = opk.extract_file(str(splitPath[0]), str(splitPath[1]))
+                iconFile = open("/tmp/iconCache/" + splitPath[1] , "wb")
+                iconFile.write(icon.getvalue())
+                iconFile.close()
+                
+            except Exception as ex:
+                print("Could not load OPK Icon " + str(ex))
+
+            return pygame.image.load("/tmp/iconCache/" + splitPath[1] )
+
+        except Exception:
+            print("Could not load image " + str(path) + " " + str(Exception))
+            return  pygame.Surface((1,1),pygame.SRCALPHA)
+
 
     if(path != None and os.path.exists(path)):
         try:
@@ -127,7 +158,26 @@ def mountUSB():
         fileName = "run"  
         file = open("/tmp/" + fileName,"w")
         file.write("#!/bin/sh\n")
-        file.write("/etc/init.d/S99recovery storage on\n")       
+
+        file.write("/usr/bin/retrofw stop\n")       
+        file.write("/usr/bin/retrofw storage\n")       
+        sys.exit()
+
+    except Exception as ex:
+        print("mount exception " + str(ex))
+
+
+def startNetwork():
+    if(platform.processor() != ""):
+        return
+
+    try:     
+        fileName = "run"  
+        file = open("/tmp/" + fileName,"w")
+        file.write("#!/bin/sh\n")
+
+        file.write("/usr/bin/retrofw stop\n")       
+        file.write("/usr/bin/retrofw network on\n")       
         sys.exit()
 
     except Exception as ex:
