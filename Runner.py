@@ -55,12 +55,15 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
         except Exception as ex:
             pass
 
+    if(cmd.lower().endswith("opk")):
+        cmd = "/usr/bin/retrofw opk run " + cmd
+
     fileName = "run"   
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
 
-    if(not Configuration.isRG350()):
-        file.write("export HOME=/home/retrofw\n")
+    # if(not Configuration.isRG350()):
+    #     file.write("export HOME=/home/retrofw\n")
 
    
     file.write("cd \"" + workdir + "\"\n")
@@ -120,14 +123,17 @@ def runNativeMIPS(cmd, config):
         except Exception as ex:
             pass
 
+    if(cmd.lower().endswith("opk")):
+        cmd = "/usr/bin/retrofw opk run " +  cmd
+
 
     fileName = "run"
 
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
     
-    if(not Configuration.isRG350()):
-        file.write("export HOME=/home/retrofw\n")  
+    # if(not Configuration.isRG350()):
+    #     file.write("export HOME=/home/retrofw\n")  
 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")
