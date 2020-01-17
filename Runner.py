@@ -56,7 +56,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
             pass
 
     if(cmd.lower().endswith("opk")):
-        cmd = "/usr/bin/retrofw opk run " + cmd
+        cmd = "opkrun " + cmd
 
     fileName = "run"   
     file = open("/tmp/" + fileName,"w")
