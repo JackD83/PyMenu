@@ -36,11 +36,11 @@ def init():
     
     Common.mountSD(True)
 
-    try:
-        if(not Configuration.isRG350()):
-            os.system('/usr/bin/retrofw network on')
-    except Exception as ex:
-        pass
+    # try:
+    #     if(not Configuration.isRG350()):
+    #         os.system('/usr/bin/retrofw network on')
+    # except Exception as ex:
+    #     pass
     
     realScreen = pygame.display.set_mode((config["screenWidth"],config["screenHeight"]), HWSURFACE, 16)
     screen = pygame.Surface((config["screenWidth"],config["screenHeight"]))

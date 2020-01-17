@@ -70,7 +70,7 @@
             "previews": "/home/retrofw/roms/gba/previews", 
             "screen": "default", 
             "selectionPath": "/home/retrofw/roms/gba", 
-            "system": "gba,02gba,Zgpsp", 
+            "system": "gba,02gba,Zgpsp,regba", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 

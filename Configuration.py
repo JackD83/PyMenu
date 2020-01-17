@@ -9,6 +9,7 @@ import Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
 import traceback
+import ntpath
 
 
 
@@ -374,7 +375,10 @@ def appendEmuLinks(entry):
                     emuEntry["cmd"] = data["exec"]
 
                     if("params" in data):
-                        emuEntry["params"] = data["params"]
+                        if(not data["params"].replace(ntpath.basename(data["exec"]),"")):
+                            #opk emu links have the executable as parameter
+                            emuEntry["params"] = data["params"].replace(ntpath.basename(data["exec"]),"")
+                        
 
                     emuEntry["workingDir"] = os.path.abspath(
                         os.path.join(data["exec"], os.pardir))
@@ -387,11 +391,12 @@ def appendEmuLinks(entry):
                         # make unique
                         entry["fileFilter"] = list(set(filter))
 
-                    if("selectordir" in data):
+                    #some links have only a selectorfilter and not yet a dir
+                    if("selectordir" in data or "selectorfilter" in data):
                         entry["useSelection"] = True
 
                 except Exception as ex:
-                    print("Error loading emu link " + str(lnk))        
+                    print("Error loading emu link " + str(lnk) + " " + str(ex))        
 
         ##try opk entries
 
