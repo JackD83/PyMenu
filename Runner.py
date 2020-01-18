@@ -55,8 +55,6 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
         except Exception as ex:
             pass
 
-    if(cmd.lower().endswith("opk")):
-        cmd = "opkrun " + cmd
 
     fileName = "run"   
     file = open("/tmp/" + fileName,"w")
@@ -122,9 +120,6 @@ def runNativeMIPS(cmd, config):
             Overclock.setClock(overclock)
         except Exception as ex:
             pass
-
-    if(cmd.lower().endswith("opk")):
-        cmd = "/usr/bin/retrofw opk run " +  cmd
 
 
     fileName = "run"

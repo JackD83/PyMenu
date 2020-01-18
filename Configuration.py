@@ -9,7 +9,8 @@ import Common
 from ast import literal_eval as make_tuple
 from pprint import pprint
 import traceback
-import ntpath
+import OPKHelper
+
 
 
 
@@ -48,6 +49,7 @@ def initOPK():
     opks["names"] = {}
     opks["categories"] = {}
 
+
    
 
     for (dirpath, dirnames, filenames) in os.walk(str(configuration["opkPath"])):
@@ -61,9 +63,16 @@ def initOPK():
             try:
                 meta = OPK.read_metadata(dirpath + "/" + name)
 
-                
-
+            
                 for desktop in meta:
+
+                    if(Configuration.isRG350()):
+                        if("gcw0" not in desktop):
+                            continue
+                    else:
+                        if("retrofw" not in desktop):
+                            continue
+            
                     try:
                         entry = {}
                         entry["name"] = meta[desktop]["Desktop Entry"]["Name"].lower()
@@ -101,17 +110,22 @@ def initLinks():
 
     for (dirpath, dirnames, filenames) in os.walk(configuration["linkPath"]):
         for name in filenames:
+            if(name.startswith(".")):
+                continue
+               
+
             linkName = os.path.splitext(name)[0].lower()
            
             if(linkName.find(".") != -1):
                 linkName = linkName[0:linkName.find(".")]
 
-            if(linkName not in links):
-                links[linkName] = []
+            if(linkName):
+                if(linkName not in links):
+                    links[linkName] = []
 
-            print("added link: " + linkName)
+                print("added link: '" + linkName +"'")
 
-            links[linkName].append(dirpath + "/" + name)
+                links[linkName].append(dirpath + "/" + name)
 
 
 def reloadConfiguration(upgrade=True):
@@ -158,6 +172,9 @@ def reloadConfiguration(upgrade=True):
                     Common.quick_sort(itemlist)
 
                     for itemName in itemlist:
+                        if(itemName.startswith(".")):
+                            continue
+
                         try:
                             item = createNativeItem(
                                 entry["linkPath"] + "/" + itemName)
@@ -309,6 +326,17 @@ def createNativeItem(item):
             filter = data["selectorfilter"].split(",")
             entry["fileFilter"] = list(set(filter))
 
+    #handling of opk links.
+    if(entry["cmd"].lower().endswith("opk")):
+        meta = OPKHelper.getMetadataForExec(data["exec"],data["params"] )
+        entry["cmd"] = "/usr/bin/opkrun"
+        if(meta == None):
+            # we don't know which meta data should be used
+            entry["params"] = "\"" + data["exec"] + "\" $f"
+        else:
+            #select correct meta data of opk
+            entry["params"] = "-m " + meta + " \"" + data["exec"] + "\" $f" 
+
     return entry
 
 def createNativeOPKItem(opk):
@@ -318,7 +346,7 @@ def createNativeOPKItem(opk):
     entry = {}
     entry["name"] = data["Name"]
     entry["cmd"] = "/usr/bin/opkrun"
-    entry["params"] = "\"" + opk["opk"] + "\" $f"
+    entry["params"] = "-m " + data["meta"] + " \"" + opk["opk"] + "\" $f"
 
           
     dir = getSelectorDir(opk["opkName"])
@@ -375,9 +403,7 @@ def appendEmuLinks(entry):
                     emuEntry["cmd"] = data["exec"]
 
                     if("params" in data):
-                        if(not data["params"].replace(ntpath.basename(data["exec"]),"")):
-                            #opk emu links have the executable as parameter
-                            emuEntry["params"] = data["params"].replace(ntpath.basename(data["exec"]),"")
+                        emuEntry["params"] = data["params"]
                         
 
                     emuEntry["workingDir"] = os.path.abspath(
@@ -395,6 +421,17 @@ def appendEmuLinks(entry):
                     if("selectordir" in data or "selectorfilter" in data):
                         entry["useSelection"] = True
 
+                    #handling of opk links. What about the params??
+                    if(emuEntry["cmd"].lower().endswith("opk")):
+                        meta = OPKHelper.getMetadataForExec(data["exec"],data["params"] )
+                        emuEntry["cmd"] = "/usr/bin/opkrun"
+                        if(meta == None):
+                            # we don't know which meta data should be used
+                            emuEntry["params"] = "\"" + data["exec"] + "\" $f"
+                        else:
+                            #select correct meta data of opk
+                            emuEntry["params"] = "-m " + meta + " \"" + data["exec"] + "\" $f" 
+
                 except Exception as ex:
                     print("Error loading emu link " + str(lnk) + " " + str(ex))        
 
@@ -408,7 +445,7 @@ def appendEmuLinks(entry):
             emuEntry = {}
             emuEntry["name"] = data["name"]
             emuEntry["cmd"] = "/usr/bin/opkrun"
-            emuEntry["params"] = "\"" + data["opk"] + "\" $f"
+            emuEntry["params"] ="-m " + data["meta"] + " \"" + data["opk"] + "\" $f"
 
             if("MimeType" in data["data"] or 
             getSelectorDir(data["opkName"]) != None or
