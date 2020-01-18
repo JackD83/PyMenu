@@ -13,9 +13,6 @@ def setMainMenu(MainMenu):
 
 
 def runEmu(config, rom):
-    
-    print("Adding task")
-   
 
     ResumeHandler.storeResume()
     Common.addToCustomList(config, rom, "lastPlayedData")
@@ -49,21 +46,10 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     if(workdir == None and not cmd == None):    
         workdir = os.path.abspath(os.path.join(cmd, os.pardir))
 
-    if(overclock != None and not Configuration.isRG350()):
-        try:
-           Overclock.setClock(overclock)
-        except Exception as ex:
-            pass
-
-
     fileName = "run"   
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
 
-    # if(not Configuration.isRG350()):
-    #     file.write("export HOME=/home/retrofw\n")
-
-   
     file.write("cd \"" + workdir + "\"\n")
 
     if(params != None):
@@ -77,6 +63,12 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
 
     main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+
+    if(overclock != None and not Configuration.isRG350()):
+        try:
+           Overclock.setClock(overclock)
+        except Exception as ex:
+            pass
    
     TaskHandler.addPeriodicTask(0,  sys.exit , delay=100)   
    
@@ -115,21 +107,12 @@ def runNativeMIPS(cmd, config):
     selection = config["selection"] if "selection" in config else ""
     params = config["params"] if "params" in config else None
 
-    if(overclock != None):
-        try:
-            Overclock.setClock(overclock)
-        except Exception as ex:
-            pass
-
 
     fileName = "run"
 
     file = open("/tmp/" + fileName,"w")
     file.write("#!/bin/sh\n")
-    
-    # if(not Configuration.isRG350()):
-    #     file.write("export HOME=/home/retrofw\n")  
-
+ 
     parent = os.path.abspath(os.path.join(cmd, os.pardir))
     file.write("cd \"" + parent + "\"\n")
 
@@ -145,6 +128,12 @@ def runNativeMIPS(cmd, config):
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
 
     main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+
+    if(overclock != None):
+        try:
+            Overclock.setClock(overclock)
+        except Exception as ex:
+            pass
    
     TaskHandler.addPeriodicTask(0,  sys.exit , delay=100)
     

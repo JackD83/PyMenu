@@ -50,8 +50,6 @@ def initOPK():
     opks["categories"] = {}
 
 
-   
-
     for (dirpath, dirnames, filenames) in os.walk(str(configuration["opkPath"])):
         for name in filenames:
             opkName = os.path.splitext(name)[0].lower()
@@ -66,7 +64,7 @@ def initOPK():
             
                 for desktop in meta:
 
-                    if(Configuration.isRG350()):
+                    if(isRG350()):
                         if("gcw0" not in desktop):
                             continue
                     else:
@@ -82,7 +80,10 @@ def initOPK():
                         entry["opkName"] = opkName    
                         entry["icon"] = entry["opk"] + "#" + meta[desktop]["Desktop Entry"]["Icon"] + ".png"        
 
-                        opks["names"][entry["name"]] = entry
+                        if(entry["name"] not in opks["names"]):
+                            opks["names"][entry["name"]] = []
+
+                        opks["names"][entry["name"]].append(entry)
 
                         split =  entry["data"]["Categories"].split(";")
                         for cat in split:
@@ -98,9 +99,6 @@ def initOPK():
             except Exception as ex:
                 print("Could not load OPK " + str(ex))
     
-
-
-
 def initLinks():
     global configuration
     global links
@@ -112,22 +110,13 @@ def initLinks():
         for name in filenames:
             if(name.startswith(".")):
                 continue
-               
+        
+            data = parseLink(dirpath + "/" + name)
+            if(data["title"].lower() not in links):
+                links[data["title"].lower()] = []
 
-            linkName = os.path.splitext(name)[0].lower()
-           
-            if(linkName.find(".") != -1):
-                linkName = linkName[0:linkName.find(".")]
-
-            if(linkName):
-                if(linkName not in links):
-                    links[linkName] = []
-
-                print("added link: '" + linkName +"'")
-
-                links[linkName].append(dirpath + "/" + name)
-
-
+            links[data["title"].lower()].append(data)
+        
 def reloadConfiguration(upgrade=True):
     global configuration
     global currentTheme
@@ -274,7 +263,6 @@ def reloadConfiguration(upgrade=True):
 
    # print( json.dumps( configuration, sort_keys=True, indent=4))
 
-
 def hasConfig(system):
     global configuration
 
@@ -287,7 +275,6 @@ def hasConfig(system):
                 
 
     return False
-
 
 def createNativeItem(item):
     data = parseLink(item)
@@ -380,7 +367,6 @@ def createNativeOPKItem(opk):
 
     return entry
 
-
 def appendEmuLinks(entry):
     global configuration
     global opks
@@ -389,15 +375,15 @@ def appendEmuLinks(entry):
     entry["emu"] = []  # clear emus
     entry["useSelection"] = False
 
- 
+    print("Append emu links")
+
     for system in systems:
 
         ##try gmenu link files
         if(system.lower() in links):
-            for lnk in links[system.lower()]:
+            for data in links[system.lower()]:
                 try:
-                    data = parseLink(lnk)
-
+                    
                     emuEntry = {}
                     emuEntry["name"] = data["title"]
                     emuEntry["cmd"] = data["exec"]
@@ -409,7 +395,7 @@ def appendEmuLinks(entry):
                     emuEntry["workingDir"] = os.path.abspath(
                         os.path.join(data["exec"], os.pardir))
 
-                    entry["emu"].append(emuEntry)
+                   
                     if("selectorfilter" in data):
                         filter = data["selectorfilter"].split(",")
                         if("fileFilter" in entry):
@@ -432,31 +418,29 @@ def appendEmuLinks(entry):
                             #select correct meta data of opk
                             emuEntry["params"] = "-m " + meta + " \"" + data["exec"] + "\" $f" 
 
+                    entry["emu"].append(emuEntry)
+
                 except Exception as ex:
-                    print("Error loading emu link " + str(lnk) + " " + str(ex))        
+                    print("Error loading emu link " + str(ex))        
 
         ##try opk entries
-
-        
-     
         if(system.lower() in opks["names"]):
-            data = opks["names"][system.lower()]
+            for data in opks["names"][system.lower()]:
+                emuEntry = {}
+                emuEntry["name"] = data["name"]
+                emuEntry["cmd"] = "/usr/bin/opkrun"
+                emuEntry["params"] ="-m " + data["meta"] + " \"" + data["opk"] + "\" $f"
 
-            emuEntry = {}
-            emuEntry["name"] = data["name"]
-            emuEntry["cmd"] = "/usr/bin/opkrun"
-            emuEntry["params"] ="-m " + data["meta"] + " \"" + data["opk"] + "\" $f"
-
-            if("MimeType" in data["data"] or 
-            getSelectorDir(data["opkName"]) != None or
-             "%f" in data["data"]["Exec"]):
-                entry["useSelection"] = True
+                if("MimeType" in data["data"] or 
+                getSelectorDir(data["opkName"]) != None or
+                "%f" in data["data"]["Exec"]):
+                    entry["useSelection"] = True
 
 
-            emuEntry["workingDir"] = os.path.abspath(
-                os.path.join(data["opk"], os.pardir))
+                emuEntry["workingDir"] = os.path.abspath(
+                    os.path.join(data["opk"], os.pardir))
 
-            entry["emu"].append(emuEntry)      
+                entry["emu"].append(emuEntry)      
 
 
 def getSelectorDir(name):
