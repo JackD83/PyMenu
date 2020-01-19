@@ -351,6 +351,15 @@ def createNativeOPKItem(opk):
     if("MimeType" in data or dir != None or  "%f" in data["Exec"]):
         entry["selector"] = True
         entry["selectionPath"] = dir
+    
+    if("MimeType" in data):
+        filter = OPKHelper.getFileExtensions(data["MimeType"])
+        if("fileFilter" in entry):
+            filter.extend(entry["fileFilter"])
+        # make unique
+        entry["fileFilter"] = list(set(filter))
+    else:
+        entry["fileFilter"] = [".*"]
 
 
     entry["workingDir"] = os.path.abspath(
@@ -451,6 +460,15 @@ def appendEmuLinks(entry):
                 emuEntry["workingDir"] = os.path.abspath(
                     os.path.join(data["opk"], os.pardir))
 
+                if("MimeType" in data["data"]):
+                    filter = OPKHelper.getFileExtensions(data["data"]["MimeType"])
+                    if("fileFilter" in entry):
+                        filter.extend(entry["fileFilter"])
+                    # make unique
+                    entry["fileFilter"] = list(set(filter))
+                else:
+                    entry["fileFilter"] = [".*"]
+                
                 entry["emu"].append(emuEntry)      
 
 

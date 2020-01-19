@@ -336,6 +336,10 @@ class FileChooser(AbstractList.AbstractList):
             and not self.options["useFileFilter"])):
             return True #allow all files
 
+        #check if all files are allowed using filter, will allow filering of all file extensions
+        if(".*" in self.options["fileFilter"]):
+            return True
+
         filename, file_extension = os.path.splitext(file)
         if(file_extension == ""):
             return False
