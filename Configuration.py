@@ -74,7 +74,8 @@ def initOPK():
                         entry["data"] = meta[desktop]["Desktop Entry"]
                         entry["opk"] = dirpath + "/" + name
                         entry["opkName"] = opkName    
-                        entry["icon"] = entry["opk"] + "#" + meta[desktop]["Desktop Entry"]["Icon"] + ".png"        
+                        entry["icon"] = entry["opk"] + "#" + meta[desktop]["Desktop Entry"]["Icon"] + ".png"       
+                        
 
                         if(entry["name"].lower() not in opks["names"]):
                             opks["names"][entry["name"].lower()] = []
@@ -417,7 +418,7 @@ def appendEmuLinks(entry):
                     if("selectordir" in data or "selectorfilter" in data):
                         entry["useSelection"] = True
 
-                    #handling of opk links. What about the params??
+                    #handling of opk links.
                     if(emuEntry["cmd"].lower().endswith("opk")):
                         meta = OPKHelper.getMetadataForExec(data["exec"],data["params"] )
                         emuEntry["cmd"] = "/usr/bin/opkrun"
