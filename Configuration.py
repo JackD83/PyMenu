@@ -11,10 +11,6 @@ from pprint import pprint
 import traceback
 import OPKHelper
 
-
-
-
-
 configuration = None
 theme = json.load(open('theme/theme.json'))
 listeners = []
@@ -73,17 +69,17 @@ def initOPK():
             
                     try:
                         entry = {}
-                        entry["name"] = meta[desktop]["Desktop Entry"]["Name"].lower()
+                        entry["name"] = meta[desktop]["Desktop Entry"]["Name"]
                         entry["meta"] = desktop
                         entry["data"] = meta[desktop]["Desktop Entry"]
                         entry["opk"] = dirpath + "/" + name
                         entry["opkName"] = opkName    
                         entry["icon"] = entry["opk"] + "#" + meta[desktop]["Desktop Entry"]["Icon"] + ".png"        
 
-                        if(entry["name"] not in opks["names"]):
-                            opks["names"][entry["name"]] = []
+                        if(entry["name"].lower() not in opks["names"]):
+                            opks["names"][entry["name"].lower()] = []
 
-                        opks["names"][entry["name"]].append(entry)
+                        opks["names"][entry["name"].lower()].append(entry)
 
                         split =  entry["data"]["Categories"].split(";")
                         for cat in split:
@@ -388,8 +384,6 @@ def appendEmuLinks(entry):
     entry["emu"] = []  # clear emus
     entry["useSelection"] = False
 
-    print("Append emu links")
-
     for system in systems:
 
         ##try gmenu link files
@@ -462,7 +456,6 @@ def appendEmuLinks(entry):
 def getSelectorDir(name):
     global links
     if(name in links):
-        print("using link: " + str(links[name]))
         data = links[name][0]
         if("selectordir" in data):
             return data["selectordir"]

@@ -172,6 +172,7 @@ class MainMenu(RenderObject.RenderObject):
             if opt["id"] == "themeName":
                 theme = opt
 
+        #append dynamic theme selection
         if(theme != None):
             theme["values"] = []
             theme["names"] = []
@@ -181,6 +182,14 @@ class MainMenu(RenderObject.RenderObject):
                 if(item.endswith(".json")):
                     theme["values"].append(item.replace(".json", ""))
                     theme["names"].append(item.replace(".json", ""))
+
+
+        #filter options to show only the relevant ones
+        if(Configuration.isRG350):
+            options = Common.removeOptionsEntries(options, ["displayTimeout", "suspendTimeout", "volumeControl","defaultVolume"])
+
+        if(self.config["type"] != "K3P"):
+            options = Common.removeOptionsEntries(options, ["volumeControl"])
 
 
         self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings (PyMenu v" + str(self.config["version"]) + ")",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \

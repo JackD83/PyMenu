@@ -368,4 +368,12 @@ def removeFavouriteData(data):
     except Exception as ex:
         print("Exception " + str(ex)) 
 
-     
+def removeOptionsEntries(list, remove):
+    res = []
+    for  entry in list:
+        if("id" in entry and entry["id"] not in remove):
+            res.append(entry)
+    
+    return res
+            
+
