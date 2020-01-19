@@ -130,7 +130,7 @@ class AbstractList(RenderObject.RenderObject):
                
                 if(self.image == None):
                     self.image = Common.loadImage(self.preview_final)              
-                    self.image = Common.aspect_scale(self.image, 128, 128)
+                    self.image = Common.aspect_scale(self.image, 128, 128, False)
                
 
                 if(self.useSidebar):           

@@ -118,8 +118,12 @@ def loadCachedImage(path):
         imageCache[path] = image
         return image
 
-def aspect_scale(img, bx,by ):      
+def aspect_scale(img, bx,by, upscale=True ):      
     ix,iy = img.get_size()
+
+    if not upscale and ix < bx and iy < by:
+        return img
+
     if ix > iy:
         # fit to width
         scale_factor = bx/float(ix)
