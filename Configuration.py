@@ -112,10 +112,23 @@ def initLinks():
                 continue
         
             data = parseLink(dirpath + "/" + name)
-            if(data["title"].lower() not in links):
-                links[data["title"].lower()] = []
 
-            links[data["title"].lower()].append(data)
+            title = None
+             
+            #check for title in link
+            if("title" in data):
+                title = data["title"].lower()
+            else:
+                #use file as title
+                title = os.path.splitext(name)[0].lower()
+           
+                if(title.find(".") != -1):
+                    title = title[0:title.find(".")]
+
+            if(title not in links):
+                links[title] = []
+
+            links[title].append(data)
         
 def reloadConfiguration(upgrade=True):
     global configuration
@@ -192,7 +205,7 @@ def reloadConfiguration(upgrade=True):
 
 
                             except Exception as e:
-                                print("could not load native opk item " + str(entry["linkPath"] + "/" + itemName)+ " " + str(e))
+                                print("could not load native opk item " + str(opkEntry)+ " " + str(e))
 
                 except Exception as ex:
                     print("Error loading native item:" + str(ex))
@@ -333,7 +346,7 @@ def createNativeOPKItem(opk):
     entry = {}
     entry["name"] = data["Name"]
     entry["cmd"] = "/usr/bin/opkrun"
-    entry["params"] = "-m " + data["meta"] + " \"" + opk["opk"] + "\" $f"
+    entry["params"] = "-m " + opk["meta"] + " \"" + opk["opk"] + "\" $f"
 
           
     dir = getSelectorDir(opk["opkName"])
@@ -383,7 +396,10 @@ def appendEmuLinks(entry):
         if(system.lower() in links):
             for data in links[system.lower()]:
                 try:
-                    
+                    if(not "title" in data):
+                        continue
+
+
                     emuEntry = {}
                     emuEntry["name"] = data["title"]
                     emuEntry["cmd"] = data["exec"]
@@ -447,7 +463,7 @@ def getSelectorDir(name):
     global links
     if(name in links):
         print("using link: " + str(links[name]))
-        data = parseLink(links[name][0])
+        data = links[name][0]
         if("selectordir" in data):
             return data["selectordir"]
     
