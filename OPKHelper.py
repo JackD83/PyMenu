@@ -42,7 +42,7 @@ def getFileExtensions(mime):
     for t in types:
         if(t):
             res = mimetypes.guess_all_extensions(t)
-            print("getting extensions for mime " + str(t) + " " + str(res))
+            #print("getting extensions for mime " + str(t) + " " + str(res))
             result.extend(res)
 
     return result
