@@ -183,9 +183,8 @@ class MainMenu(RenderObject.RenderObject):
                     theme["values"].append(item.replace(".json", ""))
                     theme["names"].append(item.replace(".json", ""))
 
-
         #filter options to show only the relevant ones
-        if(Configuration.isRG350):
+        if(Configuration.isRG350()):
             options = Common.removeOptionsEntries(options, ["displayTimeout", "suspendTimeout", "volumeControl","defaultVolume"])
 
         if(self.config["type"] != "K3P"):
