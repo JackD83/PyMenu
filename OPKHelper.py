@@ -45,6 +45,9 @@ def getFileExtensions(mime):
             #print("getting extensions for mime " + str(t) + " " + str(res))
             result.extend(res)
 
+    if(len(result) == 0):
+        result.append(".*")
+        
     return result
          
 

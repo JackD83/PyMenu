@@ -5,6 +5,7 @@ import json, time, math, copy
 import pygame, sys, subprocess,platform
 from pprint import pprint
 from threading import Thread
+import Theme
 
 class MainMenu(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
@@ -577,29 +578,34 @@ class MainMenu(RenderObject.RenderObject):
         else:
             RenderControl.setDirty()
 
-        if(self.selection=="band"):
-            self.banderole.fill((255,255,255, 160))
-        else:
-            self.banderole.fill((255,255,255, 90))
+        banderoleYOffset = Theme.getValue("banderole/offset",80)
 
-        screen.blit(self.banderole, (0,80))
+        if(self.selection=="band"):
+            self.banderole.fill(Theme.getColor("banderole/color_select", (255,255,255,160)))
+        else:
+            self.banderole.fill(Theme.getColor("banderole/color", (255,255,255,60)))
+
+
+        screen.blit(self.banderole, (0,banderoleYOffset))
+
+        
 
         #current
         if(self.systems[self.currentIndex] is not None):
-            screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + 80  -self.systems[self.currentIndex].get_height() / 2 ))
+            screen.blit(self.systems[self.currentIndex], ( (self.config["screenWidth"] / 2 - self.systems[self.currentIndex].get_width() / 2) + self.transitionOffset , 40 + banderoleYOffset  -self.systems[self.currentIndex].get_height() / 2 ))
         else:            
             RenderControl.setDirty()
 
 
         #previous
         if(self.systems[self.getPrev()] is not None and self.systems[self.getPrev()] is not None):
-            screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + 80  -self.systems[self.getPrev()].get_height() / 2 ))
+            screen.blit(self.systems[self.getPrev()], (0  + self.transitionOffset  - self.systemIconOffet, 40 + banderoleYOffset  -self.systems[self.getPrev()].get_height() / 2 ))
         else:            
             RenderControl.setDirty()
 
         #next
         if(self.systems[self.getNext()] is not None and self.systems[self.currentIndex] is not None):
-            screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[self.getNext()].get_height() / 2 ))
+            screen.blit(self.systems[self.getNext()], ( (self.config["screenWidth"] - self.systems[self.currentIndex].get_width())  + self.transitionOffset + self.systemIconOffet, 40 + banderoleYOffset  -self.systems[self.getNext()].get_height() / 2 ))
         else:            
             RenderControl.setDirty() 
 

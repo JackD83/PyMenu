@@ -1,4 +1,18 @@
 {
+    "theme_settings" : {
+        
+        "header": {
+            "color": "(0,0,0,0)"
+        },
+        "side": {
+            "color": "(57,58,59, 255)"
+        },
+        "footer": {
+            "color": "(131,139,139, 200)"
+        }
+    
+
+},
     "A26": {
         "background": "images/pixel97/backgrounds/a2600.png", 
         "folderIcon": "images/pixel97/icons/a2600.png", 

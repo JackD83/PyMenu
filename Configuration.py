@@ -12,7 +12,7 @@ import traceback
 import OPKHelper
 
 configuration = None
-theme = json.load(open('theme/theme.json'))
+theme = None
 listeners = []
 types = ["RS97", "RS07", "K3P", "RG350"]
 
@@ -130,6 +130,7 @@ def initLinks():
 def reloadConfiguration(upgrade=True):
     global configuration
     global currentTheme
+    global theme
 
     configuration = json.load(open('config/config.json'))
 
@@ -150,6 +151,10 @@ def reloadConfiguration(upgrade=True):
     try:
         currentTheme = json.load(
             open("theme/themes/" + configuration["options"]["themeName"] + ".json"))
+
+        theme = currentTheme["theme_settings"]
+
+
     except Exception as ex:
         currentTheme = {}
         print("Could not load theme json" +

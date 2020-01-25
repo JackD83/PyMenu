@@ -381,3 +381,13 @@ def removeOptionsEntries(list, remove):
     return res
             
 
+def pathGet(dictionary, path):
+    for item in path.split("/"):
+        dictionary = dictionary[item]
+    return dictionary
+
+def pathSet(dictionary, path, setItem):
+    path = path.split("/")
+    key = path[-1]
+    dictionary = pathGet(dictionary, "/".join(path[:-1]))
+    dictionary[key] = setItem

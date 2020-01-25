@@ -1,0 +1,2 @@
+This theme was ported from [es-theme-tft](https://github.com/anthonycaccese/es-theme-tft) by Anthony Caccese
+Controller graphics are from the [Carbon](https://github.com/RetroPie/es-theme-carbon/) theme by Eric Hettervik

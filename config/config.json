@@ -3,8 +3,7 @@
     "batteryLow": 3300000, 
     "firstStart": false, 
     "lcd_backlight": 70, 
-    "linkPath": "/media/data/local/home/.gmenu2x/sections",
-    "opkPath" : "/media/data/apps",
+    "linkPath": "/media/data/local/home/.gmenu2x/sections", 
     "mainMenu": [
         {
             "category": "applications", 
@@ -332,6 +331,8 @@
         }, 
         {
             "description": "NEC PC-98", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "PC98", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/pc98/previews", 
@@ -356,7 +357,9 @@
         }, 
         {
             "description": "Wonderswan Color", 
+            "hideFolders": null, 
             "legacy": false, 
+            "limitSelection": null, 
             "name": "WSC", 
             "overclock": "524", 
             "previews": "/home/retrofw/roms/wsc/previews", 
@@ -407,6 +410,8 @@
         }, 
         {
             "description": "Neogeo Pocket Color", 
+            "hideFolders": null, 
+            "limitSelection": null, 
             "name": "NGPC", 
             "overclock": "624", 
             "previews": "/home/retrofw/roms/ngpc/previews", 
@@ -499,8 +504,39 @@
             "type": "lastPlayed"
         }, 
         {
+            "category": null, 
             "data": [
-               
+                {
+                    "background": "images/pixel97/backgrounds/psx.png", 
+                    "cmd": "/usr/bin/opkrun", 
+                    "description": "Sony Playstation", 
+                    "emu": [
+                        {
+                            "cmd": "/usr/bin/opkrun", 
+                            "name": "pcsx4all", 
+                            "params": "\"/media/data/apps/pcsx4all_sauce_20191022.opk\" $f", 
+                            "workingDir": "/media/data/apps"
+                        }
+                    ], 
+                    "folderIcon": "images/pixel97/icons/psx.png", 
+                    "hideFolders": null, 
+                    "icon": "images/pixel97/systems/psx.png", 
+                    "limitSelection": null, 
+                    "name": "Legend of Mana (USA).pbp", 
+                    "overclock": "624", 
+                    "params": "\"/media/data/apps/pcsx4all_sauce_20191022.opk\" $f", 
+                    "preview": "/home/retrofw/roms/psx/previews/Legend of Mana (USA).png", 
+                    "previews": "/home/retrofw/roms/psx/previews", 
+                    "rom": "//media/sdcard/roms/psx/Legend of Mana (USA).pbp", 
+                    "selectionPath": "//media/sdcard/roms/psx", 
+                    "system": "pcsx4all,09ps", 
+                    "type": "emulator", 
+                    "useFileFilter": null, 
+                    "useGamelist": false, 
+                    "useSelection": true, 
+                    "visible": true, 
+                    "workingDir": "/media/data/apps"
+                }
             ], 
             "description": "Favourit games", 
             "linkPath": null, 
@@ -508,16 +544,17 @@
             "type": "favourites"
         }
     ], 
+    "opkPath": "/media/data/apps", 
     "options": {
         "allowEdit": true, 
         "defaultVolume": 250, 
         "displayTimeout": "off", 
-        "showAll": false, 
+        "showAll": true, 
         "showFPS": false, 
         "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "pixel", 
+        "themeName": "tft", 
         "volumeControl": false
     }, 
     "screenHeight": 240, 

@@ -1,0 +1,441 @@
+{
+    "theme_settings" : {
+        
+            "header": {
+                "color": "(0,0,0,0)"
+            },
+            "side": {
+                "color": "(57,58,59, 255)"
+            },
+            "footer": {
+                "color": "(131,139,139, 200)"
+            },
+            "banderole": {
+                "offset" : 160,
+                "color": "(255,255,255, 0)",
+                "color_select": "(255,255,255, 0)"
+            }
+    },
+
+    "A26": {
+        "background": "images/tft/backgrounds/a2600.png", 
+        "folderIcon": "images/tft/icons/a2600.png", 
+        "icon": "images/tft/systems/a2600.png"
+    }, 
+    "A52": {
+        "background": "images/tft/backgrounds/a5200.png", 
+        "folderIcon": "images/tft/icons/a5200.png", 
+        "icon": "images/tft/systems/a5200.png"
+    }, 
+    "A78": {
+        "background": "images/tft/backgrounds/a7800.png", 
+        "folderIcon": "images/tft/icons/a7800.png", 
+        "icon": "images/tft/systems/a7800.png"
+    }, 
+    "AMIGA": {
+        "background": "images/tft/backgrounds/amiga.png", 
+        "folderIcon": "images/tft/icons/amiga.png", 
+        "icon": "images/tft/systems/amiga.png"
+    }, 
+    "AST": {
+        "background": "images/tft/backgrounds/ast.png", 
+        "folderIcon": "images/tft/icons/ast.png", 
+        "icon": "images/tft/systems/ast.png"
+    }, 
+    "Abbaye": {
+        "icon": ".", 
+        "preview": "images/previews/abbaye.png"
+    }, 
+    "Apps": {
+        "background": "images/tft/backgrounds/midpath.png", 
+        "icon": "images/tft/systems/apps.png"
+    }, 
+    "Apricots": {
+        "preview": "images/previews/apricots.png"
+    }, 
+    "Arkanoid": {
+        "preview": "images/previews/arkanoid.png"
+    }, 
+    "BBC": {
+        "background": "images/tft/backgrounds/bbcmicro.png", 
+        "folderIcon": "images/tft/icons/bbcmicro.png", 
+        "icon": "images/tft/systems/bbcmicro.png"
+    }, 
+    "Bermuda": {
+        "preview": "images/previews/bermuda.png"
+    }, 
+    "BlockOut 2": {
+        "preview": "images/previews/blockout2.png"
+    }, 
+    "Boulder": {
+        "preview": "images/previews/boulder.png"
+    }, 
+    "C-Dogs SDL": {
+        "preview": "images/previews/cdogs.png"
+    }, 
+    "C64": {
+        "background": "images/tft/backgrounds/c64.png", 
+        "folderIcon": "images/tft/icons/c64.png", 
+        "icon": "images/tft/systems/c64.png"
+    }, 
+    "COL": {
+        "background": "images/tft/backgrounds/coleco.png", 
+        "folderIcon": "images/tft/icons/coleco.png", 
+        "icon": "images/tft/systems/coleco.png"
+    }, 
+    "CPC": {
+        "background": "images/tft/backgrounds/cpc.png", 
+        "folderIcon": "images/tft/icons/cpc.png", 
+        "icon": "images/tft/systems/cpc.png"
+    }, 
+    "CPS1": {
+        "background": "images/tft/backgrounds/mame.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/tft/systems/cps1.png"
+    }, 
+    "CPS2": {
+        "background": "images/tft/backgrounds/mame.png", 
+        "folderIcon": "images/pixel97/icons/fba1.png", 
+        "icon": "images/tft/systems/cps2.png"
+    }, 
+    "Cannonball": {
+        "preview": "images/previews/cannonball.png"
+    }, 
+    "CaveStory en": {
+        "preview": "images/previews/cavestory.png"
+    }, 
+    "Chocolate Heretic": {
+        "preview": "images/previews/hheretic.png"
+    }, 
+    "Chocolate Hexen": {
+        "preview": "images/previews/hhexen.png"
+    }, 
+    "Chocolate doom": {
+        "preview": "images/previews/chocolate_doom.png"
+    }, 
+    "Chocolate strife": {
+        "preview": "images/previews/chocolate_strife.png"
+    }, 
+    "Chroma": {
+        "preview": "images/previews/chroma.png"
+    }, 
+    "Commander": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/commander.png"
+    }, 
+    "Digger": {
+        "preview": "images/previews/digger.png"
+    }, 
+    "Dlight": {
+        "preview": "images/previews/dlight.png"
+    }, 
+    "Drillux": {
+        "preview": "images/previews/mrdrillux.png"
+    }, 
+    "EDuke32": {
+        "preview": "images/previews/eduke32.jpg"
+    }, 
+    "FBA": {
+        "background": "images/tft/backgrounds/fba.png", 
+        "folderIcon": "images/tft/icons/fba.png", 
+        "icon": "images/tft/systems/fba.png"
+    }, 
+    "Falling time": {
+        "icon": ".", 
+        "preview": "images/previews/fallingtime.png"
+    }, 
+    "Favourites": {
+        "background": "images/tft/backgrounds/ports_art_blur.png", 
+        "folderIcon": "theme/defaultFolderIcon.png", 
+        "icon": "images/tft/systems/favourites.png"
+    }, 
+    "Ffplay": {
+        "icon": ".", 
+        "preview": "."
+    }, 
+    "GB": {
+        "background": "images/tft/backgrounds/gb.png", 
+        "folderIcon": "images/tft/icons/gb.png", 
+        "icon": "images/tft/systems/gb.png"
+    }, 
+    "GBA": {
+        "background": "images/tft/backgrounds/gba.png", 
+        "folderIcon": "images/tft/icons/gba.png", 
+        "icon": "images/tft/systems/gba.png"
+    }, 
+    "GBC": {
+        "background": "images/tft/backgrounds/gbc.png", 
+        "folderIcon": "images/tft/icons/gbc.png", 
+        "icon": "images/tft/systems/gbc.png"
+    }, 
+    "GG": {
+        "background": "images/tft/backgrounds/gg.png", 
+        "folderIcon": "images/tft/icons/gg.png", 
+        "icon": "images/tft/systems/gg.png"
+    }, 
+    "GMU": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/gmu.png"
+    }, 
+    "Ganbare": {
+        "preview": "images/previews/ganbare.png"
+    }, 
+    "Glutexto": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/glutexto.png"
+    }, 
+    "Hex-a-hop": {
+        "icon": ".", 
+        "preview": "images/previews/hex-a-hop.png"
+    }, 
+    "Homing": {
+        "preview": "images/previews/homing.png"
+    }, 
+    "Hydra castle": {
+        "icon": ".", 
+        "preview": "images/previews/hydracastle.png"
+    }, 
+    "INTV": {
+        "background": "images/tft/backgrounds/int.png", 
+        "folderIcon": "images/tft/icons/int.png", 
+        "icon": "images/tft/systems/int.png"
+    }, 
+    "JinYong": {
+        "preview": "images/previews/jinyong_legend.png"
+    }, 
+    "Just4Qix": {
+        "preview": "images/previews/just4qix.png"
+    }, 
+    "KETM": {
+        "preview": "images/previews/ketm.png"
+    }, 
+    "King of fighters": {
+        "icon": ".", 
+        "preview": "images/previews/kof.png"
+    }, 
+    "Kobo deluxe": {
+        "icon": ".", 
+        "preview": "images/previews/kobo-deluxe.png"
+    }, 
+    "LNX": {
+        "background": "images/tft/backgrounds/lynx.png", 
+        "folderIcon": "images/tft/icons/lynx.png", 
+        "icon": "images/tft/systems/lynx.png"
+    }, 
+    "Last Played": {
+        "background": "images/tft/backgrounds/ports_art_blur.png", 
+        "icon": "images/tft/systems/auto-lastplayed.png"
+    }, 
+    "MAME": {
+        "background": "images/tft/backgrounds/mame.png", 
+        "folderIcon": "images/tft/icons/fba.png", 
+        "icon": "images/tft/systems/mame.png"
+    }, 
+    "MSX": {
+        "background": "images/tft/backgrounds/msx.png", 
+        "folderIcon": "None", 
+        "icon": "images/tft/systems/msx.png"
+    }, 
+    "Meritous": {
+        "preview": "images/previews/meritous.png"
+    }, 
+    "Mission": {
+        "preview": "images/previews/lastmission.png"
+    }, 
+    "NES": {
+        "background": "images/tft/backgrounds/nes.png", 
+        "folderIcon": "images/tft/icons/nes.png", 
+        "icon": "images/tft/systems/nes.png"
+    }, 
+    "NGP": {
+        "background": "images/tft/backgrounds/ngp.png", 
+        "folderIcon": "images/tft/icons/ngp.png", 
+        "icon": "images/tft/systems/ngp.png"
+    }, 
+    "NGPC": {
+        "background": "images/tft/backgrounds/ngp.png", 
+        "folderIcon": "images/tft/icons/ngp.png", 
+        "icon": "images/tft/systems/ngpc.png"
+    }, 
+    "Noiz2sa": {
+        "preview": "images/previews/noiz2sa.png"
+    }, 
+    "O2xIV": {
+        "preview": "/mnt/game/gmenu2x/skins/Default/icons/o2xiv.png"
+    }, 
+    "OpenJazz": {
+        "preview": "images/previews/openjazz.png"
+    }, 
+    "OpenTitus": {
+        "preview": "images/previews/opentitus.png"
+    }, 
+    "OpenTyrian": {
+        "preview": "images/previews/opentyrian.png"
+    }, 
+    "Overheated": {
+        "preview": "images/previews/overheated.png"
+    }, 
+    "PAK": {
+        "background": "images/tft/backgrounds/openbor.png", 
+        "folderIcon": "images/tft/icons/openbor.png", 
+        "icon": "images/tft/systems/openbor.png"
+    }, 
+    "PC": {
+        "background": "images/tft/backgrounds/pc.png", 
+        "folderIcon": "images/tft/icons/pc.png", 
+        "icon": "images/tft/systems/pc.png"
+    }, 
+    "PC98": {
+        "background": "images/tft/backgrounds/cpc.png", 
+        "folderIcon": "images/pixel97/icons/pc98.png", 
+        "icon": "images/pixel97/systems/pc98.png", 
+        "preview": "images/pixel97/systems/pc98.png"
+    }, 
+    "PCE": {
+        "background": "images/tft/backgrounds/pce.png", 
+        "folderIcon": "images/tft/icons/pce.png", 
+        "icon": "images/tft/systems/pce.png"
+    }, 
+    "PSX": {
+        "background": "images/tft/backgrounds/psx.png", 
+        "folderIcon": "images/tft/icons/psx.png", 
+        "icon": "images/tft/systems/psx.png"
+    }, 
+    "Pang": {
+        "preview": "images/previews/pang.png"
+    }, 
+    "PokeMini": {
+        "background": "images/tft/backgrounds/pokemini.png", 
+        "folderIcon": "images/tft/icons/pokemini.png", 
+        "icon": "images/tft/systems/pokemini.png"
+    }, 
+    "Pokemini": {
+        "background": "images/tft/backgrounds/pokemini.png", 
+        "folderIcon": "images/tft/icons/pokemini.png", 
+        "icon": "images/tft/systems/pokemini.png"
+    }, 
+    "Ports": {
+        "background": "images/tft/backgrounds/ports2_art_blur.png", 
+        "icon": "images/tft/systems/ports.png"
+    }, 
+    "Powermanga": {
+        "icon": ".", 
+        "preview": "images/previews/powermanga.png"
+    }, 
+    "Prince": {
+        "icon": ".", 
+        "preview": "images/previews/prince.png"
+    }, 
+    "Profa": {
+        "preview": "images/previews/profadeluxe.png"
+    }, 
+    "Puzzletube": {
+        "preview": "images/previews/puzzletube.png"
+    }, 
+    "PyMenu": {}, 
+    "Quake": {
+        "preview": "images/previews/quake.png"
+    }, 
+    "Reminiscence": {
+        "preview": "images/previews/reminiscence.png"
+    }, 
+    "Rockbot": {
+        "preview": "images/previews/rockbot.png"
+    }, 
+    "Rott full": {
+        "preview": "images/previews/rott.png"
+    }, 
+    "Rott sw": {
+        "preview": "images/previews/rott.png"
+    }, 
+    "SCUMMVM": {
+        "background": "images/tft/backgrounds/scummvm.png", 
+        "folderIcon": "images/tft/icons/scummvm.png", 
+        "icon": "images/tft/systems/scummvm.png"
+    }, 
+    "SDLPAL": {
+        "preview": "images/previews/sdlpal.png"
+    }, 
+    "SMD": {
+        "background": "images/tft/backgrounds/megadrive.png", 
+        "folderIcon": "images/tft/icons/megadrive.png", 
+        "icon": "images/tft/systems/megadrive.png", 
+        "preview": "."
+    }, 
+    "SMS": {
+        "background": "images/tft/backgrounds/sms.png", 
+        "folderIcon": "images/tft/icons/sms.png", 
+        "icon": "images/tft/systems/sms.png"
+    }, 
+    "SMW": {
+        "preview": "images/previews/smw.png"
+    }, 
+    "SNES": {
+        "background": "images/tft/backgrounds/snes.png", 
+        "folderIcon": "images/tft/icons/snes.png", 
+        "icon": "images/tft/systems/snes.png"
+    }, 
+    "SNK": {
+        "background": "images/tft/backgrounds/neogeo.png", 
+        "folderIcon": "images/tft/icons/neogeo.png", 
+        "icon": "images/tft/systems/neogeo.png"
+    }, 
+    "SORR": {
+        "preview": "images/previews/sorr.png"
+    }, 
+    "SZX": {
+        "background": "images/tft/backgrounds/zxs.png", 
+        "folderIcon": "images/tft/icons/zxs.png", 
+        "icon": "images/tft/systems/zxs.png"
+    }, 
+    "Shifty": {
+        "preview": "images/previews/shifty.png"
+    }, 
+    "Shisen": {
+        "preview": "images/previews/shisen.png"
+    }, 
+    "Snowman": {
+        "preview": "images/previews/snowman.png"
+    }, 
+    "Spartak": {
+        "preview": "images/previews/spartak.png"
+    }, 
+    "Spout": {
+        "preview": "images/previews/spout.png"
+    }, 
+    "SuperTux": {
+        "preview": "images/previews/supertux.png"
+    }, 
+    "Tileworld": {
+        "preview": "images/previews/tileworld.png"
+    }, 
+    "Transball": {
+        "preview": "images/previews/stransball2.png"
+    }, 
+    "Triple": {
+        "preview": "images/previews/triple.png"
+    }, 
+    "WS": {
+        "background": "images/tft/backgrounds/ws.png", 
+        "folderIcon": "images/tft/icons/ws.png", 
+        "icon": "images/tft/systems/ws.png"
+    }, 
+    "WSC": {
+        "background": "images/tft/backgrounds/wsc.png", 
+        "folderIcon": "images/tft/icons/wsc.png", 
+        "icon": "images/tft/systems/wsc.png"
+    }, 
+    "Wizznic": {
+        "preview": "images/previews/wizznic.png"
+    }, 
+    "Wolf3D full": {
+        "preview": "images/previews/wolf3d.png"
+    }, 
+    "Wolf3D sw": {
+        "preview": "images/previews/wolf3d.png"
+    }, 
+    "Zelda": {
+        "preview": "images/previews/zelda_roth.png"
+    }, 
+    "freeblocks": {
+        "icon": ".", 
+        "preview": "images/previews/freeblocks.png"
+    }
+}
