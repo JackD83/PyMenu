@@ -130,7 +130,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/gg/previews", 
             "selectionPath": "/home/retrofw/roms/gg", 
-            "system": "sms_sdl,05gg", 
+            "system": "sms_sdl,05gg,picodrive", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": false, 
