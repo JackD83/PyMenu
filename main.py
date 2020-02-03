@@ -37,7 +37,7 @@ def init():
     Common.mountSD(True)
 
     # try:
-    #     if(not Configuration.isRG350()):
+    #     if(not Configuration.isOpenDinguX()):
     #         os.system('/usr/bin/retrofw network on')
     # except Exception as ex:
     #     pass

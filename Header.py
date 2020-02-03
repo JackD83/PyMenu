@@ -96,10 +96,10 @@ class Header():
 
         try:
 
-            if(not Configuration.isRG350()):
+            if(not Configuration.isOpenDinguX()):
                 self.usbDevice = open("/sys/devices/platform/musb_hdrc.0/uh_cable", "r")
             
-            if(Configuration.isRG350()):
+            if(Configuration.isOpenDinguX()):
                 self.battery = open("/sys/class/power_supply/battery/voltage_now", "r")
                 self.usbDevice = open("/sys/devices/platform/gpio-charger.1/power_supply/usb/online", "r")
             else:

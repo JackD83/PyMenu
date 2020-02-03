@@ -102,7 +102,7 @@ def loadImage(path):
     return  pygame.Surface((1,1),pygame.SRCALPHA)
 
 def getFPS():
-    if(Configuration.isRS97() or platform.processor() == ""):
+    if(Configuration.isRetroFW() or platform.processor() == ""):
        return 30
     else:
        return 20

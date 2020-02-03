@@ -14,7 +14,7 @@ import OPKHelper
 configuration = None
 theme = None
 listeners = []
-types = ["RS97", "RS07", "K3P", "RG350"]
+types = ["RetroFW", "OpenDinguX"]
 
 currentTheme = {}
 
@@ -60,7 +60,7 @@ def initOPK():
             
                 for desktop in meta:
 
-                    if(isRG350()):
+                    if(isOpenDinguX()):
                         if("gcw0" not in desktop):
                             continue
                     else:
@@ -135,15 +135,15 @@ def reloadConfiguration(upgrade=True):
     configuration = json.load(open('config/config.json'))
 
     initLinks()
-    if(isRG350()):
+    if(isOpenDinguX()):
         initOPK()
 
     if("version" not in configuration):
         configuration["version"] = "0"
 
     if("type" not in configuration or configuration["type"] not in types):
-        print("forcing type to RS97")
-        configuration["type"] = "RS97"
+        print("forcing type to RetroFW")
+        configuration["type"] = "RetroFW"
 
     if("themeName" not in configuration["options"]):
         configuration["options"]["themeName"] = "default"
@@ -659,17 +659,20 @@ def loadLastPlayed():
 
 
 def setResolution():
-    global configuration
+    #don't set resolution, use resolution from config
+    pass
 
-    if(isRS97() or isRG350()):
-        configuration["screenWidth"] = 320
-        configuration["screenHeight"] = 240
+    # global configuration
+
+    # if(isRetroFW() or isOpenDinguX()):
+    #     configuration["screenWidth"] = 320
+    #     configuration["screenHeight"] = 240
 
 
-    #RS07 & K3P
-    else:
-        configuration["screenWidth"] = 480
-        configuration["screenHeight"] = 272
+    # #RS07 & K3P
+    # else:
+    #     configuration["screenWidth"] = 480
+    #     configuration["screenHeight"] = 272
 
 def saveConfiguration():
     global configuration
@@ -744,11 +747,11 @@ def toColor(input):
     return make_tuple(input)
 
 
-def isRS97():
-    return "type" in configuration and configuration["type"] == "RS97"
+def isRetroFW():
+    return "type" in configuration and configuration["type"] == "RetroFW"
 
-def isRG350():
-    return "type" in configuration and configuration["type"] == "RG350"
+def isOpenDinguX():
+    return "type" in configuration and configuration["type"] == "OpenDinguX"
 
 
 def addConfigChangedCallback(listener):

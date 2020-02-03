@@ -64,7 +64,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
     main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
 
-    if(overclock != None and not Configuration.isRG350()):
+    if(overclock != None and not Configuration.isOpenDinguX()):
         try:
            Overclock.setClock(overclock)
         except Exception as ex:

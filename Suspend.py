@@ -32,7 +32,7 @@ class Suspend():
       
 
     def disableScreen(self):   
-        if(Configuration.isRG350()):
+        if(Configuration.isOpenDinguX()):
             return
 
         os.system('echo 0 > /proc/jz/backlight')
@@ -40,7 +40,7 @@ class Suspend():
         TaskHandler.removePeriodicTask(self.brightnessTaskId)
 
     def restoreScreen(self):
-        if(Configuration.isRG350()):
+        if(Configuration.isOpenDinguX()):
             return
 
         if(self.displayDark):

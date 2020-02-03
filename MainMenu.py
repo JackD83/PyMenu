@@ -152,7 +152,7 @@ class MainMenu(RenderObject.RenderObject):
         RenderControl.setDirty()
 
     def openPowerMenu(self):
-        if(Configuration.isRG350()):
+        if(Configuration.isOpenDinguX()):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
         else:
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "Start Network", "Run Gmenu2x"], self.contextMenuCallback)
@@ -185,7 +185,7 @@ class MainMenu(RenderObject.RenderObject):
                     theme["names"].append(item.replace(".json", ""))
 
         #filter options to show only the relevant ones
-        if(Configuration.isRG350()):
+        if(Configuration.isOpenDinguX()):
             options = Common.removeOptionsEntries(options, ["displayTimeout", "suspendTimeout", "volumeControl","defaultVolume"])
 
         if(self.config["type"] != "K3P"):
@@ -364,7 +364,7 @@ class MainMenu(RenderObject.RenderObject):
                 conf = json.load(open('config/native.json'))
 
             #rg350 does not support individual overclocking, remove option
-            if(Configuration.isRG350()):
+            if(Configuration.isOpenDinguX()):
                 for opt in conf:
                     if(opt["id"] == "overclock" ):
                         conf.remove(opt)
@@ -610,7 +610,7 @@ class MainMenu(RenderObject.RenderObject):
             RenderControl.setDirty() 
 
         #transition next
-        if(self.inTransition and self.transitionOffset != 0 and not Configuration.isRS97() and not Configuration.isRG350()):
+        if(self.inTransition and self.transitionOffset != 0 and self.config["screenWidth"] > 320):
             index = 0  
             offset = 0
             if(self.transitionOffset > 0):
@@ -622,7 +622,7 @@ class MainMenu(RenderObject.RenderObject):
                 offset = self.config["screenWidth"] - self.systems[self.currentIndex].get_width() + self.systemOffset
 
             if(self.systems[index] is not None and self.systems[index] is not None):
-                screen.blit(self.systems[index], (offset + self.transitionOffset + self.systemIconOffet, 40 + 80  -self.systems[index].get_height() / 2 ))
+                screen.blit(self.systems[index], (offset + self.transitionOffset + self.systemIconOffet, 40 + banderoleYOffset  -self.systems[index].get_height() / 2 ))
             else:            
                 RenderControl.setDirty()
 

@@ -554,11 +554,11 @@
         "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "tft", 
+        "themeName": "pixel", 
         "volumeControl": false
     }, 
-    "screenHeight": 240, 
-    "screenWidth": 320, 
+    "screenHeight": 272, 
+    "screenWidth": 480, 
     "type": "RG350", 
     "version": "1.5.8"
 }

@@ -15,7 +15,7 @@ cp -r ../config tmp/data/pymenu/
 rm tmp/data/pymenu/config/lastPlayedData.json 2> /dev/null
 rm tmp/data/pymenu/config/favourites.json 2> /dev/null
 rm tmp/data/pymenu/config/config.json 2> /dev/null
-mv tmp/data/pymenu/config/config_RG350.json tmp/data/pymenu/config/config.json
+mv tmp/data/pymenu/config/config_OpenDinguX.json tmp/data/pymenu/config/config.json
 
 
 cp -r ../images tmp/data/pymenu/
