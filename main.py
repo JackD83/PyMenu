@@ -59,6 +59,9 @@ def init():
                 pygame.quit()            
                 sys.exit()
 
+            if event.type == pygame.KEYDOWN:
+                print(event.scancode, event.key, event.unicode)
+
         suspend.handleEvents(events)
         renderObject.handleEvents(events)
         brightness.handleEvents(events)

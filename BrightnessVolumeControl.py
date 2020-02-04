@@ -10,8 +10,6 @@ class BrightnessVolume(RenderObject.RenderObject):
     brightSymbol = textFont.render(u"\u26ef", True, (255,255,255))
     volSymbol = Common.loadCachedImage("theme/speaker.png")
 
-    BRIGHTNESS_LEVELS = [10,30,50,70,100]
-    brightnessIndex = 0
    
     showBrightness = False
     showVolume = False
@@ -19,6 +17,7 @@ class BrightnessVolume(RenderObject.RenderObject):
     menuAlpha = 255
 
     currentVolumeLevel = 0
+    currentBrightnessLevel = 0
 
     width = 200
     height = 30
@@ -39,8 +38,9 @@ class BrightnessVolume(RenderObject.RenderObject):
               
 
             if(self.showBrightness):
-                barWidth =  (self.width - 40) / len(self.BRIGHTNESS_LEVELS) * self.brightnessIndex
-                if(self.brightnessIndex == 0):
+                barWidth =  (self.width - 80) * self.currentBrightnessLevel / 100
+          
+                if(self.currentBrightnessLevel <= 5):
                     barWidth = 5  
             else:
                 barWidth =  (self.width - 80) * self.currentVolumeLevel / 100
@@ -80,7 +80,7 @@ class BrightnessVolume(RenderObject.RenderObject):
         for event in events:    
             if event.type == pygame.KEYUP:         
                 if event.key == Keys.DINGOO_BUTTON_BRIGHTNESS:
-                    self.adjustBrightness()
+                    self.updateBrightness()
                 if event.key == Keys.DINGOO_BUTTON_VOL_DOWN:
                    
                     self.volumeDown()
@@ -116,45 +116,38 @@ class BrightnessVolume(RenderObject.RenderObject):
         
         RenderControl.setDirty()
       
-                
-    def adjustBrightness(self):
-        self.brightnessIndex = self.brightnessIndex + 1
-        if(self.brightnessIndex >= len(self.BRIGHTNESS_LEVELS)):
-            self.brightnessIndex = 0
 
-        level = self.BRIGHTNESS_LEVELS[self.brightnessIndex]    
-        thread = Thread(target = self.setBrightness, args = (level,))
-        thread.start()     
-            
-
+    def updateBrightness(self):
+        self.currentBrightnessLevel = self.getCurrentBrightness()   
+       
         self.showBrightness = True
         self.showVolume = False
        
         self.resetAnimation()
-       
 
-    def setBrightness(self, level, store=True):
-        if(Configuration.isOpenDinguX()):
-            return
-
-        print("Setting brightness " + str(level))
-        
-        os.system('echo ' + str(level)  +  ' > /proc/jz/backlight')
-        
-        if(store):
-            self.config["lcd_backlight"] = level
-            Configuration.saveConfiguration()
+    
+    def getCurrentBrightness(self):
+        try:
+            with open("/proc/jz/backlight") as f:
+                bright = f.readlines()
+                
+               
+                return int(float(str(bright[0])))
+        except Exception as ex:
+            print("Could not get brightness: " + str(ex))
+            return 0
 
 
     def getCurrentVolume(self):
         try:
             with open("config/volume.cfg") as f:
                 vol = f.readlines()
+              
                
                 return int(float(str(vol[0])))
         except Exception as ex:
             print("Could not get volume: " + str(ex))
-            return 0; 
+            return 0
 
     def initVolume(self):
         if(Configuration.isOpenDinguX()):
@@ -173,12 +166,10 @@ class BrightnessVolume(RenderObject.RenderObject):
             print("Setting volume to " + str(self.config["options"]["defaultVolume"]))
             os.system('./setVolume ' + str(self.config["options"]["defaultVolume"]))
 
-    def __init__(self):
-        if("lcd_backlight" in self.config and self.config["lcd_backlight"] in self.BRIGHTNESS_LEVELS):
-            self.brightnessIndex = self.BRIGHTNESS_LEVELS.index(self.config["lcd_backlight"])
-            self.setBrightness(self.config["lcd_backlight"], False)        
-        else:
-            self.setBrightness(30)       
+    def __init__(self):  
 
         self.initVolume()
+
+        if(Configuration.isRetroFW()):
+            self.currentBrightnessLevel = self.getCurrentBrightness()
 

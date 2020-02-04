@@ -2,7 +2,7 @@
     "batteryHigh": 3900000, 
     "batteryLow": 3300000, 
     "firstStart": false, 
-    "lcd_backlight": 70, 
+    "lcd_backlight": 10, 
     "linkPath": "/media/data/local/home/.gmenu2x/sections", 
     "mainMenu": [
         {
@@ -559,6 +559,6 @@
     }, 
     "screenHeight": 272, 
     "screenWidth": 480, 
-    "type": "RG350", 
+    "type": "RetroFW", 
     "version": "1.5.8"
 }
