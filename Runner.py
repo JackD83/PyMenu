@@ -3,12 +3,17 @@ import platform,copy, json, Common, InfoOverlay
 import sys, os, stat, Overclock
 import TaskHandler
 import Configuration
+import Theme
 
 
 
 def setMainMenu(MainMenu):
     global main
     main = MainMenu
+
+def showLaunchImage():
+    launchImage =  Theme.getValue("launchImage","theme/launch.png")
+    main.setOverlay(InfoOverlay.InfoOverlay(launchImage, None))
 
 
 
@@ -62,7 +67,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
 
-    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+    showLaunchImage()
 
     if(overclock != None and not Configuration.isOpenDinguX()):
         try:
@@ -75,7 +80,7 @@ def runEmuMIPS(name, cmd, workdir, config, rom):
 
 def runEmuHost(name, cmd, workdir, config, rom):  
     print("run emu " + cmd + " " + name + " with file " + rom + " cwd " +workdir)
-    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+    showLaunchImage()
     try:
         subprocess.Popen([cmd, rom ], cwd=workdir)
     except Exception as ex:
@@ -127,7 +132,7 @@ def runNativeMIPS(cmd, config):
     st = os.stat('/tmp/' + fileName)
     os.chmod('/tmp/' + fileName, st.st_mode | stat.S_IEXEC)
 
-    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+    showLaunchImage()
 
     if(overclock != None):
         try:
@@ -140,7 +145,7 @@ def runNativeMIPS(cmd, config):
 
 def runNativeHost(cmd, config):
     selection = overclock = config["selection"] if "selection" in config else ""   
-    main.setOverlay(InfoOverlay.InfoOverlay("theme/launch.png", None))
+    showLaunchImage()
     try:
         subprocess.Popen([cmd, selection])
     except Exception as ex:

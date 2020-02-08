@@ -557,8 +557,8 @@
         "themeName": "pixel", 
         "volumeControl": false
     }, 
-    "screenHeight": 272, 
-    "screenWidth": 480, 
+    "screenHeight": 240, 
+    "screenWidth": 320, 
     "type": "RetroFW", 
     "version": "1.5.8"
 }

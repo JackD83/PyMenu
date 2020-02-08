@@ -33,7 +33,7 @@
             "overclock": "624", 
             "previews": "/home/retrofw/roms/snes/previews", 
             "selectionPath": "/home/retrofw/roms/snes", 
-            "system": "snes,04sfc", 
+            "system": "snes,04sfc,pocketsnes", 
             "type": "emulator", 
             "useFileFilter": false, 
             "useGamelist": false, 
