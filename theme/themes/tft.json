@@ -8,21 +8,38 @@
                     "color_select": "(255,255,255, 0)"
                 },
                 "iconColor" : "(255,255,255,120)",
-                "iconColor_select" : "(255,0,255,120)"
+                "iconColor_select" : "(255,255,255,255)"
 
             },
-        
-            "header": {
-                "color": "(0,0,0,0)"
+            "settings" : {
+                "header" : {
+                    "color": "(57,58,59)",
+                    "fontColor" :"(255,255,255)",
+                    "descriptionFontColor" :"(255,255,255)"
+                },
+                "footer": {
+                    "color" :"(57,58,59)",
+                    "fontColor" : "(255,255,255)"
+                },
+                "backgroundColor":  "(0,0,0)",
+                "fontColor" : "(255,255,255)",
+                "selectionColor" : "(55,55,55,120)",
+                "sideColor" : "(57,58,59)"
             },
-            
-            "footer": {
-                "color": "(57,58,59)"
-            },
-            "selection": {
-                "backgroundColor":  "(255,255,255, 190)",
-                "sideColor": "(57,58,59)"
-
+            "selection" : {
+                "header" : {
+                    "color": "(0,58,59)",
+                    "fontColor" :"(0,255,255)",
+                    "descriptionFontColor" :"(0,255,255)"
+                },
+                "footer": {
+                    "color" :"(0,58,59)",
+                    "fontColor" : "(0,255,255)"
+                },
+                "backgroundColor":  "(0,0,0)",
+                "fontColor" : "(0,255,255)",
+                "selectionColor" : "(0,55,55,120)",
+                "sideColor" : "(0,58,59)"
             }
             
     },

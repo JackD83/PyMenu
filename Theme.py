@@ -23,4 +23,32 @@ def getValue(path, default):
     except Exception as ex:
         return default
 
+def getConfigOptions():
+    opt =  {}
+    opt["backgroundColor"] = getColor("settings/backgroundColor", (0,0,0))
+    opt["textColor"] = getColor("settings/fontColor", (255,255,255))
+    opt["sideColor"] = getColor("settings/sideCOlor", (57,58,59))
+
+    opt["headerColor"] = getColor("settings/header/color",(57,58,59))
+    opt["headerFontColor"] = getColor("settings/header/fontColor", (255,255,255))
+    opt["descriptionFontColor"] = getColor("settings/header/descriptionFontColor", (255,255,255))
+    opt["selectionColor"] = getColor("settings/selectionColor", (255,255,255,128))
+    opt["footerColor"]  = getColor("settings/footer/color", (57,58,59))
+    opt["footerFontColor"]  = getColor("settings/footer/fontColor", (255,255,255))
+
+    return opt
+
+def getSelectionOptions():
+    options = {}
+    options["backgroundColor"] = getColor("selection/backgroundColor", (0,0,0))
+    options["textColor"] = getColor("selection/fontColor", (255,255,255))
+    options["sideColor"] = getColor("selection/sideColor", (57,58,59))
+    options["headerColor"] = getColor("selection/header/color",(57,58,59))
+    options["headerFontColor"] = getColor("selection/header/fontColor", (255,255,255))
+    options["descriptionFontColor"] = getColor("selection/header/descriptionFontColor", (255,255,255))
+    options["selectionColor"] = getColor("selection/selectionColor", (255,255,255,128))
+    options["footerColor"] =  getColor("selection/footer/color", (57,58,59))
+    options["footerFontColor"] = getColor("selection/footer/fontColor", (255,255,255))
+
+    return options
 

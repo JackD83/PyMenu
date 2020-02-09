@@ -192,11 +192,16 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.config["type"] != "K3P"):
             options = Common.removeOptionsEntries(options, ["volumeControl"])
+        
+
+        opt = Theme.getConfigOptions()
 
 
-        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings (PyMenu v" + str(self.config["version"]) + ")",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "General Settings (PyMenu v" + str(self.config["version"]) + ")", opt , \
                                         Configuration.getPathData("options"), options ,self.configCallback)
-        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+
+       
+        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], opt["footerFontColor"],opt["footerColor"] ) 
         self.subComponent.setFooter(footer)
         RenderControl.setDirty()   
 
@@ -265,6 +270,9 @@ class MainMenu(RenderObject.RenderObject):
         print("Opening selection")       
         ResumeHandler.setLastUsedMain(current, self.currentIndex)
 
+        options = Theme.getSelectionOptions()
+
+
         if(current["type"] == "emulator"):            
 
             if("useSelection" in current and current["useSelection"] == False):
@@ -274,7 +282,7 @@ class MainMenu(RenderObject.RenderObject):
 
 
             print("Opening emulator file selection")
-            options = {}
+           
             options["entry"] = self.config["mainMenu"][self.currentIndex]
             options["textColor"] = (55,55,55)
             options["background"] = current["background"]
@@ -308,31 +316,30 @@ class MainMenu(RenderObject.RenderObject):
             options["selectionPath"] = current["selectionPath"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, current["name"], current["selectionPath"], False, options, self.emulatorCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"),("theme/start_button.png", "Open with"), ("theme/a_button.png", "select")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"),("theme/start_button.png", "Open with"), ("theme/a_button.png", "select")], options["footerFontColor"],options["footerColor"] ) 
             self.subComponent.setFooter(footer)
                
                      
         if(current["type"] == "native"):
             print("Opening native selection")
-            options = {}
+          
             options["background"] = current["background"]
             options["useSidebar"] = True
 
-            
-            options["backgroundColor"] = Theme.getColor("selection/backgroundColor", (255,255,255,160))
 
             if("linkPath" in current):
                 options["linkPath"] = current["linkPath"]
          
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.nativeCallback)
             if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"] ):
-                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")], (255,255,255)) 
+                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select"), ("theme/select_button.png", "options")],options["footerFontColor"], options["footerColor"]) 
             else:
-                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+                footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], options["footerFontColor"], options["footerFontColor"]) 
             self.subComponent.setFooter(footer)
+
         if(current["type"] == "lastPlayed" or current["type"] == "favourites"):
             print("Opening customList selection")
-            options = {}
+          
             options["background"] = current["background"]
             options["useSidebar"] = True
             options["type"] = current["type"]
@@ -341,7 +348,7 @@ class MainMenu(RenderObject.RenderObject):
             options["backgroundColor"] = Theme.getColor("selection/backgroundColor", (255,255,255,160))
 
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.customListCallback)        
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")],options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)  
 
     def nativeCallback(self, selection):
@@ -380,11 +387,12 @@ class MainMenu(RenderObject.RenderObject):
                     if(opt["id"] == "overclock" ):
                         conf.remove(opt)
                         break
-                     
 
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
+            opt = Theme.getConfigOptions()
+
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit menu entry",opt, \
                                         self.config["mainMenu"][self.currentIndex] ,conf ,self.addEditCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")],opt["footerFontColor"],opt["footerColor"]) 
             self.subComponent.setFooter(footer)
         if(optionID == 2):
             self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
@@ -404,9 +412,12 @@ class MainMenu(RenderObject.RenderObject):
             data = self.getEmptyNativeData()
             conf = json.load(open('config/native.json'))
 
-        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new menu entry",{"textColor":(255,255,255), "backgroundColor":(0,0,0)}, \
+
+        opt = Theme.getConfigOptions()
+
+        self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new menu entry",opt, \
                                    data ,conf ,self.addEditCallback)
-        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+        footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")],opt["footerFontColor"],opt["footerColor"]) 
         self.subComponent.setFooter(footer)
        
 

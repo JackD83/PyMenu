@@ -1,6 +1,7 @@
 import RenderObject, Configuration, AbstractList, TextInput,SelectionMenu,FileChooser, Footer
 import os, RenderControl, Keys, EmulatorList, SelectionList
 import pygame, sys, ntpath, copy
+import Theme
 
 from operator import itemgetter
 
@@ -39,13 +40,13 @@ class ConfigMenu(AbstractList.AbstractList):
         if(self.entryList[self.currentIndex]["type"] == "boolean"):
            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
         if(self.entryList[self.currentIndex]["type"] == "folder"):
-            options = {}   
+            options = Theme.getSelectionOptions()   
             options["preview"] = False        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], True, options, self.fileFolderCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "enter"), ("theme/start_button.png", "save")], (255,255,255)) 
             self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
-            options = {}   
+            options = Theme.getSelectionOptions()   
             options["preview"] = False  
 
             if("filter" in self.entryList[self.currentIndex]["options"]):
@@ -55,7 +56,7 @@ class ConfigMenu(AbstractList.AbstractList):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer) 
         if(self.entryList[self.currentIndex]["type"] == "image"):
-            options = {}   
+            options = Theme.getSelectionOptions()   
             options["preview"] = True
             options["useSidebar"] = True
             options["directPreview"] = True 
@@ -71,7 +72,7 @@ class ConfigMenu(AbstractList.AbstractList):
             else:
                 self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
         if(self.entryList[self.currentIndex]["type"] == "emu"):
-            options = {}
+            options = Theme.getSelectionOptions()
             options["useSidebar"] = False
 
             
@@ -90,7 +91,7 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.setFooter(footer)
             
         if(self.entryList[self.currentIndex]["type"] == "selection"):
-            options = {}
+            options = Theme.getSelectionOptions()
             options["useSidebar"] = False
             options["names"] = self.entryList[self.currentIndex]["options"]["names"]
             options["options"] = self.entryList[self.currentIndex]["options"]["options"]

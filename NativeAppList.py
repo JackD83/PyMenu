@@ -4,6 +4,7 @@ import pygame, sys, ResumeHandler, os
 import platform
 import json
 from operator import itemgetter
+import Theme
 
 class NativeAppList(AbstractList.AbstractList):
    
@@ -50,7 +51,7 @@ class NativeAppList(AbstractList.AbstractList):
         self.callback(None)    
 
     def openSelection(self):        
-        options = {}
+        options = Theme.getSelectionOptions()
         options["textColor"] = (55,55,55)
         options["background"] = self.options["background"]
         options["useSidebar"] = False
@@ -173,18 +174,21 @@ class NativeAppList(AbstractList.AbstractList):
    
     def optionsCallback(self, selection, text):           
         self.overlay = None
-          
-     
+
+        opt = Theme.getConfigOptions()
+      
+   
         if(text == "add"):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",{"textColor":(55,55,55), "backgroundColor":(221,221,221), "useSidebar":True}, \
+            opt["useSidebar"] = True
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Add new link",opt, \
                                         self.getEmptyData() ,self.configOptions ,self.addEditCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], opt["footerFontColor"],opt["footerColor"]) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
         if(text == "edit"):
-            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",{"textColor":(55,55,55), "backgroundColor":(221,221,221)}, \
+            self.subComponent = ConfigMenu.ConfigMenu(self.screen, "Edit link",opt, \
                                         self.currentSelection ,self.configOptions ,self.addEditCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")],opt["footerFontColor"],opt["footerColor"]) 
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
         if(text == "remove"):

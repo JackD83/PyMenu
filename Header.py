@@ -21,7 +21,7 @@ class Header():
 
     def updateHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight),pygame.SRCALPHA)
-        self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
+        #self.header.fill(Configuration.toColor(self.theme["header"]["color"]))
 
         self.currentBatteryImage = self.getCurrentBatteryImage()
 

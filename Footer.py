@@ -13,6 +13,7 @@ class Footer(RenderObject.RenderObject):
     spacing = 6
     yPos = config["screenHeight"] - footerHeight
     enabled = True
+    footerColor = None
 
     def getHeight(self):
         return self.footerHeight
@@ -29,7 +30,7 @@ class Footer(RenderObject.RenderObject):
 
     def initFooter(self):
         self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight))
-        self.footer.fill(Theme.getColor("footer/color", (57,58,59, 255)))
+        self.footer.fill(self.footerColor)
 
         leftOffset = 10
         for entry in self.left:
@@ -55,10 +56,11 @@ class Footer(RenderObject.RenderObject):
                 rightOffset = rightOffset - icon.get_width() - self.spacing
            
           
-    def __init__(self,left,right, textColor):
+    def __init__(self,left,right, textColor, footerColor=(57,58,59)):
         self.left = left
         self.right = right
         self.textColor = textColor
+        self.footerColor = footerColor
 
         self.initFooter()
       

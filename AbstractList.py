@@ -154,8 +154,8 @@ class AbstractList(RenderObject.RenderObject):
         
         if(not self.entryDescription == None):
             descriptionBox = pygame.Surface((128, 128))
-            descriptionBox.fill(Configuration.toColor(self.theme["side"]["color"]))
-            Common.blitMultilineText(descriptionBox, self.entryDescription, (0,10), self.descriptionFont, (255,255,255))
+            descriptionBox.fill(self.options["sideColor"])
+            Common.blitMultilineText(descriptionBox, self.entryDescription, (0,10), self.descriptionFont, self.options["descriptionFontColor"])
 
             return descriptionBox
 
@@ -345,9 +345,10 @@ class AbstractList(RenderObject.RenderObject):
 
     def initHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight))
-        self.header.fill(Theme.getColor("header/color", (57,58,59, 255)))
+        self.header.fill(self.options["headerColor"])
         self.initFolderIcon(self.header)
-        self.titleText = self.titleFont.render(self.title, True,(255,255,255))
+        self.titleText = self.titleFont.render(self.title, True,self.options["headerFontColor"])
+
         yOffset = 0
         if(self.titleText.get_height() < 20):
                 yOffset = ((20 - self.titleText.get_height()) / 2)
@@ -359,7 +360,7 @@ class AbstractList(RenderObject.RenderObject):
         self.header.blit(self.titleText, (x, 5 + yOffset))
 
         if("description" in self.options):
-            description = self.descriptionFont.render(self.options["description"], True,(255,255,255))
+            description = self.descriptionFont.render(self.options["description"], True, self.options["descriptionFontColor"])
             if(description.get_height() < 9):
                 yOffset = ((9 - description.get_height()) / 2)
 
@@ -368,14 +369,14 @@ class AbstractList(RenderObject.RenderObject):
     def initSidebar(self):
         self.sidebar = pygame.Surface((self.sidebarWidth, self.config["screenHeight"]))
       
-        color = Theme.getColor("selection/sideColor", (57,58,59, 255))
+        color = self.options["sideColor"]
         if(len(color) == 4):
             self.sidebar.set_alpha(color[3])
 
         self.sidebar.fill(color)
         self.initFolderIcon(self.sidebar)
 
-        self.titleText = self.titleFont.render(self.title, True,(255,255,255))
+        self.titleText = self.titleFont.render(self.title, True,self.options["headerFontColor"])
         yOffset = 0
         if(self.titleText.get_height() < 32):
                 yOffset = ((32 - self.titleText.get_height()) / 2)
@@ -387,7 +388,7 @@ class AbstractList(RenderObject.RenderObject):
         self.sidebar.blit(self.titleText, (x, 5 + yOffset))
 
         if("description" in self.options):
-            description = self.entryFont.render(self.options["description"], True,(255,255,255))
+            description = self.entryFont.render(self.options["description"], True,self.options["descriptionFontColor"])
             if(self.titleText.get_height() < 32):
                 yOffset = ((9 - description.get_height()) / 2)
 
@@ -412,8 +413,7 @@ class AbstractList(RenderObject.RenderObject):
    
     def initSelection(self):
         self.selection = pygame.Surface((self.config["screenWidth"] - self.sidebarWidth,self.listEntryHeight),pygame.SRCALPHA)
-        self.selection.fill((55,55,55, 120))
-
+        self.selection.fill(self.options["selectionColor"])
     def setFooter(self, footer):
         self.footer = footer
         self.listHeight = self.config["screenHeight"] - self.headerHeight
@@ -438,7 +438,6 @@ class AbstractList(RenderObject.RenderObject):
         self.options = options
         self.setFooter(Footer.Footer([],[],(255,255,255)))
 
-            
 
         if("textColor" in self.options):
             self.textColor = options["textColor"]
@@ -449,6 +448,22 @@ class AbstractList(RenderObject.RenderObject):
             self.backgroundColor = options["backgroundColor"]
         else:
             self.backgroundColor = (221,221,221, 160)
+          
+        if("sideColor" not in self.options):
+            self.options["sideColor"] = (57,58,59, 255)
+
+        if("headerColor" not in self.options):
+            self.options["headerColor"] = (57,58,59, 255)
+
+        if("headerFontColor" not in self.options):
+            self.options["headerFontColor"] = (255,255,255)
+
+        if("selectionColor" not in self.options):
+            self.options["selectionColor"] = (55,55,55, 120)
+            
+        if("descriptionFontColor" not in self.options):
+            self.options["descriptionFontColor"] = (255,255,255)
+
                
         self.toggleSidebar("useSidebar" in options and options["useSidebar"])
 
