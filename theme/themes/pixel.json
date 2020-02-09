@@ -1,15 +1,6 @@
 {
     "theme_settings" : {
-        
-        "header": {
-            "color": "(0,0,0,0)"
-        },
-        "side": {
-            "color": "(57,58,59, 255)"
-        },
-        "footer": {
-            "color": "(131,139,139, 200)"
-        },
+
         "launchImage" : "images/pixel97/launch.png"
   
 },

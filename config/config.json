@@ -554,11 +554,11 @@
         "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "tft", 
+        "themeName": "default", 
         "volumeControl": false
     }, 
     "screenHeight": 240, 
     "screenWidth": 320, 
     "type": "RetroFW", 
-    "version": "1.5.8"
+    "version": "2.0.0"
 }
