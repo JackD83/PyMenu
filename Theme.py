@@ -35,6 +35,7 @@ def getConfigOptions():
     opt["selectionColor"] = getColor("settings/selectionColor", (255,255,255,128))
     opt["footerColor"]  = getColor("settings/footer/color", (57,58,59))
     opt["footerFontColor"]  = getColor("settings/footer/fontColor", (255,255,255))
+    opt["scrollbarColor"]  = getColor("settings/scrollbarColor", (105,105,105))
 
     return opt
 
@@ -49,6 +50,7 @@ def getSelectionOptions():
     options["selectionColor"] = getColor("selection/selectionColor", (255,255,255,128))
     options["footerColor"] =  getColor("selection/footer/color", (57,58,59))
     options["footerFontColor"] = getColor("selection/footer/fontColor", (255,255,255))
+    options["scrollbarColor"]  = getColor("selection/scrollbarColor", (105,105,105))
 
     return options
 

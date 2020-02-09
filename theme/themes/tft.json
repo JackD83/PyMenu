@@ -24,28 +24,38 @@
                 "backgroundColor":  "(0,0,0)",
                 "fontColor" : "(255,255,255)",
                 "selectionColor" : "(55,55,55,120)",
-                "sideColor" : "(57,58,59)"
+                "sideColor" : "(57,58,59)",
+                "scrollbarColor" : "(255,255,255)"
             },
             "selection" : {
                 "header" : {
-                    "color": "(0,58,59)",
-                    "fontColor" :"(0,255,255)",
-                    "descriptionFontColor" :"(0,255,255)"
+                    "color": "(57,58,59)",
+                    "fontColor" :"(255,255,255)",
+                    "descriptionFontColor" :"(255,255,255)"
                 },
                 "footer": {
-                    "color" :"(0,58,59)",
-                    "fontColor" : "(0,255,255)"
+                    "color" :"(50,50,50)",
+                    "fontColor" : "(255,255,255)"
                 },
-                "backgroundColor":  "(0,0,0)",
-                "fontColor" : "(0,255,255)",
-                "selectionColor" : "(0,55,55,120)",
-                "sideColor" : "(0,58,59)"
+                "backgroundColor":  "(255,255,255, 180)",
+                "fontColor" : "(0,0,0)",
+                "selectionColor" : "(55,55,55,120)",
+                "sideColor" : "(57,58,59)",
+                "scrollbarColor" : "(105,105,105)"
             },
             "selectionMenu" : {
-                "backgroundColor":  "(0,255,255)",
+                "backgroundColor":  "(255,255,255)",
                 "fontColor" : "(0,0,0)",
-                "selectionColor" : "(0,55,55,120)"
+                "selectionColor" : "(55,55,55,120)"
+            },
+            
+            "textInput" : {
+                "backgroundColor":  "(255,255,255)",
+                "buttonColor" : "(191,191,191)",
+                "fontColor" : "(0,0,0)",
+                "selectionColor" : "(55,55,55,120)"
             }
+
             
     },
 

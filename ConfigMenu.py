@@ -35,18 +35,18 @@ class ConfigMenu(AbstractList.AbstractList):
     def onSelect(self):        
         if(self.entryList[self.currentIndex]["type"] == "string"):
             self.subComponent = TextInput.TextInput(self.screen, self.entryList[self.currentIndex]["value"], self.textCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], Theme.getColor("selection/footer/fontColor", (255,255,255)) ,Theme.getColor("selection/footer/color", (57,58,59)) ) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], Theme.getColor("settings/footer/fontColor", (255,255,255)) ,Theme.getColor("settings/footer/color", (57,58,59)) ) 
             self.subComponent.setFooter(footer)          
         if(self.entryList[self.currentIndex]["type"] == "boolean"):
            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
         if(self.entryList[self.currentIndex]["type"] == "folder"):
-            options = Theme.getSelectionOptions()   
+            options = Theme.getConfigOptions()   
             options["preview"] = False        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], True, options, self.fileFolderCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "enter"), ("theme/start_button.png", "save")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
-            options = Theme.getSelectionOptions()   
+            options = Theme.getConfigOptions()   
             options["preview"] = False  
 
             if("filter" in self.entryList[self.currentIndex]["options"]):
@@ -56,12 +56,12 @@ class ConfigMenu(AbstractList.AbstractList):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer) 
         if(self.entryList[self.currentIndex]["type"] == "image"):
-            options = Theme.getSelectionOptions()   
+            options = Theme.getConfigOptions()   
             options["preview"] = True
             options["useSidebar"] = True
             options["directPreview"] = True 
             options["fileFilter"] = [".png", ".jpg"] 
-            options["backgroundColor"] = self.backgroundColor
+        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)
@@ -71,7 +71,7 @@ class ConfigMenu(AbstractList.AbstractList):
             else:
                 self.overlay = SelectionMenu.SelectionMenu(self.screen, self.entryList[self.currentIndex]["options"]["values"], self.listCallback)
         if(self.entryList[self.currentIndex]["type"] == "emu"):
-            options = Theme.getSelectionOptions()
+            options = Theme.getConfigOptions()
             options["useSidebar"] = False
 
             
@@ -90,7 +90,7 @@ class ConfigMenu(AbstractList.AbstractList):
             self.subComponent.setFooter(footer)
             
         if(self.entryList[self.currentIndex]["type"] == "selection"):
-            options = Theme.getSelectionOptions()
+            options = Theme.getConfigOptions()
             options["useSidebar"] = False
             options["names"] = self.entryList[self.currentIndex]["options"]["names"]
             options["options"] = self.entryList[self.currentIndex]["options"]["options"]

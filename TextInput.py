@@ -2,6 +2,7 @@
 import RenderObject, Configuration, Footer
 import os, Keys, RenderControl, TaskHandler
 import pygame, sys
+import Theme
 
 
 class TextInput(RenderObject.RenderObject):
@@ -52,22 +53,22 @@ class TextInput(RenderObject.RenderObject):
    
     def initBackground(self):
         self.background = pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]))
-        self.background.fill((131,139,139))
+        self.background.fill(Theme.getColor("textInput/backgroundColor", (131,139,139)))
 
         self.buttonSurface =  pygame.Surface((self.buttonWidth, self.buttonHeight))
-        self.buttonSurface.fill((190,190,190))
+        self.buttonSurface.fill(Theme.getColor("textInput/buttonColor", (191,191,191)))
 
         self.buttonSelectSurface =  pygame.Surface((self.buttonWidth, self.buttonHeight))
-        self.buttonSelectSurface.fill((255,255,255))
+        self.buttonSelectSurface.fill(Theme.getColor("textInput/selectionColor", (255,255,255)))
     
     def renderTextField(self, screen):
         field = pygame.Surface((self.config["screenWidth"] - (self.config["screenWidth"] * 0.2) ,30))
-        field.fill((255,255,255))
+        field.fill(Theme.getColor("textInput/buttonColor", (191,191,191)))
 
-        textSurface = self.textFont.render(self.currentText, True, (0,0,0))
+        textSurface = self.textFont.render(self.currentText, True,Theme.getColor("textInput/fontColor", (0,0,0)))
         field.blit(textSurface, (0, (field.get_height() - textSurface.get_height()) / 2))
 
-        pygame.draw.line(field, (131,139,139), (textSurface.get_width(), 25),  (textSurface.get_width() + 10, 25), 2)
+        pygame.draw.line(field, Theme.getColor("textInput/fontColor", (0,0,0)), (textSurface.get_width(), 25),  (textSurface.get_width() + 10, 25), 2)
 
         textX = (self.config["screenWidth"] - field.get_width()) /2
         screen.blit(field, (textX,20))
@@ -101,7 +102,7 @@ class TextInput(RenderObject.RenderObject):
         for i, char in enumerate(line):
             charSurface = self.fontCache.get(char)
             if(charSurface == None):
-               charSurface = self.buttonFont.render(char, True, (0,0,0))
+               charSurface = self.buttonFont.render(char, True, Theme.getColor("textInput/fontColor", (0,0,0)))
                self.fontCache[char] =  charSurface
 
             if(self.selectedChar == char and i == self.currentCol and row == self.currentRow):

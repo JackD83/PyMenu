@@ -90,7 +90,7 @@ class AbstractList(RenderObject.RenderObject):
 
         offset = (scrollRest * percentProgress)  + self.headerHeight
 
-        pygame.draw.line(screen, (105,105,105), (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
+        pygame.draw.line(screen,self.options["scrollbarColor"], (self.config["screenWidth"] - 3, offset), (self.config["screenWidth"] - 3, offset + barHeight), 2)
         #print("is " + str(progress) + " should " + str(percentProgress))
 
     def renderPreview(self, screen):
@@ -463,6 +463,11 @@ class AbstractList(RenderObject.RenderObject):
             
         if("descriptionFontColor" not in self.options):
             self.options["descriptionFontColor"] = (255,255,255)
+        
+        if("scrollbarColor" not in self.options):
+            self.options["scrollbarColor"] = (0,105,105)
+        
+
 
                
         self.toggleSidebar("useSidebar" in options and options["useSidebar"])
