@@ -52,6 +52,8 @@ class Footer(RenderObject.RenderObject):
                 rightOffset = rightOffset - text.get_width() - self.spacing
             if(entry[0] != None):
                 icon = Common.loadImage(entry[0])
+                icon= icon.convert_alpha().copy()
+                icon.fill(self.textColor, None, pygame.BLEND_RGBA_MULT)   
                 self.footer.blit(icon, (rightOffset - icon.get_width() , (self.footerHeight - icon.get_height()) / 2))
                 rightOffset = rightOffset - icon.get_width() - self.spacing
            

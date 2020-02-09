@@ -394,7 +394,7 @@ class MainMenu(RenderObject.RenderObject):
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"), ("theme/start_button.png", "save")],opt["footerFontColor"],opt["footerColor"]) 
             self.subComponent.setFooter(footer)
         if(optionID == 2):
-            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?",  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
             RenderControl.setDirty()
 
 
@@ -522,7 +522,7 @@ class MainMenu(RenderObject.RenderObject):
         
             elif(len(emus) == 0):
                 self.subComponent = None
-                self.overlay = ConfirmOverlay.ConfirmOverlay("Emu not configured!", (255,255,255),  [("theme/a_button.png", "OK")],self.clearOverlay)
+                self.overlay = ConfirmOverlay.ConfirmOverlay("Emu not configured!",  [("theme/a_button.png", "OK")],self.clearOverlay)
                 RenderControl.setDirty()
 
             return

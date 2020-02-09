@@ -1,6 +1,7 @@
 import RenderObject, Configuration, Common
 import os, Keys, RenderControl
 import pygame, sys
+import Theme
 
 class ConfirmOverlay(RenderObject.RenderObject):
     background = None
@@ -23,7 +24,7 @@ class ConfirmOverlay(RenderObject.RenderObject):
     def initBackground(self):
 
         self.background = pygame.Surface((self.width, self.height))
-        self.background.fill((137,137,137))
+        self.background.fill(Theme.getColor("selectionMenu/backgroundColor", (137,137,137)))
 
         self.backgroundShadow = pygame.Surface((self.width, self.height),pygame.SRCALPHA)
         self.backgroundShadow.fill((0,0,0, 128))
@@ -46,6 +47,8 @@ class ConfirmOverlay(RenderObject.RenderObject):
                 rightOffset = rightOffset - text.get_width() - self.spacing
             if(entry[0] != None):
                 icon = Common.loadImage(entry[0])
+                icon= icon.convert_alpha().copy()
+                icon.fill(self.textColor, None, pygame.BLEND_RGBA_MULT)   
                 self.background.blit(icon, (rightOffset - icon.get_width() , ((self.footerHeight - icon.get_height()) / 2) + footerOffset ))
                 rightOffset = rightOffset - icon.get_width() - self.spacing
 
@@ -61,10 +64,10 @@ class ConfirmOverlay(RenderObject.RenderObject):
                     RenderControl.setDirty()
 
     
-    def __init__(self, text, textColor,buttons, callback):      
+    def __init__(self, text ,buttons, callback):      
         self.callback = callback
         self.text = text
-        self.textColor = textColor
+        self.textColor = Theme.getColor("selectionMenu/fontColor", (55,55,55))
         self.buttons = buttons
         self.initBackground()
       

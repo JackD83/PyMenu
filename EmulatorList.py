@@ -146,7 +146,7 @@ class EmulatorList(AbstractList.AbstractList):
             self.subComponent.setFooter(footer)
             self.subComponent.setConfigCallback(self.configCallback)
         if(text == "remove"):
-            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really delete?",  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.deleteCallback)
             RenderControl.setDirty()
       
          

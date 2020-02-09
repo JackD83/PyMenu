@@ -384,6 +384,10 @@ class FileChooser(AbstractList.AbstractList):
         self.selectFolder = selectFolder  
         self.callback = callback
 
+        #tint folder icon in text color
+        self.folderIcon =  self.folderIcon.convert_alpha().copy()
+        self.folderIcon.fill(self.textColor, None, pygame.BLEND_RGBA_MULT)   
+
         self.yFolderOffset = (self.listEntryHeight - self.folderIcon.get_height()) / 2
         self.xFolderOffset = (self.listEntryHeight - self.folderIcon.get_width()) / 2 + 2
 

@@ -63,7 +63,7 @@ class IPKManager(NativeAppList.NativeAppList):
             name = selName.split(" - ")[0]
             self.cmd = [ "opkg","remove", name]
 
-            self.overlay = ConfirmOverlay.ConfirmOverlay("really uninstall?", (255,255,255),  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.uninstallCallback)
+            self.overlay = ConfirmOverlay.ConfirmOverlay("really uninstall?",  [("theme/b_button.png", "back"), ("theme/a_button.png", "delete")], self.uninstallCallback)
             RenderControl.setDirty()
 
 
@@ -97,7 +97,7 @@ class IPKManager(NativeAppList.NativeAppList):
         print(selection)
         if( selection.lower().find("pymenu-") != -1):
             self.subComponent = None
-            self.overlay = ConfirmOverlay.ConfirmOverlay("Install with Gmenu", (255,255,255),  [("theme/b_button.png", "back")], self.pyMenuSelectedCallback)
+            self.overlay = ConfirmOverlay.ConfirmOverlay("Install with Gmenu", [("theme/b_button.png", "back")], self.pyMenuSelectedCallback)
 
             RenderControl.setDirty()
             return
