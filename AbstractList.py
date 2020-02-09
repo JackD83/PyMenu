@@ -2,6 +2,7 @@ import RenderObject, Configuration, Footer
 import os, Keys, RenderControl, Common, TaskHandler,ResumeHandler
 import pygame, sys, Animation
 from operator import itemgetter
+import Theme
 
 class AbstractList(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
@@ -327,8 +328,12 @@ class AbstractList(RenderObject.RenderObject):
     def initBackground(self):       
         if("background" in self.options):
             self.background = pygame.transform.scale(Common.loadImage(self.options["background"]), (self.config["screenWidth"],self.config["screenHeight"]))
-            surface =  pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]), pygame.SRCALPHA)
+            surface =  pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]))
             surface.fill(self.backgroundColor)
+            
+            if(len(self.backgroundColor) == 4):
+                surface.set_alpha(self.backgroundColor[3])
+
             self.background.blit(surface, (0,0))          
         else:
             self.background = pygame.Surface((self.config["screenWidth"],self.config["screenHeight"]))
@@ -340,7 +345,7 @@ class AbstractList(RenderObject.RenderObject):
 
     def initHeader(self):
         self.header = pygame.Surface((self.config["screenWidth"], self.headerHeight))
-        self.header.fill(Configuration.toColor(self.theme["side"]["color"]))
+        self.header.fill(Theme.getColor("header/color", (57,58,59, 255)))
         self.initFolderIcon(self.header)
         self.titleText = self.titleFont.render(self.title, True,(255,255,255))
         yOffset = 0
@@ -362,8 +367,14 @@ class AbstractList(RenderObject.RenderObject):
     
     def initSidebar(self):
         self.sidebar = pygame.Surface((self.sidebarWidth, self.config["screenHeight"]))
-        self.sidebar.fill(Configuration.toColor(self.theme["side"]["color"]))
+      
+        color = Theme.getColor("selection/sideColor", (57,58,59, 255))
+        if(len(color) == 4):
+            self.sidebar.set_alpha(color[3])
+
+        self.sidebar.fill(color)
         self.initFolderIcon(self.sidebar)
+
         self.titleText = self.titleFont.render(self.title, True,(255,255,255))
         yOffset = 0
         if(self.titleText.get_height() < 32):

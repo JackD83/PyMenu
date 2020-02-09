@@ -1,20 +1,30 @@
 {
     "theme_settings" : {
+
+            "main" : {
+                "banderole": {
+                    "offset" : 160,
+                    "color": "(255,255,255, 0)",
+                    "color_select": "(255,255,255, 0)"
+                },
+                "iconColor" : "(255,255,255,120)",
+                "iconColor_select" : "(255,0,255,120)"
+
+            },
         
             "header": {
                 "color": "(0,0,0,0)"
             },
-            "side": {
-                "color": "(57,58,59, 255)"
-            },
+            
             "footer": {
-                "color": "(131,139,139, 200)"
+                "color": "(57,58,59)"
             },
-            "banderole": {
-                "offset" : 160,
-                "color": "(255,255,255, 0)",
-                "color_select": "(255,255,255, 0)"
+            "selection": {
+                "backgroundColor":  "(255,255,255, 190)",
+                "sideColor": "(57,58,59)"
+
             }
+            
     },
 
     "A26": {

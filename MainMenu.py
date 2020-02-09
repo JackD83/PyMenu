@@ -13,9 +13,11 @@ class MainMenu(RenderObject.RenderObject):
    
     gear = Common.aspect_scale(Common.loadCachedImage("theme/gear.png"),20,20)
     gearFinal = None
+    gearSelect = None
 
     power = Common.aspect_scale(Common.loadCachedImage("theme/power.png"),18,18)
-    powerFinal = None   
+    powerFinal = None  
+    powerSelect = None 
 
     themeName = config["options"]["themeName"]
     
@@ -279,6 +281,8 @@ class MainMenu(RenderObject.RenderObject):
             options["useSidebar"] = True
             options["useGamelist"] = current["useGamelist"] if "useGamelist" in current else False
         
+            options["backgroundColor"] = Theme.getColor("selection/backgroundColor", (255,255,255,160))
+
 
             if("description" in current):
                 options["description"] = current["description"]
@@ -314,6 +318,9 @@ class MainMenu(RenderObject.RenderObject):
             options["background"] = current["background"]
             options["useSidebar"] = True
 
+            
+            options["backgroundColor"] = Theme.getColor("selection/backgroundColor", (255,255,255,160))
+
             if("linkPath" in current):
                 options["linkPath"] = current["linkPath"]
          
@@ -329,6 +336,10 @@ class MainMenu(RenderObject.RenderObject):
             options["background"] = current["background"]
             options["useSidebar"] = True
             options["type"] = current["type"]
+
+            
+            options["backgroundColor"] = Theme.getColor("selection/backgroundColor", (255,255,255,160))
+
             self.subComponent = NativeAppList.NativeAppList(self.screen, current["name"], current["data"] , options, self.customListCallback)        
             footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
             self.subComponent.setFooter(footer)  
@@ -578,12 +589,12 @@ class MainMenu(RenderObject.RenderObject):
         else:
             RenderControl.setDirty()
 
-        banderoleYOffset = Theme.getValue("banderole/offset",80)
+        banderoleYOffset = Theme.getValue("main/banderole/offset",80)
 
         if(self.selection=="band"):
-            self.banderole.fill(Theme.getColor("banderole/color_select", (255,255,255,160)))
+            self.banderole.fill(Theme.getColor("main/banderole/color_select", (255,255,255,160)))
         else:
-            self.banderole.fill(Theme.getColor("banderole/color", (255,255,255,60)))
+            self.banderole.fill(Theme.getColor("main/banderole/color", (255,255,255,60)))
 
 
         screen.blit(self.banderole, (0,banderoleYOffset))
@@ -642,13 +653,21 @@ class MainMenu(RenderObject.RenderObject):
     def renderIcons(self, screen):
         powerYPos = self.config["screenHeight"] - 30
         powerXPos = self.config["screenWidth"] - 50
+        color = Theme.getColor("main/iconColor", (255,255,255,120))
+        colorSelect = Theme.getColor("main/iconColor_select", (255,255,255,255))
 
         if(self.powerFinal == None):
+            
             self.powerFinal = self.power.convert_alpha().copy()
-            self.powerFinal.fill((255, 255, 255, 120), None, pygame.BLEND_RGBA_MULT)  
+            self.powerFinal.fill(color, None, pygame.BLEND_RGBA_MULT)  
+        
+        if(self.powerSelect == None):
+            self.powerSelect = self.power.convert_alpha().copy()
+            self.powerSelect.fill(colorSelect, None, pygame.BLEND_RGBA_MULT)   
+
                
         if(self.selection == "power"):
-            screen.blit(self.power, (powerXPos,powerYPos))
+            screen.blit(self.powerSelect, (powerXPos,powerYPos))
         else:
             screen.blit(self.powerFinal, (powerXPos,powerYPos))
 
@@ -657,10 +676,14 @@ class MainMenu(RenderObject.RenderObject):
 
         if(self.gearFinal == None):
             self.gearFinal = self.gear.convert_alpha().copy()
-            self.gearFinal.fill((255, 255, 255, 120), None, pygame.BLEND_RGBA_MULT)  
+            self.gearFinal.fill(color, None, pygame.BLEND_RGBA_MULT)  
+
+        if(self.gearSelect == None):
+            self.gearSelect = self.gear.convert_alpha().copy()
+            self.gearSelect.fill(colorSelect, None, pygame.BLEND_RGBA_MULT)  
         
         if(self.selection == "settings"):
-            screen.blit(self.gear, (settingsXPos,settingsYPos))
+            screen.blit(self.gearSelect, (settingsXPos,settingsYPos))
         else:
             screen.blit(self.gearFinal, (settingsXPos,settingsYPos))
 

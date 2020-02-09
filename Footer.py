@@ -1,6 +1,7 @@
 import RenderObject, Configuration, Common
 import os
 import pygame, sys
+import Theme
 
 class Footer(RenderObject.RenderObject):
     config = Configuration.getConfiguration()
@@ -28,7 +29,7 @@ class Footer(RenderObject.RenderObject):
 
     def initFooter(self):
         self.footer = pygame.Surface((self.config["screenWidth"], self.footerHeight))
-        self.footer.fill(Configuration.toColor(self.theme["side"]["color"]))
+        self.footer.fill(Theme.getColor("footer/color", (57,58,59, 255)))
 
         leftOffset = 10
         for entry in self.left:
