@@ -283,10 +283,10 @@
         "icon": "images/tft/systems/pc.png"
     }, 
     "PC98": {
-        "background": "images/tft/backgrounds/cpc.png", 
+        "background": "images/tft/backgrounds/necpc.png", 
         "folderIcon": "images/pixel97/icons/pc98.png", 
-        "icon": "images/pixel97/systems/pc98.png", 
-        "preview": "images/pixel97/systems/pc98.png"
+        "icon": "images/tft/systems/nec.png"
+       
     }, 
     "PCE": {
         "background": "images/tft/backgrounds/pce.png", 
