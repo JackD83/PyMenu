@@ -41,7 +41,7 @@ def getConfigOptions():
 def getSelectionOptions():
     options = {}
     options["backgroundColor"] = getColor("selection/backgroundColor", (0,0,0))
-    options["textColor"] = getColor("selection/fontColor", (255,255,255))
+    options["textColor"] = getColor("selection/fontColor", (55,55,55))
     options["sideColor"] = getColor("selection/sideColor", (57,58,59))
     options["headerColor"] = getColor("selection/header/color",(57,58,59))
     options["headerFontColor"] = getColor("selection/header/fontColor", (255,255,255))

@@ -35,7 +35,7 @@ class ConfigMenu(AbstractList.AbstractList):
     def onSelect(self):        
         if(self.entryList[self.currentIndex]["type"] == "string"):
             self.subComponent = TextInput.TextInput(self.screen, self.entryList[self.currentIndex]["value"], self.textCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "add"), ("theme/start_button.png", "save")], Theme.getColor("selection/footer/fontColor", (255,255,255)) ,Theme.getColor("selection/footer/color", (57,58,59)) ) 
             self.subComponent.setFooter(footer)          
         if(self.entryList[self.currentIndex]["type"] == "boolean"):
            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["True", "False"], self.booleanCallback)
@@ -43,7 +43,7 @@ class ConfigMenu(AbstractList.AbstractList):
             options = Theme.getSelectionOptions()   
             options["preview"] = False        
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], True, options, self.fileFolderCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "enter"), ("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "enter"), ("theme/start_button.png", "save")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)       
         if(self.entryList[self.currentIndex]["type"] == "file"):
             options = Theme.getSelectionOptions()   
@@ -53,7 +53,7 @@ class ConfigMenu(AbstractList.AbstractList):
                 options["fileFilter"] = self.entryList[self.currentIndex]["options"]["filter"]
 
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer) 
         if(self.entryList[self.currentIndex]["type"] == "image"):
             options = Theme.getSelectionOptions()   
@@ -61,10 +61,9 @@ class ConfigMenu(AbstractList.AbstractList):
             options["useSidebar"] = True
             options["directPreview"] = True 
             options["fileFilter"] = [".png", ".jpg"] 
-            options["textColor"] = self.textColor
             options["backgroundColor"] = self.backgroundColor
             self.subComponent = FileChooser.FileChooser(self.screen, self.entryList[self.currentIndex]["name"] ,self.entryList[self.currentIndex]["value"], False, options, self.fileFolderCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "select")], options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)
         if(self.entryList[self.currentIndex]["type"] == "list"):   
             if("names" in self.entryList[self.currentIndex]["options"]):
@@ -87,7 +86,7 @@ class ConfigMenu(AbstractList.AbstractList):
                 data.append(default)
                
             self.subComponent = EmulatorList.EmulatorList(self.screen, "Emulators",data, options, self.emuListCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options"),("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/select_button.png", "options"),("theme/start_button.png", "save")],options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)
             
         if(self.entryList[self.currentIndex]["type"] == "selection"):
@@ -104,7 +103,7 @@ class ConfigMenu(AbstractList.AbstractList):
             print(self.entryList[self.currentIndex]["options"])
                
             self.subComponent = SelectionList.SelectionList(self.screen, "Select",data, options, self.selectionListCallback)
-            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"),("theme/start_button.png", "save")], (255,255,255)) 
+            footer = Footer.Footer([("theme/direction.png","select")], [("theme/b_button.png", "back"), ("theme/a_button.png", "change"),("theme/start_button.png", "save")],options["footerFontColor"], options["footerColor"]) 
             self.subComponent.setFooter(footer)
 
     def selectionListCallback(self, data):

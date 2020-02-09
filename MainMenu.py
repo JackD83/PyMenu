@@ -284,7 +284,6 @@ class MainMenu(RenderObject.RenderObject):
             print("Opening emulator file selection")
            
             options["entry"] = self.config["mainMenu"][self.currentIndex]
-            options["textColor"] = (55,55,55)
             options["background"] = current["background"]
             options["useSidebar"] = True
             options["useGamelist"] = current["useGamelist"] if "useGamelist" in current else False

@@ -1,6 +1,7 @@
 import RenderObject, Configuration
 import os, Keys, RenderControl
 import pygame, sys
+import Theme
 
 class SelectionMenu(RenderObject.RenderObject):
 
@@ -38,7 +39,7 @@ class SelectionMenu(RenderObject.RenderObject):
 
     def renderBackground(self):
         self.background = pygame.Surface((self.width,self.height))
-        self.background.fill((255,255,255))
+        self.background.fill(Theme.getColor("selectionMenu/backgroundColor", (255,255,255)))
 
 
         self.maxRenderItems = int(self.height / self.optionHeight)
@@ -52,7 +53,7 @@ class SelectionMenu(RenderObject.RenderObject):
         self.optionsText = []
         font = pygame.font.Font('theme/NotoSans-Regular.ttf', 14)
         for opt in self.options: 
-            text = font.render(opt, True, (55,55,55))
+            text = font.render(opt, True,Theme.getColor("selectionMenu/fontColor", (55,55,55)))
             self.optionsText.append(text)
 
     def renderOptionText(self):
@@ -124,7 +125,7 @@ class SelectionMenu(RenderObject.RenderObject):
         self.width = width
 
         self.selection = pygame.Surface((self.width,self.optionHeight),pygame.SRCALPHA)
-        self.selection.fill((55,55,55, 120))
+        self.selection.fill(Theme.getColor("selectionMenu/selectionColor", (55,55,55,120)))
 
      
 

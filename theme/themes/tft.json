@@ -40,6 +40,11 @@
                 "fontColor" : "(0,255,255)",
                 "selectionColor" : "(0,55,55,120)",
                 "sideColor" : "(0,58,59)"
+            },
+            "selectionMenu" : {
+                "backgroundColor":  "(0,255,255)",
+                "fontColor" : "(0,0,0)",
+                "selectionColor" : "(0,55,55,120)"
             }
             
     },
