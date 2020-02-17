@@ -5,11 +5,18 @@ import pygame, sys, ResumeHandler, ntpath
 from threading import Thread
 from operator import itemgetter
 from time import sleep
-sys.path.insert(0, "scandir")
-import scandir
 import SelectionMenu
 import json
 import copy
+
+try:        
+    import scandir
+    print("using native scandir")     
+except Exception as ex:
+    sys.path.insert(0, "scandir")
+    import scandir
+    print("using custom scandir")    
+
 
 class FileChooser(AbstractList.AbstractList):
    
