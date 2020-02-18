@@ -157,7 +157,7 @@ class MainMenu(RenderObject.RenderObject):
         if(Configuration.isOpenDinguX()):
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
         else:
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "Start Network", "Run Gmenu2x"], self.contextMenuCallback)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "Run Gmenu2x"], self.contextMenuCallback)
     
     def openOptions(self):
         if("allowEdit" in self.config["options"] and self.config["options"]["allowEdit"]  

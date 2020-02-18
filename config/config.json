@@ -554,7 +554,7 @@
         "showFavourites": true, 
         "showLastPlayed": true, 
         "suspendTimeout": "off", 
-        "themeName": "default", 
+        "themeName": "pixel", 
         "volumeControl": false
     }, 
     "screenHeight": 240, 

@@ -70,7 +70,7 @@
             "previews": "/home/retrofw/roms/gba/previews", 
             "screen": "default", 
             "selectionPath": "/home/retrofw/roms/gba", 
-            "system": "gba,02gba,Zgpsp,regba", 
+            "system": "gba,02gba,Zgpsp,regba,gpsp", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -142,7 +142,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/atari2600/previews", 
             "selectionPath": "/home/retrofw/roms/atari2600", 
-            "system": "atari2600", 
+            "system": "atari2600,Dingux 2600", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -190,7 +190,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/lynx/previews", 
             "selectionPath": "/home/retrofw/roms/lynx", 
-            "system": "handy", 
+            "system": "handy320", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -250,7 +250,7 @@
             "overclock": "524", 
             "previews": null, 
             "selectionPath": "/home/retrofw/roms", 
-            "system": "dingux-cap32", 
+            "system": "dingux-cap32,dingux cap32", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -274,7 +274,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/msx/previews", 
             "selectionPath": "/home/retrofw/roms/msx", 
-            "system": "msx", 
+            "system": "msx, Dingux MSX", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
@@ -371,7 +371,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/neogeo/previews", 
             "selectionPath": "/home/retrofw/roms/neogeo", 
-            "system": "fba-a320,FBA A320,fba-sdl,fbasdl,10fba,FBA GCW0", 
+            "system": "fba-a320,FBA A320,fba-sdl,fbasdl,10fba,FBA GCW0,gngeo", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": true, 
@@ -479,80 +479,6 @@
             "type": "lastPlayed"
         }, 
         {
-            "data": [
-                {
-                    "background": "images/pixel97/backgrounds/snes.png", 
-                    "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
-                    "description": "Super Nintendo", 
-                    "emu": [
-                        {
-                            "cmd": "/home/retrofw/emus/pocketsnes/PocketSNES.dge", 
-                            "name": "SNES", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
-                        }
-                    ], 
-                    "fileFilter": [
-                        ".sfc", 
-                        ".swc", 
-                        ".smc", 
-                        ".zip"
-                    ], 
-                    "folderIcon": "images/pixel97/icons/snes.png", 
-                    "hideFolders": null, 
-                    "icon": "images/pixel97/systems/snes.png", 
-                    "limitSelection": false, 
-                    "name": "pymenu.lnk", 
-                    "overclock": "624", 
-                    "preview": "/home/retrofw/roms/snes/previews/pymenu.png", 
-                    "previews": "/home/retrofw/roms/snes/previews", 
-                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\pymenu.lnk", 
-                    "selectionPath": "/home/retrofw/roms/snes", 
-                    "system": "snes", 
-                    "type": "emulator", 
-                    "useFileFilter": false, 
-                    "useGamelist": false, 
-                    "useSelection": true, 
-                    "visible": true, 
-                    "workingDir": "C:\\home\\retrofw\\emus\\pocketsnes"
-                }, 
-                {
-                    "background": "images/pixel97/backgrounds/gb.png", 
-                    "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
-                    "description": "Gameboy", 
-                    "emu": [
-                        {
-                            "cmd": "/home/retrofw/emus/ohboy/ohboy.dge", 
-                            "name": "OhBoy", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\ohboy"
-                        }, 
-                        {
-                            "cmd": "/home/retrofw/emus/gambatte/gambatte.dge", 
-                            "name": "Gambatte", 
-                            "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
-                        }
-                    ], 
-                    "fileFilter": [
-                        ".gbc", 
-                        ".gb", 
-                        ".zip"
-                    ], 
-                    "folderIcon": "images/pixel97/icons/gb.png", 
-                    "icon": "images/pixel97/systems/gb.png", 
-                    "name": "commander.lnk", 
-                    "overclock": "528", 
-                    "preview": "/home/retrofw/roms/snes/previews/commander.png", 
-                    "previews": "/home/retrofw/roms/snes/previews", 
-                    "rom": "C:\\home\\retrofw\\apps\\gmenu2x\\sections\\applications\\commander.lnk", 
-                    "selectionPath": "/home/retrofw/roms/gb", 
-                    "system": "ohboy,gambatte", 
-                    "type": "emulator", 
-                    "useFileFilter": null, 
-                    "useGamelist": null, 
-                    "useSelection": true, 
-                    "visible": true, 
-                    "workingDir": "C:\\home\\retrofw\\emus\\gambatte"
-                }
-            ], 
             "description": "Favourit games", 
             "linkPath": null, 
             "name": "Favourites", 
