@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir tmp
 
-VERSION=$(cat ../config/config_RG350.json | grep version | cut -d \" -f4)
+VERSION=$(cat ../config/config_OpenDinguX.json | grep version | cut -d \" -f4)
 echo "Version is: $VERSION"
 
 
