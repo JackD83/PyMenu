@@ -1,0 +1,11 @@
+Package: libopk
+Version: 1.0.0
+Description: package for missing libopk in RetroFW 2.1
+Replaces: libopk
+Section: apps
+Priority: optional
+Maintainer: JackD83
+Architecture: mipsel
+Homepage: https://github.com/JackD83/PyMenu
+Depends:
+Source: https://github.com/JackD83/PyMenu

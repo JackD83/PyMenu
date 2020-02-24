@@ -1,0 +1,10 @@
+#!/bin/sh
+sync; echo -e 'Installing libopk..';
+if [ -f /usr/bin/opkinfo ]; then
+    echo -e 'Libopk already installed !';
+    exit 1
+fi
+
+mount -o remount,rw /dev/root /
+
+exit 0

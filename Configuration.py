@@ -330,6 +330,11 @@ def createNativeItem(item):
 
     #handling of opk links.
     if(entry["cmd"].lower().endswith("opk")):
+
+        ## new in RetroFW 2.1 final
+        if("opk[icon]" in data):
+            entry["preview"] = entry["cmd"] + "#" + data["opk[icon]"]
+
         meta = OPKHelper.getMetadataForExec(data["exec"],data["params"] )
         entry["cmd"] = "/usr/bin/opkrun"
         if(meta == None):
