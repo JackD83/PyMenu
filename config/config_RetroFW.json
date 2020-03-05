@@ -94,7 +94,7 @@
             "overclock": "524", 
             "previews": "/home/retrofw/roms/sms/previews", 
             "selectionPath": "/home/retrofw/roms/mastersystem", 
-            "system": "mastersystem,06ms,picodrive", 
+            "system": "mastersystem,06ms,SMS Plus GX", 
             "type": "emulator", 
             "useFileFilter": null, 
             "useGamelist": null, 
