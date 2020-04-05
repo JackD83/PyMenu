@@ -155,7 +155,7 @@ class MainMenu(RenderObject.RenderObject):
 
     def openPowerMenu(self):
         if(Configuration.isOpenDinguX()):
-            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot"], self.contextMenuCallback)
+            self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Run Gmenu2x"], self.contextMenuCallback)
         else:
             self.overlay = SelectionMenu.SelectionMenu(self.screen, ["Poweroff", "Reboot", "Mount USB", "Run Gmenu2x"], self.contextMenuCallback)
     
@@ -230,7 +230,19 @@ class MainMenu(RenderObject.RenderObject):
 
         if(text == "Run Gmenu2x"):
             print("Running gmenu 2x")
-            Common.gmenu2x()
+            if(Configuration.isOpenDinguX()):
+                try:
+                    fileName = "run"
+                    file = open("/tmp/" + fileName,"w")
+                    file.write("#!/bin/sh\n")
+                    file.write("exec /usr/bin/gmenu2x")
+                    file.close()
+                    sys.exit()
+
+                except Exception as ex:
+                    print("mount exception " + str(ex))
+            else:
+                Common.gmenu2x()
 
         if(text == "Start Network"):
             Common.startNetwork()
