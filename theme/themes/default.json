@@ -85,6 +85,11 @@
         "folderIcon": "images/pixel97/icons/fba1.png", 
         "icon": "images/systems/cps2.png"
     }, 
+    "CPS3": {
+        "background": "images/backgrounds/rs97/arcades3.png",
+        "folderIcon": "images/pixel97/icons/fba1.png",
+        "icon": "images/systems/cps3.png"
+    },
     "Cannonball": {
         "preview": "images/previews/cannonball.png"
     }, 
@@ -162,6 +167,11 @@
     "GMU": {
         "preview": "/mnt/game/gmenu2x/skins/Default/icons/gmu.png"
     }, 
+    "GW": {
+        "background": "images/backgrounds/rs97/gw.png",
+        "folderIcon": "images/icons/gw.png",
+        "icon": "images/systems/gw.png"
+    },
     "Ganbare": {
         "preview": "images/previews/ganbare.png"
     }, 
@@ -280,6 +290,11 @@
         "folderIcon": "images/icons/pce.png", 
         "icon": "images/systems/pce.png"
     }, 
+    "PICO8": {
+        "background": "images/backgrounds/rs97/pico8.png",
+        "folderIcon": "images/icons/pico8.png",
+        "icon": "images/systems/pico8.png"
+    },
     "PSX": {
         "background": "images/backgrounds/rs97/psx.png", 
         "folderIcon": "images/icons/psx.png", 

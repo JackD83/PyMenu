@@ -127,6 +127,11 @@
         "folderIcon": "images/pixel97/icons/fba1.png", 
         "icon": "images/pixel97/systems/cps2.png"
     }, 
+    "CPS3": {
+        "background": "images/pixel97/backgrounds/cps3.png",
+        "folderIcon": "images/pixel97/icons/fba1.png",
+        "icon": "images/pixel97/systems/cps3.png"
+    },
     "CTF": {}, 
     "Cannonball": {
         "preview": "images/pixel97/previews/cannonball.png"
@@ -226,6 +231,11 @@
         "folderIcon": "images/pixel97/icons/gg.png", 
         "icon": "images/pixel97/systems/gg.png"
     }, 
+    "GW": {
+        "background": "images/pixel97/backgrounds/gw.png",
+        "folderIcon": "images/pixel97/icons/gw.png",
+        "icon": "images/pixel97/systems/gw.png"
+    },
     "GMU": {
         "preview": "images/pixel97/icons/gmu.png"
     }, 
@@ -383,6 +393,11 @@
         "folderIcon": "images/pixel97/icons/pce.png", 
         "icon": "images/pixel97/systems/pce.png"
     }, 
+    "PICO8": {
+        "background": "images/pixel97/backgrounds/pico8.png",
+        "folderIcon": "images/pixel97/icons/pico8.png",
+        "icon": "images/pixel97/systems/pico8.png"
+    },
     "PSX": {
         "background": "images/pixel97/backgrounds/psx.png", 
         "folderIcon": "images/pixel97/icons/psx.png", 
