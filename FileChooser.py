@@ -255,11 +255,15 @@ class FileChooser(AbstractList.AbstractList):
 
             scan = scandir.scandir(os.path.normpath(self.currentPath))
         
-            try:
-                hideFolders  = self.options["hideFolders"] if "hideFolders" in self.options else False
+            hideFolders  = self.options["hideFolders"] if "hideFolders" in self.options else False
 
-                for f in scan:  
-                           
+            try:
+                f = next(scan, None)
+            except Exception as ex:
+                f = False
+
+            while f is not None:
+                if f:
                     if(f.is_dir() and not hideFolders ):
                         entry = {}
                         entry["name"] = f.name
@@ -272,14 +276,15 @@ class FileChooser(AbstractList.AbstractList):
                         entry["isFolder"] = False
                         entry["text"] = None
                         fileList.append(entry)
-                
-                Common.quick_sort(folderList)
-                Common.quick_sort(fileList)
+                try:
+                    f = next(scan, None)
+                except Exception as ex:
+                    f = False
 
-                self.entryList = self.entryList + folderList + fileList
-                
-            except Exception as ex:
-                pass    
+            Common.quick_sort(folderList)
+            Common.quick_sort(fileList)
+
+            self.entryList = self.entryList + folderList + fileList
 
         if(not self.reset == None):
             for entry in self.entryList:

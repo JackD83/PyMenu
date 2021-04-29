@@ -140,6 +140,11 @@
         "folderIcon": "images/pixel97/icons/fba1.png", 
         "icon": "images/tft/systems/cps2.png"
     }, 
+    "CPS3": {
+        "background": "images/tft/backgrounds/mame.png",
+        "folderIcon": "images/pixel97/icons/fba1.png",
+        "icon": "images/tft/systems/cps3.png"
+    },
     "Cannonball": {
         "preview": "images/previews/cannonball.png"
     }, 
@@ -214,6 +219,11 @@
         "folderIcon": "images/tft/icons/gg.png", 
         "icon": "images/tft/systems/gg.png"
     }, 
+    "GW": {
+        "background": "images/tft/backgrounds/gw.png",
+        "folderIcon": "images/tft/icons/gw.png",
+        "icon": "images/tft/systems/gw.png"
+    },
     "GMU": {
         "preview": "/mnt/game/gmenu2x/skins/Default/icons/gmu.png"
     }, 
@@ -335,6 +345,11 @@
         "folderIcon": "images/tft/icons/pce.png", 
         "icon": "images/tft/systems/pce.png"
     }, 
+    "PICO8": {
+        "background": "images/tft/backgrounds/pico8.png",
+        "folderIcon": "images/tft/icons/pico8.png",
+        "icon": "images/tft/systems/pico8.png"
+    },
     "PSX": {
         "background": "images/tft/backgrounds/psx.png", 
         "folderIcon": "images/tft/icons/psx.png", 
