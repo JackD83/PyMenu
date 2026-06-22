@@ -13,7 +13,7 @@ def _checkRead(result, func, arguments):
 	if result >= 0:
 		return result
 	else:
-		raise SyntaxError("Error occured while reading meta-data")
+		raise SyntaxError("Error occurred while reading meta-data")
 
 def _checkExtract(result, func, arguments):
 	if result == 0:
